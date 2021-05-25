@@ -18,11 +18,20 @@ namespace Dynatrace.AppSec.Utils.Service {
         private readonly Lazy<IEnumerable<Application>> applications;
         public IEnumerable<Application> Applications => applications.Value;
 
+        private readonly Lazy<IEnumerable<Host>> hosts;
+        public IEnumerable<Host> Hosts => hosts.Value;
+
+        private readonly Lazy<IEnumerable<Model.Service>> services;
+        public IEnumerable<Model.Service> Services => services.Value;
+
         public MonitoredEntitiesService(MonitoredEntitiesClient monitoredEntityClient) {
-            softwareComponents = new(
-                () => monitoredEntityClient.GetSoftwareComponents().Select(entity => new SoftwareComponent(entity)));
+            softwareComponents = new(() => monitoredEntityClient.GetSoftwareComponents().Select(entity => new SoftwareComponent(entity)));
 
             applications = new(() => monitoredEntityClient.GetApplications().Select(entity => new Application(entity)));
+
+            hosts = new(() => monitoredEntityClient.GetHosts().Select(entity => new Host(entity)));
+
+            services = new(() => monitoredEntityClient.GetServices().Select(entity => new Model.Service(entity)));
         }
 
     }

@@ -18,20 +18,31 @@ namespace Dynatrace.AppSec.Utils.Service {
         }
 
         public Dictionary<Model.Application, List<SecurityProblemDetails>> GetSecurityProblemsByApplication() {
-            IEnumerable<Model.Application> applications = monitoredEntitiesService.Applications;
+            IEnumerable<Application> applications = monitoredEntitiesService.Applications;
             var problemsByApplication = securityProblemsService.GetApplicationsWithSecurityProblems();
             return SecurityProblemByEntity(applications, problemsByApplication);
         }
 
-        public Dictionary<SoftwareComponent, List<SecurityProblemDetails>> GetSecurityProblemsBySoftwareComponet() {
+        public Dictionary<SoftwareComponent, List<SecurityProblemDetails>> GetSecurityProblemsBySoftwareComponent() {
             IEnumerable<SoftwareComponent> softwareComponents = monitoredEntitiesService.SoftwareComponents;
             Dictionary<string, List<SecurityProblemDetails>> problemsByComponent = securityProblemsService.GetSoftwareComponentsWithSecurityProblems();
             return SecurityProblemByEntity(softwareComponents, problemsByComponent);
         }
 
+        public Dictionary<Host, List<SecurityProblemDetails>> GetSecurityProblemsByHost() {
+            IEnumerable<Host> hosts = monitoredEntitiesService.Hosts;
+            Dictionary<string, List<SecurityProblemDetails>> problemsByHost = securityProblemsService.GetHostsWithSecurityProblems();
+            return SecurityProblemByEntity(hosts, problemsByHost);
+        }
+        public Dictionary<Model.Service, List<SecurityProblemDetails>> GetSecurityProblemsByService() {
+            IEnumerable<Model.Service> hosts = monitoredEntitiesService.Services;
+            Dictionary<string, List<SecurityProblemDetails>> problemsByService = securityProblemsService.GetServicesWithSecurityProblems();
+            return SecurityProblemByEntity(hosts, problemsByService);
+        }
+
         private Dictionary<T, List<SecurityProblemDetails>> SecurityProblemByEntity<T>(IEnumerable<T> entities, Dictionary<string,List<SecurityProblemDetails>> entitiesWithProblems) where T : EntityWrapper {
             return entities.ToDictionary(entity => entity, entity => {
-                if (entitiesWithProblems.TryGetValue(entity.ID, out var securityProblems)) {
+                if (entitiesWithProblems.TryGetValue(entity.Id, out var securityProblems)) {
                     return securityProblems;
                 } else {
                     return new List<SecurityProblemDetails>();

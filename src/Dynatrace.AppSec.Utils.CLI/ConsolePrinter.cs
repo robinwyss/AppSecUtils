@@ -7,7 +7,7 @@ using System.Linq;
 namespace DynatraceApiExample {
     class ConsolePrinter {
 
-        public static void PrintSecurityProblemsBySoftwareComponent(Dictionary<SoftwareComponent, List<SecurityProblemDetails>> securityProblemsBySoftwareComponents) {
+        internal static void PrintSecurityProblemsBySoftwareComponent(Dictionary<SoftwareComponent, List<SecurityProblemDetails>> securityProblemsBySoftwareComponents) {
             securityProblemsBySoftwareComponents.Keys.ToList().ForEach(softwareComponent => {
                 Console.WriteLine($"{softwareComponent.DisplayName} ({softwareComponent.FileName})");
                 PrintSecurityProblems(securityProblemsBySoftwareComponents[softwareComponent]);
@@ -15,7 +15,16 @@ namespace DynatraceApiExample {
             });
         }
 
-        public static void PrintSecurityProblems(List<SecurityProblemDetails> securityProblems) {
+        internal static void PrintSecurityProblemsByEntity<T>(Dictionary<T, List<SecurityProblemDetails>> securityProblemsByApplication) where T : EntityWrapper {
+            securityProblemsByApplication.Keys.ToList().ForEach(entity => {
+                Console.WriteLine($"{entity.Name} ({entity.Id})");
+                PrintSecurityProblems(securityProblemsByApplication[entity]);
+                Console.WriteLine("");
+            });
+        }
+
+
+        internal static void PrintSecurityProblems(List<SecurityProblemDetails> securityProblems) {
             if (securityProblems.Count == 0) {
                 Console.WriteLine("  -- no security problems found --");
             } else {
@@ -25,5 +34,7 @@ namespace DynatraceApiExample {
                 }
             }
         }
+
+
     }
 }

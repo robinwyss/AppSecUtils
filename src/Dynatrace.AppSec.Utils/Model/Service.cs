@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dynatrace.AppSec.Utils.Model {
-    public class Application : EntityWrapper {
-
-        public Application(Entity entity) : base(entity, "APPLICATION") { }
+    public class Service : EntityWrapper {
+        public Service(Entity entity) : base(entity, "SERVICE") { }
     }
 }
