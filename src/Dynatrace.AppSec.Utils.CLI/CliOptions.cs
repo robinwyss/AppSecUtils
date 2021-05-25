@@ -13,7 +13,7 @@ namespace DynatraceApiExample {
         [Option('t', "token", Required = true, HelpText = "Dynatrace API token")]
         public string ApiToken { get; set; }
        
-        [Option('g', "", HelpText = "Grouping", Default = Grouping.Library)]
+        [Option('g', "grouping", HelpText = "Group vulberarbilites by entity (possible values Library, Application, Service, Host)", Default = Grouping.Library)]
         public Grouping Grouping { get; set; }
 
     }

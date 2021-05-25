@@ -1,10 +1,6 @@
-﻿using Dynatrace.API.Api;
-using Dynatrace.API.Client;
-using Dynatrace.API.Model;
+﻿using Dynatrace.API.Client;
 using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
 using Dynatrace.AppSec.Utils.Service;
 using Dynatrace.AppSec.Utils.Client;
 using CommandLine;
@@ -12,12 +8,8 @@ using CommandLine;
 namespace DynatraceApiExample {
     class Program {
         static void Main(string[] args) {
-            if (args.Length < 2) {
-                Console.WriteLine("Tenant and API Token need to be passed as parameters");
-                return;
-            }
             Parser.Default.ParseArguments<CliOptions>(args)
-                  .WithParsed<CliOptions>(o => {
+                  .WithParsed(o => {
                       string tenant = o.ApiEndpoint;
                       string token = o.ApiToken;
 
@@ -50,21 +42,6 @@ namespace DynatraceApiExample {
                               break;
                       }
                   });
-
-            //string tenant = args[0];
-            //string token = args[1];
-
-
-
-            //// Get Vulnerabilities
-            //securityProblmesService.GetApplicationsWithSecurityProblems().ToList().ForEach(entry => Console.WriteLine($"Application {entry.Key} - Vulnerabilities: {entry.Value.Count}"));
-            //securityProblmesService.GetDatabasesWithSecurityProblems().ToList().ForEach(entry => Console.WriteLine($"Database {entry.Key} - Vulnerabilities: {entry.Value.Count}"));
-            //securityProblmesService.GetServicesWithSecurityProblems().ToList().ForEach(entry => Console.WriteLine($"Service {entry.Key} - Vulnerabilities: {entry.Value.Count}"));
-            //securityProblmesService.GetSoftwareComponentsWithSecurityProblems().ToList().ForEach(entry => Console.WriteLine($"Component {entry.Key} - Vulnerabilities: {entry.Value.Count}"));
-
-            //// Get Software Components
-            //var securityProblemsBySoftwareComponents = entitiesWithSecurityProblemsService.GetSecurityProblemsBySoftwareComponet();
-            //ConsolePrinter.PrintSecurityProblemsBySoftwareComponent(securityProblemsBySoftwareComponents);
 
         }
 
