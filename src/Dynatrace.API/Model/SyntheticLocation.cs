@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -25,7 +25,7 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// Configuration of a synthetic location.    **countryCode**, **regionCode**, **city** parameters are optional as they can be retrieved based on **latitude** and **longitude** of location.   The actual set of fields depends on the **type** of the location.
+    /// Configuration of a synthetic location.  **countryCode**, **regionCode**, **city** parameters are optional as they can be retrieved based on **latitude** and **longitude** of location. The actual set of fields depends on the **type** of the location.
     /// </summary>
     [DataContract]
     [JsonConverter(typeof(JsonSubtypes), "type")]
@@ -34,9 +34,9 @@ namespace Dynatrace.API.Model
         public partial class SyntheticLocation :  IEquatable<SyntheticLocation>, IValidatableObject
     {
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation  * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation  * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation  * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation  * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TypeEnum
         {
@@ -56,15 +56,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "PUBLIC")]
             PUBLIC = 3        }
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation  * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation  * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation  * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation  * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation </value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
+        /// The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
         /// </summary>
-        /// <value>The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
+        /// <value>The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum StatusEnum
         {
@@ -84,23 +84,23 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "HIDDEN")]
             HIDDEN = 3        }
         /// <summary>
-        /// The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
+        /// The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
         /// </summary>
-        /// <value>The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
+        /// <value>The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SyntheticLocation" /> class.
         /// </summary>
         /// <param name="entityId">The Dynatrace entity ID of the location. (required).</param>
-        /// <param name="type">Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation  * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation  * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation   (required).</param>
+        /// <param name="type">Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; PublicSyntheticLocation * &#x60;PRIVATE&#x60; -&gt; PrivateSyntheticLocation * &#x60;CLUSTER&#x60; -&gt; PrivateSyntheticLocation  (required).</param>
         /// <param name="name">The name of the location. (required).</param>
-        /// <param name="countryCode">The country code of the location.    Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland)..</param>
-        /// <param name="regionCode">The region code of the location.    For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.    For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes)..</param>
+        /// <param name="countryCode">The country code of the location.  Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland)..</param>
+        /// <param name="regionCode">The region code of the location.  For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.  For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes)..</param>
         /// <param name="city">The city of the location..</param>
         /// <param name="latitude">The latitude of the location in &#x60;DDD.dddd&#x60; format. (required).</param>
         /// <param name="longitude">The longitude of the location in &#x60;DDD.dddd&#x60; format. (required).</param>
-        /// <param name="status">The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it..</param>
+        /// <param name="status">The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it..</param>
         /// <param name="geoLocationId">The Dynatrace GeoLocation ID of the location..</param>
         public SyntheticLocation(string entityId = default(string), TypeEnum type = default(TypeEnum), string name = default(string), string countryCode = default(string), string regionCode = default(string), string city = default(string), double? latitude = default(double?), double? longitude = default(double?), StatusEnum? status = default(StatusEnum?), string geoLocationId = default(string))
         {
@@ -172,16 +172,16 @@ namespace Dynatrace.API.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The country code of the location.    Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).
+        /// The country code of the location.  Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).
         /// </summary>
-        /// <value>The country code of the location.    Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).</value>
+        /// <value>The country code of the location.  Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).</value>
         [DataMember(Name="countryCode", EmitDefaultValue=false)]
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// The region code of the location.    For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.    For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).
+        /// The region code of the location.  For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.  For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).
         /// </summary>
-        /// <value>The region code of the location.    For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.    For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).</value>
+        /// <value>The region code of the location.  For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.  For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).</value>
         [DataMember(Name="regionCode", EmitDefaultValue=false)]
         public string RegionCode { get; set; }
 

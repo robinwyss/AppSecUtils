@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,7 +24,7 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// Data points per dimension of a metric.   The data is represented by two arrays of the same length: **timestamps** and **values**. Entries of the same index from both arrays form a timestamped data point.
+    /// Data points per dimension of a metric. The data is represented by two arrays of the same length: **timestamps** and **values**. Entries of the same index from both arrays form a timestamped data point.
     /// </summary>
     [DataContract]
         public partial class MetricSeries :  IEquatable<MetricSeries>, IValidatableObject
@@ -32,11 +32,11 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricSeries" /> class.
         /// </summary>
-        /// <param name="timestamps">A list of timestamps of data points.   The value of data point for each time from this array is located in **values** array at the same index..</param>
         /// <param name="dimensionMap">dimensionMap (required).</param>
-        /// <param name="dimensions">The ordered list of dimensions to which the data point list belongs.    Each metric can have a certain number of dimensions. Dimensions exceeding this number are aggregated into one, which is shown as &#x60;null&#x60; here..</param>
-        /// <param name="values">A list of values of data points.   The timestamp of data point for each value from this array is located in **timestamps** array at the same index..</param>
-        public MetricSeries(List<long?> timestamps = default(List<long?>), Dictionary<string, string> dimensionMap = default(Dictionary<string, string>), List<string> dimensions = default(List<string>), List<double?> values = default(List<double?>))
+        /// <param name="timestamps">A list of timestamps of data points. The value of data point for each time from this array is located in **values** array at the same index..</param>
+        /// <param name="dimensions">The ordered list of dimensions to which the data point list belongs.  Each metric can have a certain number of dimensions. Dimensions exceeding this number are aggregated into one, which is shown as &#x60;null&#x60; here..</param>
+        /// <param name="values">A list of values of data points. The timestamp of data point for each value from this array is located in **timestamps** array at the same index..</param>
+        public MetricSeries(Dictionary<string, string> dimensionMap = default(Dictionary<string, string>), List<long?> timestamps = default(List<long?>), List<string> dimensions = default(List<string>), List<double?> values = default(List<double?>))
         {
             // to ensure "dimensionMap" is required (not null)
             if (dimensionMap == null)
@@ -53,29 +53,29 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// A list of timestamps of data points.   The value of data point for each time from this array is located in **values** array at the same index.
-        /// </summary>
-        /// <value>A list of timestamps of data points.   The value of data point for each time from this array is located in **values** array at the same index.</value>
-        [DataMember(Name="timestamps", EmitDefaultValue=false)]
-        public List<long?> Timestamps { get; set; }
-
-        /// <summary>
         /// Gets or Sets DimensionMap
         /// </summary>
         [DataMember(Name="dimensionMap", EmitDefaultValue=false)]
         public Dictionary<string, string> DimensionMap { get; set; }
 
         /// <summary>
-        /// The ordered list of dimensions to which the data point list belongs.    Each metric can have a certain number of dimensions. Dimensions exceeding this number are aggregated into one, which is shown as &#x60;null&#x60; here.
+        /// A list of timestamps of data points. The value of data point for each time from this array is located in **values** array at the same index.
         /// </summary>
-        /// <value>The ordered list of dimensions to which the data point list belongs.    Each metric can have a certain number of dimensions. Dimensions exceeding this number are aggregated into one, which is shown as &#x60;null&#x60; here.</value>
+        /// <value>A list of timestamps of data points. The value of data point for each time from this array is located in **values** array at the same index.</value>
+        [DataMember(Name="timestamps", EmitDefaultValue=false)]
+        public List<long?> Timestamps { get; set; }
+
+        /// <summary>
+        /// The ordered list of dimensions to which the data point list belongs.  Each metric can have a certain number of dimensions. Dimensions exceeding this number are aggregated into one, which is shown as &#x60;null&#x60; here.
+        /// </summary>
+        /// <value>The ordered list of dimensions to which the data point list belongs.  Each metric can have a certain number of dimensions. Dimensions exceeding this number are aggregated into one, which is shown as &#x60;null&#x60; here.</value>
         [DataMember(Name="dimensions", EmitDefaultValue=false)]
         public List<string> Dimensions { get; set; }
 
         /// <summary>
-        /// A list of values of data points.   The timestamp of data point for each value from this array is located in **timestamps** array at the same index.
+        /// A list of values of data points. The timestamp of data point for each value from this array is located in **timestamps** array at the same index.
         /// </summary>
-        /// <value>A list of values of data points.   The timestamp of data point for each value from this array is located in **timestamps** array at the same index.</value>
+        /// <value>A list of values of data points. The timestamp of data point for each value from this array is located in **timestamps** array at the same index.</value>
         [DataMember(Name="values", EmitDefaultValue=false)]
         public List<double?> Values { get; set; }
 
@@ -87,8 +87,8 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class MetricSeries {\n");
-            sb.Append("  Timestamps: ").Append(Timestamps).Append("\n");
             sb.Append("  DimensionMap: ").Append(DimensionMap).Append("\n");
+            sb.Append("  Timestamps: ").Append(Timestamps).Append("\n");
             sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("}\n");
@@ -126,16 +126,16 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.Timestamps == input.Timestamps ||
-                    this.Timestamps != null &&
-                    input.Timestamps != null &&
-                    this.Timestamps.SequenceEqual(input.Timestamps)
-                ) && 
-                (
                     this.DimensionMap == input.DimensionMap ||
                     this.DimensionMap != null &&
                     input.DimensionMap != null &&
                     this.DimensionMap.SequenceEqual(input.DimensionMap)
+                ) && 
+                (
+                    this.Timestamps == input.Timestamps ||
+                    this.Timestamps != null &&
+                    input.Timestamps != null &&
+                    this.Timestamps.SequenceEqual(input.Timestamps)
                 ) && 
                 (
                     this.Dimensions == input.Dimensions ||
@@ -160,10 +160,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Timestamps != null)
-                    hashCode = hashCode * 59 + this.Timestamps.GetHashCode();
                 if (this.DimensionMap != null)
                     hashCode = hashCode * 59 + this.DimensionMap.GetHashCode();
+                if (this.Timestamps != null)
+                    hashCode = hashCode * 59 + this.Timestamps.GetHashCode();
                 if (this.Dimensions != null)
                     hashCode = hashCode * 59 + this.Dimensions.GetHashCode();
                 if (this.Values != null)

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,20 +34,20 @@ namespace Dynatrace.API.Model
         /// </summary>
         /// <param name="referencedType">The type referenced by the item&#x27;s value..</param>
         /// <param name="documentation">An extended description and/or links to documentation..</param>
-        /// <param name="constraints">A list of constraints limiting the values to be accepted..</param>
         /// <param name="subType">The subtype of the item&#x27;s value..</param>
-        /// <param name="description">A short description of the item..</param>
         /// <param name="type">The type of the item&#x27;s value..</param>
         /// <param name="displayName">The display name of the item..</param>
-        public Item(string referencedType = default(string), string documentation = default(string), List<Constraint> constraints = default(List<Constraint>), string subType = default(string), string description = default(string), Object type = default(Object), string displayName = default(string))
+        /// <param name="description">A short description of the item..</param>
+        /// <param name="constraints">A list of constraints limiting the values to be accepted..</param>
+        public Item(string referencedType = default(string), string documentation = default(string), string subType = default(string), Object type = default(Object), string displayName = default(string), string description = default(string), List<Constraint> constraints = default(List<Constraint>))
         {
             this.ReferencedType = referencedType;
             this.Documentation = documentation;
-            this.Constraints = constraints;
             this.SubType = subType;
-            this.Description = description;
             this.Type = type;
             this.DisplayName = displayName;
+            this.Description = description;
+            this.Constraints = constraints;
         }
         
         /// <summary>
@@ -65,25 +65,11 @@ namespace Dynatrace.API.Model
         public string Documentation { get; set; }
 
         /// <summary>
-        /// A list of constraints limiting the values to be accepted.
-        /// </summary>
-        /// <value>A list of constraints limiting the values to be accepted.</value>
-        [DataMember(Name="constraints", EmitDefaultValue=false)]
-        public List<Constraint> Constraints { get; set; }
-
-        /// <summary>
         /// The subtype of the item&#x27;s value.
         /// </summary>
         /// <value>The subtype of the item&#x27;s value.</value>
         [DataMember(Name="subType", EmitDefaultValue=false)]
         public string SubType { get; set; }
-
-        /// <summary>
-        /// A short description of the item.
-        /// </summary>
-        /// <value>A short description of the item.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
 
         /// <summary>
         /// The type of the item&#x27;s value.
@@ -100,6 +86,20 @@ namespace Dynatrace.API.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// A short description of the item.
+        /// </summary>
+        /// <value>A short description of the item.</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// A list of constraints limiting the values to be accepted.
+        /// </summary>
+        /// <value>A list of constraints limiting the values to be accepted.</value>
+        [DataMember(Name="constraints", EmitDefaultValue=false)]
+        public List<Constraint> Constraints { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -109,11 +109,11 @@ namespace Dynatrace.API.Model
             sb.Append("class Item {\n");
             sb.Append("  ReferencedType: ").Append(ReferencedType).Append("\n");
             sb.Append("  Documentation: ").Append(Documentation).Append("\n");
-            sb.Append("  Constraints: ").Append(Constraints).Append("\n");
             sb.Append("  SubType: ").Append(SubType).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Constraints: ").Append(Constraints).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,20 +159,9 @@ namespace Dynatrace.API.Model
                     this.Documentation.Equals(input.Documentation))
                 ) && 
                 (
-                    this.Constraints == input.Constraints ||
-                    this.Constraints != null &&
-                    input.Constraints != null &&
-                    this.Constraints.SequenceEqual(input.Constraints)
-                ) && 
-                (
                     this.SubType == input.SubType ||
                     (this.SubType != null &&
                     this.SubType.Equals(input.SubType))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -183,6 +172,17 @@ namespace Dynatrace.API.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Constraints == input.Constraints ||
+                    this.Constraints != null &&
+                    input.Constraints != null &&
+                    this.Constraints.SequenceEqual(input.Constraints)
                 );
         }
 
@@ -199,16 +199,16 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.ReferencedType.GetHashCode();
                 if (this.Documentation != null)
                     hashCode = hashCode * 59 + this.Documentation.GetHashCode();
-                if (this.Constraints != null)
-                    hashCode = hashCode * 59 + this.Constraints.GetHashCode();
                 if (this.SubType != null)
                     hashCode = hashCode * 59 + this.SubType.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
+                if (this.Constraints != null)
+                    hashCode = hashCode * 59 + this.Constraints.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -80,29 +80,22 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ComplexConstraint" /> class.
         /// </summary>
-        /// <param name="customValidatorId">The ID of a custom validator..</param>
         /// <param name="minimumPropertyCount">The minimum number of properties that must be set..</param>
         /// <param name="maximumPropertyCount">The maximum number of properties that can be set..</param>
+        /// <param name="customValidatorId">The ID of a custom validator..</param>
         /// <param name="customMessage">A custom message for invalid values..</param>
         /// <param name="properties">A list of properties (defined by IDs) that are used to check the constraint..</param>
         /// <param name="type">The type of the constraint..</param>
-        public ComplexConstraint(string customValidatorId = default(string), int? minimumPropertyCount = default(int?), int? maximumPropertyCount = default(int?), string customMessage = default(string), List<string> properties = default(List<string>), TypeEnum? type = default(TypeEnum?))
+        public ComplexConstraint(int? minimumPropertyCount = default(int?), int? maximumPropertyCount = default(int?), string customValidatorId = default(string), string customMessage = default(string), List<string> properties = default(List<string>), TypeEnum? type = default(TypeEnum?))
         {
-            this.CustomValidatorId = customValidatorId;
             this.MinimumPropertyCount = minimumPropertyCount;
             this.MaximumPropertyCount = maximumPropertyCount;
+            this.CustomValidatorId = customValidatorId;
             this.CustomMessage = customMessage;
             this.Properties = properties;
             this.Type = type;
         }
         
-        /// <summary>
-        /// The ID of a custom validator.
-        /// </summary>
-        /// <value>The ID of a custom validator.</value>
-        [DataMember(Name="customValidatorId", EmitDefaultValue=false)]
-        public string CustomValidatorId { get; set; }
-
         /// <summary>
         /// The minimum number of properties that must be set.
         /// </summary>
@@ -116,6 +109,13 @@ namespace Dynatrace.API.Model
         /// <value>The maximum number of properties that can be set.</value>
         [DataMember(Name="maximumPropertyCount", EmitDefaultValue=false)]
         public int? MaximumPropertyCount { get; set; }
+
+        /// <summary>
+        /// The ID of a custom validator.
+        /// </summary>
+        /// <value>The ID of a custom validator.</value>
+        [DataMember(Name="customValidatorId", EmitDefaultValue=false)]
+        public string CustomValidatorId { get; set; }
 
         /// <summary>
         /// A custom message for invalid values.
@@ -140,9 +140,9 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ComplexConstraint {\n");
-            sb.Append("  CustomValidatorId: ").Append(CustomValidatorId).Append("\n");
             sb.Append("  MinimumPropertyCount: ").Append(MinimumPropertyCount).Append("\n");
             sb.Append("  MaximumPropertyCount: ").Append(MaximumPropertyCount).Append("\n");
+            sb.Append("  CustomValidatorId: ").Append(CustomValidatorId).Append("\n");
             sb.Append("  CustomMessage: ").Append(CustomMessage).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -181,11 +181,6 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.CustomValidatorId == input.CustomValidatorId ||
-                    (this.CustomValidatorId != null &&
-                    this.CustomValidatorId.Equals(input.CustomValidatorId))
-                ) && 
-                (
                     this.MinimumPropertyCount == input.MinimumPropertyCount ||
                     (this.MinimumPropertyCount != null &&
                     this.MinimumPropertyCount.Equals(input.MinimumPropertyCount))
@@ -194,6 +189,11 @@ namespace Dynatrace.API.Model
                     this.MaximumPropertyCount == input.MaximumPropertyCount ||
                     (this.MaximumPropertyCount != null &&
                     this.MaximumPropertyCount.Equals(input.MaximumPropertyCount))
+                ) && 
+                (
+                    this.CustomValidatorId == input.CustomValidatorId ||
+                    (this.CustomValidatorId != null &&
+                    this.CustomValidatorId.Equals(input.CustomValidatorId))
                 ) && 
                 (
                     this.CustomMessage == input.CustomMessage ||
@@ -222,12 +222,12 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CustomValidatorId != null)
-                    hashCode = hashCode * 59 + this.CustomValidatorId.GetHashCode();
                 if (this.MinimumPropertyCount != null)
                     hashCode = hashCode * 59 + this.MinimumPropertyCount.GetHashCode();
                 if (this.MaximumPropertyCount != null)
                     hashCode = hashCode * 59 + this.MaximumPropertyCount.GetHashCode();
+                if (this.CustomValidatorId != null)
+                    hashCode = hashCode * 59 + this.CustomValidatorId.GetHashCode();
                 if (this.CustomMessage != null)
                     hashCode = hashCode * 59 + this.CustomMessage.GetHashCode();
                 if (this.Properties != null)

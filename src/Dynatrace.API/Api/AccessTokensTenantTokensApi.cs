@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -27,7 +27,7 @@ namespace Dynatrace.API.Api
         /// Cancels tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TenantTokenConfig</returns>
@@ -37,7 +37,7 @@ namespace Dynatrace.API.Api
         /// Cancels tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TenantTokenConfig</returns>
@@ -46,7 +46,7 @@ namespace Dynatrace.API.Api
         /// Finishes tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TenantTokenConfig</returns>
@@ -56,7 +56,7 @@ namespace Dynatrace.API.Api
         /// Finishes tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TenantTokenConfig</returns>
@@ -65,7 +65,7 @@ namespace Dynatrace.API.Api
         /// Starts tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TenantTokenConfig</returns>
@@ -75,7 +75,7 @@ namespace Dynatrace.API.Api
         /// Starts tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TenantTokenConfig</returns>
@@ -86,7 +86,7 @@ namespace Dynatrace.API.Api
         /// Cancels tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TenantTokenConfig</returns>
@@ -96,7 +96,7 @@ namespace Dynatrace.API.Api
         /// Cancels tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TenantTokenConfig)</returns>
@@ -105,7 +105,7 @@ namespace Dynatrace.API.Api
         /// Finishes tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TenantTokenConfig</returns>
@@ -115,7 +115,7 @@ namespace Dynatrace.API.Api
         /// Finishes tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TenantTokenConfig)</returns>
@@ -124,7 +124,7 @@ namespace Dynatrace.API.Api
         /// Starts tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TenantTokenConfig</returns>
@@ -134,7 +134,7 @@ namespace Dynatrace.API.Api
         /// Starts tenant token rotation
         /// </summary>
         /// <remarks>
-        /// To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TenantTokenConfig)</returns>
@@ -251,7 +251,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Cancels tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Cancels tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TenantTokenConfig</returns>
@@ -262,7 +262,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Cancels tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Cancels tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TenantTokenConfig</returns>
@@ -315,7 +315,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Cancels tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Cancels tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TenantTokenConfig</returns>
@@ -327,7 +327,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Cancels tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Cancels tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TenantTokenConfig)</returns>
@@ -380,7 +380,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Finishes tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Finishes tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TenantTokenConfig</returns>
@@ -391,7 +391,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Finishes tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Finishes tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TenantTokenConfig</returns>
@@ -444,7 +444,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Finishes tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Finishes tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TenantTokenConfig</returns>
@@ -456,7 +456,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Finishes tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Finishes tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TenantTokenConfig)</returns>
@@ -509,7 +509,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Starts tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Starts tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TenantTokenConfig</returns>
@@ -520,7 +520,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Starts tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Starts tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TenantTokenConfig</returns>
@@ -573,7 +573,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Starts tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Starts tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TenantTokenConfig</returns>
@@ -585,7 +585,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Starts tenant token rotation To learn how to rotate tokens, see the [Token rotation](https://dt-url.net/1543sf6) help page.
+        /// Starts tenant token rotation To learn how to rotate tokens, see [Token rotation](https://dt-url.net/1543sf6) in Dynatrace Documentation.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TenantTokenConfig)</returns>

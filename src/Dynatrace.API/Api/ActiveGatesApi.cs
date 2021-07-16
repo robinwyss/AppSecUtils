@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,22 +30,23 @@ namespace Dynatrace.API.Api
         /// The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>ActiveGateList</returns>
-        ActiveGateList GetAllActiveGates (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
+        ActiveGateList GetAllActiveGates (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
 
         /// <summary>
         /// Lists all available ActiveGates
@@ -54,22 +55,23 @@ namespace Dynatrace.API.Api
         /// The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>ApiResponse of ActiveGateList</returns>
-        ApiResponse<ActiveGateList> GetAllActiveGatesWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
+        ApiResponse<ActiveGateList> GetAllActiveGatesWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
         /// <summary>
         /// Gets the details of the specified ActiveGate
         /// </summary>
@@ -100,22 +102,23 @@ namespace Dynatrace.API.Api
         /// The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>Task of ActiveGateList</returns>
-        System.Threading.Tasks.Task<ActiveGateList> GetAllActiveGatesAsync (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
+        System.Threading.Tasks.Task<ActiveGateList> GetAllActiveGatesAsync (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
 
         /// <summary>
         /// Lists all available ActiveGates
@@ -124,22 +127,23 @@ namespace Dynatrace.API.Api
         /// The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>Task of ApiResponse (ActiveGateList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActiveGateList>> GetAllActiveGatesAsyncWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
+        System.Threading.Tasks.Task<ApiResponse<ActiveGateList>> GetAllActiveGatesAsyncWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null);
         /// <summary>
         /// Gets the details of the specified ActiveGate
         /// </summary>
@@ -276,24 +280,25 @@ namespace Dynatrace.API.Api
         /// Lists all available ActiveGates The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>ActiveGateList</returns>
-        public ActiveGateList GetAllActiveGates (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
+        public ActiveGateList GetAllActiveGates (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
         {
-             ApiResponse<ActiveGateList> localVarResponse = GetAllActiveGatesWithHttpInfo(hostname, osType, networkAddress, type, networkZone, updateStatus, versionCompareType, version, autoUpdate, group, online, enabledModule, disabledModule, containerized);
+             ApiResponse<ActiveGateList> localVarResponse = GetAllActiveGatesWithHttpInfo(hostname, osType, networkAddress, loadBalancerAddress, type, networkZone, updateStatus, versionCompareType, version, autoUpdate, group, online, enabledModule, disabledModule, containerized);
              return localVarResponse.Data;
         }
 
@@ -301,22 +306,23 @@ namespace Dynatrace.API.Api
         /// Lists all available ActiveGates The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>ApiResponse of ActiveGateList</returns>
-        public ApiResponse< ActiveGateList > GetAllActiveGatesWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
+        public ApiResponse< ActiveGateList > GetAllActiveGatesWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
         {
 
             var localVarPath = "/activeGates";
@@ -343,6 +349,7 @@ namespace Dynatrace.API.Api
             if (hostname != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hostname", hostname)); // query parameter
             if (osType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "osType", osType)); // query parameter
             if (networkAddress != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "networkAddress", networkAddress)); // query parameter
+            if (loadBalancerAddress != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "loadBalancerAddress", loadBalancerAddress)); // query parameter
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (networkZone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "networkZone", networkZone)); // query parameter
             if (updateStatus != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "updateStatus", updateStatus)); // query parameter
@@ -382,24 +389,25 @@ namespace Dynatrace.API.Api
         /// Lists all available ActiveGates The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>Task of ActiveGateList</returns>
-        public async System.Threading.Tasks.Task<ActiveGateList> GetAllActiveGatesAsync (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
+        public async System.Threading.Tasks.Task<ActiveGateList> GetAllActiveGatesAsync (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
         {
-             ApiResponse<ActiveGateList> localVarResponse = await GetAllActiveGatesAsyncWithHttpInfo(hostname, osType, networkAddress, type, networkZone, updateStatus, versionCompareType, version, autoUpdate, group, online, enabledModule, disabledModule, containerized);
+             ApiResponse<ActiveGateList> localVarResponse = await GetAllActiveGatesAsyncWithHttpInfo(hostname, osType, networkAddress, loadBalancerAddress, type, networkZone, updateStatus, versionCompareType, version, autoUpdate, group, online, enabledModule, disabledModule, containerized);
              return localVarResponse.Data;
 
         }
@@ -408,22 +416,23 @@ namespace Dynatrace.API.Api
         /// Lists all available ActiveGates The response includes all ActiveGates that are currently connected to the environment or have been connected during last 2 hours.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="hostname">Filters the resulting set of ActiveGates by the name of the host it&#x27;s running on.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="osType">Filters the resulting set of ActiveGates by the OS type of the host it&#x27;s running on. (optional)</param>
-        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.    You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkAddress">Filters the resulting set of ActiveGates by the network address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="loadBalancerAddress">Filters the resulting set of ActiveGates by the Load Balancer address.  You can specify a partial address. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="type">Filters the resulting set of ActiveGates by the ActiveGate type. (optional)</param>
-        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="networkZone">Filters the resulting set of ActiveGates by the network zone.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="updateStatus">Filters the resulting set of ActiveGates by the auto-update status. (optional)</param>
-        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.    Specify the comparison operator here. (optional, default to EQUAL)</param>
-        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.    Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
+        /// <param name="versionCompareType">Filters the resulting set of ActiveGates by the specified version.  Specify the comparison operator here. (optional, default to EQUAL)</param>
+        /// <param name="version">Filters the resulting set of ActiveGates by the specified version.  Specify the version in &#x60;&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;&#x60; format (for example, &#x60;1.195.0&#x60;) here. (optional)</param>
         /// <param name="autoUpdate">Filters the resulting set of ActiveGates by the actual state of auto-update. (optional)</param>
-        /// <param name="group">Filters the resulting set of ActiveGates by the group.    You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
+        /// <param name="group">Filters the resulting set of ActiveGates by the group.  You can specify a partial name. In that case, the &#x60;CONTAINS&#x60; operator is used. (optional)</param>
         /// <param name="online">Filters the resulting set of ActiveGates by the communication status. (optional)</param>
         /// <param name="enabledModule">Filters the resulting set of ActiveGates by the enabled modules. (optional)</param>
         /// <param name="disabledModule">Filters the resulting set of ActiveGates by the disabled modules. (optional)</param>
         /// <param name="containerized">Filters the resulting set of ActiveGates to those which are running in container (&#x60;true&#x60;) or not (&#x60;false&#x60;). (optional)</param>
         /// <returns>Task of ApiResponse (ActiveGateList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActiveGateList>> GetAllActiveGatesAsyncWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ActiveGateList>> GetAllActiveGatesAsyncWithHttpInfo (string hostname = null, string osType = null, string networkAddress = null, string loadBalancerAddress = null, string type = null, string networkZone = null, string updateStatus = null, string versionCompareType = null, string version = null, string autoUpdate = null, string group = null, bool? online = null, List<string> enabledModule = null, List<string> disabledModule = null, bool? containerized = null)
         {
 
             var localVarPath = "/activeGates";
@@ -450,6 +459,7 @@ namespace Dynatrace.API.Api
             if (hostname != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "hostname", hostname)); // query parameter
             if (osType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "osType", osType)); // query parameter
             if (networkAddress != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "networkAddress", networkAddress)); // query parameter
+            if (loadBalancerAddress != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "loadBalancerAddress", loadBalancerAddress)); // query parameter
             if (type != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "type", type)); // query parameter
             if (networkZone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "networkZone", networkZone)); // query parameter
             if (updateStatus != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "updateStatus", updateStatus)); // query parameter

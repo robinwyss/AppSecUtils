@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -99,8 +99,8 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>SchemaDefinition</returns>
-        SchemaDefinition ExtensionConfigurationSchema (string extensionName, string extensionVersion);
+        /// <returns>SchemaDefinitionRestDto</returns>
+        SchemaDefinitionRestDto ExtensionConfigurationSchema (string extensionName, string extensionVersion);
 
         /// <summary>
         /// Gets the configuration schema of the specified version of the extension 2.0
@@ -111,8 +111,8 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>ApiResponse of SchemaDefinition</returns>
-        ApiResponse<SchemaDefinition> ExtensionConfigurationSchemaWithHttpInfo (string extensionName, string extensionVersion);
+        /// <returns>ApiResponse of SchemaDefinitionRestDto</returns>
+        ApiResponse<SchemaDefinitionRestDto> ExtensionConfigurationSchemaWithHttpInfo (string extensionName, string extensionVersion);
         /// <summary>
         /// Gets details of the specified version of the extension 2.0
         /// </summary>
@@ -122,7 +122,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>Extension</returns>
         Extension ExtensionDetails (string extensionName, string extensionVersion, string accept = null);
 
@@ -135,7 +135,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>ApiResponse of Extension</returns>
         ApiResponse<Extension> ExtensionDetailsWithHttpInfo (string extensionName, string extensionVersion, string accept = null);
         /// <summary>
@@ -146,8 +146,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>ExtensionMonitoringConfigurationsList</returns>
@@ -161,8 +161,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>ApiResponse of ExtensionMonitoringConfigurationsList</returns>
@@ -233,6 +233,29 @@ namespace Dynatrace.API.Api
         /// <returns>ApiResponse of ExtensionEventsList</returns>
         ApiResponse<ExtensionEventsList> GetExtensionMonitoringConfigurationEventsWithHttpInfo (string extensionName, string configurationId);
         /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>ExtensionStatusDto</returns>
+        ExtensionStatusDto GetExtensionMonitoringConfigurationStatus (string extensionName, string configurationId);
+
+        /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>ApiResponse of ExtensionStatusDto</returns>
+        ApiResponse<ExtensionStatusDto> GetExtensionMonitoringConfigurationStatusWithHttpInfo (string extensionName, string configurationId);
+        /// <summary>
         /// Gets the extension 2.0 schema file in the specified version
         /// </summary>
         /// <remarks>
@@ -263,8 +286,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>ExtensionList</returns>
         ExtensionList ListExtensionVersions (string extensionName, string nextPageKey = null, long? pageSize = null);
 
@@ -276,8 +299,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>ApiResponse of ExtensionList</returns>
         ApiResponse<ExtensionList> ListExtensionVersionsWithHttpInfo (string extensionName, string nextPageKey = null, long? pageSize = null);
         /// <summary>
@@ -287,8 +310,8 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>ExtensionList</returns>
         ExtensionList ListExtensions (string nextPageKey = null, long? pageSize = null, string name = null);
@@ -300,8 +323,8 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>ApiResponse of ExtensionList</returns>
         ApiResponse<ExtensionList> ListExtensionsWithHttpInfo (string nextPageKey = null, long? pageSize = null, string name = null);
@@ -563,8 +586,8 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>Task of SchemaDefinition</returns>
-        System.Threading.Tasks.Task<SchemaDefinition> ExtensionConfigurationSchemaAsync (string extensionName, string extensionVersion);
+        /// <returns>Task of SchemaDefinitionRestDto</returns>
+        System.Threading.Tasks.Task<SchemaDefinitionRestDto> ExtensionConfigurationSchemaAsync (string extensionName, string extensionVersion);
 
         /// <summary>
         /// Gets the configuration schema of the specified version of the extension 2.0
@@ -575,8 +598,8 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>Task of ApiResponse (SchemaDefinition)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SchemaDefinition>> ExtensionConfigurationSchemaAsyncWithHttpInfo (string extensionName, string extensionVersion);
+        /// <returns>Task of ApiResponse (SchemaDefinitionRestDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SchemaDefinitionRestDto>> ExtensionConfigurationSchemaAsyncWithHttpInfo (string extensionName, string extensionVersion);
         /// <summary>
         /// Gets details of the specified version of the extension 2.0
         /// </summary>
@@ -586,7 +609,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>Task of Extension</returns>
         System.Threading.Tasks.Task<Extension> ExtensionDetailsAsync (string extensionName, string extensionVersion, string accept = null);
 
@@ -599,7 +622,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>Task of ApiResponse (Extension)</returns>
         System.Threading.Tasks.Task<ApiResponse<Extension>> ExtensionDetailsAsyncWithHttpInfo (string extensionName, string extensionVersion, string accept = null);
         /// <summary>
@@ -610,8 +633,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>Task of ExtensionMonitoringConfigurationsList</returns>
@@ -625,8 +648,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>Task of ApiResponse (ExtensionMonitoringConfigurationsList)</returns>
@@ -697,6 +720,29 @@ namespace Dynatrace.API.Api
         /// <returns>Task of ApiResponse (ExtensionEventsList)</returns>
         System.Threading.Tasks.Task<ApiResponse<ExtensionEventsList>> GetExtensionMonitoringConfigurationEventsAsyncWithHttpInfo (string extensionName, string configurationId);
         /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>Task of ExtensionStatusDto</returns>
+        System.Threading.Tasks.Task<ExtensionStatusDto> GetExtensionMonitoringConfigurationStatusAsync (string extensionName, string configurationId);
+
+        /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>Task of ApiResponse (ExtensionStatusDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ExtensionStatusDto>> GetExtensionMonitoringConfigurationStatusAsyncWithHttpInfo (string extensionName, string configurationId);
+        /// <summary>
         /// Gets the extension 2.0 schema file in the specified version
         /// </summary>
         /// <remarks>
@@ -727,8 +773,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>Task of ExtensionList</returns>
         System.Threading.Tasks.Task<ExtensionList> ListExtensionVersionsAsync (string extensionName, string nextPageKey = null, long? pageSize = null);
 
@@ -740,8 +786,8 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>Task of ApiResponse (ExtensionList)</returns>
         System.Threading.Tasks.Task<ApiResponse<ExtensionList>> ListExtensionVersionsAsyncWithHttpInfo (string extensionName, string nextPageKey = null, long? pageSize = null);
         /// <summary>
@@ -751,8 +797,8 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>Task of ExtensionList</returns>
         System.Threading.Tasks.Task<ExtensionList> ListExtensionsAsync (string nextPageKey = null, long? pageSize = null, string name = null);
@@ -764,8 +810,8 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>Task of ApiResponse (ExtensionList)</returns>
         System.Threading.Tasks.Task<ApiResponse<ExtensionList>> ListExtensionsAsyncWithHttpInfo (string nextPageKey = null, long? pageSize = null, string name = null);
@@ -1545,10 +1591,10 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>SchemaDefinition</returns>
-        public SchemaDefinition ExtensionConfigurationSchema (string extensionName, string extensionVersion)
+        /// <returns>SchemaDefinitionRestDto</returns>
+        public SchemaDefinitionRestDto ExtensionConfigurationSchema (string extensionName, string extensionVersion)
         {
-             ApiResponse<SchemaDefinition> localVarResponse = ExtensionConfigurationSchemaWithHttpInfo(extensionName, extensionVersion);
+             ApiResponse<SchemaDefinitionRestDto> localVarResponse = ExtensionConfigurationSchemaWithHttpInfo(extensionName, extensionVersion);
              return localVarResponse.Data;
         }
 
@@ -1558,8 +1604,8 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>ApiResponse of SchemaDefinition</returns>
-        public ApiResponse< SchemaDefinition > ExtensionConfigurationSchemaWithHttpInfo (string extensionName, string extensionVersion)
+        /// <returns>ApiResponse of SchemaDefinitionRestDto</returns>
+        public ApiResponse< SchemaDefinitionRestDto > ExtensionConfigurationSchemaWithHttpInfo (string extensionName, string extensionVersion)
         {
             // verify the required parameter 'extensionName' is set
             if (extensionName == null)
@@ -1610,9 +1656,9 @@ namespace Dynatrace.API.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SchemaDefinition>(localVarStatusCode,
+            return new ApiResponse<SchemaDefinitionRestDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SchemaDefinition) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinition)));
+                (SchemaDefinitionRestDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinitionRestDto)));
         }
 
         /// <summary>
@@ -1621,10 +1667,10 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>Task of SchemaDefinition</returns>
-        public async System.Threading.Tasks.Task<SchemaDefinition> ExtensionConfigurationSchemaAsync (string extensionName, string extensionVersion)
+        /// <returns>Task of SchemaDefinitionRestDto</returns>
+        public async System.Threading.Tasks.Task<SchemaDefinitionRestDto> ExtensionConfigurationSchemaAsync (string extensionName, string extensionVersion)
         {
-             ApiResponse<SchemaDefinition> localVarResponse = await ExtensionConfigurationSchemaAsyncWithHttpInfo(extensionName, extensionVersion);
+             ApiResponse<SchemaDefinitionRestDto> localVarResponse = await ExtensionConfigurationSchemaAsyncWithHttpInfo(extensionName, extensionVersion);
              return localVarResponse.Data;
 
         }
@@ -1635,8 +1681,8 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <returns>Task of ApiResponse (SchemaDefinition)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SchemaDefinition>> ExtensionConfigurationSchemaAsyncWithHttpInfo (string extensionName, string extensionVersion)
+        /// <returns>Task of ApiResponse (SchemaDefinitionRestDto)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SchemaDefinitionRestDto>> ExtensionConfigurationSchemaAsyncWithHttpInfo (string extensionName, string extensionVersion)
         {
             // verify the required parameter 'extensionName' is set
             if (extensionName == null)
@@ -1687,9 +1733,9 @@ namespace Dynatrace.API.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SchemaDefinition>(localVarStatusCode,
+            return new ApiResponse<SchemaDefinitionRestDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SchemaDefinition) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinition)));
+                (SchemaDefinitionRestDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinitionRestDto)));
         }
 
         /// <summary>
@@ -1698,7 +1744,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>Extension</returns>
         public Extension ExtensionDetails (string extensionName, string extensionVersion, string accept = null)
         {
@@ -1712,7 +1758,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>ApiResponse of Extension</returns>
         public ApiResponse< Extension > ExtensionDetailsWithHttpInfo (string extensionName, string extensionVersion, string accept = null)
         {
@@ -1778,7 +1824,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>Task of Extension</returns>
         public async System.Threading.Tasks.Task<Extension> ExtensionDetailsAsync (string extensionName, string extensionVersion, string accept = null)
         {
@@ -1793,7 +1839,7 @@ namespace Dynatrace.API.Api
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
         /// <param name="extensionVersion">The version of the requested extension 2.0</param>
-        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned:  * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON  * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
+        /// <param name="accept">Accept header. Specifies part of the extension 2.0 that will be returned: * application/json; charset&#x3D;utf-8 - returns extension 2.0 metadata in JSON * application/octet-stream - returns extension 2.0 zip package stored on the server. (optional)</param>
         /// <returns>Task of ApiResponse (Extension)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Extension>> ExtensionDetailsAsyncWithHttpInfo (string extensionName, string extensionVersion, string accept = null)
         {
@@ -1858,8 +1904,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>ExtensionMonitoringConfigurationsList</returns>
@@ -1874,8 +1920,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>ApiResponse of ExtensionMonitoringConfigurationsList</returns>
@@ -1940,8 +1986,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>Task of ExtensionMonitoringConfigurationsList</returns>
@@ -1957,8 +2003,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="version">Filters the resulting set of configurations by extension 2.0 version. (optional)</param>
         /// <param name="active">Filters the resulting set of configurations by the active state. (optional)</param>
         /// <returns>Task of ApiResponse (ExtensionMonitoringConfigurationsList)</returns>
@@ -2454,6 +2500,159 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration 
+        /// </summary>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>ExtensionStatusDto</returns>
+        public ExtensionStatusDto GetExtensionMonitoringConfigurationStatus (string extensionName, string configurationId)
+        {
+             ApiResponse<ExtensionStatusDto> localVarResponse = GetExtensionMonitoringConfigurationStatusWithHttpInfo(extensionName, configurationId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration 
+        /// </summary>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>ApiResponse of ExtensionStatusDto</returns>
+        public ApiResponse< ExtensionStatusDto > GetExtensionMonitoringConfigurationStatusWithHttpInfo (string extensionName, string configurationId)
+        {
+            // verify the required parameter 'extensionName' is set
+            if (extensionName == null)
+                throw new ApiException(400, "Missing required parameter 'extensionName' when calling Extensions20Api->GetExtensionMonitoringConfigurationStatus");
+            // verify the required parameter 'configurationId' is set
+            if (configurationId == null)
+                throw new ApiException(400, "Missing required parameter 'configurationId' when calling Extensions20Api->GetExtensionMonitoringConfigurationStatus");
+
+            var localVarPath = "/extensions/{extensionName}/monitoringConfigurations/{configurationId}/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json; charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (extensionName != null) localVarPathParams.Add("extensionName", this.Configuration.ApiClient.ParameterToString(extensionName)); // path parameter
+            if (configurationId != null) localVarPathParams.Add("configurationId", this.Configuration.ApiClient.ParameterToString(configurationId)); // path parameter
+            // authentication (Api-Token) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExtensionMonitoringConfigurationStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExtensionStatusDto>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ExtensionStatusDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExtensionStatusDto)));
+        }
+
+        /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration 
+        /// </summary>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>Task of ExtensionStatusDto</returns>
+        public async System.Threading.Tasks.Task<ExtensionStatusDto> GetExtensionMonitoringConfigurationStatusAsync (string extensionName, string configurationId)
+        {
+             ApiResponse<ExtensionStatusDto> localVarResponse = await GetExtensionMonitoringConfigurationStatusAsyncWithHttpInfo(extensionName, configurationId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Gets the most recent status of the execution of given monitoring configuration 
+        /// </summary>
+        /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="extensionName">The name of the requested extension 2.0.</param>
+        /// <param name="configurationId">The ID of the requested monitoring configuration.</param>
+        /// <returns>Task of ApiResponse (ExtensionStatusDto)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ExtensionStatusDto>> GetExtensionMonitoringConfigurationStatusAsyncWithHttpInfo (string extensionName, string configurationId)
+        {
+            // verify the required parameter 'extensionName' is set
+            if (extensionName == null)
+                throw new ApiException(400, "Missing required parameter 'extensionName' when calling Extensions20Api->GetExtensionMonitoringConfigurationStatus");
+            // verify the required parameter 'configurationId' is set
+            if (configurationId == null)
+                throw new ApiException(400, "Missing required parameter 'configurationId' when calling Extensions20Api->GetExtensionMonitoringConfigurationStatus");
+
+            var localVarPath = "/extensions/{extensionName}/monitoringConfigurations/{configurationId}/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json; charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (extensionName != null) localVarPathParams.Add("extensionName", this.Configuration.ApiClient.ParameterToString(extensionName)); // path parameter
+            if (configurationId != null) localVarPathParams.Add("configurationId", this.Configuration.ApiClient.ParameterToString(configurationId)); // path parameter
+            // authentication (Api-Token) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetExtensionMonitoringConfigurationStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ExtensionStatusDto>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ExtensionStatusDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExtensionStatusDto)));
+        }
+
+        /// <summary>
         /// Gets the extension 2.0 schema file in the specified version 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2611,8 +2810,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>ExtensionList</returns>
         public ExtensionList ListExtensionVersions (string extensionName, string nextPageKey = null, long? pageSize = null)
         {
@@ -2625,8 +2824,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>ApiResponse of ExtensionList</returns>
         public ApiResponse< ExtensionList > ListExtensionVersionsWithHttpInfo (string extensionName, string nextPageKey = null, long? pageSize = null)
         {
@@ -2687,8 +2886,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>Task of ExtensionList</returns>
         public async System.Threading.Tasks.Task<ExtensionList> ListExtensionVersionsAsync (string extensionName, string nextPageKey = null, long? pageSize = null)
         {
@@ -2702,8 +2901,8 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="extensionName">The name of the requested extension 2.0.</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <returns>Task of ApiResponse (ExtensionList)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<ExtensionList>> ListExtensionVersionsAsyncWithHttpInfo (string extensionName, string nextPageKey = null, long? pageSize = null)
         {
@@ -2763,8 +2962,8 @@ namespace Dynatrace.API.Api
         /// Lists all the extensions 2.0 available in your environment 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>ExtensionList</returns>
         public ExtensionList ListExtensions (string nextPageKey = null, long? pageSize = null, string name = null)
@@ -2777,8 +2976,8 @@ namespace Dynatrace.API.Api
         /// Lists all the extensions 2.0 available in your environment 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>ApiResponse of ExtensionList</returns>
         public ApiResponse< ExtensionList > ListExtensionsWithHttpInfo (string nextPageKey = null, long? pageSize = null, string name = null)
@@ -2836,8 +3035,8 @@ namespace Dynatrace.API.Api
         /// Lists all the extensions 2.0 available in your environment 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>Task of ExtensionList</returns>
         public async System.Threading.Tasks.Task<ExtensionList> ListExtensionsAsync (string nextPageKey = null, long? pageSize = null, string name = null)
@@ -2851,8 +3050,8 @@ namespace Dynatrace.API.Api
         /// Lists all the extensions 2.0 available in your environment 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of extensions in a single response payload.   The maximal allowed page size is 100.   If not set, 20 is used. (optional)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of extensions in a single response payload. The maximal allowed page size is 100. If not set, 20 is used. (optional)</param>
         /// <param name="name">Filters the resulting set of extensions 2.0 by name. You can specify a partial name. In that case, the CONTAINS operator is used. (optional)</param>
         /// <returns>Task of ApiResponse (ExtensionList)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<ExtensionList>> ListExtensionsAsyncWithHttpInfo (string nextPageKey = null, long? pageSize = null, string name = null)

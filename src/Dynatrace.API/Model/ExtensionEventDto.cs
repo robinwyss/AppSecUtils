@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,12 +34,12 @@ namespace Dynatrace.API.Model
         /// </summary>
         /// <param name="timestamp">Timestamp of the latest event.</param>
         /// <param name="severity">Severity of the latest event.</param>
-        /// <param name="message">Message.</param>
-        public ExtensionEventDto(string timestamp = default(string), string severity = default(string), string message = default(string))
+        /// <param name="content">Content.</param>
+        public ExtensionEventDto(string timestamp = default(string), string severity = default(string), string content = default(string))
         {
             this.Timestamp = timestamp;
             this.Severity = severity;
-            this.Message = message;
+            this.Content = content;
         }
         
         /// <summary>
@@ -57,11 +57,11 @@ namespace Dynatrace.API.Model
         public string Severity { get; set; }
 
         /// <summary>
-        /// Message
+        /// Content
         /// </summary>
-        /// <value>Message</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string Message { get; set; }
+        /// <value>Content</value>
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public string Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace Dynatrace.API.Model
             sb.Append("class ExtensionEventDto {\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
             sb.Append("  Severity: ").Append(Severity).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,9 +119,9 @@ namespace Dynatrace.API.Model
                     this.Severity.Equals(input.Severity))
                 ) && 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
                 );
         }
 
@@ -138,8 +138,8 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Timestamp.GetHashCode();
                 if (this.Severity != null)
                     hashCode = hashCode * 59 + this.Severity.GetHashCode();
-                if (this.Message != null)
-                    hashCode = hashCode * 59 + this.Message.GetHashCode();
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 return hashCode;
             }
         }

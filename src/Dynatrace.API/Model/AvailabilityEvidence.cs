@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,7 +24,7 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// The availability evidence of the problem.   Indicates an entity that has been unavailable during the problem lifespan and that might be related to the root cause.
+    /// The availability evidence of the problem. Indicates an entity that has been unavailable during the problem lifespan and that might be related to the root cause.
     /// </summary>
     [DataContract]
         public partial class AvailabilityEvidence : Evidence,  IEquatable<AvailabilityEvidence>, IValidatableObject

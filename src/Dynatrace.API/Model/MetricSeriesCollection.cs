@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,7 +32,7 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricSeriesCollection" /> class.
         /// </summary>
-        /// <param name="metricId">The key of the metric.   If any transformation is applied, it is included here. (required).</param>
+        /// <param name="metricId">The key of the metric. If any transformation is applied, it is included here. (required).</param>
         /// <param name="data">Data points of the metric..</param>
         /// <param name="warnings">A list of potential warnings that affect this ID. For example deprecated feature usage etc..</param>
         public MetricSeriesCollection(string metricId = default(string), List<MetricSeries> data = default(List<MetricSeries>), List<string> warnings = default(List<string>))
@@ -51,9 +51,9 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// The key of the metric.   If any transformation is applied, it is included here.
+        /// The key of the metric. If any transformation is applied, it is included here.
         /// </summary>
-        /// <value>The key of the metric.   If any transformation is applied, it is included here.</value>
+        /// <value>The key of the metric. If any transformation is applied, it is included here.</value>
         [DataMember(Name="metricId", EmitDefaultValue=false)]
         public string MetricId { get; set; }
 

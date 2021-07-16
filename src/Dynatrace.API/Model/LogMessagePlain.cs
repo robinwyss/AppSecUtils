@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,34 +24,18 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// Body
+    /// The log message in plain text. The length of the message is limited to 8,192 characters. Any content exceeding the limit is trimmed.
     /// </summary>
     [DataContract]
-        public partial class Body :  IEquatable<Body>, IValidatableObject
+        public partial class LogMessagePlain :  IEquatable<LogMessagePlain>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Body" /> class.
+        /// Initializes a new instance of the <see cref="LogMessagePlain" /> class.
         /// </summary>
-        /// <param name="file">file (required).</param>
-        public Body(byte[] file = default(byte[]))
+        public LogMessagePlain()
         {
-            // to ensure "file" is required (not null)
-            if (file == null)
-            {
-                throw new InvalidDataException("file is a required property for Body and cannot be null");
-            }
-            else
-            {
-                this.File = file;
-            }
         }
         
-        /// <summary>
-        /// Gets or Sets File
-        /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
-        public byte[] File { get; set; }
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -59,8 +43,7 @@ namespace Dynatrace.API.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Body {\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("class LogMessagePlain {\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -81,25 +64,20 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Body);
+            return this.Equals(input as LogMessagePlain);
         }
 
         /// <summary>
-        /// Returns true if Body instances are equal
+        /// Returns true if LogMessagePlain instances are equal
         /// </summary>
-        /// <param name="input">Instance of Body to be compared</param>
+        /// <param name="input">Instance of LogMessagePlain to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Body input)
+        public bool Equals(LogMessagePlain input)
         {
             if (input == null)
                 return false;
 
-            return 
-                (
-                    this.File == input.File ||
-                    (this.File != null &&
-                    this.File.Equals(input.File))
-                );
+            return false;
         }
 
         /// <summary>
@@ -111,8 +89,6 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.File != null)
-                    hashCode = hashCode * 59 + this.File.GetHashCode();
                 return hashCode;
             }
         }

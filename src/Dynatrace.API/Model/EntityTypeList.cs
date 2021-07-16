@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,7 +34,7 @@ namespace Dynatrace.API.Model
         /// </summary>
         /// <param name="totalCount">The total number of entries in the result. (required).</param>
         /// <param name="pageSize">The number of entries per page..</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result..</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result..</param>
         /// <param name="types">The list of meta information for all available entity-types.</param>
         public EntityTypeList(long? totalCount = default(long?), int? pageSize = default(int?), string nextPageKey = default(string), List<EntityType> types = default(List<EntityType>))
         {
@@ -67,9 +67,9 @@ namespace Dynatrace.API.Model
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.
+        /// The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.
         /// </summary>
-        /// <value>The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.</value>
+        /// <value>The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.</value>
         [DataMember(Name="nextPageKey", EmitDefaultValue=false)]
         public string NextPageKey { get; set; }
 

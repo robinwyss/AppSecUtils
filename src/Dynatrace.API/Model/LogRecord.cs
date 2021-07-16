@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,9 +30,37 @@ namespace Dynatrace.API.Model
         public partial class LogRecord :  IEquatable<LogRecord>, IValidatableObject
     {
         /// <summary>
-        /// The log status based on the log level.
+        /// Type of event
         /// </summary>
-        /// <value>The log status based on the log level.</value>
+        /// <value>Type of event</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum EventTypeEnum
+        {
+            /// <summary>
+            /// Enum K8S for value: K8S
+            /// </summary>
+            [EnumMember(Value = "K8S")]
+            K8S = 1,
+            /// <summary>
+            /// Enum LOG for value: LOG
+            /// </summary>
+            [EnumMember(Value = "LOG")]
+            LOG = 2,
+            /// <summary>
+            /// Enum SFM for value: SFM
+            /// </summary>
+            [EnumMember(Value = "SFM")]
+            SFM = 3        }
+        /// <summary>
+        /// Type of event
+        /// </summary>
+        /// <value>Type of event</value>
+        [DataMember(Name="eventType", EmitDefaultValue=false)]
+        public EventTypeEnum? EventType { get; set; }
+        /// <summary>
+        /// The log status (based on the log level).
+        /// </summary>
+        /// <value>The log status (based on the log level).</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum StatusEnum
         {
@@ -57,39 +85,34 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "WARN")]
             WARN = 4        }
         /// <summary>
-        /// The log status based on the log level.
+        /// The log status (based on the log level).
         /// </summary>
-        /// <value>The log status based on the log level.</value>
+        /// <value>The log status (based on the log level).</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="LogRecord" /> class.
         /// </summary>
-        /// <param name="additionalColumns">The additional columns of the log record..</param>
-        /// <param name="timestamp">The timestamp of the log record..</param>
-        /// <param name="status">The log status based on the log level..</param>
+        /// <param name="additionalColumns">Additional columns of the log record..</param>
+        /// <param name="eventType">Type of event.</param>
         /// <param name="content">The content of the log record..</param>
-        public LogRecord(Dictionary<string, string> additionalColumns = default(Dictionary<string, string>), DateTime? timestamp = default(DateTime?), StatusEnum? status = default(StatusEnum?), string content = default(string))
+        /// <param name="timestamp">The timestamp of the log record..</param>
+        /// <param name="status">The log status (based on the log level)..</param>
+        public LogRecord(Dictionary<string, string> additionalColumns = default(Dictionary<string, string>), EventTypeEnum? eventType = default(EventTypeEnum?), string content = default(string), DateTime? timestamp = default(DateTime?), StatusEnum? status = default(StatusEnum?))
         {
             this.AdditionalColumns = additionalColumns;
+            this.EventType = eventType;
+            this.Content = content;
             this.Timestamp = timestamp;
             this.Status = status;
-            this.Content = content;
         }
         
         /// <summary>
-        /// The additional columns of the log record.
+        /// Additional columns of the log record.
         /// </summary>
-        /// <value>The additional columns of the log record.</value>
+        /// <value>Additional columns of the log record.</value>
         [DataMember(Name="additionalColumns", EmitDefaultValue=false)]
         public Dictionary<string, string> AdditionalColumns { get; set; }
-
-        /// <summary>
-        /// The timestamp of the log record.
-        /// </summary>
-        /// <value>The timestamp of the log record.</value>
-        [DataMember(Name="timestamp", EmitDefaultValue=false)]
-        public DateTime? Timestamp { get; set; }
 
 
         /// <summary>
@@ -100,6 +123,14 @@ namespace Dynatrace.API.Model
         public string Content { get; set; }
 
         /// <summary>
+        /// The timestamp of the log record.
+        /// </summary>
+        /// <value>The timestamp of the log record.</value>
+        [DataMember(Name="timestamp", EmitDefaultValue=false)]
+        public DateTime? Timestamp { get; set; }
+
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -108,9 +139,10 @@ namespace Dynatrace.API.Model
             var sb = new StringBuilder();
             sb.Append("class LogRecord {\n");
             sb.Append("  AdditionalColumns: ").Append(AdditionalColumns).Append("\n");
+            sb.Append("  EventType: ").Append(EventType).Append("\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Timestamp: ").Append(Timestamp).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -152,6 +184,16 @@ namespace Dynatrace.API.Model
                     this.AdditionalColumns.SequenceEqual(input.AdditionalColumns)
                 ) && 
                 (
+                    this.EventType == input.EventType ||
+                    (this.EventType != null &&
+                    this.EventType.Equals(input.EventType))
+                ) && 
+                (
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
+                ) && 
+                (
                     this.Timestamp == input.Timestamp ||
                     (this.Timestamp != null &&
                     this.Timestamp.Equals(input.Timestamp))
@@ -160,11 +202,6 @@ namespace Dynatrace.API.Model
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
                 );
         }
 
@@ -179,12 +216,14 @@ namespace Dynatrace.API.Model
                 int hashCode = 41;
                 if (this.AdditionalColumns != null)
                     hashCode = hashCode * 59 + this.AdditionalColumns.GetHashCode();
+                if (this.EventType != null)
+                    hashCode = hashCode * 59 + this.EventType.GetHashCode();
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 if (this.Timestamp != null)
                     hashCode = hashCode * 59 + this.Timestamp.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 return hashCode;
             }
         }

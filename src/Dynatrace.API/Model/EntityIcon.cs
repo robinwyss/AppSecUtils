@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,32 +32,32 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIcon" /> class.
         /// </summary>
-        /// <param name="customIconPath">The user-defined icon of the entity.   Specify the [barista](https://dt-url.net/u403suy) ID of the icon or a URL of your own icon..</param>
+        /// <param name="customIconPath">The user-defined icon of the entity. Specify the [barista](https://dt-url.net/u403suy) ID of the icon or a URL of your own icon..</param>
         public EntityIcon(string customIconPath = default(string))
         {
             this.CustomIconPath = customIconPath;
         }
         
         /// <summary>
-        /// The secondary icon of the entity.   Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.
+        /// The primary icon of the entity. Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.
         /// </summary>
-        /// <value>The secondary icon of the entity.   Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.</value>
+        /// <value>The primary icon of the entity. Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.</value>
+        [DataMember(Name="primaryIconType", EmitDefaultValue=false)]
+        public string PrimaryIconType { get; private set; }
+
+        /// <summary>
+        /// The secondary icon of the entity. Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.
+        /// </summary>
+        /// <value>The secondary icon of the entity. Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.</value>
         [DataMember(Name="secondaryIconType", EmitDefaultValue=false)]
         public string SecondaryIconType { get; private set; }
 
         /// <summary>
-        /// The user-defined icon of the entity.   Specify the [barista](https://dt-url.net/u403suy) ID of the icon or a URL of your own icon.
+        /// The user-defined icon of the entity. Specify the [barista](https://dt-url.net/u403suy) ID of the icon or a URL of your own icon.
         /// </summary>
-        /// <value>The user-defined icon of the entity.   Specify the [barista](https://dt-url.net/u403suy) ID of the icon or a URL of your own icon.</value>
+        /// <value>The user-defined icon of the entity. Specify the [barista](https://dt-url.net/u403suy) ID of the icon or a URL of your own icon.</value>
         [DataMember(Name="customIconPath", EmitDefaultValue=false)]
         public string CustomIconPath { get; set; }
-
-        /// <summary>
-        /// The primary icon of the entity.   Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.
-        /// </summary>
-        /// <value>The primary icon of the entity.   Specified by the [barista](https://dt-url.net/u403suy) ID of the icon.</value>
-        [DataMember(Name="primaryIconType", EmitDefaultValue=false)]
-        public string PrimaryIconType { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,9 +67,9 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class EntityIcon {\n");
+            sb.Append("  PrimaryIconType: ").Append(PrimaryIconType).Append("\n");
             sb.Append("  SecondaryIconType: ").Append(SecondaryIconType).Append("\n");
             sb.Append("  CustomIconPath: ").Append(CustomIconPath).Append("\n");
-            sb.Append("  PrimaryIconType: ").Append(PrimaryIconType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,6 +105,11 @@ namespace Dynatrace.API.Model
 
             return 
                 (
+                    this.PrimaryIconType == input.PrimaryIconType ||
+                    (this.PrimaryIconType != null &&
+                    this.PrimaryIconType.Equals(input.PrimaryIconType))
+                ) && 
+                (
                     this.SecondaryIconType == input.SecondaryIconType ||
                     (this.SecondaryIconType != null &&
                     this.SecondaryIconType.Equals(input.SecondaryIconType))
@@ -113,11 +118,6 @@ namespace Dynatrace.API.Model
                     this.CustomIconPath == input.CustomIconPath ||
                     (this.CustomIconPath != null &&
                     this.CustomIconPath.Equals(input.CustomIconPath))
-                ) && 
-                (
-                    this.PrimaryIconType == input.PrimaryIconType ||
-                    (this.PrimaryIconType != null &&
-                    this.PrimaryIconType.Equals(input.PrimaryIconType))
                 );
         }
 
@@ -130,12 +130,12 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.PrimaryIconType != null)
+                    hashCode = hashCode * 59 + this.PrimaryIconType.GetHashCode();
                 if (this.SecondaryIconType != null)
                     hashCode = hashCode * 59 + this.SecondaryIconType.GetHashCode();
                 if (this.CustomIconPath != null)
                     hashCode = hashCode * 59 + this.CustomIconPath.GetHashCode();
-                if (this.PrimaryIconType != null)
-                    hashCode = hashCode * 59 + this.PrimaryIconType.GetHashCode();
                 return hashCode;
             }
         }

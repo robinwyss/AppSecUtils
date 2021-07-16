@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -62,9 +62,9 @@ namespace Dynatrace.API.Model
         public int? NumOfConfiguredOneAgents { get; private set; }
 
         /// <summary>
-        /// The number of OneAgents from other network zones that are using ActiveGates in the network zone.    This is a fraction of **numOfOneAgentsUsing**.   One possible reason for switching to another zone is that a firewall is preventing a OneAgent from connecting to any ActiveGate in the preferred network zone.  
+        /// The number of OneAgents from other network zones that are using ActiveGates in the network zone.  This is a fraction of **numOfOneAgentsUsing**. One possible reason for switching to another zone is that a firewall is preventing a OneAgent from connecting to any ActiveGate in the preferred network zone.
         /// </summary>
-        /// <value>The number of OneAgents from other network zones that are using ActiveGates in the network zone.    This is a fraction of **numOfOneAgentsUsing**.   One possible reason for switching to another zone is that a firewall is preventing a OneAgent from connecting to any ActiveGate in the preferred network zone.  </value>
+        /// <value>The number of OneAgents from other network zones that are using ActiveGates in the network zone.  This is a fraction of **numOfOneAgentsUsing**. One possible reason for switching to another zone is that a firewall is preventing a OneAgent from connecting to any ActiveGate in the preferred network zone.</value>
         [DataMember(Name="numOfOneAgentsFromOtherZones", EmitDefaultValue=false)]
         public int? NumOfOneAgentsFromOtherZones { get; private set; }
 
@@ -76,18 +76,18 @@ namespace Dynatrace.API.Model
         public int? NumOfConfiguredActiveGates { get; private set; }
 
         /// <summary>
-        /// A short description of the network zone
-        /// </summary>
-        /// <value>A short description of the network zone</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
-
-        /// <summary>
         /// The ID of the network zone
         /// </summary>
         /// <value>The ID of the network zone</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; private set; }
+
+        /// <summary>
+        /// A short description of the network zone
+        /// </summary>
+        /// <value>A short description of the network zone</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,8 +102,8 @@ namespace Dynatrace.API.Model
             sb.Append("  NumOfConfiguredOneAgents: ").Append(NumOfConfiguredOneAgents).Append("\n");
             sb.Append("  NumOfOneAgentsFromOtherZones: ").Append(NumOfOneAgentsFromOtherZones).Append("\n");
             sb.Append("  NumOfConfiguredActiveGates: ").Append(NumOfConfiguredActiveGates).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -165,14 +165,14 @@ namespace Dynatrace.API.Model
                     this.NumOfConfiguredActiveGates.Equals(input.NumOfConfiguredActiveGates))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 );
         }
 
@@ -195,10 +195,10 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.NumOfOneAgentsFromOtherZones.GetHashCode();
                 if (this.NumOfConfiguredActiveGates != null)
                     hashCode = hashCode * 59 + this.NumOfConfiguredActiveGates.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 return hashCode;
             }
         }

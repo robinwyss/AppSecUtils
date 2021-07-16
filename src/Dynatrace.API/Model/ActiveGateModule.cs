@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -148,13 +148,6 @@ namespace Dynatrace.API.Model
         [DataMember(Name="version", EmitDefaultValue=false)]
         public string Version { get; private set; }
 
-        /// <summary>
-        /// The module is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).
-        /// </summary>
-        /// <value>The module is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</value>
-        [DataMember(Name="enabled", EmitDefaultValue=false)]
-        public bool? Enabled { get; private set; }
-
 
         /// <summary>
         /// The attributes of the ActiveGate module.
@@ -162,6 +155,13 @@ namespace Dynatrace.API.Model
         /// <value>The attributes of the ActiveGate module.</value>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
         public Dictionary<string, string> Attributes { get; private set; }
+
+        /// <summary>
+        /// The module is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).
+        /// </summary>
+        /// <value>The module is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</value>
+        [DataMember(Name="enabled", EmitDefaultValue=false)]
+        public bool? Enabled { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -173,9 +173,9 @@ namespace Dynatrace.API.Model
             sb.Append("class ActiveGateModule {\n");
             sb.Append("  Misconfigured: ").Append(Misconfigured).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,11 +221,6 @@ namespace Dynatrace.API.Model
                     this.Version.Equals(input.Version))
                 ) && 
                 (
-                    this.Enabled == input.Enabled ||
-                    (this.Enabled != null &&
-                    this.Enabled.Equals(input.Enabled))
-                ) && 
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
@@ -235,6 +230,11 @@ namespace Dynatrace.API.Model
                     this.Attributes != null &&
                     input.Attributes != null &&
                     this.Attributes.SequenceEqual(input.Attributes)
+                ) && 
+                (
+                    this.Enabled == input.Enabled ||
+                    (this.Enabled != null &&
+                    this.Enabled.Equals(input.Enabled))
                 );
         }
 
@@ -251,12 +251,12 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Misconfigured.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
-                if (this.Enabled != null)
-                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Attributes != null)
                     hashCode = hashCode * 59 + this.Attributes.GetHashCode();
+                if (this.Enabled != null)
+                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 return hashCode;
             }
         }

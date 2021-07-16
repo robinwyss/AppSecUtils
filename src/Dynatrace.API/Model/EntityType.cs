@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,41 +32,41 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityType" /> class.
         /// </summary>
-        /// <param name="fromRelationships">A list of possible relationships where the monitored entity type occupies the FROM position.</param>
         /// <param name="entityLimitExceeded">Whether the entity creation limit for the given type has been exceeded.</param>
+        /// <param name="fromRelationships">A list of possible relationships where the monitored entity type occupies the FROM position.</param>
         /// <param name="toRelationships">A list of possible relationships where the monitored entity type occupies the TO position..</param>
         /// <param name="managementZones">The placeholder for the list of management zones of an actual entity..</param>
         /// <param name="dimensionKey">The dimension key used within metrics for this monitored entity..</param>
-        /// <param name="tags">The placeholder for the list of tags of an actual entity..</param>
         /// <param name="properties">A list of additional properties of the monitored entity type..</param>
         /// <param name="type">The type of the monitored entity..</param>
         /// <param name="displayName">The display name of the monitored entity..</param>
-        public EntityType(List<ToPosition> fromRelationships = default(List<ToPosition>), bool? entityLimitExceeded = default(bool?), List<FromPosition> toRelationships = default(List<FromPosition>), string managementZones = default(string), string dimensionKey = default(string), string tags = default(string), List<EntityTypePropertyDto> properties = default(List<EntityTypePropertyDto>), string type = default(string), string displayName = default(string))
+        /// <param name="tags">The placeholder for the list of tags of an actual entity..</param>
+        public EntityType(bool? entityLimitExceeded = default(bool?), List<ToPosition> fromRelationships = default(List<ToPosition>), List<FromPosition> toRelationships = default(List<FromPosition>), string managementZones = default(string), string dimensionKey = default(string), List<EntityTypePropertyDto> properties = default(List<EntityTypePropertyDto>), string type = default(string), string displayName = default(string), string tags = default(string))
         {
-            this.FromRelationships = fromRelationships;
             this.EntityLimitExceeded = entityLimitExceeded;
+            this.FromRelationships = fromRelationships;
             this.ToRelationships = toRelationships;
             this.ManagementZones = managementZones;
             this.DimensionKey = dimensionKey;
-            this.Tags = tags;
             this.Properties = properties;
             this.Type = type;
             this.DisplayName = displayName;
+            this.Tags = tags;
         }
         
-        /// <summary>
-        /// A list of possible relationships where the monitored entity type occupies the FROM position
-        /// </summary>
-        /// <value>A list of possible relationships where the monitored entity type occupies the FROM position</value>
-        [DataMember(Name="fromRelationships", EmitDefaultValue=false)]
-        public List<ToPosition> FromRelationships { get; set; }
-
         /// <summary>
         /// Whether the entity creation limit for the given type has been exceeded
         /// </summary>
         /// <value>Whether the entity creation limit for the given type has been exceeded</value>
         [DataMember(Name="entityLimitExceeded", EmitDefaultValue=false)]
         public bool? EntityLimitExceeded { get; set; }
+
+        /// <summary>
+        /// A list of possible relationships where the monitored entity type occupies the FROM position
+        /// </summary>
+        /// <value>A list of possible relationships where the monitored entity type occupies the FROM position</value>
+        [DataMember(Name="fromRelationships", EmitDefaultValue=false)]
+        public List<ToPosition> FromRelationships { get; set; }
 
         /// <summary>
         /// A list of possible relationships where the monitored entity type occupies the TO position.
@@ -90,13 +90,6 @@ namespace Dynatrace.API.Model
         public string DimensionKey { get; set; }
 
         /// <summary>
-        /// The placeholder for the list of tags of an actual entity.
-        /// </summary>
-        /// <value>The placeholder for the list of tags of an actual entity.</value>
-        [DataMember(Name="tags", EmitDefaultValue=false)]
-        public string Tags { get; set; }
-
-        /// <summary>
         /// A list of additional properties of the monitored entity type.
         /// </summary>
         /// <value>A list of additional properties of the monitored entity type.</value>
@@ -118,6 +111,13 @@ namespace Dynatrace.API.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The placeholder for the list of tags of an actual entity.
+        /// </summary>
+        /// <value>The placeholder for the list of tags of an actual entity.</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public string Tags { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -125,15 +125,15 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class EntityType {\n");
-            sb.Append("  FromRelationships: ").Append(FromRelationships).Append("\n");
             sb.Append("  EntityLimitExceeded: ").Append(EntityLimitExceeded).Append("\n");
+            sb.Append("  FromRelationships: ").Append(FromRelationships).Append("\n");
             sb.Append("  ToRelationships: ").Append(ToRelationships).Append("\n");
             sb.Append("  ManagementZones: ").Append(ManagementZones).Append("\n");
             sb.Append("  DimensionKey: ").Append(DimensionKey).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -169,15 +169,15 @@ namespace Dynatrace.API.Model
 
             return 
                 (
+                    this.EntityLimitExceeded == input.EntityLimitExceeded ||
+                    (this.EntityLimitExceeded != null &&
+                    this.EntityLimitExceeded.Equals(input.EntityLimitExceeded))
+                ) && 
+                (
                     this.FromRelationships == input.FromRelationships ||
                     this.FromRelationships != null &&
                     input.FromRelationships != null &&
                     this.FromRelationships.SequenceEqual(input.FromRelationships)
-                ) && 
-                (
-                    this.EntityLimitExceeded == input.EntityLimitExceeded ||
-                    (this.EntityLimitExceeded != null &&
-                    this.EntityLimitExceeded.Equals(input.EntityLimitExceeded))
                 ) && 
                 (
                     this.ToRelationships == input.ToRelationships ||
@@ -196,11 +196,6 @@ namespace Dynatrace.API.Model
                     this.DimensionKey.Equals(input.DimensionKey))
                 ) && 
                 (
-                    this.Tags == input.Tags ||
-                    (this.Tags != null &&
-                    this.Tags.Equals(input.Tags))
-                ) && 
-                (
                     this.Properties == input.Properties ||
                     this.Properties != null &&
                     input.Properties != null &&
@@ -215,6 +210,11 @@ namespace Dynatrace.API.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Tags == input.Tags ||
+                    (this.Tags != null &&
+                    this.Tags.Equals(input.Tags))
                 );
         }
 
@@ -227,24 +227,24 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FromRelationships != null)
-                    hashCode = hashCode * 59 + this.FromRelationships.GetHashCode();
                 if (this.EntityLimitExceeded != null)
                     hashCode = hashCode * 59 + this.EntityLimitExceeded.GetHashCode();
+                if (this.FromRelationships != null)
+                    hashCode = hashCode * 59 + this.FromRelationships.GetHashCode();
                 if (this.ToRelationships != null)
                     hashCode = hashCode * 59 + this.ToRelationships.GetHashCode();
                 if (this.ManagementZones != null)
                     hashCode = hashCode * 59 + this.ManagementZones.GetHashCode();
                 if (this.DimensionKey != null)
                     hashCode = hashCode * 59 + this.DimensionKey.GetHashCode();
-                if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.Properties != null)
                     hashCode = hashCode * 59 + this.Properties.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 return hashCode;
             }
         }

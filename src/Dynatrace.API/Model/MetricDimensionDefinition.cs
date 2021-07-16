@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -70,22 +70,13 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricDimensionDefinition" /> class.
         /// </summary>
-        /// <param name="index">The unique 0-based index of the dimension.    Appending transformations such as :names or :parents may change the indexes of dimensions. &#x60;null&#x60; is used for the dimensions of a metric with flexible dimensions, which can be referenced with their dimension key, but do not have an intrinsic order that could be used for the index. (required).</param>
         /// <param name="name">The name of the dimension. (required).</param>
-        /// <param name="key">The key of the dimension.    It must be unique within the metric. (required).</param>
+        /// <param name="key">The key of the dimension.  It must be unique within the metric. (required).</param>
         /// <param name="type">The type of the dimension. (required).</param>
         /// <param name="displayName">The display name of the dimension. (required).</param>
-        public MetricDimensionDefinition(int? index = default(int?), string name = default(string), string key = default(string), TypeEnum type = default(TypeEnum), string displayName = default(string))
+        /// <param name="index">The unique 0-based index of the dimension.  Appending transformations such as :names or :parents may change the indexes of dimensions. &#x60;null&#x60; is used for the dimensions of a metric with flexible dimensions, which can be referenced with their dimension key, but do not have an intrinsic order that could be used for the index. (required).</param>
+        public MetricDimensionDefinition(string name = default(string), string key = default(string), TypeEnum type = default(TypeEnum), string displayName = default(string), int? index = default(int?))
         {
-            // to ensure "index" is required (not null)
-            if (index == null)
-            {
-                throw new InvalidDataException("index is a required property for MetricDimensionDefinition and cannot be null");
-            }
-            else
-            {
-                this.Index = index;
-            }
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -122,15 +113,17 @@ namespace Dynatrace.API.Model
             {
                 this.DisplayName = displayName;
             }
+            // to ensure "index" is required (not null)
+            if (index == null)
+            {
+                throw new InvalidDataException("index is a required property for MetricDimensionDefinition and cannot be null");
+            }
+            else
+            {
+                this.Index = index;
+            }
         }
         
-        /// <summary>
-        /// The unique 0-based index of the dimension.    Appending transformations such as :names or :parents may change the indexes of dimensions. &#x60;null&#x60; is used for the dimensions of a metric with flexible dimensions, which can be referenced with their dimension key, but do not have an intrinsic order that could be used for the index.
-        /// </summary>
-        /// <value>The unique 0-based index of the dimension.    Appending transformations such as :names or :parents may change the indexes of dimensions. &#x60;null&#x60; is used for the dimensions of a metric with flexible dimensions, which can be referenced with their dimension key, but do not have an intrinsic order that could be used for the index.</value>
-        [DataMember(Name="index", EmitDefaultValue=false)]
-        public int? Index { get; set; }
-
         /// <summary>
         /// The name of the dimension.
         /// </summary>
@@ -139,9 +132,9 @@ namespace Dynatrace.API.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The key of the dimension.    It must be unique within the metric.
+        /// The key of the dimension.  It must be unique within the metric.
         /// </summary>
-        /// <value>The key of the dimension.    It must be unique within the metric.</value>
+        /// <value>The key of the dimension.  It must be unique within the metric.</value>
         [DataMember(Name="key", EmitDefaultValue=false)]
         public string Key { get; set; }
 
@@ -154,6 +147,13 @@ namespace Dynatrace.API.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The unique 0-based index of the dimension.  Appending transformations such as :names or :parents may change the indexes of dimensions. &#x60;null&#x60; is used for the dimensions of a metric with flexible dimensions, which can be referenced with their dimension key, but do not have an intrinsic order that could be used for the index.
+        /// </summary>
+        /// <value>The unique 0-based index of the dimension.  Appending transformations such as :names or :parents may change the indexes of dimensions. &#x60;null&#x60; is used for the dimensions of a metric with flexible dimensions, which can be referenced with their dimension key, but do not have an intrinsic order that could be used for the index.</value>
+        [DataMember(Name="index", EmitDefaultValue=false)]
+        public int? Index { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,11 +161,11 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class MetricDimensionDefinition {\n");
-            sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -201,11 +201,6 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -224,6 +219,11 @@ namespace Dynatrace.API.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Index == input.Index ||
+                    (this.Index != null &&
+                    this.Index.Equals(input.Index))
                 );
         }
 
@@ -236,8 +236,6 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Key != null)
@@ -246,6 +244,8 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Index != null)
+                    hashCode = hashCode * 59 + this.Index.GetHashCode();
                 return hashCode;
             }
         }

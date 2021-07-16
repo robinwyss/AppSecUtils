@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -35,7 +35,7 @@ namespace Dynatrace.API.Model
         /// <param name="stringRepresentation">The string representation of the tag..</param>
         /// <param name="value">The value of the tag..</param>
         /// <param name="key">The key of the tag..</param>
-        /// <param name="context">The origin of the tag, such as AWS or Cloud Foundry.    Custom tags use the &#x60;CONTEXTLESS&#x60; value..</param>
+        /// <param name="context">The origin of the tag, such as AWS or Cloud Foundry.  Custom tags use the &#x60;CONTEXTLESS&#x60; value..</param>
         public METag(string stringRepresentation = default(string), string value = default(string), string key = default(string), string context = default(string))
         {
             this.StringRepresentation = stringRepresentation;
@@ -66,9 +66,9 @@ namespace Dynatrace.API.Model
         public string Key { get; set; }
 
         /// <summary>
-        /// The origin of the tag, such as AWS or Cloud Foundry.    Custom tags use the &#x60;CONTEXTLESS&#x60; value.
+        /// The origin of the tag, such as AWS or Cloud Foundry.  Custom tags use the &#x60;CONTEXTLESS&#x60; value.
         /// </summary>
-        /// <value>The origin of the tag, such as AWS or Cloud Foundry.    Custom tags use the &#x60;CONTEXTLESS&#x60; value.</value>
+        /// <value>The origin of the tag, such as AWS or Cloud Foundry.  Custom tags use the &#x60;CONTEXTLESS&#x60; value.</value>
         [DataMember(Name="context", EmitDefaultValue=false)]
         public string Context { get; set; }
 

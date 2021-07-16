@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,10 +34,12 @@ namespace Dynatrace.API.Model
         /// </summary>
         /// <param name="id">The ID of the property..</param>
         /// <param name="type">The type of the property..</param>
-        public EntityTypePropertyDto(string id = default(string), string type = default(string))
+        /// <param name="displayName">The display-name of the property..</param>
+        public EntityTypePropertyDto(string id = default(string), string type = default(string), string displayName = default(string))
         {
             this.Id = id;
             this.Type = type;
+            this.DisplayName = displayName;
         }
         
         /// <summary>
@@ -55,6 +57,13 @@ namespace Dynatrace.API.Model
         public string Type { get; set; }
 
         /// <summary>
+        /// The display-name of the property.
+        /// </summary>
+        /// <value>The display-name of the property.</value>
+        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +73,7 @@ namespace Dynatrace.API.Model
             sb.Append("class EntityTypePropertyDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,6 +117,11 @@ namespace Dynatrace.API.Model
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this.DisplayName == input.DisplayName ||
+                    (this.DisplayName != null &&
+                    this.DisplayName.Equals(input.DisplayName))
                 );
         }
 
@@ -123,6 +138,8 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.DisplayName != null)
+                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
                 return hashCode;
             }
         }

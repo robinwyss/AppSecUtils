@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -72,20 +72,25 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "RANGE")]
             RANGE = 7,
             /// <summary>
+            /// Enum REGEX for value: REGEX
+            /// </summary>
+            [EnumMember(Value = "REGEX")]
+            REGEX = 8,
+            /// <summary>
             /// Enum TRIMMED for value: TRIMMED
             /// </summary>
             [EnumMember(Value = "TRIMMED")]
-            TRIMMED = 8,
+            TRIMMED = 9,
             /// <summary>
             /// Enum UNIQUE for value: UNIQUE
             /// </summary>
             [EnumMember(Value = "UNIQUE")]
-            UNIQUE = 9,
+            UNIQUE = 10,
             /// <summary>
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 10        }
+            UNKNOWN = 11        }
         /// <summary>
         /// The type of the constraint.
         /// </summary>
@@ -95,28 +100,35 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Constraint" /> class.
         /// </summary>
+        /// <param name="uniqueProperties">A list of properties for which the combination of values must be unique..</param>
         /// <param name="maxLength">The maximum allowed length of string values..</param>
         /// <param name="minLength">The minimum required length of string values..</param>
         /// <param name="customValidatorId">The ID of a custom validator..</param>
         /// <param name="customMessage">A custom message for invalid values..</param>
-        /// <param name="uniqueProperties">A list of properties for which the combination of values must be unique..</param>
         /// <param name="maximum">The maximum allowed value..</param>
         /// <param name="minimum">The minimum allowed value..</param>
-        /// <param name="pattern">The regular expression pattern for valid string values..</param>
         /// <param name="type">The type of the constraint..</param>
-        public Constraint(int? maxLength = default(int?), int? minLength = default(int?), string customValidatorId = default(string), string customMessage = default(string), List<string> uniqueProperties = default(List<string>), decimal? maximum = default(decimal?), decimal? minimum = default(decimal?), string pattern = default(string), TypeEnum? type = default(TypeEnum?))
+        /// <param name="pattern">The regular expression pattern for valid string values..</param>
+        public Constraint(List<string> uniqueProperties = default(List<string>), int? maxLength = default(int?), int? minLength = default(int?), string customValidatorId = default(string), string customMessage = default(string), decimal? maximum = default(decimal?), decimal? minimum = default(decimal?), TypeEnum? type = default(TypeEnum?), string pattern = default(string))
         {
+            this.UniqueProperties = uniqueProperties;
             this.MaxLength = maxLength;
             this.MinLength = minLength;
             this.CustomValidatorId = customValidatorId;
             this.CustomMessage = customMessage;
-            this.UniqueProperties = uniqueProperties;
             this.Maximum = maximum;
             this.Minimum = minimum;
-            this.Pattern = pattern;
             this.Type = type;
+            this.Pattern = pattern;
         }
         
+        /// <summary>
+        /// A list of properties for which the combination of values must be unique.
+        /// </summary>
+        /// <value>A list of properties for which the combination of values must be unique.</value>
+        [DataMember(Name="uniqueProperties", EmitDefaultValue=false)]
+        public List<string> UniqueProperties { get; set; }
+
         /// <summary>
         /// The maximum allowed length of string values.
         /// </summary>
@@ -146,13 +158,6 @@ namespace Dynatrace.API.Model
         public string CustomMessage { get; set; }
 
         /// <summary>
-        /// A list of properties for which the combination of values must be unique.
-        /// </summary>
-        /// <value>A list of properties for which the combination of values must be unique.</value>
-        [DataMember(Name="uniqueProperties", EmitDefaultValue=false)]
-        public List<string> UniqueProperties { get; set; }
-
-        /// <summary>
         /// The maximum allowed value.
         /// </summary>
         /// <value>The maximum allowed value.</value>
@@ -166,13 +171,13 @@ namespace Dynatrace.API.Model
         [DataMember(Name="minimum", EmitDefaultValue=false)]
         public decimal? Minimum { get; set; }
 
+
         /// <summary>
         /// The regular expression pattern for valid string values.
         /// </summary>
         /// <value>The regular expression pattern for valid string values.</value>
         [DataMember(Name="pattern", EmitDefaultValue=false)]
         public string Pattern { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -182,15 +187,15 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Constraint {\n");
+            sb.Append("  UniqueProperties: ").Append(UniqueProperties).Append("\n");
             sb.Append("  MaxLength: ").Append(MaxLength).Append("\n");
             sb.Append("  MinLength: ").Append(MinLength).Append("\n");
             sb.Append("  CustomValidatorId: ").Append(CustomValidatorId).Append("\n");
             sb.Append("  CustomMessage: ").Append(CustomMessage).Append("\n");
-            sb.Append("  UniqueProperties: ").Append(UniqueProperties).Append("\n");
             sb.Append("  Maximum: ").Append(Maximum).Append("\n");
             sb.Append("  Minimum: ").Append(Minimum).Append("\n");
-            sb.Append("  Pattern: ").Append(Pattern).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Pattern: ").Append(Pattern).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -226,6 +231,12 @@ namespace Dynatrace.API.Model
 
             return 
                 (
+                    this.UniqueProperties == input.UniqueProperties ||
+                    this.UniqueProperties != null &&
+                    input.UniqueProperties != null &&
+                    this.UniqueProperties.SequenceEqual(input.UniqueProperties)
+                ) && 
+                (
                     this.MaxLength == input.MaxLength ||
                     (this.MaxLength != null &&
                     this.MaxLength.Equals(input.MaxLength))
@@ -246,12 +257,6 @@ namespace Dynatrace.API.Model
                     this.CustomMessage.Equals(input.CustomMessage))
                 ) && 
                 (
-                    this.UniqueProperties == input.UniqueProperties ||
-                    this.UniqueProperties != null &&
-                    input.UniqueProperties != null &&
-                    this.UniqueProperties.SequenceEqual(input.UniqueProperties)
-                ) && 
-                (
                     this.Maximum == input.Maximum ||
                     (this.Maximum != null &&
                     this.Maximum.Equals(input.Maximum))
@@ -262,14 +267,14 @@ namespace Dynatrace.API.Model
                     this.Minimum.Equals(input.Minimum))
                 ) && 
                 (
-                    this.Pattern == input.Pattern ||
-                    (this.Pattern != null &&
-                    this.Pattern.Equals(input.Pattern))
-                ) && 
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this.Pattern == input.Pattern ||
+                    (this.Pattern != null &&
+                    this.Pattern.Equals(input.Pattern))
                 );
         }
 
@@ -282,6 +287,8 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.UniqueProperties != null)
+                    hashCode = hashCode * 59 + this.UniqueProperties.GetHashCode();
                 if (this.MaxLength != null)
                     hashCode = hashCode * 59 + this.MaxLength.GetHashCode();
                 if (this.MinLength != null)
@@ -290,16 +297,14 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.CustomValidatorId.GetHashCode();
                 if (this.CustomMessage != null)
                     hashCode = hashCode * 59 + this.CustomMessage.GetHashCode();
-                if (this.UniqueProperties != null)
-                    hashCode = hashCode * 59 + this.UniqueProperties.GetHashCode();
                 if (this.Maximum != null)
                     hashCode = hashCode * 59 + this.Maximum.GetHashCode();
                 if (this.Minimum != null)
                     hashCode = hashCode * 59 + this.Minimum.GetHashCode();
-                if (this.Pattern != null)
-                    hashCode = hashCode * 59 + this.Pattern.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Pattern != null)
+                    hashCode = hashCode * 59 + this.Pattern.GetHashCode();
                 return hashCode;
             }
         }

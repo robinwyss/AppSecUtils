@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -33,13 +33,13 @@ namespace Dynatrace.API.Model
         /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
         /// <param name="constraintViolations">A list of constraint violations.</param>
-        /// <param name="code">The HTTP status code.</param>
         /// <param name="message">The error message.</param>
-        public Error(List<ConstraintViolation> constraintViolations = default(List<ConstraintViolation>), int? code = default(int?), string message = default(string))
+        /// <param name="code">The HTTP status code.</param>
+        public Error(List<ConstraintViolation> constraintViolations = default(List<ConstraintViolation>), string message = default(string), int? code = default(int?))
         {
             this.ConstraintViolations = constraintViolations;
-            this.Code = code;
             this.Message = message;
+            this.Code = code;
         }
         
         /// <summary>
@@ -50,18 +50,18 @@ namespace Dynatrace.API.Model
         public List<ConstraintViolation> ConstraintViolations { get; set; }
 
         /// <summary>
-        /// The HTTP status code
-        /// </summary>
-        /// <value>The HTTP status code</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
-
-        /// <summary>
         /// The error message
         /// </summary>
         /// <value>The error message</value>
         [DataMember(Name="message", EmitDefaultValue=false)]
         public string Message { get; set; }
+
+        /// <summary>
+        /// The HTTP status code
+        /// </summary>
+        /// <value>The HTTP status code</value>
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public int? Code { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,8 +72,8 @@ namespace Dynatrace.API.Model
             var sb = new StringBuilder();
             sb.Append("class Error {\n");
             sb.Append("  ConstraintViolations: ").Append(ConstraintViolations).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,14 +115,14 @@ namespace Dynatrace.API.Model
                     this.ConstraintViolations.SequenceEqual(input.ConstraintViolations)
                 ) && 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
-                ) && 
-                (
                     this.Message == input.Message ||
                     (this.Message != null &&
                     this.Message.Equals(input.Message))
+                ) && 
+                (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
                 );
         }
 
@@ -137,10 +137,10 @@ namespace Dynatrace.API.Model
                 int hashCode = 41;
                 if (this.ConstraintViolations != null)
                     hashCode = hashCode * 59 + this.ConstraintViolations.GetHashCode();
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
                 if (this.Message != null)
                     hashCode = hashCode * 59 + this.Message.GetHashCode();
+                if (this.Code != null)
+                    hashCode = hashCode * 59 + this.Code.GetHashCode();
                 return hashCode;
             }
         }

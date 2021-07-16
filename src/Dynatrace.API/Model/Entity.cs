@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,37 +32,30 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity" /> class.
         /// </summary>
-        /// <param name="fromRelationships">A list of relationships where the entity occupies the FROM position..</param>
         /// <param name="lastSeenTms">The timestamp at which the entity was last seen, in UTC milliseconds..</param>
         /// <param name="firstSeenTms">The timestamp at which the entity was first seen, in UTC milliseconds..</param>
+        /// <param name="fromRelationships">A list of relationships where the entity occupies the FROM position..</param>
         /// <param name="toRelationships">A list of relationships where the entity occupies the TO position..</param>
         /// <param name="managementZones">A set of management zones to which the entity belongs..</param>
         /// <param name="entityId">The ID of the entity..</param>
-        /// <param name="tags">A set of tags assigned to the entity..</param>
         /// <param name="icon">icon.</param>
         /// <param name="properties">A list of additional properties of the entity..</param>
         /// <param name="displayName">The name of the entity, displayed in the UI..</param>
-        public Entity(Dictionary<string, List<EntityId>> fromRelationships = default(Dictionary<string, List<EntityId>>), long? lastSeenTms = default(long?), long? firstSeenTms = default(long?), Dictionary<string, List<EntityId>> toRelationships = default(Dictionary<string, List<EntityId>>), List<ManagementZone> managementZones = default(List<ManagementZone>), string entityId = default(string), List<METag> tags = default(List<METag>), EntityIcon icon = default(EntityIcon), Dictionary<string, Object> properties = default(Dictionary<string, Object>), string displayName = default(string))
+        /// <param name="tags">A set of tags assigned to the entity..</param>
+        public Entity(long? lastSeenTms = default(long?), long? firstSeenTms = default(long?), Dictionary<string, List<EntityId>> fromRelationships = default(Dictionary<string, List<EntityId>>), Dictionary<string, List<EntityId>> toRelationships = default(Dictionary<string, List<EntityId>>), List<ManagementZone> managementZones = default(List<ManagementZone>), string entityId = default(string), EntityIcon icon = default(EntityIcon), Dictionary<string, Object> properties = default(Dictionary<string, Object>), string displayName = default(string), List<METag> tags = default(List<METag>))
         {
-            this.FromRelationships = fromRelationships;
             this.LastSeenTms = lastSeenTms;
             this.FirstSeenTms = firstSeenTms;
+            this.FromRelationships = fromRelationships;
             this.ToRelationships = toRelationships;
             this.ManagementZones = managementZones;
             this.EntityId = entityId;
-            this.Tags = tags;
             this.Icon = icon;
             this.Properties = properties;
             this.DisplayName = displayName;
+            this.Tags = tags;
         }
         
-        /// <summary>
-        /// A list of relationships where the entity occupies the FROM position.
-        /// </summary>
-        /// <value>A list of relationships where the entity occupies the FROM position.</value>
-        [DataMember(Name="fromRelationships", EmitDefaultValue=false)]
-        public Dictionary<string, List<EntityId>> FromRelationships { get; set; }
-
         /// <summary>
         /// The timestamp at which the entity was last seen, in UTC milliseconds.
         /// </summary>
@@ -76,6 +69,13 @@ namespace Dynatrace.API.Model
         /// <value>The timestamp at which the entity was first seen, in UTC milliseconds.</value>
         [DataMember(Name="firstSeenTms", EmitDefaultValue=false)]
         public long? FirstSeenTms { get; set; }
+
+        /// <summary>
+        /// A list of relationships where the entity occupies the FROM position.
+        /// </summary>
+        /// <value>A list of relationships where the entity occupies the FROM position.</value>
+        [DataMember(Name="fromRelationships", EmitDefaultValue=false)]
+        public Dictionary<string, List<EntityId>> FromRelationships { get; set; }
 
         /// <summary>
         /// A list of relationships where the entity occupies the TO position.
@@ -99,13 +99,6 @@ namespace Dynatrace.API.Model
         public string EntityId { get; set; }
 
         /// <summary>
-        /// A set of tags assigned to the entity.
-        /// </summary>
-        /// <value>A set of tags assigned to the entity.</value>
-        [DataMember(Name="tags", EmitDefaultValue=false)]
-        public List<METag> Tags { get; set; }
-
-        /// <summary>
         /// Gets or Sets Icon
         /// </summary>
         [DataMember(Name="icon", EmitDefaultValue=false)]
@@ -126,6 +119,13 @@ namespace Dynatrace.API.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// A set of tags assigned to the entity.
+        /// </summary>
+        /// <value>A set of tags assigned to the entity.</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public List<METag> Tags { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -133,16 +133,16 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Entity {\n");
-            sb.Append("  FromRelationships: ").Append(FromRelationships).Append("\n");
             sb.Append("  LastSeenTms: ").Append(LastSeenTms).Append("\n");
             sb.Append("  FirstSeenTms: ").Append(FirstSeenTms).Append("\n");
+            sb.Append("  FromRelationships: ").Append(FromRelationships).Append("\n");
             sb.Append("  ToRelationships: ").Append(ToRelationships).Append("\n");
             sb.Append("  ManagementZones: ").Append(ManagementZones).Append("\n");
             sb.Append("  EntityId: ").Append(EntityId).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Icon: ").Append(Icon).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -178,12 +178,6 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.FromRelationships == input.FromRelationships ||
-                    this.FromRelationships != null &&
-                    input.FromRelationships != null &&
-                    this.FromRelationships.SequenceEqual(input.FromRelationships)
-                ) && 
-                (
                     this.LastSeenTms == input.LastSeenTms ||
                     (this.LastSeenTms != null &&
                     this.LastSeenTms.Equals(input.LastSeenTms))
@@ -192,6 +186,12 @@ namespace Dynatrace.API.Model
                     this.FirstSeenTms == input.FirstSeenTms ||
                     (this.FirstSeenTms != null &&
                     this.FirstSeenTms.Equals(input.FirstSeenTms))
+                ) && 
+                (
+                    this.FromRelationships == input.FromRelationships ||
+                    this.FromRelationships != null &&
+                    input.FromRelationships != null &&
+                    this.FromRelationships.SequenceEqual(input.FromRelationships)
                 ) && 
                 (
                     this.ToRelationships == input.ToRelationships ||
@@ -211,12 +211,6 @@ namespace Dynatrace.API.Model
                     this.EntityId.Equals(input.EntityId))
                 ) && 
                 (
-                    this.Tags == input.Tags ||
-                    this.Tags != null &&
-                    input.Tags != null &&
-                    this.Tags.SequenceEqual(input.Tags)
-                ) && 
-                (
                     this.Icon == input.Icon ||
                     (this.Icon != null &&
                     this.Icon.Equals(input.Icon))
@@ -231,6 +225,12 @@ namespace Dynatrace.API.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 );
         }
 
@@ -243,26 +243,26 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FromRelationships != null)
-                    hashCode = hashCode * 59 + this.FromRelationships.GetHashCode();
                 if (this.LastSeenTms != null)
                     hashCode = hashCode * 59 + this.LastSeenTms.GetHashCode();
                 if (this.FirstSeenTms != null)
                     hashCode = hashCode * 59 + this.FirstSeenTms.GetHashCode();
+                if (this.FromRelationships != null)
+                    hashCode = hashCode * 59 + this.FromRelationships.GetHashCode();
                 if (this.ToRelationships != null)
                     hashCode = hashCode * 59 + this.ToRelationships.GetHashCode();
                 if (this.ManagementZones != null)
                     hashCode = hashCode * 59 + this.ManagementZones.GetHashCode();
                 if (this.EntityId != null)
                     hashCode = hashCode * 59 + this.EntityId.GetHashCode();
-                if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 if (this.Icon != null)
                     hashCode = hashCode * 59 + this.Icon.GetHashCode();
                 if (this.Properties != null)
                     hashCode = hashCode * 59 + this.Properties.GetHashCode();
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 return hashCode;
             }
         }

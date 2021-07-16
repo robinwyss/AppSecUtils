@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,9 +30,9 @@ namespace Dynatrace.API.Model
         public partial class ActiveGateAutoUpdateConfig :  IEquatable<ActiveGateAutoUpdateConfig>, IValidatableObject
     {
         /// <summary>
-        /// The state of the ActiveGate auto-update: enabled, disabled, or inherited.   If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.
+        /// The state of the ActiveGate auto-update: enabled, disabled, or inherited. If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.
         /// </summary>
-        /// <value>The state of the ActiveGate auto-update: enabled, disabled, or inherited.   If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.</value>
+        /// <value>The state of the ActiveGate auto-update: enabled, disabled, or inherited. If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum SettingEnum
         {
@@ -52,15 +52,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "INHERITED")]
             INHERITED = 3        }
         /// <summary>
-        /// The state of the ActiveGate auto-update: enabled, disabled, or inherited.   If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.
+        /// The state of the ActiveGate auto-update: enabled, disabled, or inherited. If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.
         /// </summary>
-        /// <value>The state of the ActiveGate auto-update: enabled, disabled, or inherited.   If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.</value>
+        /// <value>The state of the ActiveGate auto-update: enabled, disabled, or inherited. If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level.</value>
         [DataMember(Name="setting", EmitDefaultValue=false)]
         public SettingEnum Setting { get; set; }
         /// <summary>
-        /// The actual state of the ActiveGate auto-update.   Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.
+        /// The actual state of the ActiveGate auto-update. Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.
         /// </summary>
-        /// <value>The actual state of the ActiveGate auto-update.   Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.</value>
+        /// <value>The actual state of the ActiveGate auto-update. Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum EffectiveSettingEnum
         {
@@ -75,15 +75,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "DISABLED")]
             DISABLED = 2        }
         /// <summary>
-        /// The actual state of the ActiveGate auto-update.   Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.
+        /// The actual state of the ActiveGate auto-update. Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.
         /// </summary>
-        /// <value>The actual state of the ActiveGate auto-update.   Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.</value>
+        /// <value>The actual state of the ActiveGate auto-update. Applicable only if the **setting** parameter is set to &#x60;INHERITED&#x60;. In that case, the value is taken from the parent setting. Otherwise, it&#x27;s just a duplicate of the **setting** value.</value>
         [DataMember(Name="effectiveSetting", EmitDefaultValue=false)]
         public EffectiveSettingEnum? EffectiveSetting { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ActiveGateAutoUpdateConfig" /> class.
         /// </summary>
-        /// <param name="setting">The state of the ActiveGate auto-update: enabled, disabled, or inherited.   If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level. (required).</param>
+        /// <param name="setting">The state of the ActiveGate auto-update: enabled, disabled, or inherited. If set to &#x60;INHERITED&#x60;, the setting is inherited from the global configuration set on the environment or Managed cluster level. (required).</param>
         public ActiveGateAutoUpdateConfig(SettingEnum setting = default(SettingEnum))
         {
             // to ensure "setting" is required (not null)

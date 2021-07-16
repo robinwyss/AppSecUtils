@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,9 +30,9 @@ namespace Dynatrace.API.Model
         public partial class ActiveGateGlobalAutoUpdateConfig :  IEquatable<ActiveGateGlobalAutoUpdateConfig>, IValidatableObject
     {
         /// <summary>
-        /// The state of auto-updates for all ActiveGates connected to the environment or Managed cluster.   This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.
+        /// The state of auto-updates for all ActiveGates connected to the environment or Managed cluster. This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.
         /// </summary>
-        /// <value>The state of auto-updates for all ActiveGates connected to the environment or Managed cluster.   This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.</value>
+        /// <value>The state of auto-updates for all ActiveGates connected to the environment or Managed cluster. This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum GlobalSettingEnum
         {
@@ -47,15 +47,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "DISABLED")]
             DISABLED = 2        }
         /// <summary>
-        /// The state of auto-updates for all ActiveGates connected to the environment or Managed cluster.   This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.
+        /// The state of auto-updates for all ActiveGates connected to the environment or Managed cluster. This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.
         /// </summary>
-        /// <value>The state of auto-updates for all ActiveGates connected to the environment or Managed cluster.   This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.</value>
+        /// <value>The state of auto-updates for all ActiveGates connected to the environment or Managed cluster. This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting.</value>
         [DataMember(Name="globalSetting", EmitDefaultValue=false)]
         public GlobalSettingEnum GlobalSetting { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ActiveGateGlobalAutoUpdateConfig" /> class.
         /// </summary>
-        /// <param name="globalSetting">The state of auto-updates for all ActiveGates connected to the environment or Managed cluster.   This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting. (required).</param>
+        /// <param name="globalSetting">The state of auto-updates for all ActiveGates connected to the environment or Managed cluster. This setting is inherited by all ActiveGates that have the &#x60;INHERITED&#x60; setting. (required).</param>
         /// <param name="metadata">metadata.</param>
         public ActiveGateGlobalAutoUpdateConfig(GlobalSettingEnum globalSetting = default(GlobalSettingEnum), ConfigurationMetadata metadata = default(ConfigurationMetadata))
         {

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,42 +24,42 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// Contains data related to a single release of a component. A Release is a combination of a component and a version. A Component can be any form of deployable that can be associated with a version. In the first draft, a Component is always a Service.  The tuple &lt;name, product, stage, version&gt; is always unique.
+    /// Contains data related to a single release of a component.A Release is a combination of a component and a version.A Component can be any form of deployable that can be associated with a version.In the first draft, a Component is always a Service.The tuple &lt;name, product, stage, version&gt; is always unique.
     /// </summary>
     [DataContract]
-        public partial class ReleaseItem :  IEquatable<ReleaseItem>, IValidatableObject
+        public partial class Release :  IEquatable<Release>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReleaseItem" /> class.
+        /// Initializes a new instance of the <see cref="Release" /> class.
         /// </summary>
         /// <param name="instances">The instances entityIds included in this release.</param>
-        /// <param name="securityVulnerabilitiesCount">The number of security vulnerabilities of the entity.</param>
-        /// <param name="affectedByProblems">The entity has one or more problems.</param>
         /// <param name="softwareTechs">The software technologies of the release.</param>
-        /// <param name="releaseEntityId">The entity id of correlating release..</param>
         /// <param name="affectedBySecurityVulnerabilities">The entity has one or more security vulnerabilities.</param>
         /// <param name="throughput">The count of bytes per second of the entity.</param>
         /// <param name="product">The product name.</param>
-        /// <param name="version">The identified release version.</param>
+        /// <param name="releaseEntityId">The entity id of correlating release..</param>
+        /// <param name="securityVulnerabilitiesCount">The number of security vulnerabilities of the entity.</param>
+        /// <param name="affectedByProblems">The entity has one or more problems.</param>
         /// <param name="running">The related PGI is still running/monitored.</param>
+        /// <param name="version">The identified release version.</param>
+        /// <param name="name">The entity name.</param>
         /// <param name="problemCount">The number of problems of the entity.</param>
         /// <param name="stage">The stage name.</param>
-        /// <param name="name">The entity name.</param>
-        public ReleaseItem(List<ReleaseInstance> instances = default(List<ReleaseInstance>), int? securityVulnerabilitiesCount = default(int?), bool? affectedByProblems = default(bool?), List<SoftwareTechs> softwareTechs = default(List<SoftwareTechs>), string releaseEntityId = default(string), bool? affectedBySecurityVulnerabilities = default(bool?), double? throughput = default(double?), string product = default(string), string version = default(string), bool? running = default(bool?), int? problemCount = default(int?), string stage = default(string), string name = default(string))
+        public Release(List<ReleaseInstance> instances = default(List<ReleaseInstance>), List<SoftwareTechs> softwareTechs = default(List<SoftwareTechs>), bool? affectedBySecurityVulnerabilities = default(bool?), double? throughput = default(double?), string product = default(string), string releaseEntityId = default(string), int? securityVulnerabilitiesCount = default(int?), bool? affectedByProblems = default(bool?), bool? running = default(bool?), string version = default(string), string name = default(string), int? problemCount = default(int?), string stage = default(string))
         {
             this.Instances = instances;
-            this.SecurityVulnerabilitiesCount = securityVulnerabilitiesCount;
-            this.AffectedByProblems = affectedByProblems;
             this.SoftwareTechs = softwareTechs;
-            this.ReleaseEntityId = releaseEntityId;
             this.AffectedBySecurityVulnerabilities = affectedBySecurityVulnerabilities;
             this.Throughput = throughput;
             this.Product = product;
-            this.Version = version;
+            this.ReleaseEntityId = releaseEntityId;
+            this.SecurityVulnerabilitiesCount = securityVulnerabilitiesCount;
+            this.AffectedByProblems = affectedByProblems;
             this.Running = running;
+            this.Version = version;
+            this.Name = name;
             this.ProblemCount = problemCount;
             this.Stage = stage;
-            this.Name = name;
         }
         
         /// <summary>
@@ -70,32 +70,11 @@ namespace Dynatrace.API.Model
         public List<ReleaseInstance> Instances { get; set; }
 
         /// <summary>
-        /// The number of security vulnerabilities of the entity
-        /// </summary>
-        /// <value>The number of security vulnerabilities of the entity</value>
-        [DataMember(Name="securityVulnerabilitiesCount", EmitDefaultValue=false)]
-        public int? SecurityVulnerabilitiesCount { get; set; }
-
-        /// <summary>
-        /// The entity has one or more problems
-        /// </summary>
-        /// <value>The entity has one or more problems</value>
-        [DataMember(Name="affectedByProblems", EmitDefaultValue=false)]
-        public bool? AffectedByProblems { get; set; }
-
-        /// <summary>
         /// The software technologies of the release
         /// </summary>
         /// <value>The software technologies of the release</value>
         [DataMember(Name="softwareTechs", EmitDefaultValue=false)]
         public List<SoftwareTechs> SoftwareTechs { get; set; }
-
-        /// <summary>
-        /// The entity id of correlating release.
-        /// </summary>
-        /// <value>The entity id of correlating release.</value>
-        [DataMember(Name="releaseEntityId", EmitDefaultValue=false)]
-        public string ReleaseEntityId { get; set; }
 
         /// <summary>
         /// The entity has one or more security vulnerabilities
@@ -119,11 +98,25 @@ namespace Dynatrace.API.Model
         public string Product { get; set; }
 
         /// <summary>
-        /// The identified release version
+        /// The entity id of correlating release.
         /// </summary>
-        /// <value>The identified release version</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public string Version { get; set; }
+        /// <value>The entity id of correlating release.</value>
+        [DataMember(Name="releaseEntityId", EmitDefaultValue=false)]
+        public string ReleaseEntityId { get; set; }
+
+        /// <summary>
+        /// The number of security vulnerabilities of the entity
+        /// </summary>
+        /// <value>The number of security vulnerabilities of the entity</value>
+        [DataMember(Name="securityVulnerabilitiesCount", EmitDefaultValue=false)]
+        public int? SecurityVulnerabilitiesCount { get; set; }
+
+        /// <summary>
+        /// The entity has one or more problems
+        /// </summary>
+        /// <value>The entity has one or more problems</value>
+        [DataMember(Name="affectedByProblems", EmitDefaultValue=false)]
+        public bool? AffectedByProblems { get; set; }
 
         /// <summary>
         /// The related PGI is still running/monitored
@@ -131,6 +124,20 @@ namespace Dynatrace.API.Model
         /// <value>The related PGI is still running/monitored</value>
         [DataMember(Name="running", EmitDefaultValue=false)]
         public bool? Running { get; set; }
+
+        /// <summary>
+        /// The identified release version
+        /// </summary>
+        /// <value>The identified release version</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// The entity name
+        /// </summary>
+        /// <value>The entity name</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// The number of problems of the entity
@@ -147,33 +154,26 @@ namespace Dynatrace.API.Model
         public string Stage { get; set; }
 
         /// <summary>
-        /// The entity name
-        /// </summary>
-        /// <value>The entity name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ReleaseItem {\n");
+            sb.Append("class Release {\n");
             sb.Append("  Instances: ").Append(Instances).Append("\n");
-            sb.Append("  SecurityVulnerabilitiesCount: ").Append(SecurityVulnerabilitiesCount).Append("\n");
-            sb.Append("  AffectedByProblems: ").Append(AffectedByProblems).Append("\n");
             sb.Append("  SoftwareTechs: ").Append(SoftwareTechs).Append("\n");
-            sb.Append("  ReleaseEntityId: ").Append(ReleaseEntityId).Append("\n");
             sb.Append("  AffectedBySecurityVulnerabilities: ").Append(AffectedBySecurityVulnerabilities).Append("\n");
             sb.Append("  Throughput: ").Append(Throughput).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  ReleaseEntityId: ").Append(ReleaseEntityId).Append("\n");
+            sb.Append("  SecurityVulnerabilitiesCount: ").Append(SecurityVulnerabilitiesCount).Append("\n");
+            sb.Append("  AffectedByProblems: ").Append(AffectedByProblems).Append("\n");
             sb.Append("  Running: ").Append(Running).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProblemCount: ").Append(ProblemCount).Append("\n");
             sb.Append("  Stage: ").Append(Stage).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,15 +194,15 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ReleaseItem);
+            return this.Equals(input as Release);
         }
 
         /// <summary>
-        /// Returns true if ReleaseItem instances are equal
+        /// Returns true if Release instances are equal
         /// </summary>
-        /// <param name="input">Instance of ReleaseItem to be compared</param>
+        /// <param name="input">Instance of Release to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ReleaseItem input)
+        public bool Equals(Release input)
         {
             if (input == null)
                 return false;
@@ -215,25 +215,10 @@ namespace Dynatrace.API.Model
                     this.Instances.SequenceEqual(input.Instances)
                 ) && 
                 (
-                    this.SecurityVulnerabilitiesCount == input.SecurityVulnerabilitiesCount ||
-                    (this.SecurityVulnerabilitiesCount != null &&
-                    this.SecurityVulnerabilitiesCount.Equals(input.SecurityVulnerabilitiesCount))
-                ) && 
-                (
-                    this.AffectedByProblems == input.AffectedByProblems ||
-                    (this.AffectedByProblems != null &&
-                    this.AffectedByProblems.Equals(input.AffectedByProblems))
-                ) && 
-                (
                     this.SoftwareTechs == input.SoftwareTechs ||
                     this.SoftwareTechs != null &&
                     input.SoftwareTechs != null &&
                     this.SoftwareTechs.SequenceEqual(input.SoftwareTechs)
-                ) && 
-                (
-                    this.ReleaseEntityId == input.ReleaseEntityId ||
-                    (this.ReleaseEntityId != null &&
-                    this.ReleaseEntityId.Equals(input.ReleaseEntityId))
                 ) && 
                 (
                     this.AffectedBySecurityVulnerabilities == input.AffectedBySecurityVulnerabilities ||
@@ -251,14 +236,34 @@ namespace Dynatrace.API.Model
                     this.Product.Equals(input.Product))
                 ) && 
                 (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
+                    this.ReleaseEntityId == input.ReleaseEntityId ||
+                    (this.ReleaseEntityId != null &&
+                    this.ReleaseEntityId.Equals(input.ReleaseEntityId))
+                ) && 
+                (
+                    this.SecurityVulnerabilitiesCount == input.SecurityVulnerabilitiesCount ||
+                    (this.SecurityVulnerabilitiesCount != null &&
+                    this.SecurityVulnerabilitiesCount.Equals(input.SecurityVulnerabilitiesCount))
+                ) && 
+                (
+                    this.AffectedByProblems == input.AffectedByProblems ||
+                    (this.AffectedByProblems != null &&
+                    this.AffectedByProblems.Equals(input.AffectedByProblems))
                 ) && 
                 (
                     this.Running == input.Running ||
                     (this.Running != null &&
                     this.Running.Equals(input.Running))
+                ) && 
+                (
+                    this.Version == input.Version ||
+                    (this.Version != null &&
+                    this.Version.Equals(input.Version))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.ProblemCount == input.ProblemCount ||
@@ -269,11 +274,6 @@ namespace Dynatrace.API.Model
                     this.Stage == input.Stage ||
                     (this.Stage != null &&
                     this.Stage.Equals(input.Stage))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -288,30 +288,30 @@ namespace Dynatrace.API.Model
                 int hashCode = 41;
                 if (this.Instances != null)
                     hashCode = hashCode * 59 + this.Instances.GetHashCode();
-                if (this.SecurityVulnerabilitiesCount != null)
-                    hashCode = hashCode * 59 + this.SecurityVulnerabilitiesCount.GetHashCode();
-                if (this.AffectedByProblems != null)
-                    hashCode = hashCode * 59 + this.AffectedByProblems.GetHashCode();
                 if (this.SoftwareTechs != null)
                     hashCode = hashCode * 59 + this.SoftwareTechs.GetHashCode();
-                if (this.ReleaseEntityId != null)
-                    hashCode = hashCode * 59 + this.ReleaseEntityId.GetHashCode();
                 if (this.AffectedBySecurityVulnerabilities != null)
                     hashCode = hashCode * 59 + this.AffectedBySecurityVulnerabilities.GetHashCode();
                 if (this.Throughput != null)
                     hashCode = hashCode * 59 + this.Throughput.GetHashCode();
                 if (this.Product != null)
                     hashCode = hashCode * 59 + this.Product.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
+                if (this.ReleaseEntityId != null)
+                    hashCode = hashCode * 59 + this.ReleaseEntityId.GetHashCode();
+                if (this.SecurityVulnerabilitiesCount != null)
+                    hashCode = hashCode * 59 + this.SecurityVulnerabilitiesCount.GetHashCode();
+                if (this.AffectedByProblems != null)
+                    hashCode = hashCode * 59 + this.AffectedByProblems.GetHashCode();
                 if (this.Running != null)
                     hashCode = hashCode * 59 + this.Running.GetHashCode();
+                if (this.Version != null)
+                    hashCode = hashCode * 59 + this.Version.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProblemCount != null)
                     hashCode = hashCode * 59 + this.ProblemCount.GetHashCode();
                 if (this.Stage != null)
                     hashCode = hashCode * 59 + this.Stage.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -27,27 +27,34 @@ namespace Dynatrace.API.Model
     /// A list of retrieved log records.
     /// </summary>
     [DataContract]
-        public partial class LogQueryResult :  IEquatable<LogQueryResult>, IValidatableObject
+        public partial class LogRecordsList :  IEquatable<LogRecordsList>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LogQueryResult" /> class.
+        /// Initializes a new instance of the <see cref="LogRecordsList" /> class.
         /// </summary>
-        /// <param name="sliceSize">Total number of documents in a slice..</param>
+        /// <param name="sliceSize">The total number of records in a slice..</param>
+        /// <param name="nextSliceKey">The cursor for the next slice of log records..</param>
         /// <param name="results">A list of retrieved log records..</param>
-        /// <param name="nextSliceKey">Next slice for obtaining the remaining log records..</param>
-        public LogQueryResult(long? sliceSize = default(long?), List<LogRecord> results = default(List<LogRecord>), string nextSliceKey = default(string))
+        public LogRecordsList(long? sliceSize = default(long?), string nextSliceKey = default(string), List<LogRecord> results = default(List<LogRecord>))
         {
             this.SliceSize = sliceSize;
-            this.Results = results;
             this.NextSliceKey = nextSliceKey;
+            this.Results = results;
         }
         
         /// <summary>
-        /// Total number of documents in a slice.
+        /// The total number of records in a slice.
         /// </summary>
-        /// <value>Total number of documents in a slice.</value>
+        /// <value>The total number of records in a slice.</value>
         [DataMember(Name="sliceSize", EmitDefaultValue=false)]
         public long? SliceSize { get; set; }
+
+        /// <summary>
+        /// The cursor for the next slice of log records.
+        /// </summary>
+        /// <value>The cursor for the next slice of log records.</value>
+        [DataMember(Name="nextSliceKey", EmitDefaultValue=false)]
+        public string NextSliceKey { get; set; }
 
         /// <summary>
         /// A list of retrieved log records.
@@ -57,23 +64,16 @@ namespace Dynatrace.API.Model
         public List<LogRecord> Results { get; set; }
 
         /// <summary>
-        /// Next slice for obtaining the remaining log records.
-        /// </summary>
-        /// <value>Next slice for obtaining the remaining log records.</value>
-        [DataMember(Name="nextSliceKey", EmitDefaultValue=false)]
-        public string NextSliceKey { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class LogQueryResult {\n");
+            sb.Append("class LogRecordsList {\n");
             sb.Append("  SliceSize: ").Append(SliceSize).Append("\n");
-            sb.Append("  Results: ").Append(Results).Append("\n");
             sb.Append("  NextSliceKey: ").Append(NextSliceKey).Append("\n");
+            sb.Append("  Results: ").Append(Results).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,15 +94,15 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as LogQueryResult);
+            return this.Equals(input as LogRecordsList);
         }
 
         /// <summary>
-        /// Returns true if LogQueryResult instances are equal
+        /// Returns true if LogRecordsList instances are equal
         /// </summary>
-        /// <param name="input">Instance of LogQueryResult to be compared</param>
+        /// <param name="input">Instance of LogRecordsList to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(LogQueryResult input)
+        public bool Equals(LogRecordsList input)
         {
             if (input == null)
                 return false;
@@ -114,15 +114,15 @@ namespace Dynatrace.API.Model
                     this.SliceSize.Equals(input.SliceSize))
                 ) && 
                 (
+                    this.NextSliceKey == input.NextSliceKey ||
+                    (this.NextSliceKey != null &&
+                    this.NextSliceKey.Equals(input.NextSliceKey))
+                ) && 
+                (
                     this.Results == input.Results ||
                     this.Results != null &&
                     input.Results != null &&
                     this.Results.SequenceEqual(input.Results)
-                ) && 
-                (
-                    this.NextSliceKey == input.NextSliceKey ||
-                    (this.NextSliceKey != null &&
-                    this.NextSliceKey.Equals(input.NextSliceKey))
                 );
         }
 
@@ -137,10 +137,10 @@ namespace Dynatrace.API.Model
                 int hashCode = 41;
                 if (this.SliceSize != null)
                     hashCode = hashCode * 59 + this.SliceSize.GetHashCode();
-                if (this.Results != null)
-                    hashCode = hashCode * 59 + this.Results.GetHashCode();
                 if (this.NextSliceKey != null)
                     hashCode = hashCode * 59 + this.NextSliceKey.GetHashCode();
+                if (this.Results != null)
+                    hashCode = hashCode * 59 + this.Results.GetHashCode();
                 return hashCode;
             }
         }

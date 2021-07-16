@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -90,21 +90,21 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricDefaultAggregation" /> class.
         /// </summary>
-        /// <param name="_parameter">The percentile to be delivered. Valid values are between &#x60;0&#x60; and &#x60;100&#x60;.   Applicable only to the &#x60;percentile&#x60; aggregation type..</param>
         /// <param name="type">The type of default aggregation..</param>
-        public MetricDefaultAggregation(double? _parameter = default(double?), TypeEnum? type = default(TypeEnum?))
+        /// <param name="_parameter">The percentile to be delivered. Valid values are between &#x60;0&#x60; and &#x60;100&#x60;. Applicable only to the &#x60;percentile&#x60; aggregation type..</param>
+        public MetricDefaultAggregation(TypeEnum? type = default(TypeEnum?), double? _parameter = default(double?))
         {
-            this._Parameter = _parameter;
             this.Type = type;
+            this._Parameter = _parameter;
         }
         
+
         /// <summary>
-        /// The percentile to be delivered. Valid values are between &#x60;0&#x60; and &#x60;100&#x60;.   Applicable only to the &#x60;percentile&#x60; aggregation type.
+        /// The percentile to be delivered. Valid values are between &#x60;0&#x60; and &#x60;100&#x60;. Applicable only to the &#x60;percentile&#x60; aggregation type.
         /// </summary>
-        /// <value>The percentile to be delivered. Valid values are between &#x60;0&#x60; and &#x60;100&#x60;.   Applicable only to the &#x60;percentile&#x60; aggregation type.</value>
+        /// <value>The percentile to be delivered. Valid values are between &#x60;0&#x60; and &#x60;100&#x60;. Applicable only to the &#x60;percentile&#x60; aggregation type.</value>
         [DataMember(Name="parameter", EmitDefaultValue=false)]
         public double? _Parameter { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,8 +114,8 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class MetricDefaultAggregation {\n");
-            sb.Append("  _Parameter: ").Append(_Parameter).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  _Parameter: ").Append(_Parameter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,14 +151,14 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this._Parameter == input._Parameter ||
-                    (this._Parameter != null &&
-                    this._Parameter.Equals(input._Parameter))
-                ) && 
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this._Parameter == input._Parameter ||
+                    (this._Parameter != null &&
+                    this._Parameter.Equals(input._Parameter))
                 );
         }
 
@@ -171,10 +171,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Parameter != null)
-                    hashCode = hashCode * 59 + this._Parameter.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this._Parameter != null)
+                    hashCode = hashCode * 59 + this._Parameter.GetHashCode();
                 return hashCode;
             }
         }

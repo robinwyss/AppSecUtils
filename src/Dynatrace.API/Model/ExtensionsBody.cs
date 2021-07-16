@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,24 +24,33 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// SecurityProblemDetailsAffectedContainerImages
+    /// ExtensionsBody
     /// </summary>
     [DataContract]
-        public partial class SecurityProblemDetailsAffectedContainerImages :  IEquatable<SecurityProblemDetailsAffectedContainerImages>, IValidatableObject
+        public partial class ExtensionsBody :  IEquatable<ExtensionsBody>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SecurityProblemDetailsAffectedContainerImages" /> class.
+        /// Initializes a new instance of the <see cref="ExtensionsBody" /> class.
         /// </summary>
-        public SecurityProblemDetailsAffectedContainerImages()
+        /// <param name="file">file (required).</param>
+        public ExtensionsBody(byte[] file = default(byte[]))
         {
+            // to ensure "file" is required (not null)
+            if (file == null)
+            {
+                throw new InvalidDataException("file is a required property for ExtensionsBody and cannot be null");
+            }
+            else
+            {
+                this.File = file;
+            }
         }
         
         /// <summary>
-        /// A list of affected container images.
+        /// Gets or Sets File
         /// </summary>
-        /// <value>A list of affected container images.</value>
-        [DataMember(Name="containerImages", EmitDefaultValue=false)]
-        public List<AffectedContainerImage> ContainerImages { get; private set; }
+        [DataMember(Name="file", EmitDefaultValue=false)]
+        public byte[] File { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +59,8 @@ namespace Dynatrace.API.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SecurityProblemDetailsAffectedContainerImages {\n");
-            sb.Append("  ContainerImages: ").Append(ContainerImages).Append("\n");
+            sb.Append("class ExtensionsBody {\n");
+            sb.Append("  File: ").Append(File).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -72,25 +81,24 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SecurityProblemDetailsAffectedContainerImages);
+            return this.Equals(input as ExtensionsBody);
         }
 
         /// <summary>
-        /// Returns true if SecurityProblemDetailsAffectedContainerImages instances are equal
+        /// Returns true if ExtensionsBody instances are equal
         /// </summary>
-        /// <param name="input">Instance of SecurityProblemDetailsAffectedContainerImages to be compared</param>
+        /// <param name="input">Instance of ExtensionsBody to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SecurityProblemDetailsAffectedContainerImages input)
+        public bool Equals(ExtensionsBody input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.ContainerImages == input.ContainerImages ||
-                    this.ContainerImages != null &&
-                    input.ContainerImages != null &&
-                    this.ContainerImages.SequenceEqual(input.ContainerImages)
+                    this.File == input.File ||
+                    (this.File != null &&
+                    this.File.Equals(input.File))
                 );
         }
 
@@ -103,8 +111,8 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ContainerImages != null)
-                    hashCode = hashCode * 59 + this.ContainerImages.GetHashCode();
+                if (this.File != null)
+                    hashCode = hashCode * 59 + this.File.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -27,11 +27,11 @@ namespace Dynatrace.API.Api
         /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>EntityShortRepresentation</returns>
         EntityShortRepresentation CreateOrUpdateNetworkZone (NetworkZone body, string id);
 
@@ -39,18 +39,18 @@ namespace Dynatrace.API.Api
         /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>ApiResponse of EntityShortRepresentation</returns>
         ApiResponse<EntityShortRepresentation> CreateOrUpdateNetworkZoneWithHttpInfo (NetworkZone body, string id);
         /// <summary>
         /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -61,7 +61,7 @@ namespace Dynatrace.API.Api
         /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -153,11 +153,11 @@ namespace Dynatrace.API.Api
         /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>Task of EntityShortRepresentation</returns>
         System.Threading.Tasks.Task<EntityShortRepresentation> CreateOrUpdateNetworkZoneAsync (NetworkZone body, string id);
 
@@ -165,18 +165,18 @@ namespace Dynatrace.API.Api
         /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>Task of ApiResponse (EntityShortRepresentation)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntityShortRepresentation>> CreateOrUpdateNetworkZoneAsyncWithHttpInfo (NetworkZone body, string id);
         /// <summary>
         /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -187,7 +187,7 @@ namespace Dynatrace.API.Api
         /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER
         /// </summary>
         /// <remarks>
-        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -385,11 +385,11 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>EntityShortRepresentation</returns>
         public EntityShortRepresentation CreateOrUpdateNetworkZone (NetworkZone body, string id)
         {
@@ -398,11 +398,11 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>ApiResponse of EntityShortRepresentation</returns>
         public ApiResponse< EntityShortRepresentation > CreateOrUpdateNetworkZoneWithHttpInfo (NetworkZone body, string id)
         {
@@ -469,11 +469,11 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>Task of EntityShortRepresentation</returns>
         public async System.Threading.Tasks.Task<EntityShortRepresentation> CreateOrUpdateNetworkZoneAsync (NetworkZone body, string id)
         {
@@ -483,11 +483,11 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.
+        /// Updates an existing network zone or creates a new one | maturity&#x3D;EARLY_ADOPTER If the network zone with the specified ID does not exist, a new network zone is created.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The JSON body of the request. Contains parameters of the network zone.</param>
-        /// <param name="id">The ID of the network zone to be updated.    If you set the ID in the body as well, it must match this ID.    The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
+        /// <param name="id">The ID of the network zone to be updated.  If you set the ID in the body as well, it must match this ID.  The ID is not case sensitive. Dynatrace stores the ID in lowercase.</param>
         /// <returns>Task of ApiResponse (EntityShortRepresentation)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<EntityShortRepresentation>> CreateOrUpdateNetworkZoneAsyncWithHttpInfo (NetworkZone body, string id)
         {
@@ -554,7 +554,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -565,7 +565,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -623,7 +623,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>
@@ -635,7 +635,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).    If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
+        /// Deletes the specified network zone | maturity&#x3D;EARLY_ADOPTER You can only delete an empty network zone (a zone that no ActiveGate or OneAgent is using).  If the network zone is used as an alternative zone for any OneAgent, it will be automatically removed from the list of possible alternatives.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The ID of the network zone to be deleted.</param>

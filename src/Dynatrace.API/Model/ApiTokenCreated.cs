@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,29 +32,29 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiTokenCreated" /> class.
         /// </summary>
-        /// <param name="expirationDate">The token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;)..</param>
         /// <param name="token">The secret of the token..</param>
+        /// <param name="expirationDate">The token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;)..</param>
         /// <param name="id">The ID of the token, consisting of prefix and public part of the token..</param>
-        public ApiTokenCreated(string expirationDate = default(string), string token = default(string), string id = default(string))
+        public ApiTokenCreated(string token = default(string), string expirationDate = default(string), string id = default(string))
         {
-            this.ExpirationDate = expirationDate;
             this.Token = token;
+            this.ExpirationDate = expirationDate;
             this.Id = id;
         }
         
-        /// <summary>
-        /// The token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;).
-        /// </summary>
-        /// <value>The token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;).</value>
-        [DataMember(Name="expirationDate", EmitDefaultValue=false)]
-        public string ExpirationDate { get; set; }
-
         /// <summary>
         /// The secret of the token.
         /// </summary>
         /// <value>The secret of the token.</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// The token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;).
+        /// </summary>
+        /// <value>The token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;).</value>
+        [DataMember(Name="expirationDate", EmitDefaultValue=false)]
+        public string ExpirationDate { get; set; }
 
         /// <summary>
         /// The ID of the token, consisting of prefix and public part of the token.
@@ -71,8 +71,8 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ApiTokenCreated {\n");
-            sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -109,14 +109,14 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.ExpirationDate == input.ExpirationDate ||
-                    (this.ExpirationDate != null &&
-                    this.ExpirationDate.Equals(input.ExpirationDate))
-                ) && 
-                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.ExpirationDate == input.ExpirationDate ||
+                    (this.ExpirationDate != null &&
+                    this.ExpirationDate.Equals(input.ExpirationDate))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -134,10 +134,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ExpirationDate != null)
-                    hashCode = hashCode * 59 + this.ExpirationDate.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.ExpirationDate != null)
+                    hashCode = hashCode * 59 + this.ExpirationDate.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 return hashCode;

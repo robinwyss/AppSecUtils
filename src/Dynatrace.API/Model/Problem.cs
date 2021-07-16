@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -131,25 +131,25 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Problem" /> class.
         /// </summary>
-        /// <param name="affectedEntities">A list of all entities that are affected by the problem..</param>
-        /// <param name="rootCauseEntity">rootCauseEntity.</param>
-        /// <param name="problemFilters">A list of alerting profiles that match the problem..</param>
-        /// <param name="evidenceDetails">evidenceDetails.</param>
-        /// <param name="recentComments">recentComments.</param>
-        /// <param name="impactAnalysis">impactAnalysis.</param>
-        /// <param name="linkedProblemInfo">linkedProblemInfo.</param>
-        /// <param name="managementZones">A list of all management zones that the problem belongs to..</param>
         /// <param name="impactLevel">The impact level of the problem. It shows what is affected by the problem. (required).</param>
         /// <param name="impactedEntities">A list of all entities that are impacted by the problem..</param>
         /// <param name="displayId">The display ID of the problem. (required).</param>
-        /// <param name="severityLevel">The severity of the problem. (required).</param>
-        /// <param name="entityTags">A list of all entity tags of the problem..</param>
+        /// <param name="impactAnalysis">impactAnalysis.</param>
+        /// <param name="evidenceDetails">evidenceDetails.</param>
+        /// <param name="linkedProblemInfo">linkedProblemInfo.</param>
+        /// <param name="affectedEntities">A list of all entities that are affected by the problem..</param>
+        /// <param name="rootCauseEntity">rootCauseEntity.</param>
+        /// <param name="problemFilters">A list of alerting profiles that match the problem..</param>
+        /// <param name="recentComments">recentComments.</param>
+        /// <param name="managementZones">A list of all management zones that the problem belongs to..</param>
         /// <param name="problemId">The ID of the problem. (required).</param>
-        /// <param name="title">The name of the problem, displayed in the UI. (required).</param>
+        /// <param name="entityTags">A list of all entity tags of the problem..</param>
+        /// <param name="severityLevel">The severity of the problem. (required).</param>
         /// <param name="status">The status of the problem. (required).</param>
         /// <param name="startTime">The start timestamp of the problem, in UTC milliseconds. (required).</param>
-        /// <param name="endTime">The end timestamp of the problem, in UTC milliseconds.    Has &#x60;-1&#x60; value, if the problem is still open. (required).</param>
-        public Problem(List<EntityStub> affectedEntities = default(List<EntityStub>), EntityStub rootCauseEntity = default(EntityStub), List<AlertingProfileStub> problemFilters = default(List<AlertingProfileStub>), EvidenceDetails evidenceDetails = default(EvidenceDetails), CommentsList recentComments = default(CommentsList), ImpactAnalysis impactAnalysis = default(ImpactAnalysis), LinkedProblem linkedProblemInfo = default(LinkedProblem), List<ManagementZone> managementZones = default(List<ManagementZone>), ImpactLevelEnum impactLevel = default(ImpactLevelEnum), List<EntityStub> impactedEntities = default(List<EntityStub>), string displayId = default(string), SeverityLevelEnum severityLevel = default(SeverityLevelEnum), List<METag> entityTags = default(List<METag>), string problemId = default(string), string title = default(string), StatusEnum status = default(StatusEnum), long? startTime = default(long?), long? endTime = default(long?))
+        /// <param name="endTime">The end timestamp of the problem, in UTC milliseconds.  Has &#x60;-1&#x60; value, if the problem is still open. (required).</param>
+        /// <param name="title">The name of the problem, displayed in the UI. (required).</param>
+        public Problem(ImpactLevelEnum impactLevel = default(ImpactLevelEnum), List<EntityStub> impactedEntities = default(List<EntityStub>), string displayId = default(string), ImpactAnalysis impactAnalysis = default(ImpactAnalysis), EvidenceDetails evidenceDetails = default(EvidenceDetails), LinkedProblem linkedProblemInfo = default(LinkedProblem), List<EntityStub> affectedEntities = default(List<EntityStub>), EntityStub rootCauseEntity = default(EntityStub), List<AlertingProfileStub> problemFilters = default(List<AlertingProfileStub>), CommentsList recentComments = default(CommentsList), List<ManagementZone> managementZones = default(List<ManagementZone>), string problemId = default(string), List<METag> entityTags = default(List<METag>), SeverityLevelEnum severityLevel = default(SeverityLevelEnum), StatusEnum status = default(StatusEnum), long? startTime = default(long?), long? endTime = default(long?), string title = default(string))
         {
             // to ensure "impactLevel" is required (not null)
             if (impactLevel == null)
@@ -169,15 +169,6 @@ namespace Dynatrace.API.Model
             {
                 this.DisplayId = displayId;
             }
-            // to ensure "severityLevel" is required (not null)
-            if (severityLevel == null)
-            {
-                throw new InvalidDataException("severityLevel is a required property for Problem and cannot be null");
-            }
-            else
-            {
-                this.SeverityLevel = severityLevel;
-            }
             // to ensure "problemId" is required (not null)
             if (problemId == null)
             {
@@ -187,14 +178,14 @@ namespace Dynatrace.API.Model
             {
                 this.ProblemId = problemId;
             }
-            // to ensure "title" is required (not null)
-            if (title == null)
+            // to ensure "severityLevel" is required (not null)
+            if (severityLevel == null)
             {
-                throw new InvalidDataException("title is a required property for Problem and cannot be null");
+                throw new InvalidDataException("severityLevel is a required property for Problem and cannot be null");
             }
             else
             {
-                this.Title = title;
+                this.SeverityLevel = severityLevel;
             }
             // to ensure "status" is required (not null)
             if (status == null)
@@ -223,18 +214,60 @@ namespace Dynatrace.API.Model
             {
                 this.EndTime = endTime;
             }
+            // to ensure "title" is required (not null)
+            if (title == null)
+            {
+                throw new InvalidDataException("title is a required property for Problem and cannot be null");
+            }
+            else
+            {
+                this.Title = title;
+            }
+            this.ImpactedEntities = impactedEntities;
+            this.ImpactAnalysis = impactAnalysis;
+            this.EvidenceDetails = evidenceDetails;
+            this.LinkedProblemInfo = linkedProblemInfo;
             this.AffectedEntities = affectedEntities;
             this.RootCauseEntity = rootCauseEntity;
             this.ProblemFilters = problemFilters;
-            this.EvidenceDetails = evidenceDetails;
             this.RecentComments = recentComments;
-            this.ImpactAnalysis = impactAnalysis;
-            this.LinkedProblemInfo = linkedProblemInfo;
             this.ManagementZones = managementZones;
-            this.ImpactedEntities = impactedEntities;
             this.EntityTags = entityTags;
         }
         
+
+        /// <summary>
+        /// A list of all entities that are impacted by the problem.
+        /// </summary>
+        /// <value>A list of all entities that are impacted by the problem.</value>
+        [DataMember(Name="impactedEntities", EmitDefaultValue=false)]
+        public List<EntityStub> ImpactedEntities { get; set; }
+
+        /// <summary>
+        /// The display ID of the problem.
+        /// </summary>
+        /// <value>The display ID of the problem.</value>
+        [DataMember(Name="displayId", EmitDefaultValue=false)]
+        public string DisplayId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImpactAnalysis
+        /// </summary>
+        [DataMember(Name="impactAnalysis", EmitDefaultValue=false)]
+        public ImpactAnalysis ImpactAnalysis { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EvidenceDetails
+        /// </summary>
+        [DataMember(Name="evidenceDetails", EmitDefaultValue=false)]
+        public EvidenceDetails EvidenceDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LinkedProblemInfo
+        /// </summary>
+        [DataMember(Name="linkedProblemInfo", EmitDefaultValue=false)]
+        public LinkedProblem LinkedProblemInfo { get; set; }
+
         /// <summary>
         /// A list of all entities that are affected by the problem.
         /// </summary>
@@ -256,28 +289,10 @@ namespace Dynatrace.API.Model
         public List<AlertingProfileStub> ProblemFilters { get; set; }
 
         /// <summary>
-        /// Gets or Sets EvidenceDetails
-        /// </summary>
-        [DataMember(Name="evidenceDetails", EmitDefaultValue=false)]
-        public EvidenceDetails EvidenceDetails { get; set; }
-
-        /// <summary>
         /// Gets or Sets RecentComments
         /// </summary>
         [DataMember(Name="recentComments", EmitDefaultValue=false)]
         public CommentsList RecentComments { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ImpactAnalysis
-        /// </summary>
-        [DataMember(Name="impactAnalysis", EmitDefaultValue=false)]
-        public ImpactAnalysis ImpactAnalysis { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LinkedProblemInfo
-        /// </summary>
-        [DataMember(Name="linkedProblemInfo", EmitDefaultValue=false)]
-        public LinkedProblem LinkedProblemInfo { get; set; }
 
         /// <summary>
         /// A list of all management zones that the problem belongs to.
@@ -285,29 +300,6 @@ namespace Dynatrace.API.Model
         /// <value>A list of all management zones that the problem belongs to.</value>
         [DataMember(Name="managementZones", EmitDefaultValue=false)]
         public List<ManagementZone> ManagementZones { get; set; }
-
-
-        /// <summary>
-        /// A list of all entities that are impacted by the problem.
-        /// </summary>
-        /// <value>A list of all entities that are impacted by the problem.</value>
-        [DataMember(Name="impactedEntities", EmitDefaultValue=false)]
-        public List<EntityStub> ImpactedEntities { get; set; }
-
-        /// <summary>
-        /// The display ID of the problem.
-        /// </summary>
-        /// <value>The display ID of the problem.</value>
-        [DataMember(Name="displayId", EmitDefaultValue=false)]
-        public string DisplayId { get; set; }
-
-
-        /// <summary>
-        /// A list of all entity tags of the problem.
-        /// </summary>
-        /// <value>A list of all entity tags of the problem.</value>
-        [DataMember(Name="entityTags", EmitDefaultValue=false)]
-        public List<METag> EntityTags { get; set; }
 
         /// <summary>
         /// The ID of the problem.
@@ -317,11 +309,12 @@ namespace Dynatrace.API.Model
         public string ProblemId { get; set; }
 
         /// <summary>
-        /// The name of the problem, displayed in the UI.
+        /// A list of all entity tags of the problem.
         /// </summary>
-        /// <value>The name of the problem, displayed in the UI.</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
-        public string Title { get; set; }
+        /// <value>A list of all entity tags of the problem.</value>
+        [DataMember(Name="entityTags", EmitDefaultValue=false)]
+        public List<METag> EntityTags { get; set; }
+
 
 
         /// <summary>
@@ -332,11 +325,18 @@ namespace Dynatrace.API.Model
         public long? StartTime { get; set; }
 
         /// <summary>
-        /// The end timestamp of the problem, in UTC milliseconds.    Has &#x60;-1&#x60; value, if the problem is still open.
+        /// The end timestamp of the problem, in UTC milliseconds.  Has &#x60;-1&#x60; value, if the problem is still open.
         /// </summary>
-        /// <value>The end timestamp of the problem, in UTC milliseconds.    Has &#x60;-1&#x60; value, if the problem is still open.</value>
+        /// <value>The end timestamp of the problem, in UTC milliseconds.  Has &#x60;-1&#x60; value, if the problem is still open.</value>
         [DataMember(Name="endTime", EmitDefaultValue=false)]
         public long? EndTime { get; set; }
+
+        /// <summary>
+        /// The name of the problem, displayed in the UI.
+        /// </summary>
+        /// <value>The name of the problem, displayed in the UI.</value>
+        [DataMember(Name="title", EmitDefaultValue=false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -346,24 +346,24 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Problem {\n");
-            sb.Append("  AffectedEntities: ").Append(AffectedEntities).Append("\n");
-            sb.Append("  RootCauseEntity: ").Append(RootCauseEntity).Append("\n");
-            sb.Append("  ProblemFilters: ").Append(ProblemFilters).Append("\n");
-            sb.Append("  EvidenceDetails: ").Append(EvidenceDetails).Append("\n");
-            sb.Append("  RecentComments: ").Append(RecentComments).Append("\n");
-            sb.Append("  ImpactAnalysis: ").Append(ImpactAnalysis).Append("\n");
-            sb.Append("  LinkedProblemInfo: ").Append(LinkedProblemInfo).Append("\n");
-            sb.Append("  ManagementZones: ").Append(ManagementZones).Append("\n");
             sb.Append("  ImpactLevel: ").Append(ImpactLevel).Append("\n");
             sb.Append("  ImpactedEntities: ").Append(ImpactedEntities).Append("\n");
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
-            sb.Append("  SeverityLevel: ").Append(SeverityLevel).Append("\n");
-            sb.Append("  EntityTags: ").Append(EntityTags).Append("\n");
+            sb.Append("  ImpactAnalysis: ").Append(ImpactAnalysis).Append("\n");
+            sb.Append("  EvidenceDetails: ").Append(EvidenceDetails).Append("\n");
+            sb.Append("  LinkedProblemInfo: ").Append(LinkedProblemInfo).Append("\n");
+            sb.Append("  AffectedEntities: ").Append(AffectedEntities).Append("\n");
+            sb.Append("  RootCauseEntity: ").Append(RootCauseEntity).Append("\n");
+            sb.Append("  ProblemFilters: ").Append(ProblemFilters).Append("\n");
+            sb.Append("  RecentComments: ").Append(RecentComments).Append("\n");
+            sb.Append("  ManagementZones: ").Append(ManagementZones).Append("\n");
             sb.Append("  ProblemId: ").Append(ProblemId).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  EntityTags: ").Append(EntityTags).Append("\n");
+            sb.Append("  SeverityLevel: ").Append(SeverityLevel).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -399,6 +399,37 @@ namespace Dynatrace.API.Model
 
             return 
                 (
+                    this.ImpactLevel == input.ImpactLevel ||
+                    (this.ImpactLevel != null &&
+                    this.ImpactLevel.Equals(input.ImpactLevel))
+                ) && 
+                (
+                    this.ImpactedEntities == input.ImpactedEntities ||
+                    this.ImpactedEntities != null &&
+                    input.ImpactedEntities != null &&
+                    this.ImpactedEntities.SequenceEqual(input.ImpactedEntities)
+                ) && 
+                (
+                    this.DisplayId == input.DisplayId ||
+                    (this.DisplayId != null &&
+                    this.DisplayId.Equals(input.DisplayId))
+                ) && 
+                (
+                    this.ImpactAnalysis == input.ImpactAnalysis ||
+                    (this.ImpactAnalysis != null &&
+                    this.ImpactAnalysis.Equals(input.ImpactAnalysis))
+                ) && 
+                (
+                    this.EvidenceDetails == input.EvidenceDetails ||
+                    (this.EvidenceDetails != null &&
+                    this.EvidenceDetails.Equals(input.EvidenceDetails))
+                ) && 
+                (
+                    this.LinkedProblemInfo == input.LinkedProblemInfo ||
+                    (this.LinkedProblemInfo != null &&
+                    this.LinkedProblemInfo.Equals(input.LinkedProblemInfo))
+                ) && 
+                (
                     this.AffectedEntities == input.AffectedEntities ||
                     this.AffectedEntities != null &&
                     input.AffectedEntities != null &&
@@ -416,24 +447,9 @@ namespace Dynatrace.API.Model
                     this.ProblemFilters.SequenceEqual(input.ProblemFilters)
                 ) && 
                 (
-                    this.EvidenceDetails == input.EvidenceDetails ||
-                    (this.EvidenceDetails != null &&
-                    this.EvidenceDetails.Equals(input.EvidenceDetails))
-                ) && 
-                (
                     this.RecentComments == input.RecentComments ||
                     (this.RecentComments != null &&
                     this.RecentComments.Equals(input.RecentComments))
-                ) && 
-                (
-                    this.ImpactAnalysis == input.ImpactAnalysis ||
-                    (this.ImpactAnalysis != null &&
-                    this.ImpactAnalysis.Equals(input.ImpactAnalysis))
-                ) && 
-                (
-                    this.LinkedProblemInfo == input.LinkedProblemInfo ||
-                    (this.LinkedProblemInfo != null &&
-                    this.LinkedProblemInfo.Equals(input.LinkedProblemInfo))
                 ) && 
                 (
                     this.ManagementZones == input.ManagementZones ||
@@ -442,25 +458,9 @@ namespace Dynatrace.API.Model
                     this.ManagementZones.SequenceEqual(input.ManagementZones)
                 ) && 
                 (
-                    this.ImpactLevel == input.ImpactLevel ||
-                    (this.ImpactLevel != null &&
-                    this.ImpactLevel.Equals(input.ImpactLevel))
-                ) && 
-                (
-                    this.ImpactedEntities == input.ImpactedEntities ||
-                    this.ImpactedEntities != null &&
-                    input.ImpactedEntities != null &&
-                    this.ImpactedEntities.SequenceEqual(input.ImpactedEntities)
-                ) && 
-                (
-                    this.DisplayId == input.DisplayId ||
-                    (this.DisplayId != null &&
-                    this.DisplayId.Equals(input.DisplayId))
-                ) && 
-                (
-                    this.SeverityLevel == input.SeverityLevel ||
-                    (this.SeverityLevel != null &&
-                    this.SeverityLevel.Equals(input.SeverityLevel))
+                    this.ProblemId == input.ProblemId ||
+                    (this.ProblemId != null &&
+                    this.ProblemId.Equals(input.ProblemId))
                 ) && 
                 (
                     this.EntityTags == input.EntityTags ||
@@ -469,14 +469,9 @@ namespace Dynatrace.API.Model
                     this.EntityTags.SequenceEqual(input.EntityTags)
                 ) && 
                 (
-                    this.ProblemId == input.ProblemId ||
-                    (this.ProblemId != null &&
-                    this.ProblemId.Equals(input.ProblemId))
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.SeverityLevel == input.SeverityLevel ||
+                    (this.SeverityLevel != null &&
+                    this.SeverityLevel.Equals(input.SeverityLevel))
                 ) && 
                 (
                     this.Status == input.Status ||
@@ -492,6 +487,11 @@ namespace Dynatrace.API.Model
                     this.EndTime == input.EndTime ||
                     (this.EndTime != null &&
                     this.EndTime.Equals(input.EndTime))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 );
         }
 
@@ -504,42 +504,42 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AffectedEntities != null)
-                    hashCode = hashCode * 59 + this.AffectedEntities.GetHashCode();
-                if (this.RootCauseEntity != null)
-                    hashCode = hashCode * 59 + this.RootCauseEntity.GetHashCode();
-                if (this.ProblemFilters != null)
-                    hashCode = hashCode * 59 + this.ProblemFilters.GetHashCode();
-                if (this.EvidenceDetails != null)
-                    hashCode = hashCode * 59 + this.EvidenceDetails.GetHashCode();
-                if (this.RecentComments != null)
-                    hashCode = hashCode * 59 + this.RecentComments.GetHashCode();
-                if (this.ImpactAnalysis != null)
-                    hashCode = hashCode * 59 + this.ImpactAnalysis.GetHashCode();
-                if (this.LinkedProblemInfo != null)
-                    hashCode = hashCode * 59 + this.LinkedProblemInfo.GetHashCode();
-                if (this.ManagementZones != null)
-                    hashCode = hashCode * 59 + this.ManagementZones.GetHashCode();
                 if (this.ImpactLevel != null)
                     hashCode = hashCode * 59 + this.ImpactLevel.GetHashCode();
                 if (this.ImpactedEntities != null)
                     hashCode = hashCode * 59 + this.ImpactedEntities.GetHashCode();
                 if (this.DisplayId != null)
                     hashCode = hashCode * 59 + this.DisplayId.GetHashCode();
-                if (this.SeverityLevel != null)
-                    hashCode = hashCode * 59 + this.SeverityLevel.GetHashCode();
-                if (this.EntityTags != null)
-                    hashCode = hashCode * 59 + this.EntityTags.GetHashCode();
+                if (this.ImpactAnalysis != null)
+                    hashCode = hashCode * 59 + this.ImpactAnalysis.GetHashCode();
+                if (this.EvidenceDetails != null)
+                    hashCode = hashCode * 59 + this.EvidenceDetails.GetHashCode();
+                if (this.LinkedProblemInfo != null)
+                    hashCode = hashCode * 59 + this.LinkedProblemInfo.GetHashCode();
+                if (this.AffectedEntities != null)
+                    hashCode = hashCode * 59 + this.AffectedEntities.GetHashCode();
+                if (this.RootCauseEntity != null)
+                    hashCode = hashCode * 59 + this.RootCauseEntity.GetHashCode();
+                if (this.ProblemFilters != null)
+                    hashCode = hashCode * 59 + this.ProblemFilters.GetHashCode();
+                if (this.RecentComments != null)
+                    hashCode = hashCode * 59 + this.RecentComments.GetHashCode();
+                if (this.ManagementZones != null)
+                    hashCode = hashCode * 59 + this.ManagementZones.GetHashCode();
                 if (this.ProblemId != null)
                     hashCode = hashCode * 59 + this.ProblemId.GetHashCode();
-                if (this.Title != null)
-                    hashCode = hashCode * 59 + this.Title.GetHashCode();
+                if (this.EntityTags != null)
+                    hashCode = hashCode * 59 + this.EntityTags.GetHashCode();
+                if (this.SeverityLevel != null)
+                    hashCode = hashCode * 59 + this.SeverityLevel.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.StartTime != null)
                     hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 if (this.EndTime != null)
                     hashCode = hashCode * 59 + this.EndTime.GetHashCode();
+                if (this.Title != null)
+                    hashCode = hashCode * 59 + this.Title.GetHashCode();
                 return hashCode;
             }
         }

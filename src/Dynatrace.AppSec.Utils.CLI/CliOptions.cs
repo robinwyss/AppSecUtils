@@ -15,6 +15,9 @@ namespace DynatraceApiExample {
        
         [Option('g', "grouping", HelpText = "Group vulberarbilites by entity (possible values Library, Application, Service, Host)", Default = Grouping.Library)]
         public Grouping Grouping { get; set; }
+        
+        [Option('s', "search", HelpText = "Search in vulnerable libraries (by name)")]
+        public string Search { get; set; }
 
     }
 

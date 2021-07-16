@@ -28,27 +28,27 @@ namespace Dynatrace.AppSec.Utils.Service {
         /// </summary>
         /// <returns></returns>
         public Dictionary<string, List<SecurityProblemDetails>> GetApplicationsWithSecurityProblems() {
-            return GetSecurityProblemsByEntity( securityProblem => securityProblem.RelatedEntities.Applications);
+            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities?.Applications ?? new List<RelatedEntity>());
         }
 
         public Dictionary<string, List<SecurityProblemDetails>> GetDatabasesWithSecurityProblems() {
-            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities.Databases);
+            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities?.Databases ?? new List<string>());
         }
 
         public Dictionary<string, List<SecurityProblemDetails>> GetKubernetesClustersWithSecurityProblems() {
-            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities.KubernetesClusters);
+            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities?.KubernetesClusters ?? new List<RelatedEntity>());
         }
 
         public Dictionary<string, List<SecurityProblemDetails>> GetKubernetesWorkloadsWithSecurityProblems() {
-            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities.KubernetesWorkloads);
+            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities?.KubernetesWorkloads ?? new List<RelatedEntity>());
         }
 
         public Dictionary<string, List<SecurityProblemDetails>> GetServicesWithSecurityProblems() {
-            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities.Services);
+            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities?.Services ?? new List<RelatedService>());
         }
 
         public Dictionary<string, List<SecurityProblemDetails>> GetHostsWithSecurityProblems() {
-            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities.Hosts);
+            return GetSecurityProblemsByEntity(securityProblem => securityProblem.RelatedEntities?.Hosts ?? new List<RelatedEntity>());
         }
 
         public List<SecurityProblemDetails> GetSecurityProblemsForSoftwareComponent(string name) {
@@ -58,18 +58,23 @@ namespace Dynatrace.AppSec.Utils.Service {
             return resultList;
         }
 
-        public Dictionary<string, List<SecurityProblemDetails>> GetSoftwareComponentsWithSecurityProblems() {
+        public Dictionary<string, List<SecurityProblemDetails>> GetSoftwareComponentsWithSecurityProblems(string searchTerm = null) {
             Dictionary<string, List<SecurityProblemDetails>> dictionary = new();
-            SecurityProblemDetails.ForEach(secProblem => {
-                secProblem.VulnerableComponents.ForEach(vuc => {
+            var securityProblems = GetRelevantSecurityProblems(searchTerm);
+            foreach (var securityProblem in securityProblems) {
+                securityProblem.VulnerableComponents.ForEach(vuc => {
                     if (dictionary.ContainsKey(vuc.Id)) {
-                        dictionary[vuc.Id].Add(secProblem);
+                        dictionary[vuc.Id].Add(securityProblem);
                     } else {
-                        dictionary[vuc.Id] = new List<SecurityProblemDetails> { secProblem };
+                        dictionary[vuc.Id] = new List<SecurityProblemDetails> { securityProblem };
                     }
                 });
-            });
+            }
             return dictionary;
+        }
+
+        private IEnumerable<SecurityProblemDetails> GetRelevantSecurityProblems(string searchTerm = null) {
+            return searchTerm != null ? SecurityProblemDetails.Where(spd => spd.VulnerableComponents.Any(vuc => vuc.DisplayName.ToLower().Contains(searchTerm.ToLower()))) : SecurityProblemDetails;
         }
 
         private Dictionary<string, List<SecurityProblemDetails>> GetSecurityProblemsByEntity(Func<SecurityProblemDetails, List<RelatedEntity>> entitySelector) {
@@ -84,13 +89,16 @@ namespace Dynatrace.AppSec.Utils.Service {
 
         private Dictionary<string, List<SecurityProblemDetails>> GetSecurityProblemsByEntity(Func<SecurityProblemDetails, List<string>> entitySelector) {
             Dictionary<string, List<SecurityProblemDetails>> dictionary = new();
-            SecurityProblemDetails.ForEach(secProblem => entitySelector(secProblem).ForEach(entityId => {
-                if (dictionary.ContainsKey(entityId)) {
-                    dictionary[entityId].Add(secProblem);
-                } else {
-                    dictionary[entityId] = new List<SecurityProblemDetails> { secProblem };
-                }
-            }));
+            var securityProblems = GetRelevantSecurityProblems();
+            foreach (var securityProblem in securityProblems) {
+                entitySelector(securityProblem).ForEach(entityId => {
+                    if (dictionary.ContainsKey(entityId)) {
+                        dictionary[entityId].Add(securityProblem);
+                    } else {
+                        dictionary[entityId] = new List<SecurityProblemDetails> { securityProblem };
+                    }
+                });
+            }
             return dictionary;
         }
 

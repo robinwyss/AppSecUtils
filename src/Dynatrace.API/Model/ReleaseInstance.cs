@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,7 +24,7 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// Contains data related to a single instance of a release. An instance is a Process Group Instance and has an optional build version.
+    /// Contains data related to a single instance of a release.An instance is a Process Group Instance and has an optional build version.
     /// </summary>
     [DataContract]
         public partial class ReleaseInstance :  IEquatable<ReleaseInstance>, IValidatableObject
@@ -32,25 +32,18 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ReleaseInstance" /> class.
         /// </summary>
-        /// <param name="buildVersion">The build version.</param>
         /// <param name="securityVulnerabilities">List of Security vulnerabilities Ids.</param>
         /// <param name="entityId">The entity id of the instance..</param>
+        /// <param name="buildVersion">The build version.</param>
         /// <param name="problems">List of event Ids of open problems.</param>
-        public ReleaseInstance(string buildVersion = default(string), List<string> securityVulnerabilities = default(List<string>), string entityId = default(string), List<string> problems = default(List<string>))
+        public ReleaseInstance(List<string> securityVulnerabilities = default(List<string>), string entityId = default(string), string buildVersion = default(string), List<string> problems = default(List<string>))
         {
-            this.BuildVersion = buildVersion;
             this.SecurityVulnerabilities = securityVulnerabilities;
             this.EntityId = entityId;
+            this.BuildVersion = buildVersion;
             this.Problems = problems;
         }
         
-        /// <summary>
-        /// The build version
-        /// </summary>
-        /// <value>The build version</value>
-        [DataMember(Name="buildVersion", EmitDefaultValue=false)]
-        public string BuildVersion { get; set; }
-
         /// <summary>
         /// List of Security vulnerabilities Ids
         /// </summary>
@@ -64,6 +57,13 @@ namespace Dynatrace.API.Model
         /// <value>The entity id of the instance.</value>
         [DataMember(Name="entityId", EmitDefaultValue=false)]
         public string EntityId { get; set; }
+
+        /// <summary>
+        /// The build version
+        /// </summary>
+        /// <value>The build version</value>
+        [DataMember(Name="buildVersion", EmitDefaultValue=false)]
+        public string BuildVersion { get; set; }
 
         /// <summary>
         /// List of event Ids of open problems
@@ -80,9 +80,9 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ReleaseInstance {\n");
-            sb.Append("  BuildVersion: ").Append(BuildVersion).Append("\n");
             sb.Append("  SecurityVulnerabilities: ").Append(SecurityVulnerabilities).Append("\n");
             sb.Append("  EntityId: ").Append(EntityId).Append("\n");
+            sb.Append("  BuildVersion: ").Append(BuildVersion).Append("\n");
             sb.Append("  Problems: ").Append(Problems).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -119,11 +119,6 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.BuildVersion == input.BuildVersion ||
-                    (this.BuildVersion != null &&
-                    this.BuildVersion.Equals(input.BuildVersion))
-                ) && 
-                (
                     this.SecurityVulnerabilities == input.SecurityVulnerabilities ||
                     this.SecurityVulnerabilities != null &&
                     input.SecurityVulnerabilities != null &&
@@ -133,6 +128,11 @@ namespace Dynatrace.API.Model
                     this.EntityId == input.EntityId ||
                     (this.EntityId != null &&
                     this.EntityId.Equals(input.EntityId))
+                ) && 
+                (
+                    this.BuildVersion == input.BuildVersion ||
+                    (this.BuildVersion != null &&
+                    this.BuildVersion.Equals(input.BuildVersion))
                 ) && 
                 (
                     this.Problems == input.Problems ||
@@ -151,12 +151,12 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.BuildVersion != null)
-                    hashCode = hashCode * 59 + this.BuildVersion.GetHashCode();
                 if (this.SecurityVulnerabilities != null)
                     hashCode = hashCode * 59 + this.SecurityVulnerabilities.GetHashCode();
                 if (this.EntityId != null)
                     hashCode = hashCode * 59 + this.EntityId.GetHashCode();
+                if (this.BuildVersion != null)
+                    hashCode = hashCode * 59 + this.BuildVersion.GetHashCode();
                 if (this.Problems != null)
                     hashCode = hashCode * 59 + this.Problems.GetHashCode();
                 return hashCode;

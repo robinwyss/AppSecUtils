@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -53,29 +53,31 @@ namespace Dynatrace.API.Model
         /// <param name="enabled">The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
         /// <param name="name">The name of the SLO..</param>
         /// <param name="customDescription">The custom description of the SLO (optional)..</param>
-        /// <param name="useRateMetric">The type of the metric to use for SLO calculation:   * &#x60;true&#x60;: An existing percentage-based metric.  * &#x60;false&#x60;: A ratio of two metrics.   For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call..</param>
-        /// <param name="metricRate">The percentage-based metric for the calculation of the SLO.   Required when the **useRateMetric** is set to &#x60;true&#x60;..</param>
-        /// <param name="metricNumerator">The metric for the count of successes (the numerator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
-        /// <param name="metricDenominator">The total count metric (the denominator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
+        /// <param name="metricExpression">The percentage-based metric expression for the calculation of the SLO. This is not usable yet as it requires some server-side enablement to work..</param>
         /// <param name="evaluationType">The evaluation type of the SLO..</param>
         /// <param name="filter">The entity filter for the SLO evaluation. Use the [syntax of entity selector](https://dt-url.net/entityselector)..</param>
         /// <param name="target">The target value of the SLO..</param>
-        /// <param name="warning">The warning value of the SLO.    At warning state the SLO is still fulfilled but is getting close to failure..</param>
+        /// <param name="warning">The warning value of the SLO.  At warning state the SLO is still fulfilled but is getting close to failure..</param>
         /// <param name="timeframe">The timeframe for the SLO evaluation. Use the syntax of the global timeframe selector..</param>
-        public SloCreate(bool? enabled = default(bool?), string name = default(string), string customDescription = default(string), bool? useRateMetric = default(bool?), string metricRate = default(string), string metricNumerator = default(string), string metricDenominator = default(string), EvaluationTypeEnum? evaluationType = default(EvaluationTypeEnum?), string filter = default(string), double? target = default(double?), double? warning = default(double?), string timeframe = default(string))
+        /// <param name="useRateMetric">The type of the metric to use for SLO calculation: * &#x60;true&#x60;: An existing percentage-based metric. * &#x60;false&#x60;: A ratio of two metrics. For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call..</param>
+        /// <param name="metricRate">The percentage-based metric for the calculation of the SLO. Required when the **useRateMetric** is set to &#x60;true&#x60;..</param>
+        /// <param name="metricNumerator">The metric for the count of successes (the numerator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
+        /// <param name="metricDenominator">The total count metric (the denominator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
+        public SloCreate(bool? enabled = default(bool?), string name = default(string), string customDescription = default(string), string metricExpression = default(string), EvaluationTypeEnum? evaluationType = default(EvaluationTypeEnum?), string filter = default(string), double? target = default(double?), double? warning = default(double?), string timeframe = default(string), bool? useRateMetric = default(bool?), string metricRate = default(string), string metricNumerator = default(string), string metricDenominator = default(string))
         {
             this.Enabled = enabled;
             this.Name = name;
             this.CustomDescription = customDescription;
-            this.UseRateMetric = useRateMetric;
-            this.MetricRate = metricRate;
-            this.MetricNumerator = metricNumerator;
-            this.MetricDenominator = metricDenominator;
+            this.MetricExpression = metricExpression;
             this.EvaluationType = evaluationType;
             this.Filter = filter;
             this.Target = target;
             this.Warning = warning;
             this.Timeframe = timeframe;
+            this.UseRateMetric = useRateMetric;
+            this.MetricRate = metricRate;
+            this.MetricNumerator = metricNumerator;
+            this.MetricDenominator = metricDenominator;
         }
         
         /// <summary>
@@ -100,32 +102,11 @@ namespace Dynatrace.API.Model
         public string CustomDescription { get; set; }
 
         /// <summary>
-        /// The type of the metric to use for SLO calculation:   * &#x60;true&#x60;: An existing percentage-based metric.  * &#x60;false&#x60;: A ratio of two metrics.   For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.
+        /// The percentage-based metric expression for the calculation of the SLO. This is not usable yet as it requires some server-side enablement to work.
         /// </summary>
-        /// <value>The type of the metric to use for SLO calculation:   * &#x60;true&#x60;: An existing percentage-based metric.  * &#x60;false&#x60;: A ratio of two metrics.   For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.</value>
-        [DataMember(Name="useRateMetric", EmitDefaultValue=false)]
-        public bool? UseRateMetric { get; set; }
-
-        /// <summary>
-        /// The percentage-based metric for the calculation of the SLO.   Required when the **useRateMetric** is set to &#x60;true&#x60;.
-        /// </summary>
-        /// <value>The percentage-based metric for the calculation of the SLO.   Required when the **useRateMetric** is set to &#x60;true&#x60;.</value>
-        [DataMember(Name="metricRate", EmitDefaultValue=false)]
-        public string MetricRate { get; set; }
-
-        /// <summary>
-        /// The metric for the count of successes (the numerator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.
-        /// </summary>
-        /// <value>The metric for the count of successes (the numerator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
-        [DataMember(Name="metricNumerator", EmitDefaultValue=false)]
-        public string MetricNumerator { get; set; }
-
-        /// <summary>
-        /// The total count metric (the denominator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.
-        /// </summary>
-        /// <value>The total count metric (the denominator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
-        [DataMember(Name="metricDenominator", EmitDefaultValue=false)]
-        public string MetricDenominator { get; set; }
+        /// <value>The percentage-based metric expression for the calculation of the SLO. This is not usable yet as it requires some server-side enablement to work.</value>
+        [DataMember(Name="metricExpression", EmitDefaultValue=false)]
+        public string MetricExpression { get; set; }
 
 
         /// <summary>
@@ -143,9 +124,9 @@ namespace Dynatrace.API.Model
         public double? Target { get; set; }
 
         /// <summary>
-        /// The warning value of the SLO.    At warning state the SLO is still fulfilled but is getting close to failure.
+        /// The warning value of the SLO.  At warning state the SLO is still fulfilled but is getting close to failure.
         /// </summary>
-        /// <value>The warning value of the SLO.    At warning state the SLO is still fulfilled but is getting close to failure.</value>
+        /// <value>The warning value of the SLO.  At warning state the SLO is still fulfilled but is getting close to failure.</value>
         [DataMember(Name="warning", EmitDefaultValue=false)]
         public double? Warning { get; set; }
 
@@ -155,6 +136,34 @@ namespace Dynatrace.API.Model
         /// <value>The timeframe for the SLO evaluation. Use the syntax of the global timeframe selector.</value>
         [DataMember(Name="timeframe", EmitDefaultValue=false)]
         public string Timeframe { get; set; }
+
+        /// <summary>
+        /// The type of the metric to use for SLO calculation: * &#x60;true&#x60;: An existing percentage-based metric. * &#x60;false&#x60;: A ratio of two metrics. For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.
+        /// </summary>
+        /// <value>The type of the metric to use for SLO calculation: * &#x60;true&#x60;: An existing percentage-based metric. * &#x60;false&#x60;: A ratio of two metrics. For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.</value>
+        [DataMember(Name="useRateMetric", EmitDefaultValue=false)]
+        public bool? UseRateMetric { get; set; }
+
+        /// <summary>
+        /// The percentage-based metric for the calculation of the SLO. Required when the **useRateMetric** is set to &#x60;true&#x60;.
+        /// </summary>
+        /// <value>The percentage-based metric for the calculation of the SLO. Required when the **useRateMetric** is set to &#x60;true&#x60;.</value>
+        [DataMember(Name="metricRate", EmitDefaultValue=false)]
+        public string MetricRate { get; set; }
+
+        /// <summary>
+        /// The metric for the count of successes (the numerator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.
+        /// </summary>
+        /// <value>The metric for the count of successes (the numerator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
+        [DataMember(Name="metricNumerator", EmitDefaultValue=false)]
+        public string MetricNumerator { get; set; }
+
+        /// <summary>
+        /// The total count metric (the denominator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.
+        /// </summary>
+        /// <value>The total count metric (the denominator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
+        [DataMember(Name="metricDenominator", EmitDefaultValue=false)]
+        public string MetricDenominator { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -167,15 +176,16 @@ namespace Dynatrace.API.Model
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CustomDescription: ").Append(CustomDescription).Append("\n");
-            sb.Append("  UseRateMetric: ").Append(UseRateMetric).Append("\n");
-            sb.Append("  MetricRate: ").Append(MetricRate).Append("\n");
-            sb.Append("  MetricNumerator: ").Append(MetricNumerator).Append("\n");
-            sb.Append("  MetricDenominator: ").Append(MetricDenominator).Append("\n");
+            sb.Append("  MetricExpression: ").Append(MetricExpression).Append("\n");
             sb.Append("  EvaluationType: ").Append(EvaluationType).Append("\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Warning: ").Append(Warning).Append("\n");
             sb.Append("  Timeframe: ").Append(Timeframe).Append("\n");
+            sb.Append("  UseRateMetric: ").Append(UseRateMetric).Append("\n");
+            sb.Append("  MetricRate: ").Append(MetricRate).Append("\n");
+            sb.Append("  MetricNumerator: ").Append(MetricNumerator).Append("\n");
+            sb.Append("  MetricDenominator: ").Append(MetricDenominator).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -226,24 +236,9 @@ namespace Dynatrace.API.Model
                     this.CustomDescription.Equals(input.CustomDescription))
                 ) && 
                 (
-                    this.UseRateMetric == input.UseRateMetric ||
-                    (this.UseRateMetric != null &&
-                    this.UseRateMetric.Equals(input.UseRateMetric))
-                ) && 
-                (
-                    this.MetricRate == input.MetricRate ||
-                    (this.MetricRate != null &&
-                    this.MetricRate.Equals(input.MetricRate))
-                ) && 
-                (
-                    this.MetricNumerator == input.MetricNumerator ||
-                    (this.MetricNumerator != null &&
-                    this.MetricNumerator.Equals(input.MetricNumerator))
-                ) && 
-                (
-                    this.MetricDenominator == input.MetricDenominator ||
-                    (this.MetricDenominator != null &&
-                    this.MetricDenominator.Equals(input.MetricDenominator))
+                    this.MetricExpression == input.MetricExpression ||
+                    (this.MetricExpression != null &&
+                    this.MetricExpression.Equals(input.MetricExpression))
                 ) && 
                 (
                     this.EvaluationType == input.EvaluationType ||
@@ -269,6 +264,26 @@ namespace Dynatrace.API.Model
                     this.Timeframe == input.Timeframe ||
                     (this.Timeframe != null &&
                     this.Timeframe.Equals(input.Timeframe))
+                ) && 
+                (
+                    this.UseRateMetric == input.UseRateMetric ||
+                    (this.UseRateMetric != null &&
+                    this.UseRateMetric.Equals(input.UseRateMetric))
+                ) && 
+                (
+                    this.MetricRate == input.MetricRate ||
+                    (this.MetricRate != null &&
+                    this.MetricRate.Equals(input.MetricRate))
+                ) && 
+                (
+                    this.MetricNumerator == input.MetricNumerator ||
+                    (this.MetricNumerator != null &&
+                    this.MetricNumerator.Equals(input.MetricNumerator))
+                ) && 
+                (
+                    this.MetricDenominator == input.MetricDenominator ||
+                    (this.MetricDenominator != null &&
+                    this.MetricDenominator.Equals(input.MetricDenominator))
                 );
         }
 
@@ -287,14 +302,8 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.CustomDescription != null)
                     hashCode = hashCode * 59 + this.CustomDescription.GetHashCode();
-                if (this.UseRateMetric != null)
-                    hashCode = hashCode * 59 + this.UseRateMetric.GetHashCode();
-                if (this.MetricRate != null)
-                    hashCode = hashCode * 59 + this.MetricRate.GetHashCode();
-                if (this.MetricNumerator != null)
-                    hashCode = hashCode * 59 + this.MetricNumerator.GetHashCode();
-                if (this.MetricDenominator != null)
-                    hashCode = hashCode * 59 + this.MetricDenominator.GetHashCode();
+                if (this.MetricExpression != null)
+                    hashCode = hashCode * 59 + this.MetricExpression.GetHashCode();
                 if (this.EvaluationType != null)
                     hashCode = hashCode * 59 + this.EvaluationType.GetHashCode();
                 if (this.Filter != null)
@@ -305,6 +314,14 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Warning.GetHashCode();
                 if (this.Timeframe != null)
                     hashCode = hashCode * 59 + this.Timeframe.GetHashCode();
+                if (this.UseRateMetric != null)
+                    hashCode = hashCode * 59 + this.UseRateMetric.GetHashCode();
+                if (this.MetricRate != null)
+                    hashCode = hashCode * 59 + this.MetricRate.GetHashCode();
+                if (this.MetricNumerator != null)
+                    hashCode = hashCode * 59 + this.MetricNumerator.GetHashCode();
+                if (this.MetricDenominator != null)
+                    hashCode = hashCode * 59 + this.MetricDenominator.GetHashCode();
                 return hashCode;
             }
         }

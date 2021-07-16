@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,18 +24,36 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// The log message in plain text.   The length of the message is limited. Any content exceeding the limit is trimmed. The default limit value is 8192 characters.
+    /// Success
     /// </summary>
     [DataContract]
-        public partial class LogPlainMessage :  IEquatable<LogPlainMessage>, IValidatableObject
+        public partial class Success :  IEquatable<Success>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LogPlainMessage" /> class.
+        /// Initializes a new instance of the <see cref="Success" /> class.
         /// </summary>
-        public LogPlainMessage()
+        /// <param name="message">Detailed message.</param>
+        /// <param name="code">The HTTP status code.</param>
+        public Success(string message = default(string), int? code = default(int?))
         {
+            this.Message = message;
+            this.Code = code;
         }
         
+        /// <summary>
+        /// Detailed message
+        /// </summary>
+        /// <value>Detailed message</value>
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string Message { get; set; }
+
+        /// <summary>
+        /// The HTTP status code
+        /// </summary>
+        /// <value>The HTTP status code</value>
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public int? Code { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -43,7 +61,9 @@ namespace Dynatrace.API.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class LogPlainMessage {\n");
+            sb.Append("class Success {\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -64,20 +84,30 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as LogPlainMessage);
+            return this.Equals(input as Success);
         }
 
         /// <summary>
-        /// Returns true if LogPlainMessage instances are equal
+        /// Returns true if Success instances are equal
         /// </summary>
-        /// <param name="input">Instance of LogPlainMessage to be compared</param>
+        /// <param name="input">Instance of Success to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(LogPlainMessage input)
+        public bool Equals(Success input)
         {
             if (input == null)
                 return false;
 
-            return false;
+            return 
+                (
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
+                ) && 
+                (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
+                );
         }
 
         /// <summary>
@@ -89,6 +119,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Message != null)
+                    hashCode = hashCode * 59 + this.Message.GetHashCode();
+                if (this.Code != null)
+                    hashCode = hashCode * 59 + this.Code.GetHashCode();
                 return hashCode;
             }
         }

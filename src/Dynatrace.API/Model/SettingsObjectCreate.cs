@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,7 +32,7 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsObjectCreate" /> class.
         /// </summary>
-        /// <param name="insertAfter">The position of the new object. The new object will be added after the specified one.   If &#x60;null&#x60;, the new object will be placed in the last position.   If set to empty string, the new object will be placed in the first position.   Only applicable for objects based on schemas with ordered objects (schema&#x27;s **ordered** parameter is set to &#x60;true&#x60;)..</param>
+        /// <param name="insertAfter">The position of the new object. The new object will be added after the specified one. If &#x60;null&#x60;, the new object will be placed in the last position. If set to empty string, the new object will be placed in the first position. Only applicable for objects based on schemas with ordered objects (schema&#x27;s **ordered** parameter is set to &#x60;true&#x60;)..</param>
         /// <param name="schemaVersion">The version of the schema on which the object is based..</param>
         /// <param name="scope">The scope that the object targets. (required).</param>
         /// <param name="schemaId">The schema on which the object is based. (required).</param>
@@ -71,9 +71,9 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// The position of the new object. The new object will be added after the specified one.   If &#x60;null&#x60;, the new object will be placed in the last position.   If set to empty string, the new object will be placed in the first position.   Only applicable for objects based on schemas with ordered objects (schema&#x27;s **ordered** parameter is set to &#x60;true&#x60;).
+        /// The position of the new object. The new object will be added after the specified one. If &#x60;null&#x60;, the new object will be placed in the last position. If set to empty string, the new object will be placed in the first position. Only applicable for objects based on schemas with ordered objects (schema&#x27;s **ordered** parameter is set to &#x60;true&#x60;).
         /// </summary>
-        /// <value>The position of the new object. The new object will be added after the specified one.   If &#x60;null&#x60;, the new object will be placed in the last position.   If set to empty string, the new object will be placed in the first position.   Only applicable for objects based on schemas with ordered objects (schema&#x27;s **ordered** parameter is set to &#x60;true&#x60;).</value>
+        /// <value>The position of the new object. The new object will be added after the specified one. If &#x60;null&#x60;, the new object will be placed in the last position. If set to empty string, the new object will be placed in the first position. Only applicable for objects based on schemas with ordered objects (schema&#x27;s **ordered** parameter is set to &#x60;true&#x60;).</value>
         [DataMember(Name="insertAfter", EmitDefaultValue=false)]
         public string InsertAfter { get; set; }
 

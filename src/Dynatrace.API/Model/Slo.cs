@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -27,7 +27,7 @@ namespace Dynatrace.API.Model
     /// Parameters of a service-level objective (SLO).
     /// </summary>
     [DataContract]
-        public partial class Slo :  IEquatable<Slo>, IValidatableObject
+        public partial class SLO :  IEquatable<SLO>, IValidatableObject
     {
         /// <summary>
         /// The evaluation type of the SLO.
@@ -76,9 +76,9 @@ namespace Dynatrace.API.Model
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
-        /// The error of the SLO calculation.   If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.
+        /// The error of the SLO calculation. If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.
         /// </summary>
-        /// <value>The error of the SLO calculation.   If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.</value>
+        /// <value>The error of the SLO calculation. If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum ErrorEnum
         {
@@ -218,85 +218,86 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "NONE")]
             NONE = 27        }
         /// <summary>
-        /// The error of the SLO calculation.   If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.
+        /// The error of the SLO calculation. If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.
         /// </summary>
-        /// <value>The error of the SLO calculation.   If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.</value>
+        /// <value>The error of the SLO calculation. If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation.</value>
         [DataMember(Name="error", EmitDefaultValue=false)]
         public ErrorEnum? Error { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Slo" /> class.
+        /// Initializes a new instance of the <see cref="SLO" /> class.
         /// </summary>
-        /// <param name="useRateMetric">The type of the metric to use for SLO calculation:   * &#x60;true&#x60;: An existing percentage-based metric.  * &#x60;false&#x60;: A ratio of two metrics.   For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call..</param>
-        /// <param name="metricRate">The percentage-based metric for the calculation of the SLO.   Required when the **useRateMetric** is set to &#x60;true&#x60;..</param>
-        /// <param name="metricNumerator">The metric for the count of successes (the numerator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
-        /// <param name="metricDenominator">The total count metric (the denominator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
-        /// <param name="numeratorValue">The numerator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;..</param>
-        /// <param name="evaluatedPercentage">The calculated value of the SLO.   Has the value of &#x60;-1&#x60; if there&#x27;s an error with SLO calculation; in that case check the value of the **error** parameter..</param>
-        /// <param name="denominatorValue">The denominator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;..</param>
-        /// <param name="relatedOpenProblems">Number of OPEN problems related to the SLO.   Has the value of &#x60;-1&#x60; if there&#x27;s an error with fetching SLO related problems..</param>
-        /// <param name="errorBudget">The error budget of the calculated SLO.   The error budget is the difference between the calculated and target values. A positive number means all is good; a negative number means trouble..</param>
+        /// <param name="metricNumerator">The metric for the count of successes (the numerator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
         /// <param name="evaluationType">The evaluation type of the SLO..</param>
+        /// <param name="metricDenominator">The total count metric (the denominator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;..</param>
+        /// <param name="useRateMetric">The type of the metric to use for SLO calculation: * &#x60;true&#x60;: An existing percentage-based metric. * &#x60;false&#x60;: A ratio of two metrics. For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call..</param>
+        /// <param name="metricRate">The percentage-based metric for the calculation of the SLO. Required when the **useRateMetric** is set to &#x60;true&#x60;..</param>
+        /// <param name="numeratorValue">The numerator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;..</param>
+        /// <param name="denominatorValue">The denominator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;..</param>
+        /// <param name="relatedOpenProblems">Number of OPEN problems related to the SLO. Has the value of &#x60;-1&#x60; if there&#x27;s an error with fetching SLO related problems..</param>
+        /// <param name="evaluatedPercentage">The calculated value of the SLO. Has the value of &#x60;-1&#x60; if there&#x27;s an error with SLO calculation; in that case check the value of the **error** parameter..</param>
+        /// <param name="errorBudget">The error budget of the calculated SLO. The error budget is the difference between the calculated and target values. A positive number means all is good; a negative number means trouble..</param>
         /// <param name="timeframe">The timeframe for the SLO evaluation. Use the syntax of the global timeframe selector..</param>
         /// <param name="filter">The entity filter for the SLO evaluation. Use the [syntax of entity selector](https://dt-url.net/entityselector)..</param>
-        /// <param name="description">A short description of the SLO..</param>
-        /// <param name="enabled">The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
-        /// <param name="status">The status of the calculated SLO..</param>
-        /// <param name="warning">The warning value of the SLO.    At warning state the SLO is still fulfilled but is getting close to failure..</param>
-        /// <param name="error">The error of the SLO calculation.   If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation..</param>
         /// <param name="name">The name of the SLO..</param>
         /// <param name="id">The ID of the SLO.</param>
         /// <param name="target">The target value of the SLO..</param>
-        public Slo(bool? useRateMetric = default(bool?), string metricRate = default(string), string metricNumerator = default(string), string metricDenominator = default(string), double? numeratorValue = default(double?), double? evaluatedPercentage = default(double?), double? denominatorValue = default(double?), int? relatedOpenProblems = default(int?), double? errorBudget = default(double?), EvaluationTypeEnum? evaluationType = default(EvaluationTypeEnum?), string timeframe = default(string), string filter = default(string), string description = default(string), bool? enabled = default(bool?), StatusEnum? status = default(StatusEnum?), double? warning = default(double?), ErrorEnum? error = default(ErrorEnum?), string name = default(string), Guid? id = default(Guid?), double? target = default(double?))
+        /// <param name="description">A short description of the SLO..</param>
+        /// <param name="enabled">The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
+        /// <param name="status">The status of the calculated SLO..</param>
+        /// <param name="warning">The warning value of the SLO.  At warning state the SLO is still fulfilled but is getting close to failure..</param>
+        /// <param name="error">The error of the SLO calculation. If the value differs from &#x60;NONE&#x60; there&#x27;s something wrong with the SLO calculation..</param>
+        public SLO(string metricNumerator = default(string), EvaluationTypeEnum? evaluationType = default(EvaluationTypeEnum?), string metricDenominator = default(string), bool? useRateMetric = default(bool?), string metricRate = default(string), double? numeratorValue = default(double?), double? denominatorValue = default(double?), int? relatedOpenProblems = default(int?), double? evaluatedPercentage = default(double?), double? errorBudget = default(double?), string timeframe = default(string), string filter = default(string), string name = default(string), Guid? id = default(Guid?), double? target = default(double?), string description = default(string), bool? enabled = default(bool?), StatusEnum? status = default(StatusEnum?), double? warning = default(double?), ErrorEnum? error = default(ErrorEnum?))
         {
+            this.MetricNumerator = metricNumerator;
+            this.EvaluationType = evaluationType;
+            this.MetricDenominator = metricDenominator;
             this.UseRateMetric = useRateMetric;
             this.MetricRate = metricRate;
-            this.MetricNumerator = metricNumerator;
-            this.MetricDenominator = metricDenominator;
             this.NumeratorValue = numeratorValue;
-            this.EvaluatedPercentage = evaluatedPercentage;
             this.DenominatorValue = denominatorValue;
             this.RelatedOpenProblems = relatedOpenProblems;
+            this.EvaluatedPercentage = evaluatedPercentage;
             this.ErrorBudget = errorBudget;
-            this.EvaluationType = evaluationType;
             this.Timeframe = timeframe;
             this.Filter = filter;
+            this.Name = name;
+            this.Id = id;
+            this.Target = target;
             this.Description = description;
             this.Enabled = enabled;
             this.Status = status;
             this.Warning = warning;
             this.Error = error;
-            this.Name = name;
-            this.Id = id;
-            this.Target = target;
         }
         
         /// <summary>
-        /// The type of the metric to use for SLO calculation:   * &#x60;true&#x60;: An existing percentage-based metric.  * &#x60;false&#x60;: A ratio of two metrics.   For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.
+        /// The metric for the count of successes (the numerator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.
         /// </summary>
-        /// <value>The type of the metric to use for SLO calculation:   * &#x60;true&#x60;: An existing percentage-based metric.  * &#x60;false&#x60;: A ratio of two metrics.   For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.</value>
+        /// <value>The metric for the count of successes (the numerator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
+        [DataMember(Name="metricNumerator", EmitDefaultValue=false)]
+        public string MetricNumerator { get; set; }
+
+
+        /// <summary>
+        /// The total count metric (the denominator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.
+        /// </summary>
+        /// <value>The total count metric (the denominator in rate calculation). Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
+        [DataMember(Name="metricDenominator", EmitDefaultValue=false)]
+        public string MetricDenominator { get; set; }
+
+        /// <summary>
+        /// The type of the metric to use for SLO calculation: * &#x60;true&#x60;: An existing percentage-based metric. * &#x60;false&#x60;: A ratio of two metrics. For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.
+        /// </summary>
+        /// <value>The type of the metric to use for SLO calculation: * &#x60;true&#x60;: An existing percentage-based metric. * &#x60;false&#x60;: A ratio of two metrics. For a list of available metrics, see [Built-in metric page](https://dt-url.net/be03kow) or try the [GET metrics](https://dt-url.net/8e43kxf) API call.</value>
         [DataMember(Name="useRateMetric", EmitDefaultValue=false)]
         public bool? UseRateMetric { get; set; }
 
         /// <summary>
-        /// The percentage-based metric for the calculation of the SLO.   Required when the **useRateMetric** is set to &#x60;true&#x60;.
+        /// The percentage-based metric for the calculation of the SLO. Required when the **useRateMetric** is set to &#x60;true&#x60;.
         /// </summary>
-        /// <value>The percentage-based metric for the calculation of the SLO.   Required when the **useRateMetric** is set to &#x60;true&#x60;.</value>
+        /// <value>The percentage-based metric for the calculation of the SLO. Required when the **useRateMetric** is set to &#x60;true&#x60;.</value>
         [DataMember(Name="metricRate", EmitDefaultValue=false)]
         public string MetricRate { get; set; }
-
-        /// <summary>
-        /// The metric for the count of successes (the numerator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.
-        /// </summary>
-        /// <value>The metric for the count of successes (the numerator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
-        [DataMember(Name="metricNumerator", EmitDefaultValue=false)]
-        public string MetricNumerator { get; set; }
-
-        /// <summary>
-        /// The total count metric (the denominator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.
-        /// </summary>
-        /// <value>The total count metric (the denominator in rate calculation).   Required when the **useRateMetric** is set to &#x60;false&#x60;.</value>
-        [DataMember(Name="metricDenominator", EmitDefaultValue=false)]
-        public string MetricDenominator { get; set; }
 
         /// <summary>
         /// The numerator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;.
@@ -306,13 +307,6 @@ namespace Dynatrace.API.Model
         public double? NumeratorValue { get; set; }
 
         /// <summary>
-        /// The calculated value of the SLO.   Has the value of &#x60;-1&#x60; if there&#x27;s an error with SLO calculation; in that case check the value of the **error** parameter.
-        /// </summary>
-        /// <value>The calculated value of the SLO.   Has the value of &#x60;-1&#x60; if there&#x27;s an error with SLO calculation; in that case check the value of the **error** parameter.</value>
-        [DataMember(Name="evaluatedPercentage", EmitDefaultValue=false)]
-        public double? EvaluatedPercentage { get; set; }
-
-        /// <summary>
         /// The denominator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;.
         /// </summary>
         /// <value>The denominator value used to evaluate the SLO when **useRateMetric** is set to &#x60;false&#x60;.</value>
@@ -320,19 +314,25 @@ namespace Dynatrace.API.Model
         public double? DenominatorValue { get; set; }
 
         /// <summary>
-        /// Number of OPEN problems related to the SLO.   Has the value of &#x60;-1&#x60; if there&#x27;s an error with fetching SLO related problems.
+        /// Number of OPEN problems related to the SLO. Has the value of &#x60;-1&#x60; if there&#x27;s an error with fetching SLO related problems.
         /// </summary>
-        /// <value>Number of OPEN problems related to the SLO.   Has the value of &#x60;-1&#x60; if there&#x27;s an error with fetching SLO related problems.</value>
+        /// <value>Number of OPEN problems related to the SLO. Has the value of &#x60;-1&#x60; if there&#x27;s an error with fetching SLO related problems.</value>
         [DataMember(Name="relatedOpenProblems", EmitDefaultValue=false)]
         public int? RelatedOpenProblems { get; set; }
 
         /// <summary>
-        /// The error budget of the calculated SLO.   The error budget is the difference between the calculated and target values. A positive number means all is good; a negative number means trouble.
+        /// The calculated value of the SLO. Has the value of &#x60;-1&#x60; if there&#x27;s an error with SLO calculation; in that case check the value of the **error** parameter.
         /// </summary>
-        /// <value>The error budget of the calculated SLO.   The error budget is the difference between the calculated and target values. A positive number means all is good; a negative number means trouble.</value>
+        /// <value>The calculated value of the SLO. Has the value of &#x60;-1&#x60; if there&#x27;s an error with SLO calculation; in that case check the value of the **error** parameter.</value>
+        [DataMember(Name="evaluatedPercentage", EmitDefaultValue=false)]
+        public double? EvaluatedPercentage { get; set; }
+
+        /// <summary>
+        /// The error budget of the calculated SLO. The error budget is the difference between the calculated and target values. A positive number means all is good; a negative number means trouble.
+        /// </summary>
+        /// <value>The error budget of the calculated SLO. The error budget is the difference between the calculated and target values. A positive number means all is good; a negative number means trouble.</value>
         [DataMember(Name="errorBudget", EmitDefaultValue=false)]
         public double? ErrorBudget { get; set; }
-
 
         /// <summary>
         /// The timeframe for the SLO evaluation. Use the syntax of the global timeframe selector.
@@ -347,29 +347,6 @@ namespace Dynatrace.API.Model
         /// <value>The entity filter for the SLO evaluation. Use the [syntax of entity selector](https://dt-url.net/entityselector).</value>
         [DataMember(Name="filter", EmitDefaultValue=false)]
         public string Filter { get; set; }
-
-        /// <summary>
-        /// A short description of the SLO.
-        /// </summary>
-        /// <value>A short description of the SLO.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).
-        /// </summary>
-        /// <value>The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</value>
-        [DataMember(Name="enabled", EmitDefaultValue=false)]
-        public bool? Enabled { get; set; }
-
-
-        /// <summary>
-        /// The warning value of the SLO.    At warning state the SLO is still fulfilled but is getting close to failure.
-        /// </summary>
-        /// <value>The warning value of the SLO.    At warning state the SLO is still fulfilled but is getting close to failure.</value>
-        [DataMember(Name="warning", EmitDefaultValue=false)]
-        public double? Warning { get; set; }
-
 
         /// <summary>
         /// The name of the SLO.
@@ -393,33 +370,56 @@ namespace Dynatrace.API.Model
         public double? Target { get; set; }
 
         /// <summary>
+        /// A short description of the SLO.
+        /// </summary>
+        /// <value>A short description of the SLO.</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).
+        /// </summary>
+        /// <value>The SLO is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</value>
+        [DataMember(Name="enabled", EmitDefaultValue=false)]
+        public bool? Enabled { get; set; }
+
+
+        /// <summary>
+        /// The warning value of the SLO.  At warning state the SLO is still fulfilled but is getting close to failure.
+        /// </summary>
+        /// <value>The warning value of the SLO.  At warning state the SLO is still fulfilled but is getting close to failure.</value>
+        [DataMember(Name="warning", EmitDefaultValue=false)]
+        public double? Warning { get; set; }
+
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Slo {\n");
+            sb.Append("class SLO {\n");
+            sb.Append("  MetricNumerator: ").Append(MetricNumerator).Append("\n");
+            sb.Append("  EvaluationType: ").Append(EvaluationType).Append("\n");
+            sb.Append("  MetricDenominator: ").Append(MetricDenominator).Append("\n");
             sb.Append("  UseRateMetric: ").Append(UseRateMetric).Append("\n");
             sb.Append("  MetricRate: ").Append(MetricRate).Append("\n");
-            sb.Append("  MetricNumerator: ").Append(MetricNumerator).Append("\n");
-            sb.Append("  MetricDenominator: ").Append(MetricDenominator).Append("\n");
             sb.Append("  NumeratorValue: ").Append(NumeratorValue).Append("\n");
-            sb.Append("  EvaluatedPercentage: ").Append(EvaluatedPercentage).Append("\n");
             sb.Append("  DenominatorValue: ").Append(DenominatorValue).Append("\n");
             sb.Append("  RelatedOpenProblems: ").Append(RelatedOpenProblems).Append("\n");
+            sb.Append("  EvaluatedPercentage: ").Append(EvaluatedPercentage).Append("\n");
             sb.Append("  ErrorBudget: ").Append(ErrorBudget).Append("\n");
-            sb.Append("  EvaluationType: ").Append(EvaluationType).Append("\n");
             sb.Append("  Timeframe: ").Append(Timeframe).Append("\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Warning: ").Append(Warning).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -440,20 +440,35 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Slo);
+            return this.Equals(input as SLO);
         }
 
         /// <summary>
-        /// Returns true if Slo instances are equal
+        /// Returns true if SLO instances are equal
         /// </summary>
-        /// <param name="input">Instance of Slo to be compared</param>
+        /// <param name="input">Instance of SLO to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Slo input)
+        public bool Equals(SLO input)
         {
             if (input == null)
                 return false;
 
             return 
+                (
+                    this.MetricNumerator == input.MetricNumerator ||
+                    (this.MetricNumerator != null &&
+                    this.MetricNumerator.Equals(input.MetricNumerator))
+                ) && 
+                (
+                    this.EvaluationType == input.EvaluationType ||
+                    (this.EvaluationType != null &&
+                    this.EvaluationType.Equals(input.EvaluationType))
+                ) && 
+                (
+                    this.MetricDenominator == input.MetricDenominator ||
+                    (this.MetricDenominator != null &&
+                    this.MetricDenominator.Equals(input.MetricDenominator))
+                ) && 
                 (
                     this.UseRateMetric == input.UseRateMetric ||
                     (this.UseRateMetric != null &&
@@ -465,24 +480,9 @@ namespace Dynatrace.API.Model
                     this.MetricRate.Equals(input.MetricRate))
                 ) && 
                 (
-                    this.MetricNumerator == input.MetricNumerator ||
-                    (this.MetricNumerator != null &&
-                    this.MetricNumerator.Equals(input.MetricNumerator))
-                ) && 
-                (
-                    this.MetricDenominator == input.MetricDenominator ||
-                    (this.MetricDenominator != null &&
-                    this.MetricDenominator.Equals(input.MetricDenominator))
-                ) && 
-                (
                     this.NumeratorValue == input.NumeratorValue ||
                     (this.NumeratorValue != null &&
                     this.NumeratorValue.Equals(input.NumeratorValue))
-                ) && 
-                (
-                    this.EvaluatedPercentage == input.EvaluatedPercentage ||
-                    (this.EvaluatedPercentage != null &&
-                    this.EvaluatedPercentage.Equals(input.EvaluatedPercentage))
                 ) && 
                 (
                     this.DenominatorValue == input.DenominatorValue ||
@@ -495,14 +495,14 @@ namespace Dynatrace.API.Model
                     this.RelatedOpenProblems.Equals(input.RelatedOpenProblems))
                 ) && 
                 (
+                    this.EvaluatedPercentage == input.EvaluatedPercentage ||
+                    (this.EvaluatedPercentage != null &&
+                    this.EvaluatedPercentage.Equals(input.EvaluatedPercentage))
+                ) && 
+                (
                     this.ErrorBudget == input.ErrorBudget ||
                     (this.ErrorBudget != null &&
                     this.ErrorBudget.Equals(input.ErrorBudget))
-                ) && 
-                (
-                    this.EvaluationType == input.EvaluationType ||
-                    (this.EvaluationType != null &&
-                    this.EvaluationType.Equals(input.EvaluationType))
                 ) && 
                 (
                     this.Timeframe == input.Timeframe ||
@@ -513,6 +513,21 @@ namespace Dynatrace.API.Model
                     this.Filter == input.Filter ||
                     (this.Filter != null &&
                     this.Filter.Equals(input.Filter))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Target == input.Target ||
+                    (this.Target != null &&
+                    this.Target.Equals(input.Target))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -538,21 +553,6 @@ namespace Dynatrace.API.Model
                     this.Error == input.Error ||
                     (this.Error != null &&
                     this.Error.Equals(input.Error))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Target == input.Target ||
-                    (this.Target != null &&
-                    this.Target.Equals(input.Target))
                 );
         }
 
@@ -565,30 +565,36 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.MetricNumerator != null)
+                    hashCode = hashCode * 59 + this.MetricNumerator.GetHashCode();
+                if (this.EvaluationType != null)
+                    hashCode = hashCode * 59 + this.EvaluationType.GetHashCode();
+                if (this.MetricDenominator != null)
+                    hashCode = hashCode * 59 + this.MetricDenominator.GetHashCode();
                 if (this.UseRateMetric != null)
                     hashCode = hashCode * 59 + this.UseRateMetric.GetHashCode();
                 if (this.MetricRate != null)
                     hashCode = hashCode * 59 + this.MetricRate.GetHashCode();
-                if (this.MetricNumerator != null)
-                    hashCode = hashCode * 59 + this.MetricNumerator.GetHashCode();
-                if (this.MetricDenominator != null)
-                    hashCode = hashCode * 59 + this.MetricDenominator.GetHashCode();
                 if (this.NumeratorValue != null)
                     hashCode = hashCode * 59 + this.NumeratorValue.GetHashCode();
-                if (this.EvaluatedPercentage != null)
-                    hashCode = hashCode * 59 + this.EvaluatedPercentage.GetHashCode();
                 if (this.DenominatorValue != null)
                     hashCode = hashCode * 59 + this.DenominatorValue.GetHashCode();
                 if (this.RelatedOpenProblems != null)
                     hashCode = hashCode * 59 + this.RelatedOpenProblems.GetHashCode();
+                if (this.EvaluatedPercentage != null)
+                    hashCode = hashCode * 59 + this.EvaluatedPercentage.GetHashCode();
                 if (this.ErrorBudget != null)
                     hashCode = hashCode * 59 + this.ErrorBudget.GetHashCode();
-                if (this.EvaluationType != null)
-                    hashCode = hashCode * 59 + this.EvaluationType.GetHashCode();
                 if (this.Timeframe != null)
                     hashCode = hashCode * 59 + this.Timeframe.GetHashCode();
                 if (this.Filter != null)
                     hashCode = hashCode * 59 + this.Filter.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Target != null)
+                    hashCode = hashCode * 59 + this.Target.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Enabled != null)
@@ -599,12 +605,6 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Warning.GetHashCode();
                 if (this.Error != null)
                     hashCode = hashCode * 59 + this.Error.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Target != null)
-                    hashCode = hashCode * 59 + this.Target.GetHashCode();
                 return hashCode;
             }
         }

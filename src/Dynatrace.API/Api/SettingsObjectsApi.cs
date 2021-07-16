@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -31,7 +31,7 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns></returns>
         void DeleteSettingsObjectByObjectId (string objectId, string updateToken = null);
 
@@ -43,7 +43,7 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSettingsObjectByObjectIdWithHttpInfo (string objectId, string updateToken = null);
         /// <summary>
@@ -74,11 +74,11 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>ObjectsList</returns>
         ObjectsList GetSettingsObjects (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null);
 
@@ -89,11 +89,11 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>ApiResponse of ObjectsList</returns>
         ApiResponse<ObjectsList> GetSettingsObjectsWithHttpInfo (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null);
         /// <summary>
@@ -152,7 +152,7 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task DeleteSettingsObjectByObjectIdAsync (string objectId, string updateToken = null);
 
@@ -164,7 +164,7 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSettingsObjectByObjectIdAsyncWithHttpInfo (string objectId, string updateToken = null);
         /// <summary>
@@ -195,11 +195,11 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>Task of ObjectsList</returns>
         System.Threading.Tasks.Task<ObjectsList> GetSettingsObjectsAsync (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null);
 
@@ -210,11 +210,11 @@ namespace Dynatrace.API.Api
         /// 
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>Task of ApiResponse (ObjectsList)</returns>
         System.Threading.Tasks.Task<ApiResponse<ObjectsList>> GetSettingsObjectsAsyncWithHttpInfo (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null);
         /// <summary>
@@ -379,7 +379,7 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns></returns>
         public void DeleteSettingsObjectByObjectId (string objectId, string updateToken = null)
         {
@@ -391,7 +391,7 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> DeleteSettingsObjectByObjectIdWithHttpInfo (string objectId, string updateToken = null)
         {
@@ -451,7 +451,7 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task DeleteSettingsObjectByObjectIdAsync (string objectId, string updateToken = null)
         {
@@ -464,7 +464,7 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="objectId">The ID of the required settings object.</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks. (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSettingsObjectByObjectIdAsyncWithHttpInfo (string objectId, string updateToken = null)
         {
@@ -664,11 +664,11 @@ namespace Dynatrace.API.Api
         /// Lists available settings objects | maturity&#x3D;EARLY_ADOPTER 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>ObjectsList</returns>
         public ObjectsList GetSettingsObjects (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null)
         {
@@ -680,11 +680,11 @@ namespace Dynatrace.API.Api
         /// Lists available settings objects | maturity&#x3D;EARLY_ADOPTER 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>ApiResponse of ObjectsList</returns>
         public ApiResponse< ObjectsList > GetSettingsObjectsWithHttpInfo (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null)
         {
@@ -743,11 +743,11 @@ namespace Dynatrace.API.Api
         /// Lists available settings objects | maturity&#x3D;EARLY_ADOPTER 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>Task of ObjectsList</returns>
         public async System.Threading.Tasks.Task<ObjectsList> GetSettingsObjectsAsync (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null)
         {
@@ -760,11 +760,11 @@ namespace Dynatrace.API.Api
         /// Lists available settings objects | maturity&#x3D;EARLY_ADOPTER 
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target.   The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment.   To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
-        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.    Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response.   The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter.   When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
-        /// <param name="pageSize">The amount of settings objects in a single response payload.   The maximal allowed page size is 500.   If not set, 100 is used. (optional)</param>
+        /// <param name="schemaIds">A list of comma-separated schema IDs to which the requested objects belong. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="scopes">A list of comma-separated scopes, that the requested objects target. The selection only matches objects directly targeting the specified scopes. For example, &#x60;environment&#x60; will not match objects that target a host within environment. To load the first page, when the **nextPageKey** is not set, this parameter is required.  (optional)</param>
+        /// <param name="fields">A list of fields to be included to the response. The provided set of fields replaces the default set.  Specify the required top-level fields, separated by commas (for example, &#x60;objectId,value&#x60;). (optional, default to objectId,value)</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. You can find it in the **nextPageKey** field of the previous response. The first page is always returned if you don&#x27;t specify the **nextPageKey** query parameter. When the **nextPageKey** is set to obtain subsequent pages, you must omit all other query parameters.  (optional)</param>
+        /// <param name="pageSize">The amount of settings objects in a single response payload. The maximal allowed page size is 500. If not set, 100 is used. (optional)</param>
         /// <returns>Task of ApiResponse (ObjectsList)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<ObjectsList>> GetSettingsObjectsAsyncWithHttpInfo (string schemaIds = null, string scopes = null, string fields = null, string nextPageKey = null, long? pageSize = null)
         {

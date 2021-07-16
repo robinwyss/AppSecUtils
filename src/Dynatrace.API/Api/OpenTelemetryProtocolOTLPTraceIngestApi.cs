@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -23,7 +23,7 @@ namespace Dynatrace.API.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT
+        /// Implementation of the OTLP/HTTP protocol for trace ingest.
         /// </summary>
         /// <remarks>
         /// This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
@@ -34,7 +34,7 @@ namespace Dynatrace.API.Api
         void IngestTrace (List<byte[]> body);
 
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT
+        /// Implementation of the OTLP/HTTP protocol for trace ingest.
         /// </summary>
         /// <remarks>
         /// This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
@@ -46,7 +46,7 @@ namespace Dynatrace.API.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT
+        /// Implementation of the OTLP/HTTP protocol for trace ingest.
         /// </summary>
         /// <remarks>
         /// This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
@@ -57,7 +57,7 @@ namespace Dynatrace.API.Api
         System.Threading.Tasks.Task IngestTraceAsync (List<byte[]> body);
 
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT
+        /// Implementation of the OTLP/HTTP protocol for trace ingest.
         /// </summary>
         /// <remarks>
         /// This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
@@ -178,7 +178,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
+        /// Implementation of the OTLP/HTTP protocol for trace ingest. This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">An ExportTraceServiceRequest message in binary protobuf format.</param>
@@ -189,7 +189,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
+        /// Implementation of the OTLP/HTTP protocol for trace ingest. This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">An ExportTraceServiceRequest message in binary protobuf format.</param>
@@ -254,7 +254,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
+        /// Implementation of the OTLP/HTTP protocol for trace ingest. This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">An ExportTraceServiceRequest message in binary protobuf format.</param>
@@ -266,7 +266,7 @@ namespace Dynatrace.API.Api
         }
 
         /// <summary>
-        /// Implementation of the OTLP/HTTP protocol for trace ingest. | maturity&#x3D;IN_DEVELOPMENT This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
+        /// Implementation of the OTLP/HTTP protocol for trace ingest. This endpoint can be targeted by OpenTelemetry exporters. Ingested traces are forwarded to the server.
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">An ExportTraceServiceRequest message in binary protobuf format.</param>

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,27 +32,27 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddedEntityTags" /> class.
         /// </summary>
-        /// <param name="matchedEntitiesCount">The number of monitored entities where the tags have been added..</param>
         /// <param name="appliedTags">A list of added custom tags..</param>
-        public AddedEntityTags(long? matchedEntitiesCount = default(long?), List<METag> appliedTags = default(List<METag>))
+        /// <param name="matchedEntitiesCount">The number of monitored entities where the tags have been added..</param>
+        public AddedEntityTags(List<METag> appliedTags = default(List<METag>), long? matchedEntitiesCount = default(long?))
         {
-            this.MatchedEntitiesCount = matchedEntitiesCount;
             this.AppliedTags = appliedTags;
+            this.MatchedEntitiesCount = matchedEntitiesCount;
         }
         
-        /// <summary>
-        /// The number of monitored entities where the tags have been added.
-        /// </summary>
-        /// <value>The number of monitored entities where the tags have been added.</value>
-        [DataMember(Name="matchedEntitiesCount", EmitDefaultValue=false)]
-        public long? MatchedEntitiesCount { get; set; }
-
         /// <summary>
         /// A list of added custom tags.
         /// </summary>
         /// <value>A list of added custom tags.</value>
         [DataMember(Name="appliedTags", EmitDefaultValue=false)]
         public List<METag> AppliedTags { get; set; }
+
+        /// <summary>
+        /// The number of monitored entities where the tags have been added.
+        /// </summary>
+        /// <value>The number of monitored entities where the tags have been added.</value>
+        [DataMember(Name="matchedEntitiesCount", EmitDefaultValue=false)]
+        public long? MatchedEntitiesCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,8 +62,8 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AddedEntityTags {\n");
-            sb.Append("  MatchedEntitiesCount: ").Append(MatchedEntitiesCount).Append("\n");
             sb.Append("  AppliedTags: ").Append(AppliedTags).Append("\n");
+            sb.Append("  MatchedEntitiesCount: ").Append(MatchedEntitiesCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +99,15 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.MatchedEntitiesCount == input.MatchedEntitiesCount ||
-                    (this.MatchedEntitiesCount != null &&
-                    this.MatchedEntitiesCount.Equals(input.MatchedEntitiesCount))
-                ) && 
-                (
                     this.AppliedTags == input.AppliedTags ||
                     this.AppliedTags != null &&
                     input.AppliedTags != null &&
                     this.AppliedTags.SequenceEqual(input.AppliedTags)
+                ) && 
+                (
+                    this.MatchedEntitiesCount == input.MatchedEntitiesCount ||
+                    (this.MatchedEntitiesCount != null &&
+                    this.MatchedEntitiesCount.Equals(input.MatchedEntitiesCount))
                 );
         }
 
@@ -120,10 +120,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.MatchedEntitiesCount != null)
-                    hashCode = hashCode * 59 + this.MatchedEntitiesCount.GetHashCode();
                 if (this.AppliedTags != null)
                     hashCode = hashCode * 59 + this.AppliedTags.GetHashCode();
+                if (this.MatchedEntitiesCount != null)
+                    hashCode = hashCode * 59 + this.MatchedEntitiesCount.GetHashCode();
                 return hashCode;
             }
         }

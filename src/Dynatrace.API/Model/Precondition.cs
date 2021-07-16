@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -75,48 +75,48 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Precondition" /> class.
         /// </summary>
+        /// <param name="preconditions">A list of child preconditions to be evaluated. Only applicable to properties of the &#x60;AND&#x60; and &#x60;OR&#x60; types..</param>
+        /// <param name="expectedValue">The expected value of the property. Only applicable to properties of the &#x60;EQUALS&#x60; type..</param>
+        /// <param name="expectedValues">A list of valid values of the property. Only applicable to properties of the &#x60;IN&#x60; type..</param>
         /// <param name="precondition">precondition.</param>
-        /// <param name="preconditions">A list of child preconditions to be evaluated.   Only applicable to properties of the &#x60;AND&#x60; and &#x60;OR&#x60; types..</param>
-        /// <param name="expectedValue">The expected value of the property.   Only applicable to properties of the &#x60;EQUALS&#x60; type..</param>
-        /// <param name="expectedValues">A list of valid values of the property.   Only applicable to properties of the &#x60;IN&#x60; type..</param>
         /// <param name="property">The property to be evaluated..</param>
         /// <param name="type">The type of the precondition..</param>
-        public Precondition(Precondition precondition = default(Precondition), List<Precondition> preconditions = default(List<Precondition>), Object expectedValue = default(Object), List<Object> expectedValues = default(List<Object>), string property = default(string), TypeEnum? type = default(TypeEnum?))
+        public Precondition(List<Precondition> preconditions = default(List<Precondition>), Object expectedValue = default(Object), List<Object> expectedValues = default(List<Object>), Precondition precondition = default(Precondition), string property = default(string), TypeEnum? type = default(TypeEnum?))
         {
-            this._Precondition = precondition;
             this.Preconditions = preconditions;
             this.ExpectedValue = expectedValue;
             this.ExpectedValues = expectedValues;
+            this._Precondition = precondition;
             this.Property = property;
             this.Type = type;
         }
         
         /// <summary>
-        /// Gets or Sets _Precondition
+        /// A list of child preconditions to be evaluated. Only applicable to properties of the &#x60;AND&#x60; and &#x60;OR&#x60; types.
         /// </summary>
-        [DataMember(Name="precondition", EmitDefaultValue=false)]
-        public Precondition _Precondition { get; set; }
-
-        /// <summary>
-        /// A list of child preconditions to be evaluated.   Only applicable to properties of the &#x60;AND&#x60; and &#x60;OR&#x60; types.
-        /// </summary>
-        /// <value>A list of child preconditions to be evaluated.   Only applicable to properties of the &#x60;AND&#x60; and &#x60;OR&#x60; types.</value>
+        /// <value>A list of child preconditions to be evaluated. Only applicable to properties of the &#x60;AND&#x60; and &#x60;OR&#x60; types.</value>
         [DataMember(Name="preconditions", EmitDefaultValue=false)]
         public List<Precondition> Preconditions { get; set; }
 
         /// <summary>
-        /// The expected value of the property.   Only applicable to properties of the &#x60;EQUALS&#x60; type.
+        /// The expected value of the property. Only applicable to properties of the &#x60;EQUALS&#x60; type.
         /// </summary>
-        /// <value>The expected value of the property.   Only applicable to properties of the &#x60;EQUALS&#x60; type.</value>
+        /// <value>The expected value of the property. Only applicable to properties of the &#x60;EQUALS&#x60; type.</value>
         [DataMember(Name="expectedValue", EmitDefaultValue=false)]
         public Object ExpectedValue { get; set; }
 
         /// <summary>
-        /// A list of valid values of the property.   Only applicable to properties of the &#x60;IN&#x60; type.
+        /// A list of valid values of the property. Only applicable to properties of the &#x60;IN&#x60; type.
         /// </summary>
-        /// <value>A list of valid values of the property.   Only applicable to properties of the &#x60;IN&#x60; type.</value>
+        /// <value>A list of valid values of the property. Only applicable to properties of the &#x60;IN&#x60; type.</value>
         [DataMember(Name="expectedValues", EmitDefaultValue=false)]
         public List<Object> ExpectedValues { get; set; }
+
+        /// <summary>
+        /// Gets or Sets _Precondition
+        /// </summary>
+        [DataMember(Name="precondition", EmitDefaultValue=false)]
+        public Precondition _Precondition { get; set; }
 
         /// <summary>
         /// The property to be evaluated.
@@ -134,10 +134,10 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Precondition {\n");
-            sb.Append("  _Precondition: ").Append(_Precondition).Append("\n");
             sb.Append("  Preconditions: ").Append(Preconditions).Append("\n");
             sb.Append("  ExpectedValue: ").Append(ExpectedValue).Append("\n");
             sb.Append("  ExpectedValues: ").Append(ExpectedValues).Append("\n");
+            sb.Append("  _Precondition: ").Append(_Precondition).Append("\n");
             sb.Append("  Property: ").Append(Property).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -175,11 +175,6 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this._Precondition == input._Precondition ||
-                    (this._Precondition != null &&
-                    this._Precondition.Equals(input._Precondition))
-                ) && 
-                (
                     this.Preconditions == input.Preconditions ||
                     this.Preconditions != null &&
                     input.Preconditions != null &&
@@ -195,6 +190,11 @@ namespace Dynatrace.API.Model
                     this.ExpectedValues != null &&
                     input.ExpectedValues != null &&
                     this.ExpectedValues.SequenceEqual(input.ExpectedValues)
+                ) && 
+                (
+                    this._Precondition == input._Precondition ||
+                    (this._Precondition != null &&
+                    this._Precondition.Equals(input._Precondition))
                 ) && 
                 (
                     this.Property == input.Property ||
@@ -217,14 +217,14 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Precondition != null)
-                    hashCode = hashCode * 59 + this._Precondition.GetHashCode();
                 if (this.Preconditions != null)
                     hashCode = hashCode * 59 + this.Preconditions.GetHashCode();
                 if (this.ExpectedValue != null)
                     hashCode = hashCode * 59 + this.ExpectedValue.GetHashCode();
                 if (this.ExpectedValues != null)
                     hashCode = hashCode * 59 + this.ExpectedValues.GetHashCode();
+                if (this._Precondition != null)
+                    hashCode = hashCode * 59 + this._Precondition.GetHashCode();
                 if (this.Property != null)
                     hashCode = hashCode * 59 + this.Property.GetHashCode();
                 if (this.Type != null)

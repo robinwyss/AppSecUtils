@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,34 +34,34 @@ namespace Dynatrace.API.Model
         /// </summary>
         /// <param name="referencedType">The type referenced by the property value.</param>
         /// <param name="items">items.</param>
-        /// <param name="maxObjects">The maximum number of **objects** in a collection property.    Has the value of &#x60;1&#x60; for singletons..</param>
         /// <param name="documentation">An extended description and/or links to documentation..</param>
+        /// <param name="maxObjects">The maximum number of **objects** in a collection property.  Has the value of &#x60;1&#x60; for singletons..</param>
         /// <param name="precondition">precondition.</param>
         /// <param name="minObjects">The minimum number of **objects** in a collection property..</param>
-        /// <param name="constraints">A list of constraints limiting the values to be accepted..</param>
         /// <param name="subType">The subtype of the property&#x27;s value..</param>
-        /// <param name="description">A short description of the property..</param>
-        /// <param name="metadata">Metadata of the property..</param>
-        /// <param name="nullable">The value can (&#x60;true&#x60;) or can&#x27;t (&#x60;false&#x60;) be &#x60;null&#x60;..</param>
-        /// <param name="_default">The default value to be used when no value is provided.   If a non-singleton has the value of &#x60;null&#x60;, it means an empty collection..</param>
+        /// <param name="_default">The default value to be used when no value is provided. If a non-singleton has the value of &#x60;null&#x60;, it means an empty collection..</param>
         /// <param name="type">The type of the property&#x27;s value..</param>
         /// <param name="displayName">The display name of the property..</param>
-        public PropertyDefinition(string referencedType = default(string), Item items = default(Item), int? maxObjects = default(int?), string documentation = default(string), Precondition precondition = default(Precondition), int? minObjects = default(int?), List<Constraint> constraints = default(List<Constraint>), string subType = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? nullable = default(bool?), Object _default = default(Object), Object type = default(Object), string displayName = default(string))
+        /// <param name="description">A short description of the property..</param>
+        /// <param name="metadata">Metadata of the property..</param>
+        /// <param name="constraints">A list of constraints limiting the values to be accepted..</param>
+        /// <param name="nullable">The value can (&#x60;true&#x60;) or can&#x27;t (&#x60;false&#x60;) be &#x60;null&#x60;..</param>
+        public PropertyDefinition(string referencedType = default(string), Item items = default(Item), string documentation = default(string), int? maxObjects = default(int?), Precondition precondition = default(Precondition), int? minObjects = default(int?), string subType = default(string), Object _default = default(Object), Object type = default(Object), string displayName = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<Constraint> constraints = default(List<Constraint>), bool? nullable = default(bool?))
         {
             this.ReferencedType = referencedType;
             this.Items = items;
-            this.MaxObjects = maxObjects;
             this.Documentation = documentation;
+            this.MaxObjects = maxObjects;
             this.Precondition = precondition;
             this.MinObjects = minObjects;
-            this.Constraints = constraints;
             this.SubType = subType;
-            this.Description = description;
-            this.Metadata = metadata;
-            this.Nullable = nullable;
             this._Default = _default;
             this.Type = type;
             this.DisplayName = displayName;
+            this.Description = description;
+            this.Metadata = metadata;
+            this.Constraints = constraints;
+            this.Nullable = nullable;
         }
         
         /// <summary>
@@ -78,18 +78,18 @@ namespace Dynatrace.API.Model
         public Item Items { get; set; }
 
         /// <summary>
-        /// The maximum number of **objects** in a collection property.    Has the value of &#x60;1&#x60; for singletons.
-        /// </summary>
-        /// <value>The maximum number of **objects** in a collection property.    Has the value of &#x60;1&#x60; for singletons.</value>
-        [DataMember(Name="maxObjects", EmitDefaultValue=false)]
-        public int? MaxObjects { get; set; }
-
-        /// <summary>
         /// An extended description and/or links to documentation.
         /// </summary>
         /// <value>An extended description and/or links to documentation.</value>
         [DataMember(Name="documentation", EmitDefaultValue=false)]
         public string Documentation { get; set; }
+
+        /// <summary>
+        /// The maximum number of **objects** in a collection property.  Has the value of &#x60;1&#x60; for singletons.
+        /// </summary>
+        /// <value>The maximum number of **objects** in a collection property.  Has the value of &#x60;1&#x60; for singletons.</value>
+        [DataMember(Name="maxObjects", EmitDefaultValue=false)]
+        public int? MaxObjects { get; set; }
 
         /// <summary>
         /// Gets or Sets Precondition
@@ -105,13 +105,6 @@ namespace Dynatrace.API.Model
         public int? MinObjects { get; set; }
 
         /// <summary>
-        /// A list of constraints limiting the values to be accepted.
-        /// </summary>
-        /// <value>A list of constraints limiting the values to be accepted.</value>
-        [DataMember(Name="constraints", EmitDefaultValue=false)]
-        public List<Constraint> Constraints { get; set; }
-
-        /// <summary>
         /// The subtype of the property&#x27;s value.
         /// </summary>
         /// <value>The subtype of the property&#x27;s value.</value>
@@ -119,30 +112,9 @@ namespace Dynatrace.API.Model
         public string SubType { get; set; }
 
         /// <summary>
-        /// A short description of the property.
+        /// The default value to be used when no value is provided. If a non-singleton has the value of &#x60;null&#x60;, it means an empty collection.
         /// </summary>
-        /// <value>A short description of the property.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Metadata of the property.
-        /// </summary>
-        /// <value>Metadata of the property.</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// The value can (&#x60;true&#x60;) or can&#x27;t (&#x60;false&#x60;) be &#x60;null&#x60;.
-        /// </summary>
-        /// <value>The value can (&#x60;true&#x60;) or can&#x27;t (&#x60;false&#x60;) be &#x60;null&#x60;.</value>
-        [DataMember(Name="nullable", EmitDefaultValue=false)]
-        public bool? Nullable { get; set; }
-
-        /// <summary>
-        /// The default value to be used when no value is provided.   If a non-singleton has the value of &#x60;null&#x60;, it means an empty collection.
-        /// </summary>
-        /// <value>The default value to be used when no value is provided.   If a non-singleton has the value of &#x60;null&#x60;, it means an empty collection.</value>
+        /// <value>The default value to be used when no value is provided. If a non-singleton has the value of &#x60;null&#x60;, it means an empty collection.</value>
         [DataMember(Name="default", EmitDefaultValue=false)]
         public Object _Default { get; set; }
 
@@ -161,6 +133,34 @@ namespace Dynatrace.API.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// A short description of the property.
+        /// </summary>
+        /// <value>A short description of the property.</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Metadata of the property.
+        /// </summary>
+        /// <value>Metadata of the property.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// A list of constraints limiting the values to be accepted.
+        /// </summary>
+        /// <value>A list of constraints limiting the values to be accepted.</value>
+        [DataMember(Name="constraints", EmitDefaultValue=false)]
+        public List<Constraint> Constraints { get; set; }
+
+        /// <summary>
+        /// The value can (&#x60;true&#x60;) or can&#x27;t (&#x60;false&#x60;) be &#x60;null&#x60;.
+        /// </summary>
+        /// <value>The value can (&#x60;true&#x60;) or can&#x27;t (&#x60;false&#x60;) be &#x60;null&#x60;.</value>
+        [DataMember(Name="nullable", EmitDefaultValue=false)]
+        public bool? Nullable { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -170,18 +170,18 @@ namespace Dynatrace.API.Model
             sb.Append("class PropertyDefinition {\n");
             sb.Append("  ReferencedType: ").Append(ReferencedType).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
-            sb.Append("  MaxObjects: ").Append(MaxObjects).Append("\n");
             sb.Append("  Documentation: ").Append(Documentation).Append("\n");
+            sb.Append("  MaxObjects: ").Append(MaxObjects).Append("\n");
             sb.Append("  Precondition: ").Append(Precondition).Append("\n");
             sb.Append("  MinObjects: ").Append(MinObjects).Append("\n");
-            sb.Append("  Constraints: ").Append(Constraints).Append("\n");
             sb.Append("  SubType: ").Append(SubType).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Nullable: ").Append(Nullable).Append("\n");
             sb.Append("  _Default: ").Append(_Default).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Constraints: ").Append(Constraints).Append("\n");
+            sb.Append("  Nullable: ").Append(Nullable).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -227,14 +227,14 @@ namespace Dynatrace.API.Model
                     this.Items.Equals(input.Items))
                 ) && 
                 (
-                    this.MaxObjects == input.MaxObjects ||
-                    (this.MaxObjects != null &&
-                    this.MaxObjects.Equals(input.MaxObjects))
-                ) && 
-                (
                     this.Documentation == input.Documentation ||
                     (this.Documentation != null &&
                     this.Documentation.Equals(input.Documentation))
+                ) && 
+                (
+                    this.MaxObjects == input.MaxObjects ||
+                    (this.MaxObjects != null &&
+                    this.MaxObjects.Equals(input.MaxObjects))
                 ) && 
                 (
                     this.Precondition == input.Precondition ||
@@ -247,31 +247,9 @@ namespace Dynatrace.API.Model
                     this.MinObjects.Equals(input.MinObjects))
                 ) && 
                 (
-                    this.Constraints == input.Constraints ||
-                    this.Constraints != null &&
-                    input.Constraints != null &&
-                    this.Constraints.SequenceEqual(input.Constraints)
-                ) && 
-                (
                     this.SubType == input.SubType ||
                     (this.SubType != null &&
                     this.SubType.Equals(input.SubType))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
-                ) && 
-                (
-                    this.Nullable == input.Nullable ||
-                    (this.Nullable != null &&
-                    this.Nullable.Equals(input.Nullable))
                 ) && 
                 (
                     this._Default == input._Default ||
@@ -287,6 +265,28 @@ namespace Dynatrace.API.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
+                    this.Constraints == input.Constraints ||
+                    this.Constraints != null &&
+                    input.Constraints != null &&
+                    this.Constraints.SequenceEqual(input.Constraints)
+                ) && 
+                (
+                    this.Nullable == input.Nullable ||
+                    (this.Nullable != null &&
+                    this.Nullable.Equals(input.Nullable))
                 );
         }
 
@@ -303,30 +303,30 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.ReferencedType.GetHashCode();
                 if (this.Items != null)
                     hashCode = hashCode * 59 + this.Items.GetHashCode();
-                if (this.MaxObjects != null)
-                    hashCode = hashCode * 59 + this.MaxObjects.GetHashCode();
                 if (this.Documentation != null)
                     hashCode = hashCode * 59 + this.Documentation.GetHashCode();
+                if (this.MaxObjects != null)
+                    hashCode = hashCode * 59 + this.MaxObjects.GetHashCode();
                 if (this.Precondition != null)
                     hashCode = hashCode * 59 + this.Precondition.GetHashCode();
                 if (this.MinObjects != null)
                     hashCode = hashCode * 59 + this.MinObjects.GetHashCode();
-                if (this.Constraints != null)
-                    hashCode = hashCode * 59 + this.Constraints.GetHashCode();
                 if (this.SubType != null)
                     hashCode = hashCode * 59 + this.SubType.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
-                if (this.Nullable != null)
-                    hashCode = hashCode * 59 + this.Nullable.GetHashCode();
                 if (this._Default != null)
                     hashCode = hashCode * 59 + this._Default.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                if (this.Constraints != null)
+                    hashCode = hashCode * 59 + this.Constraints.GetHashCode();
+                if (this.Nullable != null)
+                    hashCode = hashCode * 59 + this.Nullable.GetHashCode();
                 return hashCode;
             }
         }

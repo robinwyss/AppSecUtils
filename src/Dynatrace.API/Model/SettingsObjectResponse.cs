@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,7 +24,7 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// The response to a successful creation or update request.
+    /// The response to a creation- or update-request.
     /// </summary>
     [DataContract]
         public partial class SettingsObjectResponse :  IEquatable<SettingsObjectResponse>, IValidatableObject
@@ -32,18 +32,28 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsObjectResponse" /> class.
         /// </summary>
-        /// <param name="objectId">The ID of the settings object..</param>
+        /// <param name="invalidValue">invalidValue.</param>
+        /// <param name="objectId">For a successful request, the ID of the created or modified settings object..</param>
         /// <param name="code">The HTTP status code for the object..</param>
-        public SettingsObjectResponse(string objectId = default(string), int? code = default(int?))
+        /// <param name="error">error.</param>
+        public SettingsObjectResponse(SettingsValue invalidValue = default(SettingsValue), string objectId = default(string), int? code = default(int?), Error error = default(Error))
         {
+            this.InvalidValue = invalidValue;
             this.ObjectId = objectId;
             this.Code = code;
+            this.Error = error;
         }
         
         /// <summary>
-        /// The ID of the settings object.
+        /// Gets or Sets InvalidValue
         /// </summary>
-        /// <value>The ID of the settings object.</value>
+        [DataMember(Name="invalidValue", EmitDefaultValue=false)]
+        public SettingsValue InvalidValue { get; set; }
+
+        /// <summary>
+        /// For a successful request, the ID of the created or modified settings object.
+        /// </summary>
+        /// <value>For a successful request, the ID of the created or modified settings object.</value>
         [DataMember(Name="objectId", EmitDefaultValue=false)]
         public string ObjectId { get; set; }
 
@@ -55,6 +65,12 @@ namespace Dynatrace.API.Model
         public int? Code { get; set; }
 
         /// <summary>
+        /// Gets or Sets Error
+        /// </summary>
+        [DataMember(Name="error", EmitDefaultValue=false)]
+        public Error Error { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -62,8 +78,10 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class SettingsObjectResponse {\n");
+            sb.Append("  InvalidValue: ").Append(InvalidValue).Append("\n");
             sb.Append("  ObjectId: ").Append(ObjectId).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,6 +117,11 @@ namespace Dynatrace.API.Model
 
             return 
                 (
+                    this.InvalidValue == input.InvalidValue ||
+                    (this.InvalidValue != null &&
+                    this.InvalidValue.Equals(input.InvalidValue))
+                ) && 
+                (
                     this.ObjectId == input.ObjectId ||
                     (this.ObjectId != null &&
                     this.ObjectId.Equals(input.ObjectId))
@@ -107,6 +130,11 @@ namespace Dynatrace.API.Model
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
+                ) && 
+                (
+                    this.Error == input.Error ||
+                    (this.Error != null &&
+                    this.Error.Equals(input.Error))
                 );
         }
 
@@ -119,10 +147,14 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.InvalidValue != null)
+                    hashCode = hashCode * 59 + this.InvalidValue.GetHashCode();
                 if (this.ObjectId != null)
                     hashCode = hashCode * 59 + this.ObjectId.GetHashCode();
                 if (this.Code != null)
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Error != null)
+                    hashCode = hashCode * 59 + this.Error.GetHashCode();
                 return hashCode;
             }
         }

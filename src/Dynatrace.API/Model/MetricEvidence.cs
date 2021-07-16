@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -24,7 +24,7 @@ using SwaggerDateConverter = Dynatrace.API.Client.SwaggerDateConverter;
 namespace Dynatrace.API.Model
 {
     /// <summary>
-    /// The metric evidence of the problem.   A change of metric behavior that indicates the problem and/or is its root cause.
+    /// The metric evidence of the problem. A change of metric behavior that indicates the problem and/or is its root cause.
     /// </summary>
     [DataContract]
         public partial class MetricEvidence : Evidence,  IEquatable<MetricEvidence>, IValidatableObject
@@ -325,22 +325,13 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricEvidence" /> class.
         /// </summary>
-        /// <param name="valueAfterChangePoint">The metric&#x27;s value after the problem start. (required).</param>
         /// <param name="valueBeforeChangePoint">The metric&#x27;s value before the problem start. (required).</param>
+        /// <param name="valueAfterChangePoint">The metric&#x27;s value after the problem start. (required).</param>
         /// <param name="metricId">The ID of the metric. (required).</param>
-        /// <param name="endTime">The end time of the evidence, in UTC milliseconds.  The value &#x60;null&#x60; indicates that the evidence is still open. (required).</param>
+        /// <param name="endTime">The end time of the evidence, in UTC milliseconds.The value &#x60;null&#x60; indicates that the evidence is still open. (required).</param>
         /// <param name="unit">The unit of the metric. (required).</param>
-        public MetricEvidence(float? valueAfterChangePoint = default(float?), float? valueBeforeChangePoint = default(float?), string metricId = default(string), long? endTime = default(long?), UnitEnum unit = default(UnitEnum), EvidenceTypeEnum evidenceType = default(EvidenceTypeEnum), string displayName = default(string), EntityStub entity = default(EntityStub), EntityStub groupingEntity = default(EntityStub), bool? rootCauseRelevant = default(bool?), long? startTime = default(long?)) : base(evidenceType, displayName, entity, groupingEntity, rootCauseRelevant, startTime)
+        public MetricEvidence(float? valueBeforeChangePoint = default(float?), float? valueAfterChangePoint = default(float?), string metricId = default(string), long? endTime = default(long?), UnitEnum unit = default(UnitEnum), EvidenceTypeEnum evidenceType = default(EvidenceTypeEnum), string displayName = default(string), EntityStub entity = default(EntityStub), EntityStub groupingEntity = default(EntityStub), bool? rootCauseRelevant = default(bool?), long? startTime = default(long?)) : base(evidenceType, displayName, entity, groupingEntity, rootCauseRelevant, startTime)
         {
-            // to ensure "valueAfterChangePoint" is required (not null)
-            if (valueAfterChangePoint == null)
-            {
-                throw new InvalidDataException("valueAfterChangePoint is a required property for MetricEvidence and cannot be null");
-            }
-            else
-            {
-                this.ValueAfterChangePoint = valueAfterChangePoint;
-            }
             // to ensure "valueBeforeChangePoint" is required (not null)
             if (valueBeforeChangePoint == null)
             {
@@ -349,6 +340,15 @@ namespace Dynatrace.API.Model
             else
             {
                 this.ValueBeforeChangePoint = valueBeforeChangePoint;
+            }
+            // to ensure "valueAfterChangePoint" is required (not null)
+            if (valueAfterChangePoint == null)
+            {
+                throw new InvalidDataException("valueAfterChangePoint is a required property for MetricEvidence and cannot be null");
+            }
+            else
+            {
+                this.ValueAfterChangePoint = valueAfterChangePoint;
             }
             // to ensure "metricId" is required (not null)
             if (metricId == null)
@@ -380,18 +380,18 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// The metric&#x27;s value after the problem start.
-        /// </summary>
-        /// <value>The metric&#x27;s value after the problem start.</value>
-        [DataMember(Name="valueAfterChangePoint", EmitDefaultValue=false)]
-        public float? ValueAfterChangePoint { get; set; }
-
-        /// <summary>
         /// The metric&#x27;s value before the problem start.
         /// </summary>
         /// <value>The metric&#x27;s value before the problem start.</value>
         [DataMember(Name="valueBeforeChangePoint", EmitDefaultValue=false)]
         public float? ValueBeforeChangePoint { get; set; }
+
+        /// <summary>
+        /// The metric&#x27;s value after the problem start.
+        /// </summary>
+        /// <value>The metric&#x27;s value after the problem start.</value>
+        [DataMember(Name="valueAfterChangePoint", EmitDefaultValue=false)]
+        public float? ValueAfterChangePoint { get; set; }
 
         /// <summary>
         /// The ID of the metric.
@@ -401,9 +401,9 @@ namespace Dynatrace.API.Model
         public string MetricId { get; set; }
 
         /// <summary>
-        /// The end time of the evidence, in UTC milliseconds.  The value &#x60;null&#x60; indicates that the evidence is still open.
+        /// The end time of the evidence, in UTC milliseconds.The value &#x60;null&#x60; indicates that the evidence is still open.
         /// </summary>
-        /// <value>The end time of the evidence, in UTC milliseconds.  The value &#x60;null&#x60; indicates that the evidence is still open.</value>
+        /// <value>The end time of the evidence, in UTC milliseconds.The value &#x60;null&#x60; indicates that the evidence is still open.</value>
         [DataMember(Name="endTime", EmitDefaultValue=false)]
         public long? EndTime { get; set; }
 
@@ -417,8 +417,8 @@ namespace Dynatrace.API.Model
             var sb = new StringBuilder();
             sb.Append("class MetricEvidence {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  ValueAfterChangePoint: ").Append(ValueAfterChangePoint).Append("\n");
             sb.Append("  ValueBeforeChangePoint: ").Append(ValueBeforeChangePoint).Append("\n");
+            sb.Append("  ValueAfterChangePoint: ").Append(ValueAfterChangePoint).Append("\n");
             sb.Append("  MetricId: ").Append(MetricId).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  Unit: ").Append(Unit).Append("\n");
@@ -457,14 +457,14 @@ namespace Dynatrace.API.Model
 
             return base.Equals(input) && 
                 (
-                    this.ValueAfterChangePoint == input.ValueAfterChangePoint ||
-                    (this.ValueAfterChangePoint != null &&
-                    this.ValueAfterChangePoint.Equals(input.ValueAfterChangePoint))
-                ) && base.Equals(input) && 
-                (
                     this.ValueBeforeChangePoint == input.ValueBeforeChangePoint ||
                     (this.ValueBeforeChangePoint != null &&
                     this.ValueBeforeChangePoint.Equals(input.ValueBeforeChangePoint))
+                ) && base.Equals(input) && 
+                (
+                    this.ValueAfterChangePoint == input.ValueAfterChangePoint ||
+                    (this.ValueAfterChangePoint != null &&
+                    this.ValueAfterChangePoint.Equals(input.ValueAfterChangePoint))
                 ) && base.Equals(input) && 
                 (
                     this.MetricId == input.MetricId ||
@@ -492,10 +492,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
-                if (this.ValueAfterChangePoint != null)
-                    hashCode = hashCode * 59 + this.ValueAfterChangePoint.GetHashCode();
                 if (this.ValueBeforeChangePoint != null)
                     hashCode = hashCode * 59 + this.ValueBeforeChangePoint.GetHashCode();
+                if (this.ValueAfterChangePoint != null)
+                    hashCode = hashCode * 59 + this.ValueAfterChangePoint.GetHashCode();
                 if (this.MetricId != null)
                     hashCode = hashCode * 59 + this.MetricId.GetHashCode();
                 if (this.EndTime != null)

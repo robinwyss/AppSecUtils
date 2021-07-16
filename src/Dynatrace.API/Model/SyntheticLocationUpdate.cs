@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,9 +34,9 @@ namespace Dynatrace.API.Model
         public partial class SyntheticLocationUpdate :  IEquatable<SyntheticLocationUpdate>, IValidatableObject
     {
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate  * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate  * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum TypeEnum
         {
@@ -51,15 +51,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "PUBLIC")]
             PUBLIC = 2        }
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate  * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate  * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate </value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SyntheticLocationUpdate" /> class.
         /// </summary>
-        /// <param name="type">Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate  * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate  .</param>
+        /// <param name="type">Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;PUBLIC&#x60; -&gt; SyntheticPublicLocationUpdate * &#x60;PRIVATE&#x60; -&gt; SyntheticPrivateLocationUpdate .</param>
         public SyntheticLocationUpdate(TypeEnum? type = default(TypeEnum?))
         {
             this.Type = type;

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -98,60 +98,65 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "default")]
             Default = 1,
             /// <summary>
+            /// Enum Delta for value: delta
+            /// </summary>
+            [EnumMember(Value = "delta")]
+            Delta = 2,
+            /// <summary>
             /// Enum Filter for value: filter
             /// </summary>
             [EnumMember(Value = "filter")]
-            Filter = 2,
+            Filter = 3,
             /// <summary>
             /// Enum Fold for value: fold
             /// </summary>
             [EnumMember(Value = "fold")]
-            Fold = 3,
+            Fold = 4,
             /// <summary>
             /// Enum Last for value: last
             /// </summary>
             [EnumMember(Value = "last")]
-            Last = 4,
+            Last = 5,
             /// <summary>
             /// Enum Limit for value: limit
             /// </summary>
             [EnumMember(Value = "limit")]
-            Limit = 5,
+            Limit = 6,
             /// <summary>
             /// Enum Merge for value: merge
             /// </summary>
             [EnumMember(Value = "merge")]
-            Merge = 6,
+            Merge = 7,
             /// <summary>
             /// Enum Names for value: names
             /// </summary>
             [EnumMember(Value = "names")]
-            Names = 7,
+            Names = 8,
             /// <summary>
             /// Enum Parents for value: parents
             /// </summary>
             [EnumMember(Value = "parents")]
-            Parents = 8,
+            Parents = 9,
             /// <summary>
             /// Enum Rate for value: rate
             /// </summary>
             [EnumMember(Value = "rate")]
-            Rate = 9,
+            Rate = 10,
             /// <summary>
             /// Enum Sort for value: sort
             /// </summary>
             [EnumMember(Value = "sort")]
-            Sort = 10,
+            Sort = 11,
             /// <summary>
             /// Enum SplitBy for value: splitBy
             /// </summary>
             [EnumMember(Value = "splitBy")]
-            SplitBy = 11,
+            SplitBy = 12,
             /// <summary>
             /// Enum Timeshift for value: timeshift
             /// </summary>
             [EnumMember(Value = "timeshift")]
-            Timeshift = 12        }
+            Timeshift = 13        }
         /// <summary>
         /// Transform operators that could be appended to the current transformation list. Must be enabled with the \&quot;fields\&quot; parameter on &#x60;/metrics&#x60; and is always present on &#x60;/metrics/{metricId}&#x60;.
         /// </summary>
@@ -454,26 +459,27 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricDescriptor" /> class.
         /// </summary>
-        /// <param name="dduBillable">If &#x60;true&#x60; the usage of metric consumes [Davis data units](https://dt-url.net/ddu).    Metric expressions don&#x27;t return this field..</param>
+        /// <param name="maximumValue">The maximum value of the metric. Metric expressions don&#x27;t return this field..</param>
+        /// <param name="latency">The latency (in minutes) to how long it takes before a new metric data point is available in Monitoring after it is written. Metric expressions don&#x27;t return this field..</param>
         /// <param name="defaultAggregation">defaultAggregation.</param>
-        /// <param name="impactRelevant">The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) impact relevant.   Metric expressions don&#x27;t return this field..</param>
-        /// <param name="dimensionDefinitions">The fine metric division (for example, process group and process ID for some process-related metric)..</param>
-        /// <param name="rootCauseRelevant">The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) root cause relevant.   Metric expressions don&#x27;t return this field..</param>
-        /// <param name="minimumValue">The minimum value of the metric.   Metric expressions don&#x27;t return this field..</param>
-        /// <param name="maximumValue">The maximum value of the metric.   Metric expressions don&#x27;t return this field..</param>
-        /// <param name="lastWritten">The timestamp when the metric was last written.   Has the value of &#x60;null&#x60; for metric expressions or if the data has never been written..</param>
-        /// <param name="metricValueType">metricValueType.</param>
+        /// <param name="dimensionDefinitions">The fine metric division (for example, process group and process ID for some process-related metric). For [ingested metrics](https://dt-url.net/5d63ic1), dimensions that doesn&#x27;t have have any data within the last 15 days are omitted. .</param>
+        /// <param name="rootCauseRelevant">The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) root cause relevant. Metric expressions don&#x27;t return this field..</param>
+        /// <param name="dduBillable">If &#x60;true&#x60; the usage of metric consumes [Davis data units](https://dt-url.net/ddu).  Metric expressions don&#x27;t return this field..</param>
+        /// <param name="lastWritten">The timestamp when the metric was last written. Has the value of &#x60;null&#x60; for metric expressions or if the data has never been written..</param>
+        /// <param name="metricId">The fully qualified key of the metric. If a transformation has been used it is reflected in the metric key. (required).</param>
         /// <param name="entityType">List of admissible primary entity types for this metric. Can be used for the &#x60;type&#x60; predicate in the &#x60;entitySelector&#x60;..</param>
-        /// <param name="metricId">The fully qualified key of the metric.   If a transformation has been used it is reflected in the metric key. (required).</param>
         /// <param name="aggregationTypes">The list of allowed aggregations for this metric..</param>
+        /// <param name="metricValueType">metricValueType.</param>
+        /// <param name="impactRelevant">The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) impact relevant. Metric expressions don&#x27;t return this field..</param>
+        /// <param name="minimumValue">The minimum value of the metric. Metric expressions don&#x27;t return this field..</param>
+        /// <param name="created">The timestamp of metric creation. Built-in metrics and metric expressions have the value of &#x60;null&#x60;..</param>
         /// <param name="warnings">A list of potential warnings that affect this ID. For example deprecated feature usage etc..</param>
-        /// <param name="tags">The tags applied to the metric.    Metric expressions don&#x27;t return this field..</param>
+        /// <param name="displayName">The name of the metric in the user interface..</param>
         /// <param name="description">A short description of the metric..</param>
         /// <param name="transformations">Transform operators that could be appended to the current transformation list. Must be enabled with the \&quot;fields\&quot; parameter on &#x60;/metrics&#x60; and is always present on &#x60;/metrics/{metricId}&#x60;..</param>
         /// <param name="unit">The unit of the metric..</param>
-        /// <param name="created">The timestamp of metric creation.   Built-in metrics and metric expressions have the value of &#x60;null&#x60;..</param>
-        /// <param name="displayName">The name of the metric in the user interface..</param>
-        public MetricDescriptor(bool? dduBillable = default(bool?), MetricDefaultAggregation defaultAggregation = default(MetricDefaultAggregation), bool? impactRelevant = default(bool?), List<MetricDimensionDefinition> dimensionDefinitions = default(List<MetricDimensionDefinition>), bool? rootCauseRelevant = default(bool?), double? minimumValue = default(double?), double? maximumValue = default(double?), long? lastWritten = default(long?), MetricValueType metricValueType = default(MetricValueType), List<string> entityType = default(List<string>), string metricId = default(string), List<AggregationTypesEnum> aggregationTypes = default(List<AggregationTypesEnum>), List<string> warnings = default(List<string>), List<string> tags = default(List<string>), string description = default(string), List<TransformationsEnum> transformations = default(List<TransformationsEnum>), UnitEnum? unit = default(UnitEnum?), long? created = default(long?), string displayName = default(string))
+        /// <param name="tags">The tags applied to the metric.  Metric expressions don&#x27;t return this field..</param>
+        public MetricDescriptor(double? maximumValue = default(double?), long? latency = default(long?), MetricDefaultAggregation defaultAggregation = default(MetricDefaultAggregation), List<MetricDimensionDefinition> dimensionDefinitions = default(List<MetricDimensionDefinition>), bool? rootCauseRelevant = default(bool?), bool? dduBillable = default(bool?), long? lastWritten = default(long?), string metricId = default(string), List<string> entityType = default(List<string>), List<AggregationTypesEnum> aggregationTypes = default(List<AggregationTypesEnum>), MetricValueType metricValueType = default(MetricValueType), bool? impactRelevant = default(bool?), double? minimumValue = default(double?), long? created = default(long?), List<string> warnings = default(List<string>), string displayName = default(string), string description = default(string), List<TransformationsEnum> transformations = default(List<TransformationsEnum>), UnitEnum? unit = default(UnitEnum?), List<string> tags = default(List<string>))
         {
             // to ensure "metricId" is required (not null)
             if (metricId == null)
@@ -484,32 +490,40 @@ namespace Dynatrace.API.Model
             {
                 this.MetricId = metricId;
             }
-            this.DduBillable = dduBillable;
+            this.MaximumValue = maximumValue;
+            this.Latency = latency;
             this.DefaultAggregation = defaultAggregation;
-            this.ImpactRelevant = impactRelevant;
             this.DimensionDefinitions = dimensionDefinitions;
             this.RootCauseRelevant = rootCauseRelevant;
-            this.MinimumValue = minimumValue;
-            this.MaximumValue = maximumValue;
+            this.DduBillable = dduBillable;
             this.LastWritten = lastWritten;
-            this.MetricValueType = metricValueType;
             this.EntityType = entityType;
             this.AggregationTypes = aggregationTypes;
+            this.MetricValueType = metricValueType;
+            this.ImpactRelevant = impactRelevant;
+            this.MinimumValue = minimumValue;
+            this.Created = created;
             this.Warnings = warnings;
-            this.Tags = tags;
+            this.DisplayName = displayName;
             this.Description = description;
             this.Transformations = transformations;
             this.Unit = unit;
-            this.Created = created;
-            this.DisplayName = displayName;
+            this.Tags = tags;
         }
         
         /// <summary>
-        /// If &#x60;true&#x60; the usage of metric consumes [Davis data units](https://dt-url.net/ddu).    Metric expressions don&#x27;t return this field.
+        /// The maximum value of the metric. Metric expressions don&#x27;t return this field.
         /// </summary>
-        /// <value>If &#x60;true&#x60; the usage of metric consumes [Davis data units](https://dt-url.net/ddu).    Metric expressions don&#x27;t return this field.</value>
-        [DataMember(Name="dduBillable", EmitDefaultValue=false)]
-        public bool? DduBillable { get; set; }
+        /// <value>The maximum value of the metric. Metric expressions don&#x27;t return this field.</value>
+        [DataMember(Name="maximumValue", EmitDefaultValue=false)]
+        public double? MaximumValue { get; set; }
+
+        /// <summary>
+        /// The latency (in minutes) to how long it takes before a new metric data point is available in Monitoring after it is written. Metric expressions don&#x27;t return this field.
+        /// </summary>
+        /// <value>The latency (in minutes) to how long it takes before a new metric data point is available in Monitoring after it is written. Metric expressions don&#x27;t return this field.</value>
+        [DataMember(Name="latency", EmitDefaultValue=false)]
+        public long? Latency { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultAggregation
@@ -518,52 +532,39 @@ namespace Dynatrace.API.Model
         public MetricDefaultAggregation DefaultAggregation { get; set; }
 
         /// <summary>
-        /// The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) impact relevant.   Metric expressions don&#x27;t return this field.
+        /// The fine metric division (for example, process group and process ID for some process-related metric). For [ingested metrics](https://dt-url.net/5d63ic1), dimensions that doesn&#x27;t have have any data within the last 15 days are omitted. 
         /// </summary>
-        /// <value>The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) impact relevant.   Metric expressions don&#x27;t return this field.</value>
-        [DataMember(Name="impactRelevant", EmitDefaultValue=false)]
-        public bool? ImpactRelevant { get; set; }
-
-        /// <summary>
-        /// The fine metric division (for example, process group and process ID for some process-related metric).
-        /// </summary>
-        /// <value>The fine metric division (for example, process group and process ID for some process-related metric).</value>
+        /// <value>The fine metric division (for example, process group and process ID for some process-related metric). For [ingested metrics](https://dt-url.net/5d63ic1), dimensions that doesn&#x27;t have have any data within the last 15 days are omitted. </value>
         [DataMember(Name="dimensionDefinitions", EmitDefaultValue=false)]
         public List<MetricDimensionDefinition> DimensionDefinitions { get; set; }
 
         /// <summary>
-        /// The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) root cause relevant.   Metric expressions don&#x27;t return this field.
+        /// The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) root cause relevant. Metric expressions don&#x27;t return this field.
         /// </summary>
-        /// <value>The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) root cause relevant.   Metric expressions don&#x27;t return this field.</value>
+        /// <value>The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) root cause relevant. Metric expressions don&#x27;t return this field.</value>
         [DataMember(Name="rootCauseRelevant", EmitDefaultValue=false)]
         public bool? RootCauseRelevant { get; set; }
 
         /// <summary>
-        /// The minimum value of the metric.   Metric expressions don&#x27;t return this field.
+        /// If &#x60;true&#x60; the usage of metric consumes [Davis data units](https://dt-url.net/ddu).  Metric expressions don&#x27;t return this field.
         /// </summary>
-        /// <value>The minimum value of the metric.   Metric expressions don&#x27;t return this field.</value>
-        [DataMember(Name="minimumValue", EmitDefaultValue=false)]
-        public double? MinimumValue { get; set; }
+        /// <value>If &#x60;true&#x60; the usage of metric consumes [Davis data units](https://dt-url.net/ddu).  Metric expressions don&#x27;t return this field.</value>
+        [DataMember(Name="dduBillable", EmitDefaultValue=false)]
+        public bool? DduBillable { get; set; }
 
         /// <summary>
-        /// The maximum value of the metric.   Metric expressions don&#x27;t return this field.
+        /// The timestamp when the metric was last written. Has the value of &#x60;null&#x60; for metric expressions or if the data has never been written.
         /// </summary>
-        /// <value>The maximum value of the metric.   Metric expressions don&#x27;t return this field.</value>
-        [DataMember(Name="maximumValue", EmitDefaultValue=false)]
-        public double? MaximumValue { get; set; }
-
-        /// <summary>
-        /// The timestamp when the metric was last written.   Has the value of &#x60;null&#x60; for metric expressions or if the data has never been written.
-        /// </summary>
-        /// <value>The timestamp when the metric was last written.   Has the value of &#x60;null&#x60; for metric expressions or if the data has never been written.</value>
+        /// <value>The timestamp when the metric was last written. Has the value of &#x60;null&#x60; for metric expressions or if the data has never been written.</value>
         [DataMember(Name="lastWritten", EmitDefaultValue=false)]
         public long? LastWritten { get; set; }
 
         /// <summary>
-        /// Gets or Sets MetricValueType
+        /// The fully qualified key of the metric. If a transformation has been used it is reflected in the metric key.
         /// </summary>
-        [DataMember(Name="metricValueType", EmitDefaultValue=false)]
-        public MetricValueType MetricValueType { get; set; }
+        /// <value>The fully qualified key of the metric. If a transformation has been used it is reflected in the metric key.</value>
+        [DataMember(Name="metricId", EmitDefaultValue=false)]
+        public string MetricId { get; set; }
 
         /// <summary>
         /// List of admissible primary entity types for this metric. Can be used for the &#x60;type&#x60; predicate in the &#x60;entitySelector&#x60;.
@@ -572,13 +573,33 @@ namespace Dynatrace.API.Model
         [DataMember(Name="entityType", EmitDefaultValue=false)]
         public List<string> EntityType { get; set; }
 
-        /// <summary>
-        /// The fully qualified key of the metric.   If a transformation has been used it is reflected in the metric key.
-        /// </summary>
-        /// <value>The fully qualified key of the metric.   If a transformation has been used it is reflected in the metric key.</value>
-        [DataMember(Name="metricId", EmitDefaultValue=false)]
-        public string MetricId { get; set; }
 
+        /// <summary>
+        /// Gets or Sets MetricValueType
+        /// </summary>
+        [DataMember(Name="metricValueType", EmitDefaultValue=false)]
+        public MetricValueType MetricValueType { get; set; }
+
+        /// <summary>
+        /// The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) impact relevant. Metric expressions don&#x27;t return this field.
+        /// </summary>
+        /// <value>The metric is (&#x60;true&#x60;) or is not (&#x60;false&#x60;) impact relevant. Metric expressions don&#x27;t return this field.</value>
+        [DataMember(Name="impactRelevant", EmitDefaultValue=false)]
+        public bool? ImpactRelevant { get; set; }
+
+        /// <summary>
+        /// The minimum value of the metric. Metric expressions don&#x27;t return this field.
+        /// </summary>
+        /// <value>The minimum value of the metric. Metric expressions don&#x27;t return this field.</value>
+        [DataMember(Name="minimumValue", EmitDefaultValue=false)]
+        public double? MinimumValue { get; set; }
+
+        /// <summary>
+        /// The timestamp of metric creation. Built-in metrics and metric expressions have the value of &#x60;null&#x60;.
+        /// </summary>
+        /// <value>The timestamp of metric creation. Built-in metrics and metric expressions have the value of &#x60;null&#x60;.</value>
+        [DataMember(Name="created", EmitDefaultValue=false)]
+        public long? Created { get; set; }
 
         /// <summary>
         /// A list of potential warnings that affect this ID. For example deprecated feature usage etc.
@@ -588,11 +609,11 @@ namespace Dynatrace.API.Model
         public List<string> Warnings { get; set; }
 
         /// <summary>
-        /// The tags applied to the metric.    Metric expressions don&#x27;t return this field.
+        /// The name of the metric in the user interface.
         /// </summary>
-        /// <value>The tags applied to the metric.    Metric expressions don&#x27;t return this field.</value>
-        [DataMember(Name="tags", EmitDefaultValue=false)]
-        public List<string> Tags { get; set; }
+        /// <value>The name of the metric in the user interface.</value>
+        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// A short description of the metric.
@@ -604,18 +625,11 @@ namespace Dynatrace.API.Model
 
 
         /// <summary>
-        /// The timestamp of metric creation.   Built-in metrics and metric expressions have the value of &#x60;null&#x60;.
+        /// The tags applied to the metric.  Metric expressions don&#x27;t return this field.
         /// </summary>
-        /// <value>The timestamp of metric creation.   Built-in metrics and metric expressions have the value of &#x60;null&#x60;.</value>
-        [DataMember(Name="created", EmitDefaultValue=false)]
-        public long? Created { get; set; }
-
-        /// <summary>
-        /// The name of the metric in the user interface.
-        /// </summary>
-        /// <value>The name of the metric in the user interface.</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; set; }
+        /// <value>The tags applied to the metric.  Metric expressions don&#x27;t return this field.</value>
+        [DataMember(Name="tags", EmitDefaultValue=false)]
+        public List<string> Tags { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -625,25 +639,26 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class MetricDescriptor {\n");
-            sb.Append("  DduBillable: ").Append(DduBillable).Append("\n");
+            sb.Append("  MaximumValue: ").Append(MaximumValue).Append("\n");
+            sb.Append("  Latency: ").Append(Latency).Append("\n");
             sb.Append("  DefaultAggregation: ").Append(DefaultAggregation).Append("\n");
-            sb.Append("  ImpactRelevant: ").Append(ImpactRelevant).Append("\n");
             sb.Append("  DimensionDefinitions: ").Append(DimensionDefinitions).Append("\n");
             sb.Append("  RootCauseRelevant: ").Append(RootCauseRelevant).Append("\n");
-            sb.Append("  MinimumValue: ").Append(MinimumValue).Append("\n");
-            sb.Append("  MaximumValue: ").Append(MaximumValue).Append("\n");
+            sb.Append("  DduBillable: ").Append(DduBillable).Append("\n");
             sb.Append("  LastWritten: ").Append(LastWritten).Append("\n");
-            sb.Append("  MetricValueType: ").Append(MetricValueType).Append("\n");
-            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
             sb.Append("  MetricId: ").Append(MetricId).Append("\n");
+            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
             sb.Append("  AggregationTypes: ").Append(AggregationTypes).Append("\n");
+            sb.Append("  MetricValueType: ").Append(MetricValueType).Append("\n");
+            sb.Append("  ImpactRelevant: ").Append(ImpactRelevant).Append("\n");
+            sb.Append("  MinimumValue: ").Append(MinimumValue).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Transformations: ").Append(Transformations).Append("\n");
             sb.Append("  Unit: ").Append(Unit).Append("\n");
-            sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -679,19 +694,19 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.DduBillable == input.DduBillable ||
-                    (this.DduBillable != null &&
-                    this.DduBillable.Equals(input.DduBillable))
+                    this.MaximumValue == input.MaximumValue ||
+                    (this.MaximumValue != null &&
+                    this.MaximumValue.Equals(input.MaximumValue))
+                ) && 
+                (
+                    this.Latency == input.Latency ||
+                    (this.Latency != null &&
+                    this.Latency.Equals(input.Latency))
                 ) && 
                 (
                     this.DefaultAggregation == input.DefaultAggregation ||
                     (this.DefaultAggregation != null &&
                     this.DefaultAggregation.Equals(input.DefaultAggregation))
-                ) && 
-                (
-                    this.ImpactRelevant == input.ImpactRelevant ||
-                    (this.ImpactRelevant != null &&
-                    this.ImpactRelevant.Equals(input.ImpactRelevant))
                 ) && 
                 (
                     this.DimensionDefinitions == input.DimensionDefinitions ||
@@ -705,14 +720,9 @@ namespace Dynatrace.API.Model
                     this.RootCauseRelevant.Equals(input.RootCauseRelevant))
                 ) && 
                 (
-                    this.MinimumValue == input.MinimumValue ||
-                    (this.MinimumValue != null &&
-                    this.MinimumValue.Equals(input.MinimumValue))
-                ) && 
-                (
-                    this.MaximumValue == input.MaximumValue ||
-                    (this.MaximumValue != null &&
-                    this.MaximumValue.Equals(input.MaximumValue))
+                    this.DduBillable == input.DduBillable ||
+                    (this.DduBillable != null &&
+                    this.DduBillable.Equals(input.DduBillable))
                 ) && 
                 (
                     this.LastWritten == input.LastWritten ||
@@ -720,9 +730,9 @@ namespace Dynatrace.API.Model
                     this.LastWritten.Equals(input.LastWritten))
                 ) && 
                 (
-                    this.MetricValueType == input.MetricValueType ||
-                    (this.MetricValueType != null &&
-                    this.MetricValueType.Equals(input.MetricValueType))
+                    this.MetricId == input.MetricId ||
+                    (this.MetricId != null &&
+                    this.MetricId.Equals(input.MetricId))
                 ) && 
                 (
                     this.EntityType == input.EntityType ||
@@ -731,15 +741,30 @@ namespace Dynatrace.API.Model
                     this.EntityType.SequenceEqual(input.EntityType)
                 ) && 
                 (
-                    this.MetricId == input.MetricId ||
-                    (this.MetricId != null &&
-                    this.MetricId.Equals(input.MetricId))
-                ) && 
-                (
                     this.AggregationTypes == input.AggregationTypes ||
                     this.AggregationTypes != null &&
                     input.AggregationTypes != null &&
                     this.AggregationTypes.SequenceEqual(input.AggregationTypes)
+                ) && 
+                (
+                    this.MetricValueType == input.MetricValueType ||
+                    (this.MetricValueType != null &&
+                    this.MetricValueType.Equals(input.MetricValueType))
+                ) && 
+                (
+                    this.ImpactRelevant == input.ImpactRelevant ||
+                    (this.ImpactRelevant != null &&
+                    this.ImpactRelevant.Equals(input.ImpactRelevant))
+                ) && 
+                (
+                    this.MinimumValue == input.MinimumValue ||
+                    (this.MinimumValue != null &&
+                    this.MinimumValue.Equals(input.MinimumValue))
+                ) && 
+                (
+                    this.Created == input.Created ||
+                    (this.Created != null &&
+                    this.Created.Equals(input.Created))
                 ) && 
                 (
                     this.Warnings == input.Warnings ||
@@ -748,10 +773,9 @@ namespace Dynatrace.API.Model
                     this.Warnings.SequenceEqual(input.Warnings)
                 ) && 
                 (
-                    this.Tags == input.Tags ||
-                    this.Tags != null &&
-                    input.Tags != null &&
-                    this.Tags.SequenceEqual(input.Tags)
+                    this.DisplayName == input.DisplayName ||
+                    (this.DisplayName != null &&
+                    this.DisplayName.Equals(input.DisplayName))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -770,14 +794,10 @@ namespace Dynatrace.API.Model
                     this.Unit.Equals(input.Unit))
                 ) && 
                 (
-                    this.Created == input.Created ||
-                    (this.Created != null &&
-                    this.Created.Equals(input.Created))
-                ) && 
-                (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
                 );
         }
 
@@ -790,44 +810,46 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DduBillable != null)
-                    hashCode = hashCode * 59 + this.DduBillable.GetHashCode();
+                if (this.MaximumValue != null)
+                    hashCode = hashCode * 59 + this.MaximumValue.GetHashCode();
+                if (this.Latency != null)
+                    hashCode = hashCode * 59 + this.Latency.GetHashCode();
                 if (this.DefaultAggregation != null)
                     hashCode = hashCode * 59 + this.DefaultAggregation.GetHashCode();
-                if (this.ImpactRelevant != null)
-                    hashCode = hashCode * 59 + this.ImpactRelevant.GetHashCode();
                 if (this.DimensionDefinitions != null)
                     hashCode = hashCode * 59 + this.DimensionDefinitions.GetHashCode();
                 if (this.RootCauseRelevant != null)
                     hashCode = hashCode * 59 + this.RootCauseRelevant.GetHashCode();
-                if (this.MinimumValue != null)
-                    hashCode = hashCode * 59 + this.MinimumValue.GetHashCode();
-                if (this.MaximumValue != null)
-                    hashCode = hashCode * 59 + this.MaximumValue.GetHashCode();
+                if (this.DduBillable != null)
+                    hashCode = hashCode * 59 + this.DduBillable.GetHashCode();
                 if (this.LastWritten != null)
                     hashCode = hashCode * 59 + this.LastWritten.GetHashCode();
-                if (this.MetricValueType != null)
-                    hashCode = hashCode * 59 + this.MetricValueType.GetHashCode();
-                if (this.EntityType != null)
-                    hashCode = hashCode * 59 + this.EntityType.GetHashCode();
                 if (this.MetricId != null)
                     hashCode = hashCode * 59 + this.MetricId.GetHashCode();
+                if (this.EntityType != null)
+                    hashCode = hashCode * 59 + this.EntityType.GetHashCode();
                 if (this.AggregationTypes != null)
                     hashCode = hashCode * 59 + this.AggregationTypes.GetHashCode();
+                if (this.MetricValueType != null)
+                    hashCode = hashCode * 59 + this.MetricValueType.GetHashCode();
+                if (this.ImpactRelevant != null)
+                    hashCode = hashCode * 59 + this.ImpactRelevant.GetHashCode();
+                if (this.MinimumValue != null)
+                    hashCode = hashCode * 59 + this.MinimumValue.GetHashCode();
+                if (this.Created != null)
+                    hashCode = hashCode * 59 + this.Created.GetHashCode();
                 if (this.Warnings != null)
                     hashCode = hashCode * 59 + this.Warnings.GetHashCode();
-                if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                if (this.DisplayName != null)
+                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Transformations != null)
                     hashCode = hashCode * 59 + this.Transformations.GetHashCode();
                 if (this.Unit != null)
                     hashCode = hashCode * 59 + this.Unit.GetHashCode();
-                if (this.Created != null)
-                    hashCode = hashCode * 59 + this.Created.GetHashCode();
-                if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Tags != null)
+                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
                 return hashCode;
             }
         }

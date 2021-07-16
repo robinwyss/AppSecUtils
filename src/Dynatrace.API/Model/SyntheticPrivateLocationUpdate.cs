@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,9 +30,9 @@ namespace Dynatrace.API.Model
         public partial class SyntheticPrivateLocationUpdate : SyntheticLocationUpdate,  IEquatable<SyntheticPrivateLocationUpdate>, IValidatableObject
     {
         /// <summary>
-        /// The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
+        /// The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
         /// </summary>
-        /// <value>The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
+        /// <value>The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum StatusEnum
         {
@@ -52,25 +52,25 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "HIDDEN")]
             HIDDEN = 3        }
         /// <summary>
-        /// The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
+        /// The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.
         /// </summary>
-        /// <value>The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
+        /// <value>The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it.</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public StatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SyntheticPrivateLocationUpdate" /> class.
         /// </summary>
-        /// <param name="nodes">A list of synthetic nodes belonging to the location.    You can retrieve the list of available nodes with the [GET all nodes](https://dt-url.net/miy3rpl) call. (required).</param>
+        /// <param name="nodes">A list of synthetic nodes belonging to the location.  You can retrieve the list of available nodes with the [GET all nodes](https://dt-url.net/miy3rpl) call. (required).</param>
         /// <param name="name">The name of the location. (required).</param>
-        /// <param name="countryCode">The country code of the location.    Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland)..</param>
-        /// <param name="regionCode">The region code of the location.    For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.    For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes)..</param>
+        /// <param name="countryCode">The country code of the location.  Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland)..</param>
+        /// <param name="regionCode">The region code of the location.  For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.  For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes)..</param>
         /// <param name="city">The city of the location..</param>
         /// <param name="latitude">The latitude of the location in &#x60;DDD.dddd&#x60; format. (required).</param>
         /// <param name="longitude">The longitude of the location in &#x60;DDD.dddd&#x60; format. (required).</param>
-        /// <param name="status">The status of the location:   * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location.  * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location.  * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it..</param>
+        /// <param name="status">The status of the location: * &#x60;ENABLED&#x60;: The location is displayed as active in the UI. You can assign monitors to the location. * &#x60;DISABLED&#x60;: The location is displayed as inactive in the UI. You can&#x27;t assign monitors to the location. Monitors already assigned to the location will stay there and will be executed from the location. * &#x60;HIDDEN&#x60;: The location is not displayed in the UI. You can&#x27;t assign monitors to the location. You can only set location as &#x60;HIDDEN&#x60; when no monitor is assigned to it..</param>
         /// <param name="availabilityLocationOutage">The alerting of location outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
-        /// <param name="availabilityNodeOutage">The alerting of node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).    If enabled, the outage of *any* node in the location triggers an alert..</param>
-        /// <param name="locationNodeOutageDelayInMinutes">Alert if the location or node outage lasts longer than *X* minutes.    Only applicable when **availabilityLocationOutage** or **availabilityNodeOutage** is set to &#x60;true&#x60;..</param>
+        /// <param name="availabilityNodeOutage">The alerting of node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).  If enabled, the outage of *any* node in the location triggers an alert..</param>
+        /// <param name="locationNodeOutageDelayInMinutes">Alert if the location or node outage lasts longer than *X* minutes.  Only applicable when **availabilityLocationOutage** or **availabilityNodeOutage** is set to &#x60;true&#x60;..</param>
         /// <param name="availabilityNotificationsEnabled">The notifications of location and node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
         public SyntheticPrivateLocationUpdate(List<string> nodes = default(List<string>), string name = default(string), string countryCode = default(string), string regionCode = default(string), string city = default(string), double? latitude = default(double?), double? longitude = default(double?), StatusEnum? status = default(StatusEnum?), bool? availabilityLocationOutage = default(bool?), bool? availabilityNodeOutage = default(bool?), int? locationNodeOutageDelayInMinutes = default(int?), bool? availabilityNotificationsEnabled = default(bool?), TypeEnum? type = default(TypeEnum?)) : base(type)
         {
@@ -121,9 +121,9 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// A list of synthetic nodes belonging to the location.    You can retrieve the list of available nodes with the [GET all nodes](https://dt-url.net/miy3rpl) call.
+        /// A list of synthetic nodes belonging to the location.  You can retrieve the list of available nodes with the [GET all nodes](https://dt-url.net/miy3rpl) call.
         /// </summary>
-        /// <value>A list of synthetic nodes belonging to the location.    You can retrieve the list of available nodes with the [GET all nodes](https://dt-url.net/miy3rpl) call.</value>
+        /// <value>A list of synthetic nodes belonging to the location.  You can retrieve the list of available nodes with the [GET all nodes](https://dt-url.net/miy3rpl) call.</value>
         [DataMember(Name="nodes", EmitDefaultValue=false)]
         public List<string> Nodes { get; set; }
 
@@ -135,16 +135,16 @@ namespace Dynatrace.API.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The country code of the location.    Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).
+        /// The country code of the location.  Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).
         /// </summary>
-        /// <value>The country code of the location.    Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).</value>
+        /// <value>The country code of the location.  Use the alpha-2 code of the [ISO 3166-2 standard](https://dt-url.net/iso3166-2), (for example, &#x60;AT&#x60; for Austria or &#x60;PL&#x60; for Poland).</value>
         [DataMember(Name="countryCode", EmitDefaultValue=false)]
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// The region code of the location.    For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.    For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).
+        /// The region code of the location.  For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.  For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).
         /// </summary>
-        /// <value>The region code of the location.    For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.    For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).</value>
+        /// <value>The region code of the location.  For the [USA](https://dt-url.net/iso3166us) or [Canada](https://dt-url.net/iso3166ca) use ISO 3166-2 state codes (without &#x60;US-&#x60; or &#x60;CA-&#x60; prefix), for example, &#x60;VA&#x60; for Virginia or &#x60;OR&#x60; for Oregon.  For the rest of the world use [FIPS 10-4 codes](https://dt-url.net/fipscodes).</value>
         [DataMember(Name="regionCode", EmitDefaultValue=false)]
         public string RegionCode { get; set; }
 
@@ -178,16 +178,16 @@ namespace Dynatrace.API.Model
         public bool? AvailabilityLocationOutage { get; set; }
 
         /// <summary>
-        /// The alerting of node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).    If enabled, the outage of *any* node in the location triggers an alert.
+        /// The alerting of node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).  If enabled, the outage of *any* node in the location triggers an alert.
         /// </summary>
-        /// <value>The alerting of node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).    If enabled, the outage of *any* node in the location triggers an alert.</value>
+        /// <value>The alerting of node outage is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).  If enabled, the outage of *any* node in the location triggers an alert.</value>
         [DataMember(Name="availabilityNodeOutage", EmitDefaultValue=false)]
         public bool? AvailabilityNodeOutage { get; set; }
 
         /// <summary>
-        /// Alert if the location or node outage lasts longer than *X* minutes.    Only applicable when **availabilityLocationOutage** or **availabilityNodeOutage** is set to &#x60;true&#x60;.
+        /// Alert if the location or node outage lasts longer than *X* minutes.  Only applicable when **availabilityLocationOutage** or **availabilityNodeOutage** is set to &#x60;true&#x60;.
         /// </summary>
-        /// <value>Alert if the location or node outage lasts longer than *X* minutes.    Only applicable when **availabilityLocationOutage** or **availabilityNodeOutage** is set to &#x60;true&#x60;.</value>
+        /// <value>Alert if the location or node outage lasts longer than *X* minutes.  Only applicable when **availabilityLocationOutage** or **availabilityNodeOutage** is set to &#x60;true&#x60;.</value>
         [DataMember(Name="locationNodeOutageDelayInMinutes", EmitDefaultValue=false)]
         public int? LocationNodeOutageDelayInMinutes { get; set; }
 

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -50,9 +50,9 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>SchemaDefinition</returns>
-        SchemaDefinition GetSchemaDefinition (string schemaId, string schemaVersion = null);
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>SchemaDefinitionRestDto</returns>
+        SchemaDefinitionRestDto GetSchemaDefinition (string schemaId, string schemaVersion = null);
 
         /// <summary>
         /// Gets parameters of the specified settings schema | maturity&#x3D;EARLY_ADOPTER
@@ -62,9 +62,9 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>ApiResponse of SchemaDefinition</returns>
-        ApiResponse<SchemaDefinition> GetSchemaDefinitionWithHttpInfo (string schemaId, string schemaVersion = null);
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>ApiResponse of SchemaDefinitionRestDto</returns>
+        ApiResponse<SchemaDefinitionRestDto> GetSchemaDefinitionWithHttpInfo (string schemaId, string schemaVersion = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -94,9 +94,9 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>Task of SchemaDefinition</returns>
-        System.Threading.Tasks.Task<SchemaDefinition> GetSchemaDefinitionAsync (string schemaId, string schemaVersion = null);
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>Task of SchemaDefinitionRestDto</returns>
+        System.Threading.Tasks.Task<SchemaDefinitionRestDto> GetSchemaDefinitionAsync (string schemaId, string schemaVersion = null);
 
         /// <summary>
         /// Gets parameters of the specified settings schema | maturity&#x3D;EARLY_ADOPTER
@@ -106,9 +106,9 @@ namespace Dynatrace.API.Api
         /// </remarks>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>Task of ApiResponse (SchemaDefinition)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SchemaDefinition>> GetSchemaDefinitionAsyncWithHttpInfo (string schemaId, string schemaVersion = null);
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>Task of ApiResponse (SchemaDefinitionRestDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SchemaDefinitionRestDto>> GetSchemaDefinitionAsyncWithHttpInfo (string schemaId, string schemaVersion = null);
         #endregion Asynchronous Operations
     }
 
@@ -354,11 +354,11 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>SchemaDefinition</returns>
-        public SchemaDefinition GetSchemaDefinition (string schemaId, string schemaVersion = null)
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>SchemaDefinitionRestDto</returns>
+        public SchemaDefinitionRestDto GetSchemaDefinition (string schemaId, string schemaVersion = null)
         {
-             ApiResponse<SchemaDefinition> localVarResponse = GetSchemaDefinitionWithHttpInfo(schemaId, schemaVersion);
+             ApiResponse<SchemaDefinitionRestDto> localVarResponse = GetSchemaDefinitionWithHttpInfo(schemaId, schemaVersion);
              return localVarResponse.Data;
         }
 
@@ -367,9 +367,9 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>ApiResponse of SchemaDefinition</returns>
-        public ApiResponse< SchemaDefinition > GetSchemaDefinitionWithHttpInfo (string schemaId, string schemaVersion = null)
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>ApiResponse of SchemaDefinitionRestDto</returns>
+        public ApiResponse< SchemaDefinitionRestDto > GetSchemaDefinitionWithHttpInfo (string schemaId, string schemaVersion = null)
         {
             // verify the required parameter 'schemaId' is set
             if (schemaId == null)
@@ -417,9 +417,9 @@ namespace Dynatrace.API.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SchemaDefinition>(localVarStatusCode,
+            return new ApiResponse<SchemaDefinitionRestDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SchemaDefinition) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinition)));
+                (SchemaDefinitionRestDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinitionRestDto)));
         }
 
         /// <summary>
@@ -427,11 +427,11 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>Task of SchemaDefinition</returns>
-        public async System.Threading.Tasks.Task<SchemaDefinition> GetSchemaDefinitionAsync (string schemaId, string schemaVersion = null)
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>Task of SchemaDefinitionRestDto</returns>
+        public async System.Threading.Tasks.Task<SchemaDefinitionRestDto> GetSchemaDefinitionAsync (string schemaId, string schemaVersion = null)
         {
-             ApiResponse<SchemaDefinition> localVarResponse = await GetSchemaDefinitionAsyncWithHttpInfo(schemaId, schemaVersion);
+             ApiResponse<SchemaDefinitionRestDto> localVarResponse = await GetSchemaDefinitionAsyncWithHttpInfo(schemaId, schemaVersion);
              return localVarResponse.Data;
 
         }
@@ -441,9 +441,9 @@ namespace Dynatrace.API.Api
         /// </summary>
         /// <exception cref="Dynatrace.API.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="schemaId">The ID of the required schema.</param>
-        /// <param name="schemaVersion">The version of the required schema.    If not set, the most recent version is returned. (optional)</param>
-        /// <returns>Task of ApiResponse (SchemaDefinition)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SchemaDefinition>> GetSchemaDefinitionAsyncWithHttpInfo (string schemaId, string schemaVersion = null)
+        /// <param name="schemaVersion">The version of the required schema.  If not set, the most recent version is returned. (optional)</param>
+        /// <returns>Task of ApiResponse (SchemaDefinitionRestDto)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SchemaDefinitionRestDto>> GetSchemaDefinitionAsyncWithHttpInfo (string schemaId, string schemaVersion = null)
         {
             // verify the required parameter 'schemaId' is set
             if (schemaId == null)
@@ -491,9 +491,9 @@ namespace Dynatrace.API.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SchemaDefinition>(localVarStatusCode,
+            return new ApiResponse<SchemaDefinitionRestDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SchemaDefinition) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinition)));
+                (SchemaDefinitionRestDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SchemaDefinitionRestDto)));
         }
 
     }

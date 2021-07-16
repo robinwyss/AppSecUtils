@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,21 +32,12 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ProblemCloseResult" /> class.
         /// </summary>
-        /// <param name="closing">True, if the problem is being closed. (required).</param>
         /// <param name="closeTimestamp">The timestamp when the user triggered the closing. (required).</param>
         /// <param name="problemId">The ID of the problem. (required).</param>
+        /// <param name="closing">True, if the problem is being closed. (required).</param>
         /// <param name="comment">comment.</param>
-        public ProblemCloseResult(bool? closing = default(bool?), long? closeTimestamp = default(long?), string problemId = default(string), Comment comment = default(Comment))
+        public ProblemCloseResult(long? closeTimestamp = default(long?), string problemId = default(string), bool? closing = default(bool?), Comment comment = default(Comment))
         {
-            // to ensure "closing" is required (not null)
-            if (closing == null)
-            {
-                throw new InvalidDataException("closing is a required property for ProblemCloseResult and cannot be null");
-            }
-            else
-            {
-                this.Closing = closing;
-            }
             // to ensure "closeTimestamp" is required (not null)
             if (closeTimestamp == null)
             {
@@ -65,16 +56,18 @@ namespace Dynatrace.API.Model
             {
                 this.ProblemId = problemId;
             }
+            // to ensure "closing" is required (not null)
+            if (closing == null)
+            {
+                throw new InvalidDataException("closing is a required property for ProblemCloseResult and cannot be null");
+            }
+            else
+            {
+                this.Closing = closing;
+            }
             this.Comment = comment;
         }
         
-        /// <summary>
-        /// True, if the problem is being closed.
-        /// </summary>
-        /// <value>True, if the problem is being closed.</value>
-        [DataMember(Name="closing", EmitDefaultValue=false)]
-        public bool? Closing { get; set; }
-
         /// <summary>
         /// The timestamp when the user triggered the closing.
         /// </summary>
@@ -90,6 +83,13 @@ namespace Dynatrace.API.Model
         public string ProblemId { get; set; }
 
         /// <summary>
+        /// True, if the problem is being closed.
+        /// </summary>
+        /// <value>True, if the problem is being closed.</value>
+        [DataMember(Name="closing", EmitDefaultValue=false)]
+        public bool? Closing { get; set; }
+
+        /// <summary>
         /// Gets or Sets Comment
         /// </summary>
         [DataMember(Name="comment", EmitDefaultValue=false)]
@@ -103,9 +103,9 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ProblemCloseResult {\n");
-            sb.Append("  Closing: ").Append(Closing).Append("\n");
             sb.Append("  CloseTimestamp: ").Append(CloseTimestamp).Append("\n");
             sb.Append("  ProblemId: ").Append(ProblemId).Append("\n");
+            sb.Append("  Closing: ").Append(Closing).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -142,11 +142,6 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.Closing == input.Closing ||
-                    (this.Closing != null &&
-                    this.Closing.Equals(input.Closing))
-                ) && 
-                (
                     this.CloseTimestamp == input.CloseTimestamp ||
                     (this.CloseTimestamp != null &&
                     this.CloseTimestamp.Equals(input.CloseTimestamp))
@@ -155,6 +150,11 @@ namespace Dynatrace.API.Model
                     this.ProblemId == input.ProblemId ||
                     (this.ProblemId != null &&
                     this.ProblemId.Equals(input.ProblemId))
+                ) && 
+                (
+                    this.Closing == input.Closing ||
+                    (this.Closing != null &&
+                    this.Closing.Equals(input.Closing))
                 ) && 
                 (
                     this.Comment == input.Comment ||
@@ -172,12 +172,12 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Closing != null)
-                    hashCode = hashCode * 59 + this.Closing.GetHashCode();
                 if (this.CloseTimestamp != null)
                     hashCode = hashCode * 59 + this.CloseTimestamp.GetHashCode();
                 if (this.ProblemId != null)
                     hashCode = hashCode * 59 + this.ProblemId.GetHashCode();
+                if (this.Closing != null)
+                    hashCode = hashCode * 59 + this.Closing.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 return hashCode;

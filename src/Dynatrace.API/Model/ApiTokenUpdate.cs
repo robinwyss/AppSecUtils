@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,27 +32,27 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiTokenUpdate" /> class.
         /// </summary>
-        /// <param name="enabled">The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</param>
         /// <param name="name">The name of the token..</param>
-        public ApiTokenUpdate(bool? enabled = default(bool?), string name = default(string))
+        /// <param name="enabled">The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</param>
+        public ApiTokenUpdate(string name = default(string), bool? enabled = default(bool?))
         {
-            this.Enabled = enabled;
             this.Name = name;
+            this.Enabled = enabled;
         }
         
-        /// <summary>
-        /// The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)
-        /// </summary>
-        /// <value>The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)</value>
-        [DataMember(Name="enabled", EmitDefaultValue=false)]
-        public bool? Enabled { get; set; }
-
         /// <summary>
         /// The name of the token.
         /// </summary>
         /// <value>The name of the token.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)
+        /// </summary>
+        /// <value>The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)</value>
+        [DataMember(Name="enabled", EmitDefaultValue=false)]
+        public bool? Enabled { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,8 +62,8 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ApiTokenUpdate {\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,14 +99,14 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.Enabled == input.Enabled ||
-                    (this.Enabled != null &&
-                    this.Enabled.Equals(input.Enabled))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Enabled == input.Enabled ||
+                    (this.Enabled != null &&
+                    this.Enabled.Equals(input.Enabled))
                 );
         }
 
@@ -119,10 +119,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Enabled != null)
-                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Enabled != null)
+                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 return hashCode;
             }
         }

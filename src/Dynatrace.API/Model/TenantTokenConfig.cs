@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,25 +32,25 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TenantTokenConfig" /> class.
         /// </summary>
-        /// <param name="old">old.</param>
         /// <param name="active">active.</param>
-        public TenantTokenConfig(TenantToken old = default(TenantToken), TenantToken active = default(TenantToken))
+        /// <param name="old">old.</param>
+        public TenantTokenConfig(TenantToken active = default(TenantToken), TenantToken old = default(TenantToken))
         {
-            this.Old = old;
             this.Active = active;
+            this.Old = old;
         }
         
-        /// <summary>
-        /// Gets or Sets Old
-        /// </summary>
-        [DataMember(Name="old", EmitDefaultValue=false)]
-        public TenantToken Old { get; set; }
-
         /// <summary>
         /// Gets or Sets Active
         /// </summary>
         [DataMember(Name="active", EmitDefaultValue=false)]
         public TenantToken Active { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Old
+        /// </summary>
+        [DataMember(Name="old", EmitDefaultValue=false)]
+        public TenantToken Old { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,8 +60,8 @@ namespace Dynatrace.API.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TenantTokenConfig {\n");
-            sb.Append("  Old: ").Append(Old).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
+            sb.Append("  Old: ").Append(Old).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -97,14 +97,14 @@ namespace Dynatrace.API.Model
 
             return 
                 (
-                    this.Old == input.Old ||
-                    (this.Old != null &&
-                    this.Old.Equals(input.Old))
-                ) && 
-                (
                     this.Active == input.Active ||
                     (this.Active != null &&
                     this.Active.Equals(input.Active))
+                ) && 
+                (
+                    this.Old == input.Old ||
+                    (this.Old != null &&
+                    this.Old.Equals(input.Old))
                 );
         }
 
@@ -117,10 +117,10 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Old != null)
-                    hashCode = hashCode * 59 + this.Old.GetHashCode();
                 if (this.Active != null)
                     hashCode = hashCode * 59 + this.Active.GetHashCode();
+                if (this.Old != null)
+                    hashCode = hashCode * 59 + this.Old.GetHashCode();
                 return hashCode;
             }
         }

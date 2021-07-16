@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -27,27 +27,27 @@ namespace Dynatrace.API.Model
     /// A list of SLOs.
     /// </summary>
     [DataContract]
-        public partial class SloList :  IEquatable<SloList>, IValidatableObject
+        public partial class SLOs :  IEquatable<SLOs>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SloList" /> class.
+        /// Initializes a new instance of the <see cref="SLOs" /> class.
         /// </summary>
-        /// <param name="sLOs">A list of SLOs..</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result..</param>
+        /// <param name="slo">A list of SLOs..</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result..</param>
         /// <param name="pageSize">The number of entries per page..</param>
         /// <param name="totalCount">The total number of entries in the result. (required).</param>
-        public SloList(List<Slo> sLOs = default(List<Slo>), string nextPageKey = default(string), int? pageSize = default(int?), long? totalCount = default(long?))
+        public SLOs(List<SLO> slo = default(List<SLO>), string nextPageKey = default(string), int? pageSize = default(int?), long? totalCount = default(long?))
         {
             // to ensure "totalCount" is required (not null)
             if (totalCount == null)
             {
-                throw new InvalidDataException("totalCount is a required property for SloList and cannot be null");
+                throw new InvalidDataException("totalCount is a required property for SLOs and cannot be null");
             }
             else
             {
                 this.TotalCount = totalCount;
             }
-            this.SLOs = sLOs;
+            this.Slo = slo;
             this.NextPageKey = nextPageKey;
             this.PageSize = pageSize;
         }
@@ -56,13 +56,13 @@ namespace Dynatrace.API.Model
         /// A list of SLOs.
         /// </summary>
         /// <value>A list of SLOs.</value>
-        [DataMember(Name="SLOs", EmitDefaultValue=false)]
-        public List<Slo> SLOs { get; set; }
+        [DataMember(Name="slo", EmitDefaultValue=false)]
+        public List<SLO> Slo { get; set; }
 
         /// <summary>
-        /// The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.
+        /// The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.
         /// </summary>
-        /// <value>The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.</value>
+        /// <value>The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.</value>
         [DataMember(Name="nextPageKey", EmitDefaultValue=false)]
         public string NextPageKey { get; set; }
 
@@ -87,8 +87,8 @@ namespace Dynatrace.API.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SloList {\n");
-            sb.Append("  SLOs: ").Append(SLOs).Append("\n");
+            sb.Append("class SLOs {\n");
+            sb.Append("  Slo: ").Append(Slo).Append("\n");
             sb.Append("  NextPageKey: ").Append(NextPageKey).Append("\n");
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
@@ -112,25 +112,25 @@ namespace Dynatrace.API.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SloList);
+            return this.Equals(input as SLOs);
         }
 
         /// <summary>
-        /// Returns true if SloList instances are equal
+        /// Returns true if SLOs instances are equal
         /// </summary>
-        /// <param name="input">Instance of SloList to be compared</param>
+        /// <param name="input">Instance of SLOs to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SloList input)
+        public bool Equals(SLOs input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.SLOs == input.SLOs ||
-                    this.SLOs != null &&
-                    input.SLOs != null &&
-                    this.SLOs.SequenceEqual(input.SLOs)
+                    this.Slo == input.Slo ||
+                    this.Slo != null &&
+                    input.Slo != null &&
+                    this.Slo.SequenceEqual(input.Slo)
                 ) && 
                 (
                     this.NextPageKey == input.NextPageKey ||
@@ -158,8 +158,8 @@ namespace Dynatrace.API.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SLOs != null)
-                    hashCode = hashCode * 59 + this.SLOs.GetHashCode();
+                if (this.Slo != null)
+                    hashCode = hashCode * 59 + this.Slo.GetHashCode();
                 if (this.NextPageKey != null)
                     hashCode = hashCode * 59 + this.NextPageKey.GetHashCode();
                 if (this.PageSize != null)

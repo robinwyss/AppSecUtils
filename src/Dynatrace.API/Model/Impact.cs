@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -36,9 +36,9 @@ namespace Dynatrace.API.Model
         public partial class Impact :  IEquatable<Impact>, IValidatableObject
     {
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;SERVICE&#x60; -&gt; ServiceImpact  * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact  * &#x60;MOBILE&#x60; -&gt; MobileImpact  * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;SERVICE&#x60; -&gt; ServiceImpact * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact * &#x60;MOBILE&#x60; -&gt; MobileImpact * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;SERVICE&#x60; -&gt; ServiceImpact  * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact  * &#x60;MOBILE&#x60; -&gt; MobileImpact  * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;SERVICE&#x60; -&gt; ServiceImpact * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact * &#x60;MOBILE&#x60; -&gt; MobileImpact * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum ImpactTypeEnum
         {
@@ -63,15 +63,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "SERVICE")]
             SERVICE = 4        }
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;SERVICE&#x60; -&gt; ServiceImpact  * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact  * &#x60;MOBILE&#x60; -&gt; MobileImpact  * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;SERVICE&#x60; -&gt; ServiceImpact * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact * &#x60;MOBILE&#x60; -&gt; MobileImpact * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;SERVICE&#x60; -&gt; ServiceImpact  * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact  * &#x60;MOBILE&#x60; -&gt; MobileImpact  * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;SERVICE&#x60; -&gt; ServiceImpact * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact * &#x60;MOBILE&#x60; -&gt; MobileImpact * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact </value>
         [DataMember(Name="impactType", EmitDefaultValue=false)]
         public ImpactTypeEnum ImpactType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Impact" /> class.
         /// </summary>
-        /// <param name="impactType">Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;SERVICE&#x60; -&gt; ServiceImpact  * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact  * &#x60;MOBILE&#x60; -&gt; MobileImpact  * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact   (required).</param>
+        /// <param name="impactType">Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;SERVICE&#x60; -&gt; ServiceImpact * &#x60;APPLICATION&#x60; -&gt; ApplicationImpact * &#x60;MOBILE&#x60; -&gt; MobileImpact * &#x60;CUSTOM_APPLICATION&#x60; -&gt; CustomApplicationImpact  (required).</param>
         /// <param name="impactedEntity">impactedEntity (required).</param>
         /// <param name="estimatedAffectedUsers">The estimated number of affected users. (required).</param>
         public Impact(ImpactTypeEnum impactType = default(ImpactTypeEnum), EntityStub impactedEntity = default(EntityStub), long? estimatedAffectedUsers = default(long?))

@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -58,9 +58,9 @@ namespace Dynatrace.API.Model
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// The cloud provider where the location is hosted.    Only applicable to &#x60;PUBLIC&#x60; locations.
+        /// The cloud provider where the location is hosted.  Only applicable to &#x60;PUBLIC&#x60; locations.
         /// </summary>
-        /// <value>The cloud provider where the location is hosted.    Only applicable to &#x60;PUBLIC&#x60; locations.</value>
+        /// <value>The cloud provider where the location is hosted.  Only applicable to &#x60;PUBLIC&#x60; locations.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum CloudPlatformEnum
         {
@@ -105,9 +105,9 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "UNDEFINED")]
             UNDEFINED = 8        }
         /// <summary>
-        /// The cloud provider where the location is hosted.    Only applicable to &#x60;PUBLIC&#x60; locations.
+        /// The cloud provider where the location is hosted.  Only applicable to &#x60;PUBLIC&#x60; locations.
         /// </summary>
-        /// <value>The cloud provider where the location is hosted.    Only applicable to &#x60;PUBLIC&#x60; locations.</value>
+        /// <value>The cloud provider where the location is hosted.  Only applicable to &#x60;PUBLIC&#x60; locations.</value>
         [DataMember(Name="cloudPlatform", EmitDefaultValue=false)]
         public CloudPlatformEnum? CloudPlatform { get; set; }
         /// <summary>
@@ -172,8 +172,8 @@ namespace Dynatrace.API.Model
         /// <param name="name">The name of the location. (required).</param>
         /// <param name="entityId">The Dynatrace entity ID of the location. (required).</param>
         /// <param name="type">The type of the location. (required).</param>
-        /// <param name="cloudPlatform">The cloud provider where the location is hosted.    Only applicable to &#x60;PUBLIC&#x60; locations..</param>
-        /// <param name="ips">The list of IP addresses assigned to the location.    Only applicable to &#x60;PUBLIC&#x60; locations..</param>
+        /// <param name="cloudPlatform">The cloud provider where the location is hosted.  Only applicable to &#x60;PUBLIC&#x60; locations..</param>
+        /// <param name="ips">The list of IP addresses assigned to the location.  Only applicable to &#x60;PUBLIC&#x60; locations..</param>
         /// <param name="stage">The release stage of the location..</param>
         /// <param name="status">The status of the location..</param>
         /// <param name="geoLocationId">The Dynatrace GeoLocation ID of the location. (required).</param>
@@ -238,9 +238,9 @@ namespace Dynatrace.API.Model
 
 
         /// <summary>
-        /// The list of IP addresses assigned to the location.    Only applicable to &#x60;PUBLIC&#x60; locations.
+        /// The list of IP addresses assigned to the location.  Only applicable to &#x60;PUBLIC&#x60; locations.
         /// </summary>
-        /// <value>The list of IP addresses assigned to the location.    Only applicable to &#x60;PUBLIC&#x60; locations.</value>
+        /// <value>The list of IP addresses assigned to the location.  Only applicable to &#x60;PUBLIC&#x60; locations.</value>
         [DataMember(Name="ips", EmitDefaultValue=false)]
         public List<string> Ips { get; set; }
 

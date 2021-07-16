@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -321,30 +321,40 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "securityProblems.write")]
             SecurityProblemsWrite = 57,
             /// <summary>
+            /// Enum SettingsRead for value: settings.read
+            /// </summary>
+            [EnumMember(Value = "settings.read")]
+            SettingsRead = 58,
+            /// <summary>
+            /// Enum SettingsWrite for value: settings.write
+            /// </summary>
+            [EnumMember(Value = "settings.write")]
+            SettingsWrite = 59,
+            /// <summary>
             /// Enum SloRead for value: slo.read
             /// </summary>
             [EnumMember(Value = "slo.read")]
-            SloRead = 58,
+            SloRead = 60,
             /// <summary>
             /// Enum SloWrite for value: slo.write
             /// </summary>
             [EnumMember(Value = "slo.write")]
-            SloWrite = 59,
+            SloWrite = 61,
             /// <summary>
             /// Enum SyntheticLocationsRead for value: syntheticLocations.read
             /// </summary>
             [EnumMember(Value = "syntheticLocations.read")]
-            SyntheticLocationsRead = 60,
+            SyntheticLocationsRead = 62,
             /// <summary>
             /// Enum SyntheticLocationsWrite for value: syntheticLocations.write
             /// </summary>
             [EnumMember(Value = "syntheticLocations.write")]
-            SyntheticLocationsWrite = 61,
+            SyntheticLocationsWrite = 63,
             /// <summary>
             /// Enum TenantTokenRotationWrite for value: tenantTokenRotation.write
             /// </summary>
             [EnumMember(Value = "tenantTokenRotation.write")]
-            TenantTokenRotationWrite = 62        }
+            TenantTokenRotationWrite = 64        }
         /// <summary>
         /// A list of scopes assigned to the token.
         /// </summary>
@@ -359,23 +369,23 @@ namespace Dynatrace.API.Model
         /// <param name="expirationDate">Token expiration date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;).</param>
         /// <param name="personalAccessToken">The token is a [personal access token](https://dt-url.net/wm03sop) (&#x60;true&#x60;) or an API token (&#x60;false&#x60;)..</param>
         /// <param name="creationDate">Token creation date in ISO 8601 format (&#x60;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS&#x27;Z&#x27;&#x60;).</param>
-        /// <param name="owner">The owner of the token..</param>
-        /// <param name="enabled">The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
         /// <param name="scopes">A list of scopes assigned to the token..</param>
         /// <param name="name">The name of the token..</param>
         /// <param name="id">The ID of the token, consisting of prefix and public part of the token..</param>
-        public ApiToken(string lastUsedDate = default(string), string lastUsedIpAddress = default(string), string expirationDate = default(string), bool? personalAccessToken = default(bool?), string creationDate = default(string), string owner = default(string), bool? enabled = default(bool?), List<ScopesEnum> scopes = default(List<ScopesEnum>), string name = default(string), string id = default(string))
+        /// <param name="owner">The owner of the token..</param>
+        /// <param name="enabled">The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;)..</param>
+        public ApiToken(string lastUsedDate = default(string), string lastUsedIpAddress = default(string), string expirationDate = default(string), bool? personalAccessToken = default(bool?), string creationDate = default(string), List<ScopesEnum> scopes = default(List<ScopesEnum>), string name = default(string), string id = default(string), string owner = default(string), bool? enabled = default(bool?))
         {
             this.LastUsedDate = lastUsedDate;
             this.LastUsedIpAddress = lastUsedIpAddress;
             this.ExpirationDate = expirationDate;
             this.PersonalAccessToken = personalAccessToken;
             this.CreationDate = creationDate;
-            this.Owner = owner;
-            this.Enabled = enabled;
             this.Scopes = scopes;
             this.Name = name;
             this.Id = id;
+            this.Owner = owner;
+            this.Enabled = enabled;
         }
         
         /// <summary>
@@ -413,20 +423,6 @@ namespace Dynatrace.API.Model
         [DataMember(Name="creationDate", EmitDefaultValue=false)]
         public string CreationDate { get; set; }
 
-        /// <summary>
-        /// The owner of the token.
-        /// </summary>
-        /// <value>The owner of the token.</value>
-        [DataMember(Name="owner", EmitDefaultValue=false)]
-        public string Owner { get; set; }
-
-        /// <summary>
-        /// The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).
-        /// </summary>
-        /// <value>The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</value>
-        [DataMember(Name="enabled", EmitDefaultValue=false)]
-        public bool? Enabled { get; set; }
-
 
         /// <summary>
         /// The name of the token.
@@ -443,6 +439,20 @@ namespace Dynatrace.API.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// The owner of the token.
+        /// </summary>
+        /// <value>The owner of the token.</value>
+        [DataMember(Name="owner", EmitDefaultValue=false)]
+        public string Owner { get; set; }
+
+        /// <summary>
+        /// The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).
+        /// </summary>
+        /// <value>The token is enabled (&#x60;true&#x60;) or disabled (&#x60;false&#x60;).</value>
+        [DataMember(Name="enabled", EmitDefaultValue=false)]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -455,11 +465,11 @@ namespace Dynatrace.API.Model
             sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
             sb.Append("  PersonalAccessToken: ").Append(PersonalAccessToken).Append("\n");
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Scopes: ").Append(Scopes).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Owner: ").Append(Owner).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -520,16 +530,6 @@ namespace Dynatrace.API.Model
                     this.CreationDate.Equals(input.CreationDate))
                 ) && 
                 (
-                    this.Owner == input.Owner ||
-                    (this.Owner != null &&
-                    this.Owner.Equals(input.Owner))
-                ) && 
-                (
-                    this.Enabled == input.Enabled ||
-                    (this.Enabled != null &&
-                    this.Enabled.Equals(input.Enabled))
-                ) && 
-                (
                     this.Scopes == input.Scopes ||
                     this.Scopes != null &&
                     input.Scopes != null &&
@@ -544,6 +544,16 @@ namespace Dynatrace.API.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Owner == input.Owner ||
+                    (this.Owner != null &&
+                    this.Owner.Equals(input.Owner))
+                ) && 
+                (
+                    this.Enabled == input.Enabled ||
+                    (this.Enabled != null &&
+                    this.Enabled.Equals(input.Enabled))
                 );
         }
 
@@ -566,16 +576,16 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.PersonalAccessToken.GetHashCode();
                 if (this.CreationDate != null)
                     hashCode = hashCode * 59 + this.CreationDate.GetHashCode();
-                if (this.Owner != null)
-                    hashCode = hashCode * 59 + this.Owner.GetHashCode();
-                if (this.Enabled != null)
-                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 if (this.Scopes != null)
                     hashCode = hashCode * 59 + this.Scopes.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Owner != null)
+                    hashCode = hashCode * 59 + this.Owner.GetHashCode();
+                if (this.Enabled != null)
+                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 return hashCode;
             }
         }

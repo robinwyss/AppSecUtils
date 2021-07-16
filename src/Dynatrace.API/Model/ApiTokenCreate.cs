@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -76,252 +76,267 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "AppMonIntegration")]
             AppMonIntegration = 8,
             /// <summary>
+            /// Enum RumBrowserExtension for value: RumBrowserExtension
+            /// </summary>
+            [EnumMember(Value = "RumBrowserExtension")]
+            RumBrowserExtension = 9,
+            /// <summary>
             /// Enum LogExport for value: LogExport
             /// </summary>
             [EnumMember(Value = "LogExport")]
-            LogExport = 9,
+            LogExport = 10,
             /// <summary>
             /// Enum ReadConfig for value: ReadConfig
             /// </summary>
             [EnumMember(Value = "ReadConfig")]
-            ReadConfig = 10,
+            ReadConfig = 11,
             /// <summary>
             /// Enum WriteConfig for value: WriteConfig
             /// </summary>
             [EnumMember(Value = "WriteConfig")]
-            WriteConfig = 11,
+            WriteConfig = 12,
             /// <summary>
             /// Enum DTAQLAccess for value: DTAQLAccess
             /// </summary>
             [EnumMember(Value = "DTAQLAccess")]
-            DTAQLAccess = 12,
+            DTAQLAccess = 13,
             /// <summary>
             /// Enum UserSessionAnonymization for value: UserSessionAnonymization
             /// </summary>
             [EnumMember(Value = "UserSessionAnonymization")]
-            UserSessionAnonymization = 13,
+            UserSessionAnonymization = 14,
             /// <summary>
             /// Enum DataPrivacy for value: DataPrivacy
             /// </summary>
             [EnumMember(Value = "DataPrivacy")]
-            DataPrivacy = 14,
+            DataPrivacy = 15,
             /// <summary>
             /// Enum CaptureRequestData for value: CaptureRequestData
             /// </summary>
             [EnumMember(Value = "CaptureRequestData")]
-            CaptureRequestData = 15,
+            CaptureRequestData = 16,
             /// <summary>
             /// Enum Davis for value: Davis
             /// </summary>
             [EnumMember(Value = "Davis")]
-            Davis = 16,
+            Davis = 17,
             /// <summary>
             /// Enum DssFileManagement for value: DssFileManagement
             /// </summary>
             [EnumMember(Value = "DssFileManagement")]
-            DssFileManagement = 17,
+            DssFileManagement = 18,
             /// <summary>
             /// Enum RumJavaScriptTagManagement for value: RumJavaScriptTagManagement
             /// </summary>
             [EnumMember(Value = "RumJavaScriptTagManagement")]
-            RumJavaScriptTagManagement = 18,
+            RumJavaScriptTagManagement = 19,
             /// <summary>
             /// Enum TenantTokenManagement for value: TenantTokenManagement
             /// </summary>
             [EnumMember(Value = "TenantTokenManagement")]
-            TenantTokenManagement = 19,
+            TenantTokenManagement = 20,
             /// <summary>
             /// Enum ActiveGateCertManagement for value: ActiveGateCertManagement
             /// </summary>
             [EnumMember(Value = "ActiveGateCertManagement")]
-            ActiveGateCertManagement = 20,
+            ActiveGateCertManagement = 21,
             /// <summary>
             /// Enum RestRequestForwarding for value: RestRequestForwarding
             /// </summary>
             [EnumMember(Value = "RestRequestForwarding")]
-            RestRequestForwarding = 21,
+            RestRequestForwarding = 22,
             /// <summary>
             /// Enum ReadSyntheticData for value: ReadSyntheticData
             /// </summary>
             [EnumMember(Value = "ReadSyntheticData")]
-            ReadSyntheticData = 22,
+            ReadSyntheticData = 23,
             /// <summary>
             /// Enum DataImport for value: DataImport
             /// </summary>
             [EnumMember(Value = "DataImport")]
-            DataImport = 23,
+            DataImport = 24,
             /// <summary>
             /// Enum AuditLogsRead for value: auditLogs.read
             /// </summary>
             [EnumMember(Value = "auditLogs.read")]
-            AuditLogsRead = 24,
+            AuditLogsRead = 25,
             /// <summary>
             /// Enum MetricsRead for value: metrics.read
             /// </summary>
             [EnumMember(Value = "metrics.read")]
-            MetricsRead = 25,
+            MetricsRead = 26,
             /// <summary>
             /// Enum MetricsWrite for value: metrics.write
             /// </summary>
             [EnumMember(Value = "metrics.write")]
-            MetricsWrite = 26,
+            MetricsWrite = 27,
             /// <summary>
             /// Enum EntitiesRead for value: entities.read
             /// </summary>
             [EnumMember(Value = "entities.read")]
-            EntitiesRead = 27,
+            EntitiesRead = 28,
             /// <summary>
             /// Enum EntitiesWrite for value: entities.write
             /// </summary>
             [EnumMember(Value = "entities.write")]
-            EntitiesWrite = 28,
+            EntitiesWrite = 29,
             /// <summary>
             /// Enum ProblemsRead for value: problems.read
             /// </summary>
             [EnumMember(Value = "problems.read")]
-            ProblemsRead = 29,
+            ProblemsRead = 30,
             /// <summary>
             /// Enum ProblemsWrite for value: problems.write
             /// </summary>
             [EnumMember(Value = "problems.write")]
-            ProblemsWrite = 30,
+            ProblemsWrite = 31,
             /// <summary>
             /// Enum NetworkZonesRead for value: networkZones.read
             /// </summary>
             [EnumMember(Value = "networkZones.read")]
-            NetworkZonesRead = 31,
+            NetworkZonesRead = 32,
             /// <summary>
             /// Enum NetworkZonesWrite for value: networkZones.write
             /// </summary>
             [EnumMember(Value = "networkZones.write")]
-            NetworkZonesWrite = 32,
+            NetworkZonesWrite = 33,
             /// <summary>
             /// Enum ActiveGatesRead for value: activeGates.read
             /// </summary>
             [EnumMember(Value = "activeGates.read")]
-            ActiveGatesRead = 33,
+            ActiveGatesRead = 34,
             /// <summary>
             /// Enum ActiveGatesWrite for value: activeGates.write
             /// </summary>
             [EnumMember(Value = "activeGates.write")]
-            ActiveGatesWrite = 34,
+            ActiveGatesWrite = 35,
             /// <summary>
             /// Enum CredentialVaultRead for value: credentialVault.read
             /// </summary>
             [EnumMember(Value = "credentialVault.read")]
-            CredentialVaultRead = 35,
+            CredentialVaultRead = 36,
             /// <summary>
             /// Enum CredentialVaultWrite for value: credentialVault.write
             /// </summary>
             [EnumMember(Value = "credentialVault.write")]
-            CredentialVaultWrite = 36,
+            CredentialVaultWrite = 37,
             /// <summary>
             /// Enum ExtensionsRead for value: extensions.read
             /// </summary>
             [EnumMember(Value = "extensions.read")]
-            ExtensionsRead = 37,
+            ExtensionsRead = 38,
             /// <summary>
             /// Enum ExtensionsWrite for value: extensions.write
             /// </summary>
             [EnumMember(Value = "extensions.write")]
-            ExtensionsWrite = 38,
+            ExtensionsWrite = 39,
             /// <summary>
             /// Enum ExtensionConfigurationsRead for value: extensionConfigurations.read
             /// </summary>
             [EnumMember(Value = "extensionConfigurations.read")]
-            ExtensionConfigurationsRead = 39,
+            ExtensionConfigurationsRead = 40,
             /// <summary>
             /// Enum ExtensionConfigurationsWrite for value: extensionConfigurations.write
             /// </summary>
             [EnumMember(Value = "extensionConfigurations.write")]
-            ExtensionConfigurationsWrite = 40,
+            ExtensionConfigurationsWrite = 41,
             /// <summary>
             /// Enum ExtensionEnvironmentRead for value: extensionEnvironment.read
             /// </summary>
             [EnumMember(Value = "extensionEnvironment.read")]
-            ExtensionEnvironmentRead = 41,
+            ExtensionEnvironmentRead = 42,
             /// <summary>
             /// Enum ExtensionEnvironmentWrite for value: extensionEnvironment.write
             /// </summary>
             [EnumMember(Value = "extensionEnvironment.write")]
-            ExtensionEnvironmentWrite = 42,
+            ExtensionEnvironmentWrite = 43,
             /// <summary>
             /// Enum MetricsIngest for value: metrics.ingest
             /// </summary>
             [EnumMember(Value = "metrics.ingest")]
-            MetricsIngest = 43,
+            MetricsIngest = 44,
             /// <summary>
             /// Enum SecurityProblemsRead for value: securityProblems.read
             /// </summary>
             [EnumMember(Value = "securityProblems.read")]
-            SecurityProblemsRead = 44,
+            SecurityProblemsRead = 45,
             /// <summary>
             /// Enum SecurityProblemsWrite for value: securityProblems.write
             /// </summary>
             [EnumMember(Value = "securityProblems.write")]
-            SecurityProblemsWrite = 45,
+            SecurityProblemsWrite = 46,
             /// <summary>
             /// Enum SyntheticLocationsRead for value: syntheticLocations.read
             /// </summary>
             [EnumMember(Value = "syntheticLocations.read")]
-            SyntheticLocationsRead = 46,
+            SyntheticLocationsRead = 47,
             /// <summary>
             /// Enum SyntheticLocationsWrite for value: syntheticLocations.write
             /// </summary>
             [EnumMember(Value = "syntheticLocations.write")]
-            SyntheticLocationsWrite = 47,
+            SyntheticLocationsWrite = 48,
+            /// <summary>
+            /// Enum SettingsRead for value: settings.read
+            /// </summary>
+            [EnumMember(Value = "settings.read")]
+            SettingsRead = 49,
+            /// <summary>
+            /// Enum SettingsWrite for value: settings.write
+            /// </summary>
+            [EnumMember(Value = "settings.write")]
+            SettingsWrite = 50,
             /// <summary>
             /// Enum TenantTokenRotationWrite for value: tenantTokenRotation.write
             /// </summary>
             [EnumMember(Value = "tenantTokenRotation.write")]
-            TenantTokenRotationWrite = 48,
+            TenantTokenRotationWrite = 51,
             /// <summary>
             /// Enum SloRead for value: slo.read
             /// </summary>
             [EnumMember(Value = "slo.read")]
-            SloRead = 49,
+            SloRead = 52,
             /// <summary>
             /// Enum SloWrite for value: slo.write
             /// </summary>
             [EnumMember(Value = "slo.write")]
-            SloWrite = 50,
+            SloWrite = 53,
             /// <summary>
             /// Enum ReleasesRead for value: releases.read
             /// </summary>
             [EnumMember(Value = "releases.read")]
-            ReleasesRead = 51,
+            ReleasesRead = 54,
             /// <summary>
             /// Enum ApiTokensRead for value: apiTokens.read
             /// </summary>
             [EnumMember(Value = "apiTokens.read")]
-            ApiTokensRead = 52,
+            ApiTokensRead = 55,
             /// <summary>
             /// Enum ApiTokensWrite for value: apiTokens.write
             /// </summary>
             [EnumMember(Value = "apiTokens.write")]
-            ApiTokensWrite = 53,
+            ApiTokensWrite = 56,
             /// <summary>
             /// Enum LogsRead for value: logs.read
             /// </summary>
             [EnumMember(Value = "logs.read")]
-            LogsRead = 54,
+            LogsRead = 57,
             /// <summary>
             /// Enum LogsIngest for value: logs.ingest
             /// </summary>
             [EnumMember(Value = "logs.ingest")]
-            LogsIngest = 55        }
+            LogsIngest = 58        }
         /// <summary>
-        /// A list of the scopes to be assigned to the token.  * &#x60;InstallerDownload&#x60;: PaaS integration - Installer download.  * &#x60;DataExport&#x60;: Access problem and event feed, metrics, and topology.  * &#x60;PluginUpload&#x60;: Upload Extension.  * &#x60;SupportAlert&#x60;: PaaS integration - Support alert.  * &#x60;DcrumIntegration&#x60;: Dynatrace module integration - NAM.  * &#x60;AdvancedSyntheticIntegration&#x60;: Dynatrace module integration - Synthetic Classic.  * &#x60;ExternalSyntheticIntegration&#x60;: Create and read synthetic monitors, locations, and nodes.  * &#x60;AppMonIntegration&#x60;: Dynatrace module integration - AppMon.  * &#x60;LogExport&#x60;: Read logs.  * &#x60;ReadConfig&#x60;: Read configuration.  * &#x60;WriteConfig&#x60;: Write configuration.  * &#x60;DTAQLAccess&#x60;: User sessions.  * &#x60;UserSessionAnonymization&#x60;: Anonymize user session data for data privacy reasons.  * &#x60;DataPrivacy&#x60;: Change data privacy settings.  * &#x60;CaptureRequestData&#x60;: Capture request data.  * &#x60;Davis&#x60;: Dynatrace module integration - Davis.  * &#x60;DssFileManagement&#x60;: Mobile symbolication file management.  * &#x60;RumJavaScriptTagManagement&#x60;: Real user monitoring JavaScript tag management.  * &#x60;TenantTokenManagement&#x60;: Token management.  * &#x60;ActiveGateCertManagement&#x60;: ActiveGate certificate management.  * &#x60;RestRequestForwarding&#x60;: Fetch data from a remote environment.  * &#x60;ReadSyntheticData&#x60;: Read synthetic monitors, locations, and nodes.  * &#x60;DataImport&#x60;: Data ingest, e.g.: metrics and events.  * &#x60;auditLogs.read&#x60;: Read audit logs.  * &#x60;metrics.read&#x60;: Read metrics.  * &#x60;metrics.write&#x60;: Write metrics.  * &#x60;entities.read&#x60;: Read entities.  * &#x60;entities.write&#x60;: Write entities.  * &#x60;problems.read&#x60;: Read problems.  * &#x60;problems.write&#x60;: Write problems.  * &#x60;networkZones.read&#x60;: Read network zones.  * &#x60;networkZones.write&#x60;: Write network zones.  * &#x60;activeGates.read&#x60;: Read ActiveGates.  * &#x60;activeGates.write&#x60;: Write ActiveGates.  * &#x60;credentialVault.read&#x60;: Read credential vault entries.  * &#x60;credentialVault.write&#x60;: Write credential vault entries.  * &#x60;extensions.read&#x60;: Read extensions.  * &#x60;extensions.write&#x60;: Write extensions.  * &#x60;extensionConfigurations.read&#x60;: Read extension monitoring configurations.  * &#x60;extensionConfigurations.write&#x60;: Write extension monitoring configurations.  * &#x60;extensionEnvironment.read&#x60;: Read extension environment configurations.  * &#x60;extensionEnvironment.write&#x60;: Write extension environment configurations.  * &#x60;metrics.ingest&#x60;: Ingest metrics.  * &#x60;securityProblems.read&#x60;: Read security problems.  * &#x60;securityProblems.write&#x60;: Write security problems.  * &#x60;syntheticLocations.read&#x60;: Read synthetic locations.  * &#x60;syntheticLocations.write&#x60;: Write synthetic locations.  * &#x60;tenantTokenRotation.write&#x60;: Tenant token rotation.  * &#x60;slo.read&#x60;: Read SLO.  * &#x60;slo.write&#x60;: Write SLO.  * &#x60;releases.read&#x60;: Read releases.  * &#x60;apiTokens.read&#x60;: Read API tokens.  * &#x60;apiTokens.write&#x60;: Write API tokens.  * &#x60;logs.read&#x60;: Read logs.  * &#x60;logs.ingest&#x60;: Ingest logs.  
+        /// A list of the scopes to be assigned to the token.* &#x60;InstallerDownload&#x60;: PaaS integration - Installer download. * &#x60;DataExport&#x60;: Access problem and event feed, metrics, and topology. * &#x60;PluginUpload&#x60;: Upload Extension. * &#x60;SupportAlert&#x60;: PaaS integration - Support alert. * &#x60;DcrumIntegration&#x60;: Dynatrace module integration - NAM. * &#x60;AdvancedSyntheticIntegration&#x60;: Dynatrace module integration - Synthetic Classic. * &#x60;ExternalSyntheticIntegration&#x60;: Create and read synthetic monitors, locations, and nodes. * &#x60;AppMonIntegration&#x60;: Dynatrace module integration - AppMon. * &#x60;RumBrowserExtension&#x60;: RUM Browser Extension. * &#x60;LogExport&#x60;: Read logs. * &#x60;ReadConfig&#x60;: Read configuration. * &#x60;WriteConfig&#x60;: Write configuration. * &#x60;DTAQLAccess&#x60;: User sessions. * &#x60;UserSessionAnonymization&#x60;: Anonymize user session data for data privacy reasons. * &#x60;DataPrivacy&#x60;: Change data privacy settings. * &#x60;CaptureRequestData&#x60;: Capture request data. * &#x60;Davis&#x60;: Dynatrace module integration - Davis. * &#x60;DssFileManagement&#x60;: Mobile symbolication file management. * &#x60;RumJavaScriptTagManagement&#x60;: Real user monitoring JavaScript tag management. * &#x60;TenantTokenManagement&#x60;: Token management. * &#x60;ActiveGateCertManagement&#x60;: ActiveGate certificate management. * &#x60;RestRequestForwarding&#x60;: Fetch data from a remote environment. * &#x60;ReadSyntheticData&#x60;: Read synthetic monitors, locations, and nodes. * &#x60;DataImport&#x60;: Data ingest, e.g.: metrics and events. * &#x60;auditLogs.read&#x60;: Read audit logs. * &#x60;metrics.read&#x60;: Read metrics. * &#x60;metrics.write&#x60;: Write metrics. * &#x60;entities.read&#x60;: Read entities. * &#x60;entities.write&#x60;: Write entities. * &#x60;problems.read&#x60;: Read problems. * &#x60;problems.write&#x60;: Write problems. * &#x60;networkZones.read&#x60;: Read network zones. * &#x60;networkZones.write&#x60;: Write network zones. * &#x60;activeGates.read&#x60;: Read ActiveGates. * &#x60;activeGates.write&#x60;: Write ActiveGates. * &#x60;credentialVault.read&#x60;: Read credential vault entries. * &#x60;credentialVault.write&#x60;: Write credential vault entries. * &#x60;extensions.read&#x60;: Read extensions. * &#x60;extensions.write&#x60;: Write extensions. * &#x60;extensionConfigurations.read&#x60;: Read extension monitoring configurations. * &#x60;extensionConfigurations.write&#x60;: Write extension monitoring configurations. * &#x60;extensionEnvironment.read&#x60;: Read extension environment configurations. * &#x60;extensionEnvironment.write&#x60;: Write extension environment configurations. * &#x60;metrics.ingest&#x60;: Ingest metrics. * &#x60;securityProblems.read&#x60;: Read security problems. * &#x60;securityProblems.write&#x60;: Write security problems. * &#x60;syntheticLocations.read&#x60;: Read synthetic locations. * &#x60;syntheticLocations.write&#x60;: Write synthetic locations. * &#x60;settings.read&#x60;: Read settings. * &#x60;settings.write&#x60;: Write settings. * &#x60;tenantTokenRotation.write&#x60;: Tenant token rotation. * &#x60;slo.read&#x60;: Read SLO. * &#x60;slo.write&#x60;: Write SLO. * &#x60;releases.read&#x60;: Read releases. * &#x60;apiTokens.read&#x60;: Read API tokens. * &#x60;apiTokens.write&#x60;: Write API tokens. * &#x60;logs.read&#x60;: Read logs. * &#x60;logs.ingest&#x60;: Ingest logs. 
         /// </summary>
-        /// <value>A list of the scopes to be assigned to the token.  * &#x60;InstallerDownload&#x60;: PaaS integration - Installer download.  * &#x60;DataExport&#x60;: Access problem and event feed, metrics, and topology.  * &#x60;PluginUpload&#x60;: Upload Extension.  * &#x60;SupportAlert&#x60;: PaaS integration - Support alert.  * &#x60;DcrumIntegration&#x60;: Dynatrace module integration - NAM.  * &#x60;AdvancedSyntheticIntegration&#x60;: Dynatrace module integration - Synthetic Classic.  * &#x60;ExternalSyntheticIntegration&#x60;: Create and read synthetic monitors, locations, and nodes.  * &#x60;AppMonIntegration&#x60;: Dynatrace module integration - AppMon.  * &#x60;LogExport&#x60;: Read logs.  * &#x60;ReadConfig&#x60;: Read configuration.  * &#x60;WriteConfig&#x60;: Write configuration.  * &#x60;DTAQLAccess&#x60;: User sessions.  * &#x60;UserSessionAnonymization&#x60;: Anonymize user session data for data privacy reasons.  * &#x60;DataPrivacy&#x60;: Change data privacy settings.  * &#x60;CaptureRequestData&#x60;: Capture request data.  * &#x60;Davis&#x60;: Dynatrace module integration - Davis.  * &#x60;DssFileManagement&#x60;: Mobile symbolication file management.  * &#x60;RumJavaScriptTagManagement&#x60;: Real user monitoring JavaScript tag management.  * &#x60;TenantTokenManagement&#x60;: Token management.  * &#x60;ActiveGateCertManagement&#x60;: ActiveGate certificate management.  * &#x60;RestRequestForwarding&#x60;: Fetch data from a remote environment.  * &#x60;ReadSyntheticData&#x60;: Read synthetic monitors, locations, and nodes.  * &#x60;DataImport&#x60;: Data ingest, e.g.: metrics and events.  * &#x60;auditLogs.read&#x60;: Read audit logs.  * &#x60;metrics.read&#x60;: Read metrics.  * &#x60;metrics.write&#x60;: Write metrics.  * &#x60;entities.read&#x60;: Read entities.  * &#x60;entities.write&#x60;: Write entities.  * &#x60;problems.read&#x60;: Read problems.  * &#x60;problems.write&#x60;: Write problems.  * &#x60;networkZones.read&#x60;: Read network zones.  * &#x60;networkZones.write&#x60;: Write network zones.  * &#x60;activeGates.read&#x60;: Read ActiveGates.  * &#x60;activeGates.write&#x60;: Write ActiveGates.  * &#x60;credentialVault.read&#x60;: Read credential vault entries.  * &#x60;credentialVault.write&#x60;: Write credential vault entries.  * &#x60;extensions.read&#x60;: Read extensions.  * &#x60;extensions.write&#x60;: Write extensions.  * &#x60;extensionConfigurations.read&#x60;: Read extension monitoring configurations.  * &#x60;extensionConfigurations.write&#x60;: Write extension monitoring configurations.  * &#x60;extensionEnvironment.read&#x60;: Read extension environment configurations.  * &#x60;extensionEnvironment.write&#x60;: Write extension environment configurations.  * &#x60;metrics.ingest&#x60;: Ingest metrics.  * &#x60;securityProblems.read&#x60;: Read security problems.  * &#x60;securityProblems.write&#x60;: Write security problems.  * &#x60;syntheticLocations.read&#x60;: Read synthetic locations.  * &#x60;syntheticLocations.write&#x60;: Write synthetic locations.  * &#x60;tenantTokenRotation.write&#x60;: Tenant token rotation.  * &#x60;slo.read&#x60;: Read SLO.  * &#x60;slo.write&#x60;: Write SLO.  * &#x60;releases.read&#x60;: Read releases.  * &#x60;apiTokens.read&#x60;: Read API tokens.  * &#x60;apiTokens.write&#x60;: Write API tokens.  * &#x60;logs.read&#x60;: Read logs.  * &#x60;logs.ingest&#x60;: Ingest logs.  </value>
+        /// <value>A list of the scopes to be assigned to the token.* &#x60;InstallerDownload&#x60;: PaaS integration - Installer download. * &#x60;DataExport&#x60;: Access problem and event feed, metrics, and topology. * &#x60;PluginUpload&#x60;: Upload Extension. * &#x60;SupportAlert&#x60;: PaaS integration - Support alert. * &#x60;DcrumIntegration&#x60;: Dynatrace module integration - NAM. * &#x60;AdvancedSyntheticIntegration&#x60;: Dynatrace module integration - Synthetic Classic. * &#x60;ExternalSyntheticIntegration&#x60;: Create and read synthetic monitors, locations, and nodes. * &#x60;AppMonIntegration&#x60;: Dynatrace module integration - AppMon. * &#x60;RumBrowserExtension&#x60;: RUM Browser Extension. * &#x60;LogExport&#x60;: Read logs. * &#x60;ReadConfig&#x60;: Read configuration. * &#x60;WriteConfig&#x60;: Write configuration. * &#x60;DTAQLAccess&#x60;: User sessions. * &#x60;UserSessionAnonymization&#x60;: Anonymize user session data for data privacy reasons. * &#x60;DataPrivacy&#x60;: Change data privacy settings. * &#x60;CaptureRequestData&#x60;: Capture request data. * &#x60;Davis&#x60;: Dynatrace module integration - Davis. * &#x60;DssFileManagement&#x60;: Mobile symbolication file management. * &#x60;RumJavaScriptTagManagement&#x60;: Real user monitoring JavaScript tag management. * &#x60;TenantTokenManagement&#x60;: Token management. * &#x60;ActiveGateCertManagement&#x60;: ActiveGate certificate management. * &#x60;RestRequestForwarding&#x60;: Fetch data from a remote environment. * &#x60;ReadSyntheticData&#x60;: Read synthetic monitors, locations, and nodes. * &#x60;DataImport&#x60;: Data ingest, e.g.: metrics and events. * &#x60;auditLogs.read&#x60;: Read audit logs. * &#x60;metrics.read&#x60;: Read metrics. * &#x60;metrics.write&#x60;: Write metrics. * &#x60;entities.read&#x60;: Read entities. * &#x60;entities.write&#x60;: Write entities. * &#x60;problems.read&#x60;: Read problems. * &#x60;problems.write&#x60;: Write problems. * &#x60;networkZones.read&#x60;: Read network zones. * &#x60;networkZones.write&#x60;: Write network zones. * &#x60;activeGates.read&#x60;: Read ActiveGates. * &#x60;activeGates.write&#x60;: Write ActiveGates. * &#x60;credentialVault.read&#x60;: Read credential vault entries. * &#x60;credentialVault.write&#x60;: Write credential vault entries. * &#x60;extensions.read&#x60;: Read extensions. * &#x60;extensions.write&#x60;: Write extensions. * &#x60;extensionConfigurations.read&#x60;: Read extension monitoring configurations. * &#x60;extensionConfigurations.write&#x60;: Write extension monitoring configurations. * &#x60;extensionEnvironment.read&#x60;: Read extension environment configurations. * &#x60;extensionEnvironment.write&#x60;: Write extension environment configurations. * &#x60;metrics.ingest&#x60;: Ingest metrics. * &#x60;securityProblems.read&#x60;: Read security problems. * &#x60;securityProblems.write&#x60;: Write security problems. * &#x60;syntheticLocations.read&#x60;: Read synthetic locations. * &#x60;syntheticLocations.write&#x60;: Write synthetic locations. * &#x60;settings.read&#x60;: Read settings. * &#x60;settings.write&#x60;: Write settings. * &#x60;tenantTokenRotation.write&#x60;: Tenant token rotation. * &#x60;slo.read&#x60;: Read SLO. * &#x60;slo.write&#x60;: Write SLO. * &#x60;releases.read&#x60;: Read releases. * &#x60;apiTokens.read&#x60;: Read API tokens. * &#x60;apiTokens.write&#x60;: Write API tokens. * &#x60;logs.read&#x60;: Read logs. * &#x60;logs.ingest&#x60;: Ingest logs. </value>
         [DataMember(Name="scopes", EmitDefaultValue=false)]
         public List<ScopesEnum> Scopes { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiTokenCreate" /> class.
         /// </summary>
-        /// <param name="personalAccessToken">The token is a personal access token (&#x60;true&#x60;) or an API token (&#x60;false&#x60;).    Personal access tokens are tied to the permissions of their owner..</param>
-        /// <param name="expirationDate">The expiration date of the token.   You can use one of the following formats:  * Timestamp in UTC milliseconds.  * Human-readable format of &#x60;2021-01-25T05:57:01.123+01:00&#x60;. If no time zone is specified, UTC is used. You can use a space character instead of the &#x60;T&#x60;. Seconds and fractions of a second are optional.  * Relative timeframe, back from now. The format is &#x60;now-NU/A&#x60;, where &#x60;N&#x60; is the amount of time, &#x60;U&#x60; is the unit of time, and &#x60;A&#x60; is an alignment. The alignment rounds all the smaller values to the nearest zero in the past. For example, &#x60;now-1y/w&#x60; is one year back, aligned by a week.  You can also specify relative timeframe without an alignment: &#x60;now-NU&#x60;.  Supported time units for the relative timeframe are:     * &#x60;m&#x60;: minutes     * &#x60;h&#x60;: hours     * &#x60;d&#x60;: days     * &#x60;w&#x60;: weeks     * &#x60;M&#x60;: months     * &#x60;y&#x60;: years   .</param>
-        /// <param name="scopes">A list of the scopes to be assigned to the token.  * &#x60;InstallerDownload&#x60;: PaaS integration - Installer download.  * &#x60;DataExport&#x60;: Access problem and event feed, metrics, and topology.  * &#x60;PluginUpload&#x60;: Upload Extension.  * &#x60;SupportAlert&#x60;: PaaS integration - Support alert.  * &#x60;DcrumIntegration&#x60;: Dynatrace module integration - NAM.  * &#x60;AdvancedSyntheticIntegration&#x60;: Dynatrace module integration - Synthetic Classic.  * &#x60;ExternalSyntheticIntegration&#x60;: Create and read synthetic monitors, locations, and nodes.  * &#x60;AppMonIntegration&#x60;: Dynatrace module integration - AppMon.  * &#x60;LogExport&#x60;: Read logs.  * &#x60;ReadConfig&#x60;: Read configuration.  * &#x60;WriteConfig&#x60;: Write configuration.  * &#x60;DTAQLAccess&#x60;: User sessions.  * &#x60;UserSessionAnonymization&#x60;: Anonymize user session data for data privacy reasons.  * &#x60;DataPrivacy&#x60;: Change data privacy settings.  * &#x60;CaptureRequestData&#x60;: Capture request data.  * &#x60;Davis&#x60;: Dynatrace module integration - Davis.  * &#x60;DssFileManagement&#x60;: Mobile symbolication file management.  * &#x60;RumJavaScriptTagManagement&#x60;: Real user monitoring JavaScript tag management.  * &#x60;TenantTokenManagement&#x60;: Token management.  * &#x60;ActiveGateCertManagement&#x60;: ActiveGate certificate management.  * &#x60;RestRequestForwarding&#x60;: Fetch data from a remote environment.  * &#x60;ReadSyntheticData&#x60;: Read synthetic monitors, locations, and nodes.  * &#x60;DataImport&#x60;: Data ingest, e.g.: metrics and events.  * &#x60;auditLogs.read&#x60;: Read audit logs.  * &#x60;metrics.read&#x60;: Read metrics.  * &#x60;metrics.write&#x60;: Write metrics.  * &#x60;entities.read&#x60;: Read entities.  * &#x60;entities.write&#x60;: Write entities.  * &#x60;problems.read&#x60;: Read problems.  * &#x60;problems.write&#x60;: Write problems.  * &#x60;networkZones.read&#x60;: Read network zones.  * &#x60;networkZones.write&#x60;: Write network zones.  * &#x60;activeGates.read&#x60;: Read ActiveGates.  * &#x60;activeGates.write&#x60;: Write ActiveGates.  * &#x60;credentialVault.read&#x60;: Read credential vault entries.  * &#x60;credentialVault.write&#x60;: Write credential vault entries.  * &#x60;extensions.read&#x60;: Read extensions.  * &#x60;extensions.write&#x60;: Write extensions.  * &#x60;extensionConfigurations.read&#x60;: Read extension monitoring configurations.  * &#x60;extensionConfigurations.write&#x60;: Write extension monitoring configurations.  * &#x60;extensionEnvironment.read&#x60;: Read extension environment configurations.  * &#x60;extensionEnvironment.write&#x60;: Write extension environment configurations.  * &#x60;metrics.ingest&#x60;: Ingest metrics.  * &#x60;securityProblems.read&#x60;: Read security problems.  * &#x60;securityProblems.write&#x60;: Write security problems.  * &#x60;syntheticLocations.read&#x60;: Read synthetic locations.  * &#x60;syntheticLocations.write&#x60;: Write synthetic locations.  * &#x60;tenantTokenRotation.write&#x60;: Tenant token rotation.  * &#x60;slo.read&#x60;: Read SLO.  * &#x60;slo.write&#x60;: Write SLO.  * &#x60;releases.read&#x60;: Read releases.  * &#x60;apiTokens.read&#x60;: Read API tokens.  * &#x60;apiTokens.write&#x60;: Write API tokens.  * &#x60;logs.read&#x60;: Read logs.  * &#x60;logs.ingest&#x60;: Ingest logs.   (required).</param>
+        /// <param name="personalAccessToken">The token is a personal access token (&#x60;true&#x60;) or an API token (&#x60;false&#x60;).  Personal access tokens are tied to the permissions of their owner..</param>
+        /// <param name="expirationDate">The expiration date of the token. You can use one of the following formats: * Timestamp in UTC milliseconds. * Human-readable format of &#x60;2021-01-25T05:57:01.123+01:00&#x60;. If no time zone is specified, UTC is used. You can use a space character instead of the &#x60;T&#x60;. Seconds and fractions of a second are optional. * Relative timeframe, back from now. The format is &#x60;now-NU/A&#x60;, where &#x60;N&#x60; is the amount of time, &#x60;U&#x60; is the unit of time, and &#x60;A&#x60; is an alignment. The alignment rounds all the smaller values to the nearest zero in the past. For example, &#x60;now-1y/w&#x60; is one year back, aligned by a week. You can also specify relative timeframe without an alignment: &#x60;now-NU&#x60;. Supported time units for the relative timeframe are:    * &#x60;m&#x60;: minutes    * &#x60;h&#x60;: hours    * &#x60;d&#x60;: days    * &#x60;w&#x60;: weeks    * &#x60;M&#x60;: months    * &#x60;y&#x60;: years .</param>
+        /// <param name="scopes">A list of the scopes to be assigned to the token.* &#x60;InstallerDownload&#x60;: PaaS integration - Installer download. * &#x60;DataExport&#x60;: Access problem and event feed, metrics, and topology. * &#x60;PluginUpload&#x60;: Upload Extension. * &#x60;SupportAlert&#x60;: PaaS integration - Support alert. * &#x60;DcrumIntegration&#x60;: Dynatrace module integration - NAM. * &#x60;AdvancedSyntheticIntegration&#x60;: Dynatrace module integration - Synthetic Classic. * &#x60;ExternalSyntheticIntegration&#x60;: Create and read synthetic monitors, locations, and nodes. * &#x60;AppMonIntegration&#x60;: Dynatrace module integration - AppMon. * &#x60;RumBrowserExtension&#x60;: RUM Browser Extension. * &#x60;LogExport&#x60;: Read logs. * &#x60;ReadConfig&#x60;: Read configuration. * &#x60;WriteConfig&#x60;: Write configuration. * &#x60;DTAQLAccess&#x60;: User sessions. * &#x60;UserSessionAnonymization&#x60;: Anonymize user session data for data privacy reasons. * &#x60;DataPrivacy&#x60;: Change data privacy settings. * &#x60;CaptureRequestData&#x60;: Capture request data. * &#x60;Davis&#x60;: Dynatrace module integration - Davis. * &#x60;DssFileManagement&#x60;: Mobile symbolication file management. * &#x60;RumJavaScriptTagManagement&#x60;: Real user monitoring JavaScript tag management. * &#x60;TenantTokenManagement&#x60;: Token management. * &#x60;ActiveGateCertManagement&#x60;: ActiveGate certificate management. * &#x60;RestRequestForwarding&#x60;: Fetch data from a remote environment. * &#x60;ReadSyntheticData&#x60;: Read synthetic monitors, locations, and nodes. * &#x60;DataImport&#x60;: Data ingest, e.g.: metrics and events. * &#x60;auditLogs.read&#x60;: Read audit logs. * &#x60;metrics.read&#x60;: Read metrics. * &#x60;metrics.write&#x60;: Write metrics. * &#x60;entities.read&#x60;: Read entities. * &#x60;entities.write&#x60;: Write entities. * &#x60;problems.read&#x60;: Read problems. * &#x60;problems.write&#x60;: Write problems. * &#x60;networkZones.read&#x60;: Read network zones. * &#x60;networkZones.write&#x60;: Write network zones. * &#x60;activeGates.read&#x60;: Read ActiveGates. * &#x60;activeGates.write&#x60;: Write ActiveGates. * &#x60;credentialVault.read&#x60;: Read credential vault entries. * &#x60;credentialVault.write&#x60;: Write credential vault entries. * &#x60;extensions.read&#x60;: Read extensions. * &#x60;extensions.write&#x60;: Write extensions. * &#x60;extensionConfigurations.read&#x60;: Read extension monitoring configurations. * &#x60;extensionConfigurations.write&#x60;: Write extension monitoring configurations. * &#x60;extensionEnvironment.read&#x60;: Read extension environment configurations. * &#x60;extensionEnvironment.write&#x60;: Write extension environment configurations. * &#x60;metrics.ingest&#x60;: Ingest metrics. * &#x60;securityProblems.read&#x60;: Read security problems. * &#x60;securityProblems.write&#x60;: Write security problems. * &#x60;syntheticLocations.read&#x60;: Read synthetic locations. * &#x60;syntheticLocations.write&#x60;: Write synthetic locations. * &#x60;settings.read&#x60;: Read settings. * &#x60;settings.write&#x60;: Write settings. * &#x60;tenantTokenRotation.write&#x60;: Tenant token rotation. * &#x60;slo.read&#x60;: Read SLO. * &#x60;slo.write&#x60;: Write SLO. * &#x60;releases.read&#x60;: Read releases. * &#x60;apiTokens.read&#x60;: Read API tokens. * &#x60;apiTokens.write&#x60;: Write API tokens. * &#x60;logs.read&#x60;: Read logs. * &#x60;logs.ingest&#x60;: Ingest logs.  (required).</param>
         /// <param name="name">The name of the token. (required).</param>
         public ApiTokenCreate(bool? personalAccessToken = default(bool?), string expirationDate = default(string), List<ScopesEnum> scopes = default(List<ScopesEnum>), string name = default(string))
         {
@@ -348,16 +363,16 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// The token is a personal access token (&#x60;true&#x60;) or an API token (&#x60;false&#x60;).    Personal access tokens are tied to the permissions of their owner.
+        /// The token is a personal access token (&#x60;true&#x60;) or an API token (&#x60;false&#x60;).  Personal access tokens are tied to the permissions of their owner.
         /// </summary>
-        /// <value>The token is a personal access token (&#x60;true&#x60;) or an API token (&#x60;false&#x60;).    Personal access tokens are tied to the permissions of their owner.</value>
+        /// <value>The token is a personal access token (&#x60;true&#x60;) or an API token (&#x60;false&#x60;).  Personal access tokens are tied to the permissions of their owner.</value>
         [DataMember(Name="personalAccessToken", EmitDefaultValue=false)]
         public bool? PersonalAccessToken { get; set; }
 
         /// <summary>
-        /// The expiration date of the token.   You can use one of the following formats:  * Timestamp in UTC milliseconds.  * Human-readable format of &#x60;2021-01-25T05:57:01.123+01:00&#x60;. If no time zone is specified, UTC is used. You can use a space character instead of the &#x60;T&#x60;. Seconds and fractions of a second are optional.  * Relative timeframe, back from now. The format is &#x60;now-NU/A&#x60;, where &#x60;N&#x60; is the amount of time, &#x60;U&#x60; is the unit of time, and &#x60;A&#x60; is an alignment. The alignment rounds all the smaller values to the nearest zero in the past. For example, &#x60;now-1y/w&#x60; is one year back, aligned by a week.  You can also specify relative timeframe without an alignment: &#x60;now-NU&#x60;.  Supported time units for the relative timeframe are:     * &#x60;m&#x60;: minutes     * &#x60;h&#x60;: hours     * &#x60;d&#x60;: days     * &#x60;w&#x60;: weeks     * &#x60;M&#x60;: months     * &#x60;y&#x60;: years   
+        /// The expiration date of the token. You can use one of the following formats: * Timestamp in UTC milliseconds. * Human-readable format of &#x60;2021-01-25T05:57:01.123+01:00&#x60;. If no time zone is specified, UTC is used. You can use a space character instead of the &#x60;T&#x60;. Seconds and fractions of a second are optional. * Relative timeframe, back from now. The format is &#x60;now-NU/A&#x60;, where &#x60;N&#x60; is the amount of time, &#x60;U&#x60; is the unit of time, and &#x60;A&#x60; is an alignment. The alignment rounds all the smaller values to the nearest zero in the past. For example, &#x60;now-1y/w&#x60; is one year back, aligned by a week. You can also specify relative timeframe without an alignment: &#x60;now-NU&#x60;. Supported time units for the relative timeframe are:    * &#x60;m&#x60;: minutes    * &#x60;h&#x60;: hours    * &#x60;d&#x60;: days    * &#x60;w&#x60;: weeks    * &#x60;M&#x60;: months    * &#x60;y&#x60;: years 
         /// </summary>
-        /// <value>The expiration date of the token.   You can use one of the following formats:  * Timestamp in UTC milliseconds.  * Human-readable format of &#x60;2021-01-25T05:57:01.123+01:00&#x60;. If no time zone is specified, UTC is used. You can use a space character instead of the &#x60;T&#x60;. Seconds and fractions of a second are optional.  * Relative timeframe, back from now. The format is &#x60;now-NU/A&#x60;, where &#x60;N&#x60; is the amount of time, &#x60;U&#x60; is the unit of time, and &#x60;A&#x60; is an alignment. The alignment rounds all the smaller values to the nearest zero in the past. For example, &#x60;now-1y/w&#x60; is one year back, aligned by a week.  You can also specify relative timeframe without an alignment: &#x60;now-NU&#x60;.  Supported time units for the relative timeframe are:     * &#x60;m&#x60;: minutes     * &#x60;h&#x60;: hours     * &#x60;d&#x60;: days     * &#x60;w&#x60;: weeks     * &#x60;M&#x60;: months     * &#x60;y&#x60;: years   </value>
+        /// <value>The expiration date of the token. You can use one of the following formats: * Timestamp in UTC milliseconds. * Human-readable format of &#x60;2021-01-25T05:57:01.123+01:00&#x60;. If no time zone is specified, UTC is used. You can use a space character instead of the &#x60;T&#x60;. Seconds and fractions of a second are optional. * Relative timeframe, back from now. The format is &#x60;now-NU/A&#x60;, where &#x60;N&#x60; is the amount of time, &#x60;U&#x60; is the unit of time, and &#x60;A&#x60; is an alignment. The alignment rounds all the smaller values to the nearest zero in the past. For example, &#x60;now-1y/w&#x60; is one year back, aligned by a week. You can also specify relative timeframe without an alignment: &#x60;now-NU&#x60;. Supported time units for the relative timeframe are:    * &#x60;m&#x60;: minutes    * &#x60;h&#x60;: hours    * &#x60;d&#x60;: days    * &#x60;w&#x60;: weeks    * &#x60;M&#x60;: months    * &#x60;y&#x60;: years </value>
         [DataMember(Name="expirationDate", EmitDefaultValue=false)]
         public string ExpirationDate { get; set; }
 

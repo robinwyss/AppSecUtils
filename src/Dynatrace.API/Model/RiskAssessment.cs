@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,9 +30,9 @@ namespace Dynatrace.API.Model
         public partial class RiskAssessment :  IEquatable<RiskAssessment>, IValidatableObject
     {
         /// <summary>
-        /// The Davis risk level.    It is calculated by Dynatrace on the basis of CVSS score.
+        /// The Davis risk level.  It is calculated by Dynatrace on the basis of CVSS score.
         /// </summary>
-        /// <value>The Davis risk level.    It is calculated by Dynatrace on the basis of CVSS score.</value>
+        /// <value>The Davis risk level.  It is calculated by Dynatrace on the basis of CVSS score.</value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum RiskLevelEnum
         {
@@ -62,9 +62,9 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "NONE")]
             NONE = 5        }
         /// <summary>
-        /// The Davis risk level.    It is calculated by Dynatrace on the basis of CVSS score.
+        /// The Davis risk level.  It is calculated by Dynatrace on the basis of CVSS score.
         /// </summary>
-        /// <value>The Davis risk level.    It is calculated by Dynatrace on the basis of CVSS score.</value>
+        /// <value>The Davis risk level.  It is calculated by Dynatrace on the basis of CVSS score.</value>
         [DataMember(Name="riskLevel", EmitDefaultValue=false)]
         public RiskLevelEnum? RiskLevel { get; set; }
         /// <summary>
@@ -193,9 +193,9 @@ namespace Dynatrace.API.Model
         
 
         /// <summary>
-        /// The Davis risk score (1-10).    It is calculated by Dynatrace on the basis of CVSS score.
+        /// The Davis risk score (1-10).  It is calculated by Dynatrace on the basis of CVSS score.
         /// </summary>
-        /// <value>The Davis risk score (1-10).    It is calculated by Dynatrace on the basis of CVSS score.</value>
+        /// <value>The Davis risk score (1-10).  It is calculated by Dynatrace on the basis of CVSS score.</value>
         [DataMember(Name="riskScore", EmitDefaultValue=false)]
         public float? RiskScore { get; private set; }
 

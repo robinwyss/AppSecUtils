@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -30,20 +30,40 @@ namespace Dynatrace.API.Model
         public partial class EnumType :  IEquatable<EnumType>, IValidatableObject
     {
         /// <summary>
+        /// The type of the property.
+        /// </summary>
+        /// <value>The type of the property.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+                public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum Enum for value: enum
+            /// </summary>
+            [EnumMember(Value = "enum")]
+            Enum = 1        }
+        /// <summary>
+        /// The type of the property.
+        /// </summary>
+        /// <value>The type of the property.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="EnumType" /> class.
         /// </summary>
         /// <param name="enumClass">An existing Java enum class that holds the allowed values of the enum..</param>
         /// <param name="items">A list of allowed values of the enum..</param>
+        /// <param name="type">The type of the property..</param>
         /// <param name="documentation">An extended description and/or links to documentation..</param>
-        /// <param name="description">A short description of the property..</param>
         /// <param name="displayName">The display name of the property..</param>
-        public EnumType(string enumClass = default(string), List<EnumValue> items = default(List<EnumValue>), string documentation = default(string), string description = default(string), string displayName = default(string))
+        /// <param name="description">A short description of the property..</param>
+        public EnumType(string enumClass = default(string), List<EnumValue> items = default(List<EnumValue>), TypeEnum? type = default(TypeEnum?), string documentation = default(string), string displayName = default(string), string description = default(string))
         {
             this.EnumClass = enumClass;
             this.Items = items;
+            this.Type = type;
             this.Documentation = documentation;
-            this.Description = description;
             this.DisplayName = displayName;
+            this.Description = description;
         }
         
         /// <summary>
@@ -60,6 +80,7 @@ namespace Dynatrace.API.Model
         [DataMember(Name="items", EmitDefaultValue=false)]
         public List<EnumValue> Items { get; set; }
 
+
         /// <summary>
         /// An extended description and/or links to documentation.
         /// </summary>
@@ -68,18 +89,18 @@ namespace Dynatrace.API.Model
         public string Documentation { get; set; }
 
         /// <summary>
-        /// A short description of the property.
-        /// </summary>
-        /// <value>A short description of the property.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
-
-        /// <summary>
         /// The display name of the property.
         /// </summary>
         /// <value>The display name of the property.</value>
         [DataMember(Name="displayName", EmitDefaultValue=false)]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// A short description of the property.
+        /// </summary>
+        /// <value>A short description of the property.</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,9 +112,10 @@ namespace Dynatrace.API.Model
             sb.Append("class EnumType {\n");
             sb.Append("  EnumClass: ").Append(EnumClass).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Documentation: ").Append(Documentation).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,19 +162,24 @@ namespace Dynatrace.API.Model
                     this.Items.SequenceEqual(input.Items)
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
+                (
                     this.Documentation == input.Documentation ||
                     (this.Documentation != null &&
                     this.Documentation.Equals(input.Documentation))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Description == input.Description ||
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 );
         }
 
@@ -169,12 +196,14 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.EnumClass.GetHashCode();
                 if (this.Items != null)
                     hashCode = hashCode * 59 + this.Items.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Documentation != null)
                     hashCode = hashCode * 59 + this.Documentation.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 return hashCode;
             }
         }

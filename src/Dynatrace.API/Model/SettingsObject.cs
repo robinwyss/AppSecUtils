@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -33,27 +33,27 @@ namespace Dynatrace.API.Model
         /// Initializes a new instance of the <see cref="SettingsObject" /> class.
         /// </summary>
         /// <param name="author">The user (identified by a user ID or a public token ID) who performed that most recent modification..</param>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks..</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks..</param>
         /// <param name="schemaVersion">The version of the schema on which the object is based..</param>
         /// <param name="modified">The timestamp of the last modification..</param>
-        /// <param name="scope">The scope that the object targets..</param>
-        /// <param name="schemaId">The schema on which the object is based..</param>
-        /// <param name="summary">A short summary of settings..</param>
         /// <param name="objectId">The ID of the settings object..</param>
         /// <param name="created">The timestamp of the creation..</param>
+        /// <param name="scope">The scope that the object targets..</param>
+        /// <param name="schemaId">The schema on which the object is based..</param>
         /// <param name="value">value.</param>
-        public SettingsObject(string author = default(string), string updateToken = default(string), string schemaVersion = default(string), long? modified = default(long?), string scope = default(string), string schemaId = default(string), string summary = default(string), string objectId = default(string), long? created = default(long?), SettingsValue value = default(SettingsValue))
+        /// <param name="summary">A short summary of settings..</param>
+        public SettingsObject(string author = default(string), string updateToken = default(string), string schemaVersion = default(string), long? modified = default(long?), string objectId = default(string), long? created = default(long?), string scope = default(string), string schemaId = default(string), SettingsValue value = default(SettingsValue), string summary = default(string))
         {
             this.Author = author;
             this.UpdateToken = updateToken;
             this.SchemaVersion = schemaVersion;
             this.Modified = modified;
-            this.Scope = scope;
-            this.SchemaId = schemaId;
-            this.Summary = summary;
             this.ObjectId = objectId;
             this.Created = created;
+            this.Scope = scope;
+            this.SchemaId = schemaId;
             this.Value = value;
+            this.Summary = summary;
         }
         
         /// <summary>
@@ -64,9 +64,9 @@ namespace Dynatrace.API.Model
         public string Author { get; set; }
 
         /// <summary>
-        /// The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.
+        /// The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.
         /// </summary>
-        /// <value>The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.</value>
+        /// <value>The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.</value>
         [DataMember(Name="updateToken", EmitDefaultValue=false)]
         public string UpdateToken { get; set; }
 
@@ -85,27 +85,6 @@ namespace Dynatrace.API.Model
         public long? Modified { get; set; }
 
         /// <summary>
-        /// The scope that the object targets.
-        /// </summary>
-        /// <value>The scope that the object targets.</value>
-        [DataMember(Name="scope", EmitDefaultValue=false)]
-        public string Scope { get; set; }
-
-        /// <summary>
-        /// The schema on which the object is based.
-        /// </summary>
-        /// <value>The schema on which the object is based.</value>
-        [DataMember(Name="schemaId", EmitDefaultValue=false)]
-        public string SchemaId { get; set; }
-
-        /// <summary>
-        /// A short summary of settings.
-        /// </summary>
-        /// <value>A short summary of settings.</value>
-        [DataMember(Name="summary", EmitDefaultValue=false)]
-        public string Summary { get; set; }
-
-        /// <summary>
         /// The ID of the settings object.
         /// </summary>
         /// <value>The ID of the settings object.</value>
@@ -120,10 +99,31 @@ namespace Dynatrace.API.Model
         public long? Created { get; set; }
 
         /// <summary>
+        /// The scope that the object targets.
+        /// </summary>
+        /// <value>The scope that the object targets.</value>
+        [DataMember(Name="scope", EmitDefaultValue=false)]
+        public string Scope { get; set; }
+
+        /// <summary>
+        /// The schema on which the object is based.
+        /// </summary>
+        /// <value>The schema on which the object is based.</value>
+        [DataMember(Name="schemaId", EmitDefaultValue=false)]
+        public string SchemaId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public SettingsValue Value { get; set; }
+
+        /// <summary>
+        /// A short summary of settings.
+        /// </summary>
+        /// <value>A short summary of settings.</value>
+        [DataMember(Name="summary", EmitDefaultValue=false)]
+        public string Summary { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,12 @@ namespace Dynatrace.API.Model
             sb.Append("  UpdateToken: ").Append(UpdateToken).Append("\n");
             sb.Append("  SchemaVersion: ").Append(SchemaVersion).Append("\n");
             sb.Append("  Modified: ").Append(Modified).Append("\n");
-            sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  SchemaId: ").Append(SchemaId).Append("\n");
-            sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("  ObjectId: ").Append(ObjectId).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  Scope: ").Append(Scope).Append("\n");
+            sb.Append("  SchemaId: ").Append(SchemaId).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -198,21 +198,6 @@ namespace Dynatrace.API.Model
                     this.Modified.Equals(input.Modified))
                 ) && 
                 (
-                    this.Scope == input.Scope ||
-                    (this.Scope != null &&
-                    this.Scope.Equals(input.Scope))
-                ) && 
-                (
-                    this.SchemaId == input.SchemaId ||
-                    (this.SchemaId != null &&
-                    this.SchemaId.Equals(input.SchemaId))
-                ) && 
-                (
-                    this.Summary == input.Summary ||
-                    (this.Summary != null &&
-                    this.Summary.Equals(input.Summary))
-                ) && 
-                (
                     this.ObjectId == input.ObjectId ||
                     (this.ObjectId != null &&
                     this.ObjectId.Equals(input.ObjectId))
@@ -223,9 +208,24 @@ namespace Dynatrace.API.Model
                     this.Created.Equals(input.Created))
                 ) && 
                 (
+                    this.Scope == input.Scope ||
+                    (this.Scope != null &&
+                    this.Scope.Equals(input.Scope))
+                ) && 
+                (
+                    this.SchemaId == input.SchemaId ||
+                    (this.SchemaId != null &&
+                    this.SchemaId.Equals(input.SchemaId))
+                ) && 
+                (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
+                ) && 
+                (
+                    this.Summary == input.Summary ||
+                    (this.Summary != null &&
+                    this.Summary.Equals(input.Summary))
                 );
         }
 
@@ -246,18 +246,18 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.SchemaVersion.GetHashCode();
                 if (this.Modified != null)
                     hashCode = hashCode * 59 + this.Modified.GetHashCode();
-                if (this.Scope != null)
-                    hashCode = hashCode * 59 + this.Scope.GetHashCode();
-                if (this.SchemaId != null)
-                    hashCode = hashCode * 59 + this.SchemaId.GetHashCode();
-                if (this.Summary != null)
-                    hashCode = hashCode * 59 + this.Summary.GetHashCode();
                 if (this.ObjectId != null)
                     hashCode = hashCode * 59 + this.ObjectId.GetHashCode();
                 if (this.Created != null)
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
+                if (this.Scope != null)
+                    hashCode = hashCode * 59 + this.Scope.GetHashCode();
+                if (this.SchemaId != null)
+                    hashCode = hashCode * 59 + this.SchemaId.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if (this.Summary != null)
+                    hashCode = hashCode * 59 + this.Summary.GetHashCode();
                 return hashCode;
             }
         }

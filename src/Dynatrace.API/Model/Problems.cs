@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -34,9 +34,10 @@ namespace Dynatrace.API.Model
         /// </summary>
         /// <param name="totalCount">The total number of entries in the result. (required).</param>
         /// <param name="pageSize">The number of entries per page..</param>
-        /// <param name="nextPageKey">The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result..</param>
+        /// <param name="nextPageKey">The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result..</param>
         /// <param name="problems">The result entries..</param>
-        public Problems(long? totalCount = default(long?), int? pageSize = default(int?), string nextPageKey = default(string), List<Problem> problems = default(List<Problem>))
+        /// <param name="warnings">A list of warnings.</param>
+        public Problems(long? totalCount = default(long?), int? pageSize = default(int?), string nextPageKey = default(string), List<Problem> problems = default(List<Problem>), List<string> warnings = default(List<string>))
         {
             // to ensure "totalCount" is required (not null)
             if (totalCount == null)
@@ -50,6 +51,7 @@ namespace Dynatrace.API.Model
             this.PageSize = pageSize;
             this.NextPageKey = nextPageKey;
             this._Problems = problems;
+            this.Warnings = warnings;
         }
         
         /// <summary>
@@ -67,9 +69,9 @@ namespace Dynatrace.API.Model
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.
+        /// The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.
         /// </summary>
-        /// <value>The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page.   Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.</value>
+        /// <value>The cursor for the next page of results. Has the value of &#x60;null&#x60; on the last page. Use it in the **nextPageKey** query parameter to obtain subsequent pages of the result.</value>
         [DataMember(Name="nextPageKey", EmitDefaultValue=false)]
         public string NextPageKey { get; set; }
 
@@ -79,6 +81,13 @@ namespace Dynatrace.API.Model
         /// <value>The result entries.</value>
         [DataMember(Name="problems", EmitDefaultValue=false)]
         public List<Problem> _Problems { get; set; }
+
+        /// <summary>
+        /// A list of warnings
+        /// </summary>
+        /// <value>A list of warnings</value>
+        [DataMember(Name="warnings", EmitDefaultValue=false)]
+        public List<string> Warnings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,6 +101,7 @@ namespace Dynatrace.API.Model
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("  NextPageKey: ").Append(NextPageKey).Append("\n");
             sb.Append("  _Problems: ").Append(_Problems).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -146,6 +156,12 @@ namespace Dynatrace.API.Model
                     this._Problems != null &&
                     input._Problems != null &&
                     this._Problems.SequenceEqual(input._Problems)
+                ) && 
+                (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
                 );
         }
 
@@ -166,6 +182,8 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.NextPageKey.GetHashCode();
                 if (this._Problems != null)
                     hashCode = hashCode * 59 + this._Problems.GetHashCode();
+                if (this.Warnings != null)
+                    hashCode = hashCode * 59 + this.Warnings.GetHashCode();
                 return hashCode;
             }
         }

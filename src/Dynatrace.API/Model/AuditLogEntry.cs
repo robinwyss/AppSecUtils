@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -37,25 +37,25 @@ namespace Dynatrace.API.Model
                 public enum EventTypeEnum
         {
             /// <summary>
-            /// Enum ACCESS for value: ACCESS
-            /// </summary>
-            [EnumMember(Value = "ACCESS")]
-            ACCESS = 1,
-            /// <summary>
             /// Enum CREATE for value: CREATE
             /// </summary>
             [EnumMember(Value = "CREATE")]
-            CREATE = 2,
+            CREATE = 1,
             /// <summary>
             /// Enum DELETE for value: DELETE
             /// </summary>
             [EnumMember(Value = "DELETE")]
-            DELETE = 3,
+            DELETE = 2,
             /// <summary>
             /// Enum GENERAL for value: GENERAL
             /// </summary>
             [EnumMember(Value = "GENERAL")]
-            GENERAL = 4,
+            GENERAL = 3,
+            /// <summary>
+            /// Enum GET for value: GET
+            /// </summary>
+            [EnumMember(Value = "GET")]
+            GET = 4,
             /// <summary>
             /// Enum LOGIN for value: LOGIN
             /// </summary>
@@ -67,20 +67,35 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "LOGOUT")]
             LOGOUT = 6,
             /// <summary>
+            /// Enum PATCH for value: PATCH
+            /// </summary>
+            [EnumMember(Value = "PATCH")]
+            PATCH = 7,
+            /// <summary>
+            /// Enum POST for value: POST
+            /// </summary>
+            [EnumMember(Value = "POST")]
+            POST = 8,
+            /// <summary>
+            /// Enum PUT for value: PUT
+            /// </summary>
+            [EnumMember(Value = "PUT")]
+            PUT = 9,
+            /// <summary>
             /// Enum READ for value: READ
             /// </summary>
             [EnumMember(Value = "READ")]
-            READ = 7,
+            READ = 10,
             /// <summary>
             /// Enum REVOKE for value: REVOKE
             /// </summary>
             [EnumMember(Value = "REVOKE")]
-            REVOKE = 8,
+            REVOKE = 11,
             /// <summary>
             /// Enum UPDATE for value: UPDATE
             /// </summary>
             [EnumMember(Value = "UPDATE")]
-            UPDATE = 9        }
+            UPDATE = 12        }
         /// <summary>
         /// The type of the recorded operation.
         /// </summary>
@@ -105,20 +120,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "DEBUG_UI")]
             DEBUGUI = 2,
             /// <summary>
-            /// Enum REST for value: REST
-            /// </summary>
-            [EnumMember(Value = "REST")]
-            REST = 3,
-            /// <summary>
             /// Enum TOKEN for value: TOKEN
             /// </summary>
             [EnumMember(Value = "TOKEN")]
-            TOKEN = 4,
+            TOKEN = 3,
             /// <summary>
             /// Enum WEBUI for value: WEB_UI
             /// </summary>
             [EnumMember(Value = "WEB_UI")]
-            WEBUI = 5        }
+            WEBUI = 4        }
         /// <summary>
         /// The category of the recorded operation.
         /// </summary>
@@ -180,9 +190,9 @@ namespace Dynatrace.API.Model
 
 
         /// <summary>
-        /// The ID of an entity from the **category**.   For example, it can be config ID for the &#x60;CONFIG&#x60; category or token ID for the &#x60;TOKEN&#x60; category.
+        /// The ID of an entity from the **category**. For example, it can be config ID for the &#x60;CONFIG&#x60; category or token ID for the &#x60;TOKEN&#x60; category.
         /// </summary>
-        /// <value>The ID of an entity from the **category**.   For example, it can be config ID for the &#x60;CONFIG&#x60; category or token ID for the &#x60;TOKEN&#x60; category.</value>
+        /// <value>The ID of an entity from the **category**. For example, it can be config ID for the &#x60;CONFIG&#x60; category or token ID for the &#x60;TOKEN&#x60; category.</value>
         [DataMember(Name="entityId", EmitDefaultValue=false)]
         public string EntityId { get; private set; }
 
@@ -230,9 +240,9 @@ namespace Dynatrace.API.Model
         public string Message { get; private set; }
 
         /// <summary>
-        /// The patch of the recorded operation as the JSON representation.   The format is an enhanced RFC 6902. The patch also carries the previous value in the **oldValue** field.
+        /// The patch of the recorded operation as the JSON representation. The format is an enhanced RFC 6902. The patch also carries the previous value in the **oldValue** field.
         /// </summary>
-        /// <value>The patch of the recorded operation as the JSON representation.   The format is an enhanced RFC 6902. The patch also carries the previous value in the **oldValue** field.</value>
+        /// <value>The patch of the recorded operation as the JSON representation. The format is an enhanced RFC 6902. The patch also carries the previous value in the **oldValue** field.</value>
         [DataMember(Name="patch", EmitDefaultValue=false)]
         public Object Patch { get; private set; }
 

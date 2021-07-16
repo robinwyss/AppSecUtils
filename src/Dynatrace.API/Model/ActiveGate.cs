@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -161,12 +161,19 @@ namespace Dynatrace.API.Model
         [DataMember(Name="networkAddresses", EmitDefaultValue=false)]
         public List<string> NetworkAddresses { get; private set; }
 
+        /// <summary>
+        /// A list of Load Balancer addresses of the ActiveGate.
+        /// </summary>
+        /// <value>A list of Load Balancer addresses of the ActiveGate.</value>
+        [DataMember(Name="loadBalancerAddresses", EmitDefaultValue=false)]
+        public List<string> LoadBalancerAddresses { get; private set; }
+
 
 
         /// <summary>
-        /// The timestamp since when the ActiveGate is offline.    The &#x60;null&#x60; value means the ActiveGate is online.
+        /// The timestamp since when the ActiveGate is offline.  The &#x60;null&#x60; value means the ActiveGate is online.
         /// </summary>
-        /// <value>The timestamp since when the ActiveGate is offline.    The &#x60;null&#x60; value means the ActiveGate is online.</value>
+        /// <value>The timestamp since when the ActiveGate is offline.  The &#x60;null&#x60; value means the ActiveGate is online.</value>
         [DataMember(Name="offlineSince", EmitDefaultValue=false)]
         public long? OfflineSince { get; private set; }
 
@@ -243,6 +250,7 @@ namespace Dynatrace.API.Model
             sb.Append("class ActiveGate {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  NetworkAddresses: ").Append(NetworkAddresses).Append("\n");
+            sb.Append("  LoadBalancerAddresses: ").Append(LoadBalancerAddresses).Append("\n");
             sb.Append("  OsType: ").Append(OsType).Append("\n");
             sb.Append("  AutoUpdateStatus: ").Append(AutoUpdateStatus).Append("\n");
             sb.Append("  OfflineSince: ").Append(OfflineSince).Append("\n");
@@ -300,6 +308,12 @@ namespace Dynatrace.API.Model
                     this.NetworkAddresses != null &&
                     input.NetworkAddresses != null &&
                     this.NetworkAddresses.SequenceEqual(input.NetworkAddresses)
+                ) && 
+                (
+                    this.LoadBalancerAddresses == input.LoadBalancerAddresses ||
+                    this.LoadBalancerAddresses != null &&
+                    input.LoadBalancerAddresses != null &&
+                    this.LoadBalancerAddresses.SequenceEqual(input.LoadBalancerAddresses)
                 ) && 
                 (
                     this.OsType == input.OsType ||
@@ -383,6 +397,8 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.NetworkAddresses != null)
                     hashCode = hashCode * 59 + this.NetworkAddresses.GetHashCode();
+                if (this.LoadBalancerAddresses != null)
+                    hashCode = hashCode * 59 + this.LoadBalancerAddresses.GetHashCode();
                 if (this.OsType != null)
                     hashCode = hashCode * 59 + this.OsType.GetHashCode();
                 if (this.AutoUpdateStatus != null)

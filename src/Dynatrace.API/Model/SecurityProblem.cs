@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -83,20 +83,30 @@ namespace Dynatrace.API.Model
                 public enum TechnologyEnum
         {
             /// <summary>
+            /// Enum DOTNET for value: DOTNET
+            /// </summary>
+            [EnumMember(Value = "DOTNET")]
+            DOTNET = 1,
+            /// <summary>
             /// Enum JAVA for value: JAVA
             /// </summary>
             [EnumMember(Value = "JAVA")]
-            JAVA = 1,
+            JAVA = 2,
             /// <summary>
             /// Enum KUBERNETES for value: KUBERNETES
             /// </summary>
             [EnumMember(Value = "KUBERNETES")]
-            KUBERNETES = 2,
+            KUBERNETES = 3,
             /// <summary>
             /// Enum NODEJS for value: NODE_JS
             /// </summary>
             [EnumMember(Value = "NODE_JS")]
-            NODEJS = 3        }
+            NODEJS = 4,
+            /// <summary>
+            /// Enum PHP for value: PHP
+            /// </summary>
+            [EnumMember(Value = "PHP")]
+            PHP = 5        }
         /// <summary>
         /// The technology of the security problem.
         /// </summary>
@@ -135,11 +145,11 @@ namespace Dynatrace.API.Model
         public bool? Muted { get; private set; }
 
         /// <summary>
-        /// The vulnerability ID of the security problem.
+        /// The external vulnerability ID of the security problem.
         /// </summary>
-        /// <value>The vulnerability ID of the security problem.</value>
-        [DataMember(Name="vulnerabilityId", EmitDefaultValue=false)]
-        public string VulnerabilityId { get; private set; }
+        /// <value>The external vulnerability ID of the security problem.</value>
+        [DataMember(Name="externalVulnerabilityId", EmitDefaultValue=false)]
+        public string ExternalVulnerabilityId { get; private set; }
 
 
         /// <summary>
@@ -148,6 +158,13 @@ namespace Dynatrace.API.Model
         /// <value>The title of the security problem.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; private set; }
+
+        /// <summary>
+        /// The package name of the security problem.
+        /// </summary>
+        /// <value>The package name of the security problem.</value>
+        [DataMember(Name="packageName", EmitDefaultValue=false)]
+        public string PackageName { get; private set; }
 
         /// <summary>
         /// The URL to the security problem details page.
@@ -203,9 +220,10 @@ namespace Dynatrace.API.Model
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Muted: ").Append(Muted).Append("\n");
-            sb.Append("  VulnerabilityId: ").Append(VulnerabilityId).Append("\n");
+            sb.Append("  ExternalVulnerabilityId: ").Append(ExternalVulnerabilityId).Append("\n");
             sb.Append("  VulnerabilityType: ").Append(VulnerabilityType).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  PackageName: ").Append(PackageName).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Technology: ").Append(Technology).Append("\n");
             sb.Append("  FirstSeenTimestamp: ").Append(FirstSeenTimestamp).Append("\n");
@@ -268,9 +286,9 @@ namespace Dynatrace.API.Model
                     this.Muted.Equals(input.Muted))
                 ) && 
                 (
-                    this.VulnerabilityId == input.VulnerabilityId ||
-                    (this.VulnerabilityId != null &&
-                    this.VulnerabilityId.Equals(input.VulnerabilityId))
+                    this.ExternalVulnerabilityId == input.ExternalVulnerabilityId ||
+                    (this.ExternalVulnerabilityId != null &&
+                    this.ExternalVulnerabilityId.Equals(input.ExternalVulnerabilityId))
                 ) && 
                 (
                     this.VulnerabilityType == input.VulnerabilityType ||
@@ -281,6 +299,11 @@ namespace Dynatrace.API.Model
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
+                ) && 
+                (
+                    this.PackageName == input.PackageName ||
+                    (this.PackageName != null &&
+                    this.PackageName.Equals(input.PackageName))
                 ) && 
                 (
                     this.Url == input.Url ||
@@ -338,12 +361,14 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Muted != null)
                     hashCode = hashCode * 59 + this.Muted.GetHashCode();
-                if (this.VulnerabilityId != null)
-                    hashCode = hashCode * 59 + this.VulnerabilityId.GetHashCode();
+                if (this.ExternalVulnerabilityId != null)
+                    hashCode = hashCode * 59 + this.ExternalVulnerabilityId.GetHashCode();
                 if (this.VulnerabilityType != null)
                     hashCode = hashCode * 59 + this.VulnerabilityType.GetHashCode();
                 if (this.Title != null)
                     hashCode = hashCode * 59 + this.Title.GetHashCode();
+                if (this.PackageName != null)
+                    hashCode = hashCode * 59 + this.PackageName.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
                 if (this.Technology != null)

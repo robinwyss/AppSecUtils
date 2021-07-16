@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -37,9 +37,9 @@ namespace Dynatrace.API.Model
         public partial class Evidence :  IEquatable<Evidence>, IValidatableObject
     {
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;EVENT&#x60; -&gt; EventEvidence  * &#x60;METRIC&#x60; -&gt; MetricEvidence  * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence  * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence  * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;EVENT&#x60; -&gt; EventEvidence * &#x60;METRIC&#x60; -&gt; MetricEvidence * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;EVENT&#x60; -&gt; EventEvidence  * &#x60;METRIC&#x60; -&gt; MetricEvidence  * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence  * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence  * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;EVENT&#x60; -&gt; EventEvidence * &#x60;METRIC&#x60; -&gt; MetricEvidence * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence </value>
         [JsonConverter(typeof(StringEnumConverter))]
                 public enum EvidenceTypeEnum
         {
@@ -69,15 +69,15 @@ namespace Dynatrace.API.Model
             [EnumMember(Value = "TRANSACTIONAL")]
             TRANSACTIONAL = 5        }
         /// <summary>
-        /// Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;EVENT&#x60; -&gt; EventEvidence  * &#x60;METRIC&#x60; -&gt; MetricEvidence  * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence  * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence  * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence  
+        /// Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;EVENT&#x60; -&gt; EventEvidence * &#x60;METRIC&#x60; -&gt; MetricEvidence * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence 
         /// </summary>
-        /// <value>Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;EVENT&#x60; -&gt; EventEvidence  * &#x60;METRIC&#x60; -&gt; MetricEvidence  * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence  * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence  * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence  </value>
+        /// <value>Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;EVENT&#x60; -&gt; EventEvidence * &#x60;METRIC&#x60; -&gt; MetricEvidence * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence </value>
         [DataMember(Name="evidenceType", EmitDefaultValue=false)]
         public EvidenceTypeEnum EvidenceType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Evidence" /> class.
         /// </summary>
-        /// <param name="evidenceType">Defines the actual set of fields depending on the value. See one of the following objects:   * &#x60;EVENT&#x60; -&gt; EventEvidence  * &#x60;METRIC&#x60; -&gt; MetricEvidence  * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence  * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence  * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence   (required).</param>
+        /// <param name="evidenceType">Defines the actual set of fields depending on the value. See one of the following objects: * &#x60;EVENT&#x60; -&gt; EventEvidence * &#x60;METRIC&#x60; -&gt; MetricEvidence * &#x60;TRANSACTIONAL&#x60; -&gt; TransactionalEvidence * &#x60;MAINTENANCE_WINDOW&#x60; -&gt; MaintenanceWindowEvidence * &#x60;AVAILABILITY_EVIDENCE&#x60; -&gt; AvailabilityEvidence  (required).</param>
         /// <param name="displayName">The display name of the evidence. (required).</param>
         /// <param name="entity">entity (required).</param>
         /// <param name="groupingEntity">groupingEntity.</param>

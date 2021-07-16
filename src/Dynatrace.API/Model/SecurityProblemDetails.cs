@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -83,20 +83,30 @@ namespace Dynatrace.API.Model
                 public enum TechnologyEnum
         {
             /// <summary>
+            /// Enum DOTNET for value: DOTNET
+            /// </summary>
+            [EnumMember(Value = "DOTNET")]
+            DOTNET = 1,
+            /// <summary>
             /// Enum JAVA for value: JAVA
             /// </summary>
             [EnumMember(Value = "JAVA")]
-            JAVA = 1,
+            JAVA = 2,
             /// <summary>
             /// Enum KUBERNETES for value: KUBERNETES
             /// </summary>
             [EnumMember(Value = "KUBERNETES")]
-            KUBERNETES = 2,
+            KUBERNETES = 3,
             /// <summary>
             /// Enum NODEJS for value: NODE_JS
             /// </summary>
             [EnumMember(Value = "NODE_JS")]
-            NODEJS = 3        }
+            NODEJS = 4,
+            /// <summary>
+            /// Enum PHP for value: PHP
+            /// </summary>
+            [EnumMember(Value = "PHP")]
+            PHP = 5        }
         /// <summary>
         /// The technology of the security problem.
         /// </summary>
@@ -139,11 +149,11 @@ namespace Dynatrace.API.Model
         public bool? Muted { get; private set; }
 
         /// <summary>
-        /// The vulnerability ID of the security problem.
+        /// The external vulnerability ID of the security problem.
         /// </summary>
-        /// <value>The vulnerability ID of the security problem.</value>
-        [DataMember(Name="vulnerabilityId", EmitDefaultValue=false)]
-        public string VulnerabilityId { get; private set; }
+        /// <value>The external vulnerability ID of the security problem.</value>
+        [DataMember(Name="externalVulnerabilityId", EmitDefaultValue=false)]
+        public string ExternalVulnerabilityId { get; private set; }
 
 
         /// <summary>
@@ -152,6 +162,13 @@ namespace Dynatrace.API.Model
         /// <value>The title of the security problem.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; private set; }
+
+        /// <summary>
+        /// The package name of the security problem.
+        /// </summary>
+        /// <value>The package name of the security problem.</value>
+        [DataMember(Name="packageName", EmitDefaultValue=false)]
+        public string PackageName { get; private set; }
 
         /// <summary>
         /// The URL to the security problem details page.
@@ -210,30 +227,30 @@ namespace Dynatrace.API.Model
         public List<SecurityProblemEvent> Events { get; set; }
 
         /// <summary>
-        /// A list of vulnerable components of the security problem.   A vulnerable component is what causes the security problem.
+        /// A list of vulnerable components of the security problem. A vulnerable component is what causes the security problem.
         /// </summary>
-        /// <value>A list of vulnerable components of the security problem.   A vulnerable component is what causes the security problem.</value>
+        /// <value>A list of vulnerable components of the security problem. A vulnerable component is what causes the security problem.</value>
         [DataMember(Name="vulnerableComponents", EmitDefaultValue=false)]
         public List<VulnerableComponent> VulnerableComponents { get; private set; }
 
         /// <summary>
-        /// A list of affected entities of the security problem.   An affected entity is an entity where a vulnerable component runs.
+        /// A list of affected entities of the security problem. An affected entity is an entity where a vulnerable component runs.
         /// </summary>
-        /// <value>A list of affected entities of the security problem.   An affected entity is an entity where a vulnerable component runs.</value>
+        /// <value>A list of affected entities of the security problem. An affected entity is an entity where a vulnerable component runs.</value>
         [DataMember(Name="affectedEntities", EmitDefaultValue=false)]
         public List<string> AffectedEntities { get; private set; }
 
         /// <summary>
-        /// A list of exposed entities of the security problem.   An exposed entity is an affected entity that is exposed to the internet.
+        /// A list of exposed entities of the security problem. An exposed entity is an affected entity that is exposed to the internet.
         /// </summary>
-        /// <value>A list of exposed entities of the security problem.   An exposed entity is an affected entity that is exposed to the internet.</value>
+        /// <value>A list of exposed entities of the security problem. An exposed entity is an affected entity that is exposed to the internet.</value>
         [DataMember(Name="exposedEntities", EmitDefaultValue=false)]
         public List<string> ExposedEntities { get; private set; }
 
         /// <summary>
-        /// A list of data assets reachable by affected entities of the security problem.   A data asset is a service that has database access.
+        /// A list of data assets reachable by affected entities of the security problem. A data asset is a service that has database access.
         /// </summary>
-        /// <value>A list of data assets reachable by affected entities of the security problem.   A data asset is a service that has database access.</value>
+        /// <value>A list of data assets reachable by affected entities of the security problem. A data asset is a service that has database access.</value>
         [DataMember(Name="reachableDataAssets", EmitDefaultValue=false)]
         public List<string> ReachableDataAssets { get; private set; }
 
@@ -244,11 +261,11 @@ namespace Dynatrace.API.Model
         public RelatedEntitiesList RelatedEntities { get; set; }
 
         /// <summary>
-        /// A list of related container images of the security problem.   A related container image is a container image that contains at least one *affected entity*.
+        /// A list of related container images of the security problem. A related container image is a container image that contains at least one *affected entity*.
         /// </summary>
-        /// <value>A list of related container images of the security problem.   A related container image is a container image that contains at least one *affected entity*.</value>
+        /// <value>A list of related container images of the security problem. A related container image is a container image that contains at least one *affected entity*.</value>
         [DataMember(Name="relatedContainerImages", EmitDefaultValue=false)]
-        public SecurityProblemDetailsRelatedContainerImages RelatedContainerImages { get; private set; }
+        public List<SecurityProblemDetailsRelatedContainerImages> RelatedContainerImages { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -262,9 +279,10 @@ namespace Dynatrace.API.Model
             sb.Append("  DisplayId: ").Append(DisplayId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Muted: ").Append(Muted).Append("\n");
-            sb.Append("  VulnerabilityId: ").Append(VulnerabilityId).Append("\n");
+            sb.Append("  ExternalVulnerabilityId: ").Append(ExternalVulnerabilityId).Append("\n");
             sb.Append("  VulnerabilityType: ").Append(VulnerabilityType).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  PackageName: ").Append(PackageName).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Technology: ").Append(Technology).Append("\n");
@@ -335,9 +353,9 @@ namespace Dynatrace.API.Model
                     this.Muted.Equals(input.Muted))
                 ) && 
                 (
-                    this.VulnerabilityId == input.VulnerabilityId ||
-                    (this.VulnerabilityId != null &&
-                    this.VulnerabilityId.Equals(input.VulnerabilityId))
+                    this.ExternalVulnerabilityId == input.ExternalVulnerabilityId ||
+                    (this.ExternalVulnerabilityId != null &&
+                    this.ExternalVulnerabilityId.Equals(input.ExternalVulnerabilityId))
                 ) && 
                 (
                     this.VulnerabilityType == input.VulnerabilityType ||
@@ -348,6 +366,11 @@ namespace Dynatrace.API.Model
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
+                ) && 
+                (
+                    this.PackageName == input.PackageName ||
+                    (this.PackageName != null &&
+                    this.PackageName.Equals(input.PackageName))
                 ) && 
                 (
                     this.Url == input.Url ||
@@ -430,7 +453,7 @@ namespace Dynatrace.API.Model
                     this.RelatedContainerImages == input.RelatedContainerImages ||
                     this.RelatedContainerImages != null &&
                     input.RelatedContainerImages != null &&
-                    this.RelatedContainerImages.Equals(input.RelatedContainerImages)
+                    this.RelatedContainerImages.SequenceEqual(input.RelatedContainerImages)
                 );
         }
 
@@ -451,12 +474,14 @@ namespace Dynatrace.API.Model
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Muted != null)
                     hashCode = hashCode * 59 + this.Muted.GetHashCode();
-                if (this.VulnerabilityId != null)
-                    hashCode = hashCode * 59 + this.VulnerabilityId.GetHashCode();
+                if (this.ExternalVulnerabilityId != null)
+                    hashCode = hashCode * 59 + this.ExternalVulnerabilityId.GetHashCode();
                 if (this.VulnerabilityType != null)
                     hashCode = hashCode * 59 + this.VulnerabilityType.GetHashCode();
                 if (this.Title != null)
                     hashCode = hashCode * 59 + this.Title.GetHashCode();
+                if (this.PackageName != null)
+                    hashCode = hashCode * 59 + this.PackageName.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
                 if (this.Description != null)

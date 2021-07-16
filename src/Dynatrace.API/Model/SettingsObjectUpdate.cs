@@ -1,7 +1,7 @@
 /* 
  * Dynatrace Environment API
  *
- *  Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress.   If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, refer to the [help page](https://dt-url.net/2u23k1k) .  Notes about compatibility: * Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this. * We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
+ * Documentation of the Dynatrace Environment API v2. Resources here generally supersede those in v1. Migration of resources from v1 is in progress. If you miss a resource, consider using the Dynatrace Environment API v1. To read about use cases and examples, see [Dynatrace Documentation](https://dt-url.net/2u23k1k) .Notes about compatibility:* Operations marked as early adopter or preview may be changed in non-compatible ways, although we try to avoid this.* We may add new enum constants without incrementing the API version; thus, clients need to handle unknown enum constants gracefully.
  *
  * OpenAPI spec version: 2.0
  * 
@@ -32,7 +32,7 @@ namespace Dynatrace.API.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsObjectUpdate" /> class.
         /// </summary>
-        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks..</param>
+        /// <param name="updateToken">The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks..</param>
         /// <param name="schemaVersion">The version of the schema on which the object is based..</param>
         /// <param name="value">value (required).</param>
         public SettingsObjectUpdate(string updateToken = default(string), string schemaVersion = default(string), SettingsValue value = default(SettingsValue))
@@ -51,9 +51,9 @@ namespace Dynatrace.API.Model
         }
         
         /// <summary>
-        /// The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.
+        /// The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.
         /// </summary>
-        /// <value>The update token of the object. You can use it to detect simultaneous modifications by different users.   It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update.   If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.</value>
+        /// <value>The update token of the object. You can use it to detect simultaneous modifications by different users. It is generated upon retrieval (GET requests). If set on update (PUT request) or deletion, the update/deletion will be allowed only if there wasn&#x27;t any change between the retrieval and the update. If omitted on update/deletion, the operation overrides the current value or deletes it without any checks.</value>
         [DataMember(Name="updateToken", EmitDefaultValue=false)]
         public string UpdateToken { get; set; }
 
