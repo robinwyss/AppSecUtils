@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DynatraceApiExample {
+namespace Dynatrace.AppSec.Utils.CLI {
     class ConsolePrinter {
 
         internal static void PrintSecurityProblemsBySoftwareComponent(Dictionary<SoftwareComponent, List<SecurityProblemDetails>> securityProblemsBySoftwareComponents) {

@@ -9,18 +9,11 @@ using System.Threading.Tasks;
 namespace Dynatrace.AppSec.Utils.Service {
     public class SecurityProblemsService {
 
-        private readonly Lazy<List<SecurityProblemDetails>> securityProblemDetails;
-        public List<SecurityProblemDetails> SecurityProblemDetails {
-            get {
-                return securityProblemDetails.Value;
-            }
-        }
 
         private readonly SecurityProblemsClient _securityProblemsClient;
 
         public SecurityProblemsService(SecurityProblemsClient securityProblemsClient) {
             _securityProblemsClient = securityProblemsClient;
-            securityProblemDetails = new(() => _securityProblemsClient.GetAllVulnerabiltiesWithDetails().ToList());
         }
 
         /// <summary>
@@ -58,9 +51,10 @@ namespace Dynatrace.AppSec.Utils.Service {
             return resultList;
         }
 
+
         public Dictionary<string, List<SecurityProblemDetails>> GetSoftwareComponentsWithSecurityProblems(string searchTerm = null) {
             Dictionary<string, List<SecurityProblemDetails>> dictionary = new();
-            var securityProblems = GetRelevantSecurityProblems(searchTerm);
+            var securityProblems = GetSecurityProblems(searchTerm);
             foreach (var securityProblem in securityProblems) {
                 securityProblem.VulnerableComponents.ForEach(vuc => {
                     if (dictionary.ContainsKey(vuc.Id)) {
@@ -73,8 +67,9 @@ namespace Dynatrace.AppSec.Utils.Service {
             return dictionary;
         }
 
-        private IEnumerable<SecurityProblemDetails> GetRelevantSecurityProblems(string searchTerm = null) {
-            return searchTerm != null ? SecurityProblemDetails.Where(spd => spd.VulnerableComponents.Any(vuc => vuc.DisplayName.ToLower().Contains(searchTerm.ToLower()))) : SecurityProblemDetails;
+        public IEnumerable<SecurityProblemDetails> GetSecurityProblems(string searchTerm = null) {
+            var securityProblems = _securityProblemsClient.GetAllVulnerabiltiesWithDetails().ToList();
+            return searchTerm != null ? securityProblems.Where(spd => spd.VulnerableComponents.Any(vuc => vuc.DisplayName.ToLower().Contains(searchTerm.ToLower()))) : securityProblems;
         }
 
         private Dictionary<string, List<SecurityProblemDetails>> GetSecurityProblemsByEntity(Func<SecurityProblemDetails, List<RelatedEntity>> entitySelector) {
@@ -89,7 +84,7 @@ namespace Dynatrace.AppSec.Utils.Service {
 
         private Dictionary<string, List<SecurityProblemDetails>> GetSecurityProblemsByEntity(Func<SecurityProblemDetails, List<string>> entitySelector) {
             Dictionary<string, List<SecurityProblemDetails>> dictionary = new();
-            var securityProblems = GetRelevantSecurityProblems();
+            var securityProblems = GetSecurityProblems();
             foreach (var securityProblem in securityProblems) {
                 entitySelector(securityProblem).ForEach(entityId => {
                     if (dictionary.ContainsKey(entityId)) {

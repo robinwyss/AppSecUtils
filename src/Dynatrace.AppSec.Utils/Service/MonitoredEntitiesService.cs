@@ -11,27 +11,26 @@ namespace Dynatrace.AppSec.Utils.Service {
 
 
     public class MonitoredEntitiesService {
-
-        private readonly Lazy<IEnumerable<SoftwareComponent>> softwareComponents;
-        public IEnumerable<SoftwareComponent> SoftwareComponents => softwareComponents.Value;
-
-        private readonly Lazy<IEnumerable<Application>> applications;
-        public IEnumerable<Application> Applications => applications.Value;
-
-        private readonly Lazy<IEnumerable<Host>> hosts;
-        public IEnumerable<Host> Hosts => hosts.Value;
-
-        private readonly Lazy<IEnumerable<Model.Service>> services;
-        public IEnumerable<Model.Service> Services => services.Value;
+        private readonly MonitoredEntitiesClient monitoredEntityClient;
 
         public MonitoredEntitiesService(MonitoredEntitiesClient monitoredEntityClient) {
-            softwareComponents = new(() => monitoredEntityClient.GetSoftwareComponents().Select(entity => new SoftwareComponent(entity)));
+            this.monitoredEntityClient = monitoredEntityClient;
+        }
 
-            applications = new(() => monitoredEntityClient.GetApplications().Select(entity => new Application(entity)));
+        public IEnumerable<SoftwareComponent> GetSoftwareComponents() {
+            return monitoredEntityClient.GetSoftwareComponents().Select(entity => new SoftwareComponent(entity));
+        }
 
-            hosts = new(() => monitoredEntityClient.GetHosts().Select(entity => new Host(entity)));
+        public IEnumerable<Application> GetApplications() {
+            return monitoredEntityClient.GetApplications().Select(entity => new Application(entity));
+        }
 
-            services = new(() => monitoredEntityClient.GetServices().Select(entity => new Model.Service(entity)));
+        public IEnumerable<Host> GetHosts() {
+            return monitoredEntityClient.GetHosts().Select(entity => new Host(entity));
+        }
+
+        public IEnumerable<Model.Service> GetServices() {
+            return monitoredEntityClient.GetServices().Select(entity => new Model.Service(entity));
         }
 
     }

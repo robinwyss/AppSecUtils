@@ -18,24 +18,24 @@ namespace Dynatrace.AppSec.Utils.Service {
         }
 
         public Dictionary<Model.Application, List<SecurityProblemDetails>> GetSecurityProblemsByApplication() {
-            IEnumerable<Application> applications = monitoredEntitiesService.Applications;
+            IEnumerable<Application> applications = monitoredEntitiesService.GetApplications();
             var problemsByApplication = securityProblemsService.GetApplicationsWithSecurityProblems();
             return SecurityProblemByEntity(applications, problemsByApplication);
         }
 
         public Dictionary<SoftwareComponent, List<SecurityProblemDetails>> GetSecurityProblemsBySoftwareComponent() {
-            IEnumerable<SoftwareComponent> softwareComponents = monitoredEntitiesService.SoftwareComponents;
+            IEnumerable<SoftwareComponent> softwareComponents = monitoredEntitiesService.GetSoftwareComponents();
             Dictionary<string, List<SecurityProblemDetails>> problemsByComponent = securityProblemsService.GetSoftwareComponentsWithSecurityProblems();
             return SecurityProblemByEntity(softwareComponents, problemsByComponent);
         }
 
         public Dictionary<Host, List<SecurityProblemDetails>> GetSecurityProblemsByHost() {
-            IEnumerable<Host> hosts = monitoredEntitiesService.Hosts;
+            IEnumerable<Host> hosts = monitoredEntitiesService.GetHosts();
             Dictionary<string, List<SecurityProblemDetails>> problemsByHost = securityProblemsService.GetHostsWithSecurityProblems();
             return SecurityProblemByEntity(hosts, problemsByHost);
         }
         public Dictionary<Model.Service, List<SecurityProblemDetails>> GetSecurityProblemsByService() {
-            IEnumerable<Model.Service> hosts = monitoredEntitiesService.Services;
+            IEnumerable<Model.Service> hosts = monitoredEntitiesService.GetServices();
             Dictionary<string, List<SecurityProblemDetails>> problemsByService = securityProblemsService.GetServicesWithSecurityProblems();
             return SecurityProblemByEntity(hosts, problemsByService);
         }

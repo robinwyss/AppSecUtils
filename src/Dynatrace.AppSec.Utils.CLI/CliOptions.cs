@@ -1,30 +1,23 @@
 ﻿using CommandLine;
+using Dynatrace.AppSec.Utils.CLI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynatraceApiExample {
-    class CliOptions {
-        [Option('e',"env", Required =true, HelpText = "Endpoint of the Dynatrace API ")]
+namespace Dynatrace.AppSec.Utils.CLI {
+
+    internal class CliOptions : QueryOptions {
+
+        [Option('e', "env", Required = true, HelpText = "Endpoint of the Dynatrace API ")]
         public string ApiEndpoint { get; set; }
 
         [Option('t', "token", Required = true, HelpText = "Dynatrace API token")]
         public string ApiToken { get; set; }
-       
-        [Option('g', "grouping", HelpText = "Group vulberarbilites by entity (possible values Library, Application, Service, Host)", Default = Grouping.Library)]
-        public Grouping Grouping { get; set; }
-        
-        [Option('s', "search", HelpText = "Search in vulnerable libraries (by name)")]
-        public string Search { get; set; }
 
-    }
+        [Option('i', "interactive", Required = false, HelpText = "Run in interactive mode (avoids having to specify Environment and Token every time)")]
+        public bool Interactive { get; set; }
 
-    enum Grouping {
-        Library,
-        Application,
-        Service,
-        Host
     }
 }

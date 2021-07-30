@@ -16,18 +16,18 @@ namespace Dynatrace.AppSec.Utils.Client {
         }
 
         public List<SecurityProblem> GetVulerabilites() {
-
-            var result = securityProblemsApi.GetSecurityProblems();
+            var result = securityProblemsApi.GetSecurityProblems(sort: "+riskAssessment.riskScore", pageSize: 500);
             var securityProblems = result.SecurityProblems;
             while (result.NextPageKey != null) {
-                securityProblemsApi.GetSecurityProblems(result.NextPageKey);
+                result = securityProblemsApi.GetSecurityProblems(result.NextPageKey);
                 securityProblems.AddRange(result.SecurityProblems);
             }
             return securityProblems;
         }
 
         public SecurityProblemDetails GetVulerabilityDetails(string id) {
-            return securityProblemsApi.GetSecurityProblem(id);
+            // possible fields +riskAssessment,+managementZones,+description,+events,+affectedEntities,+exposedEntities,+reachableDataAssets,+relatedEntities,+relatedContainerImages
+            return securityProblemsApi.GetSecurityProblem(id, "+relatedEntities,+description,+vulnerableComponents,+riskAssessment");
         }
 
         public IEnumerable<SecurityProblemDetails> GetAllVulnerabiltiesWithDetails() {
