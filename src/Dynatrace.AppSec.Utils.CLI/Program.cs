@@ -6,6 +6,7 @@ using Dynatrace.AppSec.Utils.Client;
 using CommandLine;
 using System.Linq;
 using CommandLine.Text;
+using Dynatrace.AppSec.Utils.CLI.Printer;
 
 namespace Dynatrace.AppSec.Utils.CLI {
     class Program {
@@ -60,28 +61,30 @@ namespace Dynatrace.AppSec.Utils.CLI {
             MonitoredEntitiesService monitoredEntitiesService = new(monitoredEntitiesClient);
             EntitiesWithSecurityProblemsService entitiesWithSecurityProblemsService = new(monitoredEntitiesService, securityProblemsService);
 
+            IPrinter printer = o.Output == Output.CSV ? new CsvPrinter() : new ConsolePrinter();
+
             Console.WriteLine($"[querying {o.Query} from {config.BasePath} (grouping: {o.Grouping}, filter: {o.Search}]");
             if(o.Query == Query.SecurityProblem) {
                 switch (o.Grouping) {
                     case Grouping.None:
                         var securityProblems = securityProblemsService.GetSecurityProblems();
-                        ConsolePrinter.PrintSecurityProblems(securityProblems.ToList());
+                        printer.PrintSecurityProblems(securityProblems.ToList());
                         break;
                     case Grouping.Library:
                         var securityProblemsBySoftwareComponents = entitiesWithSecurityProblemsService.GetSecurityProblemsBySoftwareComponent();
-                        ConsolePrinter.PrintSecurityProblemsBySoftwareComponent(securityProblemsBySoftwareComponents);
+                        printer.PrintSecurityProblemsBySoftwareComponent(securityProblemsBySoftwareComponents);
                         break;
                     case Grouping.Application:
                         var securityProblemsByApplication = entitiesWithSecurityProblemsService.GetSecurityProblemsByApplication();
-                        ConsolePrinter.PrintSecurityProblemsByEntity(securityProblemsByApplication);
+                        printer.PrintSecurityProblemsByEntity(securityProblemsByApplication);
                         break;
                     case Grouping.Service:
                         var securityProblemsByService = entitiesWithSecurityProblemsService.GetSecurityProblemsByService();
-                        ConsolePrinter.PrintSecurityProblemsByEntity(securityProblemsByService);
+                        printer.PrintSecurityProblemsByEntity(securityProblemsByService);
                         break;
                     case Grouping.Host:
                         var securityProblemsByHost = entitiesWithSecurityProblemsService.GetSecurityProblemsByHost();
-                        ConsolePrinter.PrintSecurityProblemsByEntity(securityProblemsByHost);
+                        printer.PrintSecurityProblemsByEntity(securityProblemsByHost);
                         break;
                 }
             } else if(o.Query == Query.Library) {

@@ -27,7 +27,7 @@ namespace Dynatrace.AppSec.Utils.Client {
 
         public SecurityProblemDetails GetVulerabilityDetails(string id) {
             // possible fields +riskAssessment,+managementZones,+description,+events,+affectedEntities,+exposedEntities,+reachableDataAssets,+relatedEntities,+relatedContainerImages
-            return securityProblemsApi.GetSecurityProblem(id, "+relatedEntities,+description,+vulnerableComponents,+riskAssessment");
+            return securityProblemsApi.GetSecurityProblem(id, "+relatedEntities,+affectedEntities,+vulnerableComponents,+riskAssessment,+reachableDataAssets,+exposedEntities");
         }
 
         public IEnumerable<SecurityProblemDetails> GetAllVulnerabiltiesWithDetails() {

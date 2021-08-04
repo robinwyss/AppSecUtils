@@ -16,7 +16,15 @@ namespace Dynatrace.AppSec.Utils.CLI {
 
         [Option('s', "search", HelpText = "Search entities (by name)")]
         public string Search { get; set; }
+        
+        [Option('o', "output", HelpText = "Output (possible values are Console, CSV")]
+        public Output Output { get; set; }
 
+    }
+
+    enum Output {
+        Console,
+        CSV
     }
 
     enum Query {
