@@ -7,6 +7,18 @@ using System.Linq;
 
 namespace Dynatrace.AppSec.Utils.CLI.Printer {
     class ConsolePrinter : IPrinter {
+        public void PrintLibraries(IEnumerable<SoftwareComponent> libraries) {
+            var libraryList = libraries.ToList();
+            if (libraryList.Count == 0) {
+                Console.WriteLine("  -- no libraries found --");
+            } else {
+                Console.WriteLine($"  -- {libraryList.Count} libraries --");
+                foreach (var library in libraries) {
+                    Console.WriteLine($"  {library.Name}: {library.PackageName}, {library.FileName}({library.Type})");
+                }
+            }
+        }
+
         public void PrintSecurityProblems(List<SecurityProblemDetails> securityProblems) {
             if (securityProblems.Count == 0) {
                 Console.WriteLine("  -- no security problems found --");

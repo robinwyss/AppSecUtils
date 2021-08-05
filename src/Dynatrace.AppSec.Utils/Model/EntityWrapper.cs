@@ -8,7 +8,9 @@ namespace Dynatrace.AppSec.Utils.Model {
 
         public string Id => entity.EntityId;
 
-        public string Name => entity.Properties.ContainsKey("customizedName") ? entity.Properties["customizedName"] as string : entity.Properties["detectedName"] as string;
+        public string Name => entity.Properties.ContainsKey("customizedName") ? entity.Properties["customizedName"] as string : DetectedName;
+
+        public string DetectedName => entity.Properties.ContainsKey("detectedName") ? entity.Properties["detectedName"] as string : entity.DisplayName;
 
         public EntityWrapper(Entity entity, string entityType) {
             if (!entity.EntityId.StartsWith($"{entityType}-")) {

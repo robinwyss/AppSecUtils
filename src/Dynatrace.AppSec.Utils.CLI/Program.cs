@@ -88,29 +88,19 @@ namespace Dynatrace.AppSec.Utils.CLI {
                         break;
                 }
             } else if(o.Query == Query.Library) {
-                // TODO
-                //switch (o.Grouping) {
-                //    case Grouping.None:
-                //        var securityProblems = securityProblemsService.GetSecurityProblems();
-                //        ConsolePrinter.PrintSecurityProblems(securityProblems.ToList());
-                //        break;
-                //    case Grouping.Library:
-                //        var securityProblemsBySoftwareComponents = entitiesWithSecurityProblemsService.GetSecurityProblemsBySoftwareComponent();
-                //        ConsolePrinter.PrintSecurityProblemsBySoftwareComponent(securityProblemsBySoftwareComponents);
-                //        break;
-                //    case Grouping.Application:
-                //        var securityProblemsByApplication = entitiesWithSecurityProblemsService.GetSecurityProblemsByApplication();
-                //        ConsolePrinter.PrintSecurityProblemsByEntity(securityProblemsByApplication);
-                //        break;
-                //    case Grouping.Service:
-                //        var securityProblemsByService = entitiesWithSecurityProblemsService.GetSecurityProblemsByService();
-                //        ConsolePrinter.PrintSecurityProblemsByEntity(securityProblemsByService);
-                //        break;
-                //    case Grouping.Host:
-                //        var securityProblemsByHost = entitiesWithSecurityProblemsService.GetSecurityProblemsByHost();
-                //        ConsolePrinter.PrintSecurityProblemsByEntity(securityProblemsByHost);
-                //        break;
-                //}
+
+                switch (o.Grouping) {
+                    case Grouping.None:
+                        var libraries = monitoredEntitiesService.GetSoftwareComponents();
+                        printer.PrintLibraries(libraries);
+                        break;
+                    case Grouping.Library:                      
+                    case Grouping.Application:                        
+                    case Grouping.Service:                       
+                    case Grouping.Host:
+                        Console.WriteLine("! Currently not supported");
+                        break;
+                }
             }
         }
 

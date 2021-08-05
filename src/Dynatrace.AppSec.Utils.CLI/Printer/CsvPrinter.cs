@@ -61,7 +61,7 @@ namespace Dynatrace.AppSec.Utils.CLI.Printer {
             using (StreamWriter writer = new StreamWriter($"SecurityProblemsBy{entityType}.csv")) {
                 writer.WriteLine($"{entityType} ID;{entityType} Name;{SecurityProblemHeader}");
                 foreach (var entity in securityProblemsByApplication.Keys) {
-                    foreach(var sp in securityProblemsByApplication[entity]) {
+                    foreach (var sp in securityProblemsByApplication[entity]) {
                         var securityProblemColumns = GenerateSecurityProblemColumns(sp);
                         writer.WriteLine($"{entity.Name};{entity.Id};{securityProblemColumns}");
                     }
@@ -77,6 +77,15 @@ namespace Dynatrace.AppSec.Utils.CLI.Printer {
                         var securityProblemColumns = GenerateSecurityProblemColumns(sp);
                         writer.WriteLine($"{library.Name};{securityProblemColumns}");
                     }
+                }
+            }
+        }
+
+        public void PrintLibraries(IEnumerable<SoftwareComponent> libraries) {
+            using (StreamWriter writer = new StreamWriter($"Libraries.csv")) {
+                writer.WriteLine($"DetectedName;FileName;PackageName;Type;DisplayName;Name;ID");
+                foreach (var library in libraries) {
+                    writer.WriteLine($"{library.DetectedName};{library.FileName};{library.PackageName};{library.Type};{library.DisplayName};{library.Name};{library.Id}");
                 }
             }
         }

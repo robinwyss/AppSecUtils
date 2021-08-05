@@ -19,7 +19,7 @@ namespace Dynatrace.AppSec.Utils.Model {
         }
         public string DetectedName => entity.Properties["detectedName"] as string;
         public string Type => entity.Properties["softwareComponentType"] as string;
-        public string PackageName => entity.Properties["packageName"] as string;
+        public string PackageName => entity.Properties.ContainsKey("packageName") ? entity.Properties["packageName"] as string : string.Empty;
 
         public SoftwareComponent(Entity entity) : base(entity, "SOFTWARE_COMPONENT") { }
 

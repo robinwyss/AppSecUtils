@@ -13,7 +13,8 @@ namespace Dynatrace.AppSec.Utils.CLI.Printer {
 
         void PrintSecurityProblemsByEntity<T>(Dictionary<T, List<SecurityProblemDetails>> securityProblemsByApplication) where T : EntityWrapper;
 
-
         void PrintSecurityProblems(List<SecurityProblemDetails> securityProblems);
+
+        void PrintLibraries(IEnumerable<SoftwareComponent> libraries);
     }
 }
